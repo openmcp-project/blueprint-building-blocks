@@ -1,0 +1,36 @@
+---
+########################################################################################################################
+###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
+########################################################################################################################
+helmReleases:
+  helmReleaseTest:
+    name: "name"    
+    helmCrossplaneProviderConfigRefName: "helmCrossplaneProviderConfigRefName"
+    chart:
+      name: "name"
+      repository: "repository"
+      version: "version"
+    namespace: "namespace"
+    values: {}
+    setValues:
+    - name: param1
+      value: value2
+    valuesFrom:  
+      - configMapKeyRef:
+        key: values.yaml
+        name: default-vals
+        namespace: wordpress
+        optional: false
+      - secretKeyRef:
+        key: svalues.yaml
+        name: svals
+        namespace: wordpress
+        optional: false
+    connectionDetails: 
+      - apiVersion: v1
+        kind: Service
+        name: wordpress-example
+        namespace: wordpress
+        fieldPath: spec.clusterIP         
+        toConnectionSecretKey: ip
+########################################################################################################################

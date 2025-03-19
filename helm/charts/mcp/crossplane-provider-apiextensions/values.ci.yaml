@@ -1,0 +1,38 @@
+---
+########################################################################################################################
+###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
+########################################################################################################################
+environmentConfigs:
+- name: "example-environment"
+  data:
+    locations:
+      us: us-east-2
+      eu: eu-north-1
+    key1: value1
+    key2: value2
+    key3:
+      - item1
+      - item2
+########################################################################################################################
+usages:
+- name: "protect-production-database"
+  spec:
+    of:
+      apiVersion: rds.aws.upbound.io/v1beta1
+      kind: Instance
+      resourceRef:
+        name: my-database
+    reason: "Production Database - should never be deleted!"
+- name: "release-uses-cluster"
+  spec:
+    of:
+      apiVersion: eks.upbound.io/v1beta1
+      kind: Cluster
+      resourceRef:
+        name: my-cluster
+    by:
+      apiVersion: helm.crossplane.io/v1beta1
+      kind: Release
+      resourceRef:
+        name: my-prometheus-chart
+########################################################################################################################

@@ -1,0 +1,213 @@
+---
+#########################################################################################################
+# -- kubernetesVersion defines gardener shoot cluster kubernetes version.
+kubernetesVersion: &kubernetesVersion "1.30.3"
+#########################################################################################################
+# -- defaults contains default values which should NOT be overriden by upstream helm chart!
+# @default -- -
+defaults:  
+  # -- [hibernation](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#core.gardener.cloud/v1beta1.Hibernation) contains information whether the Shoot is suspended or not.
+  # @default -- -
+  hibernation:
+    # -- [schedules](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#core.gardener.cloud/v1beta1.HibernationSchedule)  determines the hibernation schedule of a Shoot. A Shoot will be regularly hibernated at each start time and will be woken up at each end time. Start or End can be omitted, though at least one of each has to be specified.
+    schedules:
+      - start: 00 21 * * 1,2,3,4,5
+        end: 00 08 * * 1,2,3,4,5
+        location: Europe/Berlin
+  # -- [maintenance](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#core.gardener.cloud/v1beta1.Maintenance) contains information about the time window for maintenance operations and which operations should be performed.
+  maintenance:
+    timeWindow:
+      begin: 120000+0000
+      end: 130000+0000
+    autoUpdate:
+      kubernetesVersion: false
+      machineImageVersion: true
+    confineSpecUpdateRollout: true
+  # -- [addons](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#core.gardener.cloud/v1beta1.Addons) contains information about enabled/disabled addons and their configuration.
+  addons:
+    nginxIngress:
+      enabled: false
+    kubernetesDashboard:
+      enabled: false
+  # -- [networking](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#core.gardener.cloud/v1beta1.Networking) contains information about cluster networking such as CNI Plugin type, CIDRs, …etc.
+  networking:
+    type: calico
+    nodes: 10.180.0.0/16
+  # --
+  extensions: []
+  # --
+  resources: []
+  # --
+  kubernetesKubeAPIServer:
+    runtimeConfig:
+    scheduling.k8s.io/v1alpha1: true
+    enableAnonymousAuthentication: false # See: https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+  kubernetesClusterAutoscaler:
+    scaleDownUtilizationThreshold: 0.5
+    scaleDownUnneededTime: 30m0s
+    scaleDownDelayAfterAdd: 1h0m0s
+    scaleDownDelayAfterFailure: 10m0s
+    scaleDownDelayAfterDelete: 10s
+    scanInterval: 10s
+  # -- gcp contains [hypescaler specific](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#provider) information.
+  # @default -- -
+  gcp:
+    # -- [infrastructureConfig](https://github.com/gardener/gardener-extension-provider-gcp/blob/master/docs/usage/usage.md)
+    infrastructureConfig:
+      # https://github.com/gardener/gardener-extension-provider-gcp/blob/master/example/30-infrastructure.yaml#L51-L68
+      apiVersion: gcp.provider.extensions.gardener.cloud/v1alpha1
+      kind: InfrastructureConfig
+      networks:
+        workers: 10.180.0.0/16
+    # -- [controlPlaneConfig](https://github.com/gardener/gardener-extension-provider-gcp/blob/master/docs/usage/usage.md)
+    controlPlaneConfig:
+      # https://github.com/gardener/gardener-extension-provider-gcp/blob/master/example/30-controlplane.yaml#L57-L62
+      apiVersion: gcp.provider.extensions.gardener.cloud/v1alpha1
+      kind: ControlPlaneConfig
+      zone: europe-west1-b
+    # -- [workers](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#core.gardener.cloud/v1beta1.Worker) is a list of worker groups.
+    workers:
+      - name: worker
+        minimum: 1
+        maximum: 3
+        maxSurge: 1
+        maxUnavailable: 0
+        machine:
+          type: n2-standard-8
+          image:
+            name: gardenlinux
+            version: 1312.3.0
+        volume:
+          type: pd-standard
+          size: 50Gi
+          encrypted: true
+        zones:
+          - europe-west1-b          
+  # -- azure contains [hypescaler specific](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#provider) information.
+  # @default -- -
+  azure:
+    # -- [](https://github.com/gardener/gardener-extension-provider-azure/tree/master)
+    workerSettings:
+      sshAccess:
+        enabled: true
+    # -- [infrastructureConfig](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#provider) contains the provider-specific infrastructure config blob. Please look up the concrete definition in the documentation of your provider extension.
+    #    [infrastructureConfig](https://github.com/gardener/gardener-extension-provider-azure/blob/master/docs/usage/usage.md#infrastructureconfig)
+    infrastructureConfig:
+      apiVersion: azure.provider.extensions.gardener.cloud/v1alpha1
+      kind: InfrastructureConfig
+      networks:
+        vnet:
+          cidr: 10.180.0.0/16
+        workers: 10.180.0.0/16
+      zoned: true    
+    # -- [controlPlaneConfig](https://github.com/gardener/gardener-extension-provider-azure/blob/master/docs/usage/usage.md#controlplaneconfig)
+    controlPlaneConfig:
+      apiVersion: azure.provider.extensions.gardener.cloud/v1alpha1
+      kind: ControlPlaneConfig
+    # -- [workers](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#core.gardener.cloud/v1beta1.Worker) is a list of worker groups.
+    workers:
+      - name: worker-qrnz5
+        minimum: 1
+        maximum: 2
+        maxSurge: 1
+        machine:
+          type: Standard_A4_v2
+          image:
+            name: gardenlinux
+            version: 1312.3.0
+          architecture: amd64
+        zones:
+          - "1"
+        cri:
+          name: containerd
+        volume:
+          type: StandardSSD_LRS
+          size: 50Gi
+  # -- aws contains [hypescaler specific](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#provider) information.
+  # @default -- -
+  aws:
+    # -- [infrastructureConfig](https://github.com/gardener/gardener-extension-provider-aws/blob/master/docs/usage/usage.md)
+    infrastructureConfig:
+      apiVersion: aws.provider.extensions.gardener.cloud/v1alpha1
+      kind: InfrastructureConfig
+      networks:
+        vpc:
+          cidr: 10.180.0.0/16
+        zones:
+          - name: eu-central-1a
+            workers: 10.180.0.0/19
+            public: 10.180.32.0/20
+            internal: 10.180.48.0/20
+    # -- [controlPlaneConfig](https://github.com/gardener/gardener-extension-provider-aws/blob/master/docs/usage/usage.md)
+    controlPlaneConfig:
+      apiVersion: aws.provider.extensions.gardener.cloud/v1alpha1
+      cloudControllerManager:
+        useCustomRouteController: true
+      kind: ControlPlaneConfig
+      storage:
+        managedDefaultClass: true
+    # -- [workers](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#core.gardener.cloud/v1beta1.Worker) is a list of worker groups.
+    workers:
+    - name: worker-hmyoy
+      providerConfig:
+        apiVersion: aws.provider.extensions.gardener.cloud/v1alpha1
+        kind: WorkerConfig
+        instanceMetadataOptions:
+          httpTokens: required
+          httpPutResponseHopLimit: 2
+      minimum: 1
+      maximum: 4
+      maxSurge: 1
+      machine:
+        type: c3.2xlarge
+        image:
+          name: gardenlinux
+          version: 1312.3.0
+        architecture: amd64
+      zones:
+        - "eu-central-1a"
+      cri:
+        name: containerd
+      volume:
+        type: gp3
+        size: 50Gi 
+#########################################################################################################
+# -- shootClusters contains information and configuration of Gardener shoot clusters.
+# @default -- -
+shootClusters:
+  # shootClusters[0].name -- name defines technical gardener shoot cluster. Max length 15 and must only be lowercase letters, numbers and hyphens!
+  - name: ""
+    # -- gardener project name. Starts with "garden..." e.g. "garden-aas-dt"
+    projectNamespace: ""
+    # -- kubernetesCrossplaneProviderConfigRefName needs to match crossplane provider configuration reference name (identifier) of SAP garden cluster control plane! (.shootClusters[*].kubernetesCrossplaneProviderConfigRefName)
+    kubernetesCrossplaneProviderConfigRefName: ""
+    # -- gardenerOrchestrateCloudProviderConfigRefName needs to match crossplane provider configuration reference name (identifier) of SAP garden cluster control plane! (.shootClusters[*].kubernetesCrossplaneProviderConfigRefName)
+    gardenerOrchestrateCloudProviderConfigRefName: ""
+    # -- secretBindingName defines the technical name of [infrastructure secret](https://gardener.cloud/docs/gardener/development/secrets_management/) binding on gardener control plane cluster. e.g. [Secrets of AAS-DT](https://dashboard.garden.canary.k8s.ondemand.com/namespace/garden-aas-dt/secrets)
+    secretBindingName: ""
+    # -- cloudProfile is a name of a [CloudProfile object](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#cloudprofile). This field is immutable. E.g. gcp / azure / aws
+    cloudProfile: ""
+    # -- [region](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#shoot) is a name of a region. This field is immutable and content is [cloud profile](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#cloudprofile) specific.
+    region: ""
+    # -- [purpose](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#shoot) is the purpose class for this cluster. e.g. evaluation / development / testing / production
+    purpose: ""
+    # -- kubernetes[Version](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#core.gardener.cloud/v1beta1.Kubernetes) is the semantic Kubernetes version to use for the Shoot cluster. Defaults to the highest supported minor and patch version given in the referenced cloud profile. The version can be omitted completely or partially specified, e.g. <major>.<minor>.
+    kubernetesVersion: *kubernetesVersion
+    # -- [workers](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#core.gardener.cloud/v1beta1.Worker) is a list of worker groups. Setting this value will override .gardener.defaults.workers for this shoot cluster!
+    workers: []
+    # -- [hibernation](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#core.gardener.cloud/v1beta1.Hibernation) contains information whether the Shoot is suspended or not. Setting this value will override .gardener.defaults.hibernation for this shoot cluster!
+    hibernation: []
+    # -- [maintenance](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#core.gardener.cloud/v1beta1.Maintenance) contains information about the time window for maintenance operations and which operations should be performed. Setting this value will override .gardener.defaults.maintenance for this shoot cluster!
+    maintenance: []
+    # -- [addons](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#core.gardener.cloud/v1beta1.Addons) contains information about enabled/disabled addons and their configuration. Setting this value will override .gardener.defaults.addons for this shoot cluster!
+    addons: []
+    # -- [networking](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#core.gardener.cloud/v1beta1.Networking) contains information about cluster networking such as CNI Plugin type, CIDRs, …etc. Setting this value will override .gardener.defaults.networking for this shoot cluster!
+    networking: []    
+    # -- [infrastructureConfig](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#provider) contains the provider-specific infrastructure config blob. Please look up the concrete definition in the documentation of your provider extension. Setting this value will override .gardener.defaults.infrastructureConfig for this shoot cluster!
+    providerInfrastructureConfig: []
+    # -- 
+    providerControlPlaneConfig: []
+    # -- 
+    extensions: []
+    # --
+    resources: []    

@@ -1,0 +1,25 @@
+---
+########################################################################################################################
+# -- An [EnvironmentConfig](https://docs.crossplane.io/latest/api/) contains user-defined unstructured values for use in a Composition. 
+# Read the Crossplane documentation for [more information about EnvironmentConfigs](https://docs.crossplane.io/latest/concepts/environment-configs/).
+# @default -- list
+environmentConfigs:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    # -- The data of this [EnvironmentConfig](https://docs.crossplane.io/latest/api/). This may contain any kind of structure that can be serialized into JSON.
+    data: []
+########################################################################################################################
+# -- A Usage defines a deletion blocking relationship between two resources. 
+# Usages prevent accidental deletion of a single resource or deletion of resources with dependent resources.
+# Read the Crossplane documentation for [more information about Compositions](https://docs.crossplane.io/latest/concepts/usages/).
+# @default -- list
+usages:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    # -- The data of this [EnvironmentConfig](https://docs.crossplane.io/latest/api/). This may contain any kind of structure that can be serialized into JSON.
+    spec: []
+########################################################################################################################

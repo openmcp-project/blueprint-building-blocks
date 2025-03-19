@@ -1,0 +1,21 @@
+{{- range $item := .Values.globalaccountTrustConfigurations }}
+  {{- if and ($item) (ne $item.name "") }}
+---
+apiVersion: security.btp.sap.crossplane.io/v1alpha1
+kind: GlobalaccountTrustConfiguration
+metadata:
+  name: {{required "A valid value is required! (.Values.globalaccountTrustConfigurations[].name)" $item.name | lower }}
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+spec:
+  providerConfigRef:
+    name: {{required "A valid value is required! (.Values.globalaccountTrustConfigurations[].btpSapCrossplaneProviderConfigRefName)" $item.btpSapCrossplaneProviderConfigRefName }}
+  forProvider:
+    {{- required "A valid value is required! (.Values.globalaccountTrustConfigurations[].forProvider)" $item.forProvider | toYaml | nindent 4 }}
+    {{- if $item.writeConnectionSecretToRef}}
+  writeConnectionSecretToRef:
+    {{- $item.writeConnectionSecretToRef | toYaml | nindent 4 }}
+    {{- end }}
+  {{- end }}
+{{- end }}

@@ -1,0 +1,8 @@
+---
+########################################################################################################################
+###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
+########################################################################################################################
+shootClusters:
+  - name: "name"
+    projectNamespace: "projectNamespace"
+    gardenerOrchestrateCloudProviderConfigRefName: "gardenerOrchestrateCloudProviderConfigRefName"        

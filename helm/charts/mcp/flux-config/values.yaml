@@ -1,0 +1,145 @@
+---
+# @default -- -
+defaults:
+  # -- default namespace value for *(optional)*`namespace` fields.
+  namespace: "default"
+  # -- targetNamespace sets or overrides the default namespace in the `kind: Kustomization` manifests.
+  targetNamespace: "default"
+########################################################################################################################
+gitRepositorys:
+  # gitRepositorys[0].name -- defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: GitRepository`
+  - name: ""
+    # -- *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: GitRepository`
+    namespace: ""
+    # spec -- defines k8s `spec` structured value of `kind: GitRepository`. See [API broswer](https://fluxcd.io/flux/components/source/api/v1/#source.toolkit.fluxcd.io/v1.GitRepositorySpec)
+    spec:
+      # -- [Interval](https://fluxcd.io/flux/components/source/api/v1/#source.toolkit.fluxcd.io/v1.GitRepositorySpec) at which the GitRepository URL is checked for updates. This interval is approximate and may be subject to jitter to ensure efficient use of resources.
+      interval: 1m
+      # -- [URL]() specifies the Git repository URL, it can be an HTTP/S or SSH address. 
+      url: ""
+      # -- *(optional)* Reference specifies the Git reference to resolve and monitor for changes, defaults to the ‘master’ branch.
+      ref:
+        # -- *(optional)* [branch](https://fluxcd.io/flux/components/source/api/v1/#source.toolkit.fluxcd.io/v1.GitRepositoryRef) Branch to check out, defaults to ‘master’ if no other field is defined. e.g. "main"
+        branch: ""
+      # -- *(optional)* [SecretRef](https://fluxcd.io/flux/components/source/api/v1/#source.toolkit.fluxcd.io/v1.GitRepositorySpec) specifies the Secret containing authentication credentials for the GitRepository. For HTTPS repositories the Secret must contain ‘username’ and ‘password’ fields for basic auth or ‘bearerToken’ field for token auth. For SSH repositories the Secret must contain ‘identity’ and ‘known_hosts’ fields.
+      secretRef:
+        # -- [`type SecretKeySelector `](https://pkg.go.dev/github.com/external-secrets/external-secrets/apis/meta/v1#SecretKeySelector)
+        name: ""
+    kustomizations:
+      # gitRepositorys[0].kustomizations[0].name -- defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: Kustomization` e.g. "co-helm-charts-blueprint"
+      - name: ""
+        # -- *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: Kustomization`
+        namespace: ""
+        # -- *(optional)* targetNamespace defines the namespace in the `kind: Kustomization` manifests.
+        targetNamespace: ""
+        # -- The [interval](https://fluxcd.io/flux/components/kustomize/api/v1/#kustomize.toolkit.fluxcd.io/v1.KustomizationSpec) at which to reconcile the Kustomization. This interval is approximate and may be subject to jitter to ensure efficient use of resources. E.g. 10s
+        interval: 
+        # -- *(optional)* [Path](https://fluxcd.io/flux/components/kustomize/api/v1/#kustomize.toolkit.fluxcd.io/v1.KustomizationSpec) to the directory containing the kustomization.yaml file, or the set of plain YAMLs a kustomization.yaml should be generated for. Defaults to ‘None’, which translates to the root path of the SourceRef. e.g. "./manifests/mcps/j4azdfnld24bts5.laasds.shoot.live.k8s-hana.ondemand.com"
+        path: ""
+        # -- [Prune](https://fluxcd.io/flux/components/kustomize/api/v1/#kustomize.toolkit.fluxcd.io/v1.KustomizationSpec) enables garbage collection. e.g. true/false
+        prune: 
+        # -- *(optional)* [Timeout](https://fluxcd.io/flux/components/kustomize/api/v1/#kustomize.toolkit.fluxcd.io/v1.KustomizationSpec) for validation, apply and health checking operations. Defaults to ‘Interval’ duration. e.g. 1m
+        timeout:
+        # -- [dependsOn](https://fluxcd.io/flux/components/kustomize/kustomizations/#dependencies) is an *(optional)*list used to refer to other Kustomization objects that the Kustomization depends on. If specified, then the Kustomization is only applied after the referred Kustomizations are ready, i.e. have the Ready condition marked as True. The readiness state of a Kustomization is determined by its last applied status condition.
+        dependsOn: {}
+        # -- [healthChecks](https://fluxcd.io/flux/components/kustomize/kustomizations/#health-checks) is an *(optional)*list used to refer to resources for which the controller will perform health checks used to determine the rollout status of deployed workloads and the Ready status of custom resources.
+        healthChecks: {}
+        # -- [retryInterval](https://fluxcd.io/flux/components/kustomize/kustomizations/#retry-interval) is an *(optional)*field to specify the interval at which to retry a failed reconciliation. 
+        retryInterval:
+        # -- [suspend](https://fluxcd.io/flux/components/kustomize/kustomizations/#suspend) is an *(optional)*boolean field to suspend the reconciliation of the Kustomization. When a Kustomization is suspended, new Source revisions are not applied to the cluster and drift detection/correction is paused. To resume normal reconciliation, set it back to false or remove the field.
+        suspend:
+        # -- [wait](https://fluxcd.io/flux/components/kustomize/kustomizations/#wait)  is an *(optional)*boolean field to perform health checks for all reconciled resources as part of the Kustomization. If set to true, .spec.healthChecks is ignored.
+        wait: 
+        # -- [serviceAccountName](https://fluxcd.io/flux/components/kustomize/kustomizations/#service-account-reference)  is an *(optional)*field used to specify the ServiceAccount to be impersonated while reconciling the Kustomization.
+        serviceAccountName: 
+        # -- [commonMetadata](https://fluxcd.io/flux/components/kustomize/kustomizations/#common-metadata)  is an *(optional)*field used to specify any metadata that should be applied to all the Kustomization’s resources.
+        commonMetadata: []
+        # -- [namePrefix](https://fluxcd.io/flux/components/kustomize/kustomizations/#name-prefix-and-suffix) are *(optional)*fields used to specify a prefix and suffix to be added to the names of all the resources in the Kustomization.
+        namePrefix:
+        # -- [nameSuffix](https://fluxcd.io/flux/components/kustomize/kustomizations/#name-prefix-and-suffix) are *(optional)*fields used to specify a prefix and suffix to be added to the names of all the resources in the Kustomization.
+        nameSuffix:
+        # -- [force](https://fluxcd.io/flux/components/kustomize/kustomizations/#force) is an *(optional)*boolean field. If set to true, the controller will replace the resources in-cluster if the patching fails due to immutable field changes.
+        force:
+        # -- [patches](https://fluxcd.io/flux/components/kustomize/kustomizations/#patches) is an *(optional)*list used to specify Kustomize patches as inline YAML objects. 
+        patches:
+        # -- [images](https://fluxcd.io/flux/components/kustomize/kustomizations/#images) is an *(optional)*list used to specify Kustomize images. This allows overwriting the name, tag or digest of container images without creating patches.
+        images: {}
+        # --  [components](https://fluxcd.io/flux/components/kustomize/kustomizations/#components) is an *(optional)*list used to specify Kustomize components. This allows using reusable pieces of configuration logic that can be included from multiple overlays.
+        components: {}
+        # -- [postBuild](https://fluxcd.io/flux/components/kustomize/kustomizations/#post-build-variable-substitution) Post build variable substitution 
+        postBuild: []
+        # -- [kubeConfig](https://fluxcd.io/flux/components/kustomize/kustomizations/#kubeconfig-reference) KubeConfig reference
+        kubeConfig: []
+        # --  [decryption](https://fluxcd.io/flux/components/kustomize/kustomizations/#decryption) is an *(optional)*field to specify the configuration to decrypt Secrets that are a part of the Kustomization.
+        decryption: []
+########################################################################################################################
+# -- defines independent [`kind: Kustomization`](https://fluxcd.io/flux/components/kustomize/api/v1/#kustomize.toolkit.fluxcd.io/v1.Kustomization) manifest without the generation of `kind: GitRepository`.
+kustomizations:
+  # kustomizations[0].name -- defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: Kustomization` e.g. "co-helm-charts-blueprint"
+  - name: ""
+    # -- *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: Kustomization`
+    namespace: ""
+    # -- *(optional)* targetNamespace defines the namespace in the `kind: Kustomization` manifests.
+    targetNamespace: ""
+    # -- The [interval](https://fluxcd.io/flux/components/kustomize/api/v1/#kustomize.toolkit.fluxcd.io/v1.KustomizationSpec) at which to reconcile the Kustomization. This interval is approximate and may be subject to jitter to ensure efficient use of resources. E.g. 10s
+    interval: 
+    # -- *(optional)* [Path](https://fluxcd.io/flux/components/kustomize/api/v1/#kustomize.toolkit.fluxcd.io/v1.KustomizationSpec) to the directory containing the kustomization.yaml file, or the set of plain YAMLs a kustomization.yaml should be generated for. Defaults to ‘None’, which translates to the root path of the SourceRef. e.g. "./manifests/mcps/j4azdfnld24bts5.laasds.shoot.live.k8s-hana.ondemand.com"
+    path: ""
+    # -- [Prune](https://fluxcd.io/flux/components/kustomize/api/v1/#kustomize.toolkit.fluxcd.io/v1.KustomizationSpec) enables garbage collection. e.g. true/false
+    prune: 
+    # -- *(optional)* [Timeout](https://fluxcd.io/flux/components/kustomize/api/v1/#kustomize.toolkit.fluxcd.io/v1.KustomizationSpec) for validation, apply and health checking operations. Defaults to ‘Interval’ duration. e.g. 1m
+    timeout:
+    # -- [Reference](https://fluxcd.io/flux/components/kustomize/api/v1/#kustomize.toolkit.fluxcd.io/v1.CrossNamespaceSourceReference) of the source where the kustomization file is.
+    sourceRef:
+      # -- string	(Optional) API version of the referent.
+      apiVersion: ""
+      # -- string	Kind of the referent.
+      kind: "GitRepository"
+      # -- string	Name of the referent.
+      name: ""
+      # -- string	(Optional) Namespace of the referent, defaults to the namespace of the Kubernetes resource object that contains the reference.
+      namespace: ""
+    # -- [dependsOn](https://fluxcd.io/flux/components/kustomize/kustomizations/#dependencies) is an *(optional)*list used to refer to other Kustomization objects that the Kustomization depends on. If specified, then the Kustomization is only applied after the referred Kustomizations are ready, i.e. have the Ready condition marked as True. The readiness state of a Kustomization is determined by its last applied status condition.
+    dependsOn: {}
+    # -- [healthChecks](https://fluxcd.io/flux/components/kustomize/kustomizations/#health-checks) is an *(optional)*list used to refer to resources for which the controller will perform health checks used to determine the rollout status of deployed workloads and the Ready status of custom resources.
+    healthChecks: {}
+    # -- [retryInterval](https://fluxcd.io/flux/components/kustomize/kustomizations/#retry-interval) is an *(optional)*field to specify the interval at which to retry a failed reconciliation. 
+    retryInterval:
+    # -- [suspend](https://fluxcd.io/flux/components/kustomize/kustomizations/#suspend) is an *(optional)*boolean field to suspend the reconciliation of the Kustomization. When a Kustomization is suspended, new Source revisions are not applied to the cluster and drift detection/correction is paused. To resume normal reconciliation, set it back to false or remove the field.
+    suspend:
+    # -- [wait](https://fluxcd.io/flux/components/kustomize/kustomizations/#wait)  is an *(optional)*boolean field to perform health checks for all reconciled resources as part of the Kustomization. If set to true, .spec.healthChecks is ignored.
+    wait: 
+    # -- [serviceAccountName](https://fluxcd.io/flux/components/kustomize/kustomizations/#service-account-reference)  is an *(optional)*field used to specify the ServiceAccount to be impersonated while reconciling the Kustomization.
+    serviceAccountName: 
+    # -- [commonMetadata](https://fluxcd.io/flux/components/kustomize/kustomizations/#common-metadata)  is an *(optional)*field used to specify any metadata that should be applied to all the Kustomization’s resources.
+    commonMetadata: []
+    # -- [namePrefix](https://fluxcd.io/flux/components/kustomize/kustomizations/#name-prefix-and-suffix) are *(optional)*fields used to specify a prefix and suffix to be added to the names of all the resources in the Kustomization.
+    namePrefix:
+    # -- [nameSuffix](https://fluxcd.io/flux/components/kustomize/kustomizations/#name-prefix-and-suffix) are *(optional)*fields used to specify a prefix and suffix to be added to the names of all the resources in the Kustomization.
+    nameSuffix:
+    # -- [force](https://fluxcd.io/flux/components/kustomize/kustomizations/#force) is an *(optional)*boolean field. If set to true, the controller will replace the resources in-cluster if the patching fails due to immutable field changes.
+    force:
+    # -- [patches](https://fluxcd.io/flux/components/kustomize/kustomizations/#patches) is an *(optional)*list used to specify Kustomize patches as inline YAML objects. 
+    patches:
+    # -- [images](https://fluxcd.io/flux/components/kustomize/kustomizations/#images) is an *(optional)*list used to specify Kustomize images. This allows overwriting the name, tag or digest of container images without creating patches.
+    images: {}
+    # --  [components](https://fluxcd.io/flux/components/kustomize/kustomizations/#components) is an *(optional)*list used to specify Kustomize components. This allows using reusable pieces of configuration logic that can be included from multiple overlays.
+    components: {}
+    # -- [postBuild](https://fluxcd.io/flux/components/kustomize/kustomizations/#post-build-variable-substitution) Post build variable substitution 
+    postBuild: []
+    # -- [kubeConfig](https://fluxcd.io/flux/components/kustomize/kustomizations/#kubeconfig-reference) KubeConfig reference
+    kubeConfig: []
+    # --  [decryption](https://fluxcd.io/flux/components/kustomize/kustomizations/#decryption) is an *(optional)*field to specify the configuration to decrypt Secrets that are a part of the Kustomization.
+    decryption: []
+########################################################################################################################
+# @credentials -- :exclamation::exclamation: never EVER PUSH credentials in plain text into GIT :exclamation::exclamation:
+credentials:
+  # credentials[0].name -- defines k8s `metadata.name` value of `kind: Secret`
+  - name: ""
+    # -- *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: Secret`
+    namespace: ""
+    # -- *(optional)* [stringData](https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/secret-v1/) *(map[string]string)* allows specifying non-binary secret data in string form. It is provided as a write-only input field for convenience. All keys and values are merged into the data field on write, overwriting any existing values. The stringData field is never output when reading from the API.
+    stringData: []
+    # -- *(optional)* [data](https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/secret-v1/) *(map[string][]byte)* Data contains the secret data. Each key must consist of alphanumeric characters, '-', '_' or '.'. The serialized form of the secret data is a base64 encoded string, representing the arbitrary (possibly non-string) data value here. Described in https://tools.ietf.org/html/rfc4648#section-4
+    data: []  
+########################################################################################################################

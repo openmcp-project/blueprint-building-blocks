@@ -1,0 +1,46 @@
+---
+########################################################################################################################
+###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
+########################################################################################################################
+kubernetesObjects:
+  kubernetesObjectTest:
+    name: "kubernetes-objects"    
+    kubernetesCrossplaneProviderConfigRefName: "kubernetesCrossplaneProviderConfigRefName"
+    manifest:
+      # example [config map](https://kubernetes.io/docs/concepts/configuration/configmap/)
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: game-demo
+      data:
+        player_initial_lives: "3"
+        ui_properties_file_name: "user-interface.properties"
+        game.properties: |
+          enemy.types=aliens,monsters
+          player.maximum-lives=5    
+  kubernetesObjectTest2:
+    name: "kubernetes-objects2"    
+    kubernetesCrossplaneProviderConfigRefName: "kubernetesCrossplaneProviderConfigRefName"
+    deletionPolicy: Orphan
+    managementPolicies:  ["Create", "Update", "Delete", "Observe", "LateInitialize"]
+    writeConnectionSecretToRef:
+      name: sample-access-key-secret
+      namespace: upbound-system
+    readiness:
+      policy: ""
+    publishConnectionDetailsTo:
+      name: sample-access-key-secret-2
+      namespace: upbound-system
+    manifest:
+      # example [config map](https://kubernetes.io/docs/concepts/configuration/configmap/)
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: game-demo
+      data:
+        player_initial_lives: "3"
+        ui_properties_file_name: "user-interface.properties"
+        game.properties: |
+          enemy.types=aliens,monsters
+          player.maximum-lives=5    
+########################################################################################################################

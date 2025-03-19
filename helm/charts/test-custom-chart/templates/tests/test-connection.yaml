@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "custom-chart.fullname" . }}-test-connection"
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+    {{- include "custom-chart.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "custom-chart.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never

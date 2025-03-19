@@ -1,0 +1,9 @@
+{{- range $shootCluster := .Values.shootClusters}}
+  {{- if empty $shootCluster.cloudProfile}}
+    {{- fail "A valid value is required! (.Values.shootClusters[].cloudProfile)"}}
+  {{- end}}
+  {{- if and ($shootCluster) (eq $shootCluster.cloudProfile "alicloud") }}
+    {{- fail "ali cloud not implemented yet!"}}
+---
+  {{- end }}
+{{- end }}

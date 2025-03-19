@@ -1,0 +1,15 @@
+{{- range $item := .Values.providerConfigs.kubernetesCrossplane}}
+  {{- if and ($item) (ne $item.providerConfigRefName "")}}
+---
+apiVersion: kubernetes.crossplane.io/v1alpha1
+kind: ProviderConfig
+metadata:
+  name: {{required "A valid value is required! (.Values.providerConfigs.kubernetesCrossplane[].providerConfigRefName)" $item.providerConfigRefName | lower | quote}}
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+spec:
+  credentials:
+    {{- required "A valid value is required! (.Values.providerConfigs.kubernetesCrossplane[].credentials)" $item.credentials | toYaml | nindent 4 }}    
+  {{- end }}
+{{- end }}

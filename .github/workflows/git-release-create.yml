@@ -1,0 +1,21 @@
+name: Helm Chart Release Tag
+
+on:
+  workflow_call: {}
+  workflow_dispatch: {}
+
+
+
+jobs:
+  git-release-create:
+    name: Helm Chart Release Tag
+    runs-on: [solinas]
+    steps:
+      - name: Login to GitHub Enterprise with token
+        run: |
+          env
+          gh version          
+          echo ${{ secrets.CO_GOLDEN_PATH_SERVICEUSER_GH_TOKEN }} | gh auth login  --with-token
+                
+      - name: Create Github Releases for Helm Chart Tags
+        uses: openmcp-project/blueprint-building-blocks/.github/actions/git-release-create@main

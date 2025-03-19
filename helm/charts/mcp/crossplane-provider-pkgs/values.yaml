@@ -1,0 +1,104 @@
+---
+########################################################################################################################
+# -- [providers](https://docs.crossplane.io/latest/concepts/providers/) contains information and configuration of k8s [manifest/resource](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/). Learn more with this [example](../../../../argo-cd-generator-config/remote-clusters-temp/template/template.aas-dt.shoot.canary.k8s-hana.ondemand.com.yaml.file).
+# @default -- list
+providers:
+  # providers[0].name -- kubernetes crossplane object `metadata.name` on managed control plane.
+  - name: ""
+    # -- [spec](https://docs.crossplane.io/latest/api/#Provider-spec) defines plain kubernetes [manifest](https://monokle.io/learn/kubernetes-manifest-files-explained).
+    # @default -- []
+    spec: []  
+########################################################################################################################
+# -- 
+# @default -- list
+functions:
+  # functions[0].name -- kubernetes crossplane object `metadata.name` on managed control plane.
+  - name: ""
+    # -- [spec](https://docs.crossplane.io/latest/api/#Function-spec) defines plain kubernetes [manifest](https://monokle.io/learn/kubernetes-manifest-files-explained).
+    # @default -- []
+    spec: []  
+########################################################################################################################
+# --  A [Configuration](https://docs.crossplane.io/latest/concepts/packages/) package is an [OCI container images](https://opencontainers.org/) containing a collection of [Compositions](https://docs.crossplane.io/latest/concepts/compositions/), [Composite Resource Definitions](https://docs.crossplane.io/latest/concepts/composite-resource-definitions/) and any required [Providers](https://docs.crossplane.io/latest/concepts/providers/) or [Functions](https://docs.crossplane.io/latest/concepts/compositions/).
+# @default -- list
+configurations:
+  # configurations[0].name -- kubernetes crossplane object `metadata.name` on managed control plane.
+  - name: ""
+    # -- [spec](https://docs.crossplane.io/latest/api/#Configuration-spec) defines plain kubernetes [manifest](https://monokle.io/learn/kubernetes-manifest-files-explained).
+    # @default -- []
+    spec: []  
+########################################################################################################################
+# --  The [DeploymentRuntimeConfig](https://docs.crossplane.io/latest/api/) provides settings for the Kubernetes Deployment of a Provider or composition function package.
+# Read the Crossplane documentation for [more information about DeploymentRuntimeConfigs](https://docs.crossplane.io/latest/concepts/providers/#runtime-configuration).
+# @default -- list
+deploymentRuntimeConfigs:
+  # deploymentRuntimeConfigs[0].name -- kubernetes crossplane object `metadata.name` on managed control plane.
+  - name: ""
+    # -- [spec/DeploymentRuntimeConfigSpec](https://docs.crossplane.io/latest/api/#DeploymentRuntimeConfig-spec) specifies the configuration for a packaged controller. Values provided will override package manager defaults. Labels and annotations are passed to both the controller Deployment and ServiceAccount.
+    # @default -- []
+    spec: []  
+########################################################################################################################
+# --  The [ImageConfig](https://docs.crossplane.io/latest/concepts/image-configs/) resource is used to configure settings for package images.
+# @default -- list
+imageConfigs:
+  # imageConfigs[0].name -- kubernetes crossplane object `metadata.name` on managed control plane.
+  - name: ""
+    # -- [spec/ImageConfigSpec](https://docs.crossplane.io/latest/api/#ImageConfig-spec) contains the configuration for matching images.
+    # @default -- []
+    spec:
+      # -- ImageMatch defines a rule for matching image.
+      # @default -- []
+      matchImages:
+        # imageConfigs[0].spec.matchImages[0].type -- Type is the type of match. 
+        - type: Prefix
+          # -- Prefix is the prefix that should be matched. (Default `Prefix``)
+          prefix: ""
+      # -- Registry is the configuration for the registry.
+      # @default -- []
+      registry:
+        # -- Authentication is the authentication information for the registry.
+        # @default -- []
+        authentication:
+          # -- PullSecretRef is a reference to a secret that contains the credentials for the registry.
+            pullSecretRef: []
+      # -- Verification contains the configuration for verifying the image.
+      # @default -- []
+      verification:
+        provider: ""
+        # -- Cosign is the configuration for verifying the image using cosign.
+        # @default -- []
+        cosign:
+          # -- Authority defines the rules for discovering and validating signatures.
+          # @default -- {}
+          authorities:
+            # imageConfigs[0].spec.verification.cosign.authorities[0].name -- Name is the name for this authority.
+            # @default -- {}
+            - name: ""
+              # -- Key defines the type of key to validate the image.
+              # @default -- []
+              key:
+                # -- HashAlgorithm always defaults to sha256 if the algorithm hasn’t been explicitly set
+                hashAlgorithm: ""
+                # -- SecretRef sets a reference to a secret with the key.
+                secretRef: []
+              # -- Keyless sets the configuration to verify the authority against a Fulcio instance.
+              # @default -- []
+              keyless:                
+                # -- Identity may contain the issuer and/or the subject found in the transparency log. Issuer/Subject uses a strict match, while IssuerRegExp and SubjectRegExp apply a regexp for matching.
+                # @default -- {}
+                identities:
+                  # imageConfigs[0].spec.verification.cosign.authorities[0].keyless.identities[0].issuer -- Issuer defines the issuer for this identity.
+                  - issuer: ""
+                    # -- IssuerRegExp specifies a regular expression to match the issuer for this identity. This has precedence over the Issuer field.
+                    issuerRegExp: ""
+                    # -- SubjectRegExp specifies a regular expression to match the subject for this identity. This has precedence over the Subject field.
+                    subjectRegExp:  ""
+                    # -- Subject defines the subject for this identity.
+                    subject: ""
+              # -- Attestation defines the type of attestation to validate and optionally apply a policy decision to it. Authority block is used to verify the specified attestation types, and if Policy is specified, then it’s applied only after the validation of the Attestation signature has been verified.
+              # @default -- {}
+              attestations:
+                # imageConfigs[0].spec.verification.cosign.authorities[0].attestations[0].name -- Name of the attestation.
+                - name: ""
+                  # PredicateType defines which predicate type to verify. Matches cosign verify-attestation options.
+                  predicateType: 
+########################################################################################################################

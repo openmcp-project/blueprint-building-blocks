@@ -1,0 +1,32 @@
+{{- range $account := .Values.accounts}}
+  {{- range $item := $account.subAccounts}}
+    {{- if and ($item) (ne $item.name "") }}
+      {{- if hasKey $item "services" }}
+        {{- if hasKey $item.services "serviceManager" }}
+          {{- if $item.services.serviceManager}}
+---
+apiVersion: account.btp.sap.crossplane.io/v1beta1
+kind: ServiceManager
+metadata:
+  name: {{required "A valid value is required! (.Values.accounts[].subAccounts[].name)" $item.name | lower }}
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+  {{- template "ServiceManager.annotations" $item }}
+spec:
+  writeConnectionSecretToRef:
+    # !!! TODO: Make this configurable !!!
+    name: btp-service-manager-{{required "A valid value is required! (.Values.accounts[].btpSapCrossplaneProviderConfigRefName)" $account.btpSapCrossplaneProviderConfigRefName}}-{{required "A valid value is required! (.Values.accounts[].subAccounts[].name)" $item.name | lower }}
+    # !!! TODO: Make this configurable !!!
+    namespace: default
+  forProvider:
+    subaccountRef:
+      name: {{required "A valid value is required! (.Values.accounts[].subAccounts[].name)" $item.name | lower }}
+  providerConfigRef:
+    name: {{ required "A valid value is required! (.Values.accounts[].btpSapCrossplaneProviderConfigRefName)" $account.btpSapCrossplaneProviderConfigRefName | quote }}
+          {{- end }}
+        {{- end }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+{{- end }}

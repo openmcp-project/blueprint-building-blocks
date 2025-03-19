@@ -1,0 +1,43 @@
+repositoryUrl: "https://github.com/openmcp-project/blueprint-building-blocks"
+githubUrl: "https://github.com"
+githubApiPathPrefix: "/api/v3"
+debug: true
+
+branches:
+  - main
+
+plugins:
+  - [
+      "@semantic-release/commit-analyzer",
+      {
+        # default rule: https://github.com/semantic-release/commit-analyzer/blob/master/lib/default-release-rules.js
+        "releaseRules":
+          [
+            { "type": "docs", "release": "patch" },
+            { "type": "refactor", "release": "patch" },
+            { "type": "style", "release": "patch" },
+            { "type": "build", "release": "patch" },
+            { "type": "ci", "release": "patch" },
+            { "tag": "no-release", "release": false },
+            { "tag": "kind/feature", "release": "minor" },
+            { "tag": "kind/bug", "release": "patch" },
+            { "tag": "kind/deprecation", "release": "patch" },
+            { "tag": "kind/chore", "release": "patch" },
+            { "tag": "kind/security", "release": "patch" },
+            { "tag": "kind/documentation", "release": "patch" },
+            { "tag": "kind/cleanup", "release": "patch" },
+          ],
+        # https://github.com/semantic-release/commit-analyzer#usage
+        "parserOpts":
+          { "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES"] },
+        "preset": "conventionalcommits"
+      },
+    ]
+  - [
+      "@semantic-release/release-notes-generator",
+      {
+        parserOpts: { noteKeywords: ["BREAKING CHANGE", "BREAKING CHANGES"] },
+        "preset": "conventionalcommits"
+      },
+    ]
+  - ["@semantic-release/github"]

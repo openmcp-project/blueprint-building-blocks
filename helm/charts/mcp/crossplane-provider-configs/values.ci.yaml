@@ -1,0 +1,134 @@
+########################################################################################################################
+###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
+########################################################################################################################
+providerConfigs:
+  kubernetesCrossplane:
+    - providerConfigRefName: "garden-ketos-co-sa-mcp-test"
+      credentials:
+        source: "Secret"
+        secretRef:
+          name: "garden-ketos-co-sa-mcp-test"
+          namespace: default
+          key: kubeconfig
+  helmCrossplane:
+    - providerConfigRefName: "gardener-shoot-steffen-test"
+      credentials:
+        source: "Secret"
+        secretRef:
+          namespace: default
+          name: "gardener-shoot-kubeconfig-steffen-test"
+          key: kubeconfig
+  gardenerOrchestrateCloud:
+    - providerConfigRefName: "garden-ketos-co-sa-mcp-test"
+      credentials:
+        source: "Secret"
+        secretRef:
+          namespace: default
+          name: "garden-ketos-co-sa-mcp-test"
+          key: kubeconfig     
+  dynatraceOrchestrateCloud:
+    - providerConfigRefName: "providerConfigRefName"
+      credentials:
+        source: "Secret"
+        secretRef:
+          namespace: default
+          name: "name"
+          key: kubeconfig
+  hyperscalerOrchestrateCloud:
+    - providerConfigRefName: "providerConfigRefName"
+      credentials:
+        source: "Secret"
+        secretRef:
+          namespace: default
+          name: "name"
+          key: kubeconfig
+  awsUpbound:
+    - providerConfigRefName: "providerConfigRefName"
+      credentials:
+        source: "Secret"
+        secretRef:
+          namespace: default
+          name: "name"
+          key: kubeconfig
+  gcpUpbound:
+    - providerConfigRefName: "providerConfigRefName"
+      credentials:
+        source: "Secret"
+        secretRef:
+          namespace: default
+          name: "name"
+          key: kubeconfig
+  azureUpbound:
+    - providerConfigRefName: "providerConfigRefName"
+      credentials:
+        source: "Secret"
+        secretRef:
+          namespace: default
+          name: "name"
+          key: kubeconfig
+  accountBtpOrchestrateCloud:
+    - providerConfigRefName: "ketos-kita-test"
+      cliServerUrl: "cliServerUrl"
+      globalAccountSubDomain: "globalAccountSubDomain"
+      cisCredentials:
+        source: "Secret"
+        secretRef:
+          namespace: default
+          name: "btp-account-ketos-kita-test"
+          key: btp-cis-provider-credentials
+      serviceAccountSecret:
+        source: "Secret"
+        secretRef:
+          namespace: default
+          name: "btp-account-ketos-kita-test"
+          key: btp-service-account-provider-credentials
+  btpSapCrossplane:
+    - providerConfigRefName: "ketos-kita-test"
+      cliServerUrl: "cliServerUrl"
+      globalAccountSubDomain: "globalAccountSubDomain"
+      cisCredentials:
+        source: "Secret"
+        secretRef:
+          namespace: default
+          name: "btp-account-ketos-kita-test"
+          key: btp-cis-provider-credentials
+      serviceAccountSecret:
+        source: "Secret"
+        secretRef:
+          namespace: default
+          name: "btp-account-ketos-kita-test"
+          key: btp-service-account-provider-credentials
+  cloudfoundryBtpOrchestrateCloud:
+    - providerConfigRefName: "cloudfoundryBtpOrchestrateCloud"
+      endpoint:
+        source: "Secret"
+        secretRef:
+          name: cf-environment-secret
+          namespace: default
+          key: apiEndpoint
+      credentials:
+        source: "Secret"
+        secretRef:
+          name: cf-credentials-secret
+          namespace: default
+          key: credentials
+  vaultUpbound:
+    - providerConfigRefName: "vaultUpbound"      
+      spec:  
+        address: https://vault.tools.sap        
+        namespace: artificial-intelligence/aicore        
+        skip_child_token: true        
+        credentials:
+          source: Secret
+          secretRef:
+            name: vault-creds
+            namespace: default
+            key: credentials
+########################################################################################################################
+secrets:
+  - name: "name"
+    namespace: "namespace"
+    stringData:
+      foo: "bar"
+    #data: []
+########################################################################################################################

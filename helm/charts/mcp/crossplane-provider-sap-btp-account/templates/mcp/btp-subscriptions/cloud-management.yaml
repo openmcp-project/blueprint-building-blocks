@@ -1,0 +1,36 @@
+{{- range $account := .Values.accounts}}
+  {{- range $item := $account.subAccounts}}
+    {{- if and ($item) (ne $item.name "") }}      
+      {{- if hasKey $item "services" }}
+        {{- if hasKey $item.services "cloudManagement" }}
+          {{- if $item.services.cloudManagement}}
+            {{- if and (hasKey $item.services "serviceManager") (eq $item.services.serviceManager true) }}
+            {{- else }}
+              {{- fail "You need to enable BTP Service Manager for this BTP Sub-Account to be able to orchestrate BTP Subscriptions! (.Values.accounts[].subAccounts[].services.serviceManager = true)"}}
+            {{- end }}
+---
+apiVersion: account.btp.sap.crossplane.io/v1alpha1
+kind: CloudManagement
+metadata:
+  name: {{required "A valid value is required! (.Values.accounts[].subAccounts[].name)" $item.name | lower }}
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"      
+  {{- template "CloudManagement.annotations" $item }}
+spec:
+  providerConfigRef:
+    name: {{required "A valid value is required! (.Values.accounts[].btpSapCrossplaneProviderConfigRefName)" $account.btpSapCrossplaneProviderConfigRefName }}
+  forProvider:
+    serviceManagerRef:
+      name: {{required "A valid value is required! (.Values.accounts[].subAccounts[].name)" $item.name | lower }}
+    subaccountRef:
+      name: {{required "A valid value is required! (.Values.accounts[].subAccounts[].name)" $item.name | lower }}
+  writeConnectionSecretToRef:
+    name: cis-{{required "A valid value is required! (.Values.accounts[].btpSapCrossplaneProviderConfigRefName)" $account.btpSapCrossplaneProviderConfigRefName | lower }}-{{required "A valid value is required! (.Values.accounts[].subAccounts[].name)" $item.name | lower }}
+    namespace: default    
+          {{- end }}
+        {{- end }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+{{- end }}

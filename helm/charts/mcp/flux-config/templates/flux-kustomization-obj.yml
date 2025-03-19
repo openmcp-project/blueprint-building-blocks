@@ -1,0 +1,83 @@
+{{- range $item := .Values.kustomizations}}  
+  {{- if and ($item) (ne $item.name "")}}
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: {{required "A valid value is required! (.Values.kustomizations[].name)" $item.name | lower | quote}}
+  namespace: {{ $item.namespace | default $.Values.defaults.namespace | lower | quote}}
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+spec:
+  interval: {{required "A valid value is required! (.Values.kustomizations[].interval)" $item.interval | quote}}
+  targetNamespace: {{ $item.targetNamespace | default $.Values.defaults.targetNamespace | lower | quote}}
+  sourceRef:
+    {{- required "A valid value is required! (.Values.kustomizations[].sourceRef)" $item.sourceRef | toYaml | nindent 4 }}       
+  path: {{required "A valid value is required! (.Values.kustomizations[].path)" $item.path | quote}}
+  prune: {{required "A valid value is required! (.Values.kustomizations[].prune)" $item.prune }}
+  timeout: {{required "A valid value is required! (.Values.kustomizations[].timeout)" $item.timeout | quote}}  
+    {{- if $item.dependsOn}}
+  dependsOn: {{ required "A valid value is required! (.Values.kustomizations[].dependsOn)" $item.dependsOn | toYaml | nindent 4 }}
+    {{- end }}
+    {{- if $item.healthChecks}}
+  healthChecks: {{ required "A valid value is required! (.Values.kustomizations[].healthChecks)" $item.healthChecks | toYaml | nindent 4 }}
+    {{- end }}
+          
+    {{- if $item.retryInterval}}
+  retryInterval: {{required "A valid value is required! (.Values.gitRepositorys[].retryInterval)" $item.retryInterval }}
+    {{- end }}
+
+    {{- if $item.suspend}}
+  suspend: {{required "A valid value is required! (.Values.gitRepositorys[].suspend)" $item.suspend }}
+    {{- end }}
+
+    {{- if $item.wait}}
+  wait: {{required "A valid value is required! (.Values.gitRepositorys[].wait)" $item.wait }}
+    {{- end }}
+
+    {{- if $item.serviceAccountName}}
+  serviceAccountName: {{required "A valid value is required! (.Values.gitRepositorys[].serviceAccountName)" $item.serviceAccountName | quote }}
+    {{- end }}
+
+    {{- if $item.commonMetadata}}
+  commonMetadata: {{ required "A valid value is required! (.Values.kustomizations[].commonMetadata)" $item.commonMetadata | toYaml | nindent 4 }}
+    {{- end }}
+
+    {{- if $item.namePrefix}}
+  namePrefix: {{required "A valid value is required! (.Values.gitRepositorys[].namePrefix)" $item.namePrefix | quote }}
+    {{- end }}
+
+    {{- if $item.nameSuffix}}
+  nameSuffix: {{required "A valid value is required! (.Values.gitRepositorys[].nameSuffix)" $item.nameSuffix | quote }}
+    {{- end }}
+
+    {{- if $item.force}}
+  force: {{required "A valid value is required! (.Values.gitRepositorys[].force)" $item.force }}
+    {{- end }}
+
+    {{- if $item.patches}}
+  patches: {{ required "A valid value is required! (.Values.kustomizations[].patches)" $item.patches | toYaml | nindent 4 }}
+    {{- end }}
+
+    {{- if $item.images}}
+  images: {{ required "A valid value is required! (.Values.kustomizations[].images)" $item.images | toYaml | nindent 4 }}
+    {{- end }}
+      
+    {{- if $item.components}}
+  components: {{ required "A valid value is required! (.Values.kustomizations[].components)" $item.components | toYaml | nindent 4 }}
+    {{- end }}
+
+    {{- if $item.postBuild}}
+  postBuild: {{ required "A valid value is required! (.Values.kustomizations[].postBuild)" $item.postBuild | toYaml | nindent 4 }}
+    {{- end }}
+
+    {{- if $item.kubeConfig}}
+  kubeConfig: {{ required "A valid value is required! (.Values.kustomizations[].kubeConfig)" $item.kubeConfig | toYaml | nindent 4 }}
+    {{- end }}
+
+    {{- if $item.decryption}}
+  decryption: {{ required "A valid value is required! (.Values.kustomizations[].decryption)" $item.decryption | toYaml | nindent 4 }}
+    {{- end }}
+  {{- end }}
+{{- end }}

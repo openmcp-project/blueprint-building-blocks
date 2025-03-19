@@ -1,0 +1,61 @@
+---
+########################################################################################################################
+###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
+########################################################################################################################
+clusters:
+  - name: "clops-dev-us-ekscluster"
+    labels:
+      crossplane.io/composite: clops-dev-us-ekscluster
+      crossplane.io/claim-namespace: clops-dev-us
+    annotations:
+      crossplane.io/composition-resource-name: eks-cluster
+    spec:
+      deletionPolicy: ""
+      forProvider:
+        region: us-west-2
+        roleArn: arn:aws:iam::XXXX:role/CLOPS-EKS-Cluster-Role
+        version: "1.29"
+        vpcConfig:
+          - endpointPrivateAccess: false
+            endpointPublicAccess: true
+            subnetIdSelector:
+              matchLabels:
+                type: subnet
+                visibility: private
+      providerConfigRef:
+        name: clops-dev-us-aws
+      writeConnectionSecretToRef:
+        name: clops-dev-us-connection-secret
+        namespace: crossplane-system
+      publishConnectionDetailsTo: {}
+nodeGroups:
+  - name: "clops-dev-us-ekscluster"
+    labels:
+      crossplane.io/composite: clops-dev-us-ekscluster
+      crossplane.io/claim-namespace: clops-dev-us
+    annotations:
+      crossplane.io/composition-resource-name: eks-nodegroup
+    spec:
+      deletionPolicy: ""
+      forProvider:
+        amiType: AL2_x86_64
+        clusterNameSelector:
+          matchControllerRef: true
+        instanceTypes:
+          - t3.medium
+        nodeRoleArn: arn:aws:iam::XXXX:role/CLOPS-EKS-WorkerNode-Role
+        region: us-west-2
+        scalingConfig:
+          - desiredSize: 2
+            maxSize: 2
+            minSize: 1
+        subnetIdSelector:
+          matchControllerRef: true
+          matchLabels:
+            type: subnet
+            visibility: private
+      providerConfigRef:
+        name: clops-dev-us-aws
+      publishConnectionDetailsTo: {}
+      writeConnectionSecretToRef: {}  
+########################################################################################################################

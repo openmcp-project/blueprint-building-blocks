@@ -1,0 +1,19 @@
+{{- range $account := .Values.accounts}}
+  {{- range $item := $account.subAccounts}}
+    {{- if and ($item) (ne $item.name "") }}
+---
+apiVersion: account.btp.sap.crossplane.io/v1alpha1
+kind: Subaccount
+metadata:
+  name: {{required "A valid value is required! (.Values.accounts[].subAccounts[].name)" $item.name | lower }}
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+spec:
+  forProvider:
+    {{- required "A valid value is required! (.Values.accounts[].subAccounts[].forProvider)" $item.forProvider | toYaml | nindent 4 }}
+  providerConfigRef:
+    name: {{ required "A valid value is required! (.Values.accounts[].btpSapCrossplaneProviderConfigRefName)" $account.btpSapCrossplaneProviderConfigRefName | quote }}
+    {{- end }}
+  {{- end }}
+{{- end }}

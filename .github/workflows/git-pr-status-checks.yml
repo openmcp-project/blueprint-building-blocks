@@ -1,0 +1,13 @@
+name: PR Status Checks
+
+on:
+  workflow_call: {}
+  
+concurrency:
+  group: building-blocks-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pr-status-check:
+    uses: "openmcp-project/blueprint-workflows/.github/workflows/git-pr-status-checks.yml@main"
+    secrets: inherit

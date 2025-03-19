@@ -1,0 +1,37 @@
+{{- range $item := .Values.natGateways}}
+  {{- if and ($item) (ne $item.name "") }}
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: NATGateway
+metadata:
+  name: {{required "A valid value is required! (.Values.natGateways[].name)" $item.name | lower }}  
+  {{- if $item.annotations}}
+  annotations:
+    {{- $item.annotations | toYaml | nindent 4 }}
+  {{- end }}
+  {{- if $item.labels}}
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+    {{- $item.labels | toYaml | nindent 4 }}
+  {{- end }}
+  {{- if $item.ownerReferences}}
+  ownerReferences:
+    {{- $item.ownerReferences | toYaml | nindent 4 }}  
+  {{- end }}
+spec:
+  deletionPolicy: {{ $item.spec.deletionPolicy | default $.Values.defaults.natGateways.deletionPolicy| quote }}  
+  forProvider:
+    {{- required "A valid value is required! (.Values.natGateways[].spec.forProvider)" $item.spec.forProvider | toYaml | nindent 4 }}
+  providerConfigRef:
+    {{- required "A valid value is required! (.Values.natGateways[].spec.providerConfigRef)" $item.spec.providerConfigRef | toYaml | nindent 4 }}    
+  {{- if $item.spec.writeConnectionSecretToRef}}
+  writeConnectionSecretToRef:
+    {{- $item.spec.writeConnectionSecretToRef | toYaml | nindent 4 }}
+  {{- end }}
+  {{- if $item.spec.writeConnectionSecretToRef}}
+  publishConnectionDetailsTo:
+    {{- $item.spec.publishConnectionDetailsTo | toYaml | nindent 4 }}
+  {{- end }}
+  {{- end }}
+{{- end }}

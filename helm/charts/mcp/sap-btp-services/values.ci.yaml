@@ -1,0 +1,310 @@
+---
+###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
+#########################################################################################################
+services:
+  - name: "identityApplication"
+    namespace: "default"
+    instance:
+      name: "ketos-op-cluster-ias"
+      serviceOfferingName: "identity"
+      servicePlanName: "application"
+      parameters:
+        oauth2-configuration:
+          redirect-uris:
+            - "https://*.../oauth2/callback"
+            - "https://*.../callback"
+            - "https://*.../*"
+        consumed-apis: []
+        display-name: ""
+        multi-tenant: true
+        xsuaa-cross-consumption: true
+    bindings:
+      - name: "ketos-op-cluster-ias"
+        secretName: "btp-ias"
+        parameters:
+          credential-type: SECRET
+        credentialsRotationPolicy:
+          enabled: true
+          rotationFrequency: 480h
+          rotatedBindingTTL: 1h
+  ##################################################################################
+  - name: "identityApplicationServiceBroker"    
+    namespace: "default"
+    instance:
+      name: "poc-ias-service-broker"
+      serviceOfferingName: "identity"
+      servicePlanName: "application"
+      parameters:
+        oauth2-configuration:
+          redirect-uris:
+          - "http://localhost:8080/oauth2/callback/*"
+          #post-logout-redirect-uris:
+          #- "https://*.{{ required "A valid gardener domain url is required!" .Values.domain }}/oauth2/sign_out"
+          #- "http://localhost:8080/oauth2/sign_out/*"
+        consumed-apis: []
+        display-name: "poc-ias-service-broker"
+        multi-tenant: true
+        xsuaa-cross-consumption: true
+        catalog:
+          services:
+            - name: "poc-ias-service-broker"
+              id: "poc-ias-service-broker"
+              description: "POC IAS Service Broker"
+              bindable: true
+              bindings_retrievable: true
+              instances_retrievable: true
+              allow_context_updates: false
+              plan_updateable: false
+              tags:
+                - "tags"
+              metadata:
+                displayName: "poc-ias-service-broker"
+                longDescription: "POC IAS Service Broker"
+                #createBindingDocumentationUrl:
+                #createInstanceDocumentationUrl:
+                #documentationUrl:
+                #supportUrl:
+                #imageUrl:
+                sap:
+                  tenant_aware: true
+                  instance_isolation: false
+              plans:
+              - id: "plan-abc"
+                bindable: true
+                name: "Plan ABC"
+                description: "Plan ABC description"
+                # Learn more about [Polling Interval and Duration](https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#polling-interval-and-duration)
+                maximum_polling_duration: 5
+                plan_updateable: false
+                metadata:
+                  bullets:
+                    - "bullets"
+                  supportedPlatforms:
+                  - kubernetes
+                  - sapbtp
+                  bindingData:
+                    url: ""
+                  #auto_service: 
+                  #  type: service-manager
+                  #  subscribe_with_consuming_app: true
+                maintenance_info:
+                  version: 0.0.1
+                  description: "description"
+                schemas:
+                  service_instance:
+                    create:
+                      parameters: 
+                        $schema: 'http://json-schema.org/draft-04/schema#'
+                        _show_form_view: false
+                        additionalProperties: false
+                        type: object
+                        properties: {}
+                        #required:
+                        #  - provision_ids
+                        #_controlsOrder:
+                        #  - provision_ids
+                    update:
+                      parameters: 
+                        $schema: 'http://json-schema.org/draft-04/schema#'
+                        _show_form_view: false
+                        additionalProperties: false
+                        type: object
+                        required:
+                        - kubeconfig_determination
+                        properties: {}
+                  service_binding:
+                    create:
+                      parameters: 
+                        $schema: 'http://json-schema.org/draft-04/schema#'
+                        _show_form_view: false
+                        additionalProperties: false
+                        type: object
+                        properties: {}
+                    update:
+                      parameters: 
+                        $schema: 'http://json-schema.org/draft-04/schema#'
+                        _show_form_view: false
+                        additionalProperties: false
+                        type: object
+    bindings:
+      - name: "poc-ias-service-broker"
+        secretName: "poc-ias-service-broker"
+        parameters:
+          # @url: https://github.com/SAP/sap-btp-service-operator#credentials-rotation
+          #credential-type: SECRET
+          credential-type: X509_GENERATED
+        credentialsRotationPolicy:
+          enabled: true
+          rotationFrequency: 480h
+          rotatedBindingTTL: 1h
+  ##################################################################################
+  - name: "xsuaaBroker"    
+    namespace: "default"
+    instance:
+      name: "poc-xsuaa-service-broker"
+      serviceOfferingName: "xsuaa"
+      servicePlanName: "broker"
+      parameters:
+        xsappname: "poc-xsuaa-service-broker"
+        tenant-mode: "shared"
+        authorities:
+          - $XSAPPNAME.mtcallback
+          - $XSAPPNAME.mtdeployment
+        oauth2-configuration:
+          redirect-uris:
+            - "https://*/**"
+        role-templates:
+          - name: "TOKEN_EXCHANGE"
+            description: "Token exchange"
+            scope-references:
+              - "uaa.user"
+          - name: "MultitenancyCallbackRoleTemplate"
+            description: "Call callback-services of applications"
+            scope-references:
+              - "$XSAPPNAME.Callback"
+        scopes:
+          - description: "UAA"
+            name: uaa.user
+          - description: "With this scope set, the callbacks for tenant onboarding, offboarding and getDependencies can be called"
+            grant-as-authority-to-apps:
+              - $XSAPPNAME(application,sap-provisioning,tenant-onboarding)
+            name: $XSAPPNAME.Callback
+          - description: "Async callback to update the saas-registry (provisioning succeeded/failed)"
+            name: $XSAPPNAME.service.write
+          - description: Deploy applications
+            name: $XSAPPNAME.mtdeployment
+          - description: "Subscribe to applications"
+            grant-as-authority-to-apps:
+              - $XSAPPNAME(application,sap-provisioning,tenant-onboarding)
+            name: $XSAPPNAME.mtcallback
+    bindings:
+      - name: "test-xsuaa-service-broker"
+        secretName: "test-xsuaa-service-broker"
+        parameters: {}
+        credentialsRotationPolicy:
+          enabled: true
+          rotationFrequency: 480h
+          rotatedBindingTTL: 1h
+  ##################################################################################
+  - name: "cloudLoggingStandardOperationCluster"    
+    namespace: "default"
+    instance:
+      name: "ketos-op-cluster-cls"
+      serviceOfferingName: "cloud-logging"
+      servicePlanName: "standard"
+      # -- cloud logging service config:  list of parameter:  https://pages.github.tools.sap/perfx/cloud-logging-service/consumption/service-configuration-parameters/
+      parameters:
+        retentionPeriod: 14
+        esApiEnabled: true
+        dataPrepperEnabled: true
+        ingest_otlp:
+          enabled: true
+    bindings:
+      - name: "ketos-op-cluster-cls"
+        secretName: "btp-cls"
+        parameters: {}
+        credentialsRotationPolicy:
+          enabled: true
+          rotationFrequency: 480h
+          rotatedBindingTTL: 1h
+  ##################################################################################
+  - name: "dynatraceEnvironmentOperationCluster"    
+    namespace: "default"
+    instance:
+      name: "ketos-op-cluster-dynatrace"
+      serviceOfferingName: "dynatrace"
+      servicePlanName: "environment"
+      parameters:
+        environment_name: "" # MUST BE SET and match the pattern ^[A-Z0-9]{1,16}$
+        permission_assignments:
+          - name: Ketos Dynatrace Admin
+            roles:
+              - admin
+              - log_analytics
+          - name: Ketos Dynatrace Read-Only User
+            roles:
+              - user
+              - log_analytics
+          - name: Ketos Dynatrace sensitive-data User
+            roles:
+              - view_sensitive
+              - configure_sensitive
+        service_parameters:
+          skiperrors: 'true'
+    bindings:
+      - name: "ketos-op-cluster-dynatrace-provider"
+        secretName: "ketos-op-cluster-dynatrace-provider"
+        parameters:
+          tokens:
+            - name: apiToken
+              # -- https://docs.dynatrace.com/docs/manage/access-control/access-tokens#scopes
+              scopes:
+                - "entities.read"
+                - "entities.write"
+                - "metrics.read"
+                - "metrics.write"
+                - "networkZones.read"
+                - "networkZones.write"
+                - "problems.read"
+                - "problems.write"
+                - "releases.read"
+                - "securityProblems.read"
+                - "securityProblems.write"
+                - "settings.read"
+                - "settings.write"
+                - "slo.read"
+                - "slo.write"
+                - "releases.read"
+                - "auditLogs.read"
+                - "geographicRegions.read"
+                - "syntheticExecutions.read"
+                - "syntheticExecutions.write"
+                - "credentialVault.read"
+                - "credentialVault.write"
+                - "ReadConfig"
+                - "WriteConfig"
+                - "DataExport"
+                - "ExternalSyntheticIntegration"
+                - "ReadSyntheticData"
+                - "DataPrivacy"
+                - "DTAQLAccess"
+                - "UserSessionAnonymization"
+                - "DssFileManagement"
+                - "RumJavaScriptTagManagement"
+                - "ActiveGateCertManagement"
+                - "DataImport"
+                - "RestRequestForwarding"
+                - "CaptureRequestData"
+                - "LogExport"
+                - "RumBrowserExtension"
+                - "oneAgents.read"
+                - "oneAgents.write"
+                - "InstallerDownload"
+        credentialsRotationPolicy:
+          enabled: true
+          rotationFrequency: 2160h  #90 days
+          rotatedBindingTTL: 48h
+      - enable: true
+        name: "ketos-op-cluster-dynatrace-operator"
+        secretName: "ketos-op-cluster-dynatrace-operator"
+        parameters:
+          tokens:
+            - name: apiToken
+              scopes:
+                - InstallerDownload
+                - DataExport
+                - entities.read
+                - settings.read
+                - settings.write
+                - activeGateTokenManagement.create
+            - name: dataIngestToken
+              scopes:
+                - events.ingest
+                - logs.ingest
+                - metrics.ingest
+                - openTelemetryTrace.ingest
+        credentialsRotationPolicy:
+          enabled: true
+          rotationFrequency: 2160h  #90 days
+          rotatedBindingTTL: 48h
+  ##################################################################################

@@ -1,0 +1,19 @@
+# pipeline feature flags obsolete (Bash Scripts)
+jfrog.sh:
+  enabled: true
+
+# pipeline feature flags
+yamllint:
+  enable: true
+helm-docs:
+  enable: true
+helm-chart-linting:
+  enable: true
+helm-chart-validation:
+  enable: true
+helm-chart-version-bump:
+  enable: true
+helm-chart-dependency-update:
+  enable: true
+k8s-manifest-templating:
+  enable: false

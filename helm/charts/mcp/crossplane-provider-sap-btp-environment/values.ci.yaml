@@ -1,0 +1,47 @@
+---
+########################################################################################################################
+###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
+########################################################################################################################
+cloudFoundryEnvironments:
+  - btpSapCrossplaneProviderConfigRefName: "btpSapCrossplaneProviderConfigRefName"
+    name: "name"
+    forProvider:
+      initialOrgManagers:      
+      - ""      
+      landscape: "landscape"
+    cloudManagementRef:
+      name: "cloudManagementRef"
+    subaccountRef:
+      name: "subaccountRef"
+    writeConnectionSecretToRef:
+      name: "demo-connection-details"
+      namespace: "default"
+########################################################################################################################
+kymaEnvironments:
+  - btpSapCrossplaneProviderConfigRefName: "btpSapCrossplaneProviderConfigRefName"
+    name: "name"
+    forProvider:
+      parameters:
+      administrators:
+        - ""
+      autoScalerMax: 3
+      autoScalerMin: 3
+      machineType: "m5.xlarge"
+      oidc:
+        clientID: "<your client id>"        #i.e. applicatonId    
+        groupsClaim: "groups"               #i.e. name of group   
+        issuerURL: "https://<IAS host>.accounts400.ondemand.com"
+        signingAlgs:
+          - "RS256"
+        usernameClaim: "email"
+        usernamePrefix: "-"
+      region: "eu-west-2"
+    planName: "aws"
+    cloudManagementRef:
+      name: "cloudManagementRef"
+    subaccountRef:
+      name: "subaccountRef"
+    writeConnectionSecretToRef:
+      name: "demo-kyma-kubeconfig-local"
+      namespace: "default"
+########################################################################################################################

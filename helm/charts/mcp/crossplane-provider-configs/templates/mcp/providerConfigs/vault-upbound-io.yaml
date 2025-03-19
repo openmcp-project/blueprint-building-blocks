@@ -1,0 +1,14 @@
+{{- range $item := .Values.providerConfigs.vaultUpbound}}
+  {{- if and ($item) (ne $item.providerConfigRefName "")}}
+---
+apiVersion: vault.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: {{required "A valid value is required! (.Values.providerConfigs.vaultUpbound[].providerConfigRefName)" $item.providerConfigRefName | lower | quote}}
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+spec:
+  {{- required "A valid value is required! (.Values.providerConfigs.vaultUpbound[].spec)" $item.spec | toYaml | nindent 2 }}
+  {{- end }}
+{{- end }}

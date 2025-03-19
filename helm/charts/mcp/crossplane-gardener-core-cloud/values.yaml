@@ -1,0 +1,21 @@
+---
+#########################################################################################################
+# -- [secretBindings](https://gardener.cloud/docs/gardener/api-reference/core/#core.gardener.cloud/v1beta1.SecretBinding) represents a binding to a secret in the same or another namespace.
+# @default -- -
+secretBindings:
+  # secretBindings[0].name -- name defines technical gardener shoot cluster. Max length 15 and must only be lowercase letters, numbers and hyphens!
+  - name: ""
+    # -- gardener project name. Starts with "garden..." e.g. "garden-aas-dt"
+    projectNamespace: ""
+    # -- kubernetesCrossplaneProviderConfigRefName needs to match crossplane provider configuration reference name (identifier) of SAP garden cluster control plane! (.shootClusters[*].kubernetesCrossplaneProviderConfigRefName)
+    kubernetesCrossplaneProviderConfigRefName: ""
+    # -- secretBindingName defines the technical name of [infrastructure secret](https://gardener.cloud/docs/gardener/development/secrets_management/) binding on gardener control plane cluster. e.g. [Secrets of AAS-DT](https://dashboard.garden.canary.k8s.ondemand.com/namespace/garden-aas-dt/secrets)
+    secretBindingName: ""
+    # -- cloudProfile is a name (field `type`) of a [CloudProfile object](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#cloudprofile). This field is immutable. E.g. gcp / azure / aws
+    cloudProfile: ""    
+    # -- [labels](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#objectmeta-v1-meta) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+    labels: []
+    # --  *(Optional)* [quotas](https://gardener.cloud/docs/gardener/api-reference/core/#core.gardener.cloud/v1beta1.SecretBinding)  is a list of references to Quota objects in the same or another namespace. This field is immutable.
+    quotas: {}
+    # -- [secretRef](https://gardener.cloud/docs/gardener/api-reference/core/#core.gardener.cloud/v1beta1.SecretBinding) is a reference to a secret object in the same or another namespace. This field is immutable.
+    secretRef: []

@@ -1,0 +1,26 @@
+{{- range $shootCluster := .Values.shootClusters}}
+  {{- if $shootCluster.auditLog}}
+---
+apiVersion: kubernetes.crossplane.io/v1alpha1
+kind: Object
+metadata:
+  name: audit-log-policy-{{required "A valid value is required! (.Values.shootClusters[].name)" $shootCluster.name | lower }}  
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+spec:
+  providerConfigRef:
+    name: {{required "A valid value is required! (.Values.shootClusters[].kubernetesCrossplaneProviderConfigRefName)" $shootCluster.kubernetesCrossplaneProviderConfigRefName | quote}} # Set to Kubernetes ProviderConfig
+  forProvider:
+    manifest:
+      # gardener shoot api: https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: audit-log-policy-{{required "A valid value is required! (.Values.shootClusters[].name)" $shootCluster.name}}
+        namespace: {{required "A valid Gardener Project Namespace is required! (.Values.shootClusters[]..projectNamespace)" $shootCluster.projectNamespace}}
+      data:
+        policy: |
+          {{- $shootCluster.auditLog.policy | default $.Values.defaults.auditPolicy | toYaml | nindent 10 }}
+  {{- end}}
+{{- end}}

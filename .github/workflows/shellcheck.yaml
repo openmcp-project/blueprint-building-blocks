@@ -1,0 +1,95 @@
+# This is a basic workflow to help you get started with Actions
+name: Shell Check
+
+# Controls when the workflow will run
+on:
+  workflow_call:
+  pull_request:
+    paths-ignore:
+      - '**/Chart.yaml'
+      - '**/README.md'
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  VERSION: "0.9.0"
+  BASH_SCRIPT: "shellcheck.sh"
+  BASH_SCRIPT_INSTALL: "shellcheck-install.sh"
+  BASH_SCRIPT_RESULT: 0  
+  MESSAGE_HEADER: "Shell Check"
+  MESSAGE: ""
+
+jobs:
+  shellcheck:
+    runs-on: [solinas]
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Setup
+        id: "setup"
+        shell: bash
+        env:
+          VERSION: ${{ env.VERSION }}
+        run: |          
+          ${GITHUB_WORKSPACE}/scripts/ci/${{ env.BASH_SCRIPT_INSTALL }}
+      - name: Shell Check
+        id: "shell-check"
+        shell: bash
+        env:
+          VERSION: ${{ env.VERSION }}
+        run: |
+          set +e
+          ${GITHUB_WORKSPACE}/scripts/ci/${{ env.BASH_SCRIPT }} &> bash_output.txt
+          echo "BASH_SCRIPT_RESULT=$?" >> "$GITHUB_ENV"  
+          
+          # https://docs.github.com/en/enterprise-cloud@latest/actions/using-workflows/workflow-commands-for-github-actions#multiline-strings
+          echo 'MESSAGE<<EOF' >> $GITHUB_ENV
+          cat "${GITHUB_WORKSPACE}/pr-status-check-human-friendly.txt" >> $GITHUB_ENV          
+          echo 'EOF' >> $GITHUB_ENV
+          
+          echo "::group:: Bash Script Output"
+          cat bash_output.txt
+          echo "::endgroup::"
+      - if: env.BASH_SCRIPT_RESULT == 0
+        name: "Remove Sticky Pull Request Comment"
+        uses: marocchino/sticky-pull-request-comment@v2.9.1
+        with:
+          header: ":star2: :collision: :collision: [${{ env.MESSAGE_HEADER }}] :collision: :collision: :collision:"
+          delete: true      
+      - if: env.BASH_SCRIPT_RESULT != 0
+        name: "Workflow Commands"
+        shell: bash
+        run: |
+          if [ -f "${GITHUB_WORKSPACE}/github-workflow-commands.txt" ]; then
+            cat "${GITHUB_WORKSPACE}/github-workflow-commands.txt"
+          fi
+      - if: env.BASH_SCRIPT_RESULT != 0
+        name: "Add Sticky Pull Request Comment"
+        uses: marocchino/sticky-pull-request-comment@v2.9.1
+        with:
+          recreate: true
+          header: ":star2: :collision: :collision: [${{ env.MESSAGE_HEADER }}] :collision: :collision: :collision:"
+          message: |
+            ## :star2: :collision: :collision: [${{ env.MESSAGE_HEADER }}] :collision: :collision: :collision:
+            <details>
+            <summary><code>detail</code></summary>
+
+            ```bash
+            
+            ${{ env.MESSAGE }}
+            
+            ```
+            
+            </details>
+      - if: env.BASH_SCRIPT_RESULT != 0
+        name: Throw Error
+        id: "throw-error"
+        run: |
+          echo "::group:: human readable validation result"
+          echo -e "${{ env.MESSAGE }}"
+          echo "::endgroup::"
+          exit 1

@@ -1,0 +1,35 @@
+{{- range $item := .Values.clusters}}
+  {{- if and ($item) (ne $item.name "") }}
+---
+apiVersion: eks.aws.upbound.io/v1beta1
+kind: Cluster
+metadata:
+  name: {{required "A valid value is required! (.Values.clusters[].name)" $item.name | lower }}
+  {{- if $item.annotations}}
+  annotations:
+    {{- $item.annotations | toYaml | nindent 4 }}
+  {{- end }}
+  {{- if $item.labels}}
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+    {{- $item.labels | toYaml | nindent 4 }}
+  {{- end }}
+  {{- if $item.ownerReferences}}
+  ownerReferences:
+    {{- $item.ownerReferences | toYaml | nindent 4 }}  
+  {{- end }}
+spec:
+  deletionPolicy: {{ $item.spec.deletionPolicy | default $.Values.defaults.clusters.deletionPolicy| quote }}
+  forProvider:
+    {{- required "A valid value is required! (.Values.clusters[].spec.forProvider)" $item.spec.forProvider | toYaml | nindent 4 }}
+  providerConfigRef:
+    {{- required "A valid value is required! (.Values.clusters[].spec.providerConfigRef)" $item.spec.providerConfigRef | toYaml | nindent 4 }}    
+  writeConnectionSecretToRef:
+    {{- required "A valid value is required! (.Values.clusters[].spec.writeConnectionSecretToRef)" $item.spec.writeConnectionSecretToRef | toYaml | nindent 4 }}
+  {{- if $item.spec.writeConnectionSecretToRef}}
+  publishConnectionDetailsTo:
+    {{- $item.spec.publishConnectionDetailsTo | toYaml | nindent 4 }}
+  {{- end }}
+  {{- end }}
+{{- end }}

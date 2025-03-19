@@ -1,0 +1,31 @@
+---
+########################################################################################################################
+###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
+#########################################################################################################
+secretBindings:
+  - name: "my-aws-secret-binding"
+    projectNamespace: "garden-mcp-blueprints"
+    kubernetesCrossplaneProviderConfigRefName: "kubernetesCrossplaneProviderConfigRefName"
+    secretBindingName: "my-aws-secret-binding"
+    cloudProfile: "aws"    
+    labels:
+      additional: "labels"
+    quotas:
+      - apiVersion: "apiVersion"
+        kind: "kind"
+        name: "name"
+        namespace: "namespace"
+        resourceVersion: "resourceVersion"
+        uid: "uid"
+    secretRef:
+      name: my-aws-secret
+      namespace: garden-mcp-blueprints
+  - name: "my-gcp-secret-binding"
+    projectNamespace: "garden-mcp-blueprints"
+    kubernetesCrossplaneProviderConfigRefName: "kubernetesCrossplaneProviderConfigRefName"
+    secretBindingName: "my-gcp-secret-binding"
+    cloudProfile: "gcp"    
+    secretRef:
+      name: my-gcp-secret
+      namespace: garden-mcp-blueprints
+#########################################################################################################

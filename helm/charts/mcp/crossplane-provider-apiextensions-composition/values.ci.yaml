@@ -1,0 +1,478 @@
+---
+########################################################################################################################
+###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
+########################################################################################################################
+compositions:
+- name: "eks-cluster" 
+  spec:
+    mode: "Pipeline"
+    writeConnectionSecretsToNamespace: "crossplane-system"
+    pipeline:
+      - functionRef:
+          name: patch-and-transform
+        input:
+          apiVersion: pt.fn.crossplane.io/v1beta1
+          kind: Resources
+          patchSets:
+            - name: common-parameters
+              patches:
+                - fromFieldPath: spec.parameters.region
+                  toFieldPath: spec.forProvider.region
+                  type: FromCompositeFieldPath
+          resources:
+            - base:
+                apiVersion: ec2.aws.upbound.io/v1beta1
+                kind: VPC
+                spec:
+                  forProvider:
+                    enableDnsHostnames: true
+                    enableDnsSupport: true
+                  providerConfigRef:
+                    name: clops-dev-us-aws
+              name: vpc
+              patches:
+                - patchSetName: common-parameters
+                  type: PatchSet
+                - fromFieldPath: spec.parameters.vpc-cidrBlock
+                  toFieldPath: spec.forProvider.cidrBlock
+                  type: FromCompositeFieldPath
+            - base:
+                apiVersion: ec2.aws.upbound.io/v1beta1
+                kind: InternetGateway
+                metadata:
+                  labels:
+                    type: igw
+                spec:
+                  forProvider:
+                    vpcIdSelector:
+                      matchControllerRef: true
+                  providerConfigRef:
+                    name: clops-dev-us-aws
+              name: internetgateway
+              patches:
+                - patchSetName: common-parameters
+                  type: PatchSet
+            - base:
+                apiVersion: ec2.aws.upbound.io/v1beta1
+                kind: Subnet
+                metadata:
+                  labels:
+                    type: subnet
+                    visibility: public
+                spec:
+                  forProvider:
+                    mapPublicIpOnLaunch: true
+                    vpcIdSelector:
+                      matchControllerRef: true
+                  providerConfigRef:
+                    name: clops-dev-us-aws
+              name: subnet-public-1
+              patches:
+                - patchSetName: common-parameters
+                  type: PatchSet
+                - fromFieldPath: spec.parameters.subnet1-public-cidrBlock
+                  toFieldPath: spec.forProvider.cidrBlock
+                  type: FromCompositeFieldPath
+                - fromFieldPath: spec.parameters.subnet1-public-availabilityZone
+                  toFieldPath: spec.forProvider.availabilityZone
+                  type: FromCompositeFieldPath
+                - fromFieldPath: spec.parameters.subnet1-public-availabilityZone
+                  toFieldPath: metadata.labels.zone
+                  type: FromCompositeFieldPath
+            - base:
+                apiVersion: ec2.aws.upbound.io/v1beta1
+                kind: Subnet
+                metadata:
+                  labels:
+                    type: subnet
+                    visibility: public
+                spec:
+                  forProvider:
+                    mapPublicIpOnLaunch: true
+                    vpcIdSelector:
+                      matchControllerRef: true
+                  providerConfigRef:
+                    name: clops-dev-us-aws
+              name: subnet-public-2
+              patches:
+                - patchSetName: common-parameters
+                  type: PatchSet
+                - fromFieldPath: spec.parameters.subnet2-public-cidrBlock
+                  toFieldPath: spec.forProvider.cidrBlock
+                  type: FromCompositeFieldPath
+                - fromFieldPath: spec.parameters.subnet2-public-availabilityZone
+                  toFieldPath: spec.forProvider.availabilityZone
+                  type: FromCompositeFieldPath
+                - fromFieldPath: spec.parameters.subnet2-public-availabilityZone
+                  toFieldPath: metadata.labels.zone
+                  type: FromCompositeFieldPath
+            - base:
+                apiVersion: ec2.aws.upbound.io/v1beta1
+                kind: Subnet
+                metadata:
+                  labels:
+                    type: subnet
+                    visibility: private
+                spec:
+                  forProvider:
+                    mapPublicIpOnLaunch: false
+                    vpcIdSelector:
+                      matchControllerRef: true
+                  providerConfigRef:
+                    name: clops-dev-us-aws
+              name: subnet-private-1
+              patches:
+                - patchSetName: common-parameters
+                  type: PatchSet
+                - fromFieldPath: spec.parameters.subnet1-private-cidrBlock
+                  toFieldPath: spec.forProvider.cidrBlock
+                  type: FromCompositeFieldPath
+                - fromFieldPath: spec.parameters.subnet1-private-availabilityZone
+                  toFieldPath: spec.forProvider.availabilityZone
+                  type: FromCompositeFieldPath
+                - fromFieldPath: spec.parameters.subnet1-private-availabilityZone
+                  toFieldPath: metadata.labels.zone
+                  type: FromCompositeFieldPath
+            - base:
+                apiVersion: ec2.aws.upbound.io/v1beta1
+                kind: Subnet
+                metadata:
+                  labels:
+                    type: subnet
+                    visibility: private
+                spec:
+                  forProvider:
+                    mapPublicIpOnLaunch: false
+                    vpcIdSelector:
+                      matchControllerRef: true
+                  providerConfigRef:
+                    name: clops-dev-us-aws
+              name: subnet-private-2
+              patches:
+                - patchSetName: common-parameters
+                  type: PatchSet
+                - fromFieldPath: spec.parameters.subnet2-private-cidrBlock
+                  toFieldPath: spec.forProvider.cidrBlock
+                  type: FromCompositeFieldPath
+                - fromFieldPath: spec.parameters.subnet2-private-availabilityZone
+                  toFieldPath: spec.forProvider.availabilityZone
+                  type: FromCompositeFieldPath
+                - fromFieldPath: spec.parameters.subnet2-private-availabilityZone
+                  toFieldPath: metadata.labels.zone
+                  type: FromCompositeFieldPath
+            - base:
+                apiVersion: ec2.aws.upbound.io/v1beta1
+                kind: EIP
+                metadata:
+                  labels:
+                    type: eip-1
+                spec:
+                  forProvider:
+                    domain: vpc
+                  providerConfigRef:
+                    name: clops-dev-us-aws
+              name: elastic-ip-1
+              patches:
+                - patchSetName: common-parameters
+                  type: PatchSet
+            - base:
+                apiVersion: ec2.aws.upbound.io/v1beta1
+                kind: EIP
+                metadata:
+                  labels:
+                    type: eip-2
+                spec:
+                  forProvider:
+                    domain: vpc
+                  providerConfigRef:
+                    name: clops-dev-us-aws
+              name: elastic-ip-2
+              patches:
+                - patchSetName: common-parameters
+                  type: PatchSet
+            - base:
+                apiVersion: ec2.aws.upbound.io/v1beta1
+                kind: NATGateway
+                metadata:
+                  labels:
+                    type: natgw-1
+                spec:
+                  forProvider:
+                    allocationIdSelector:
+                      matchLabels:
+                        type: eip-1
+                    subnetIdSelector:
+                      matchLabels:
+                        type: subnet
+                        visibility: public
+                  providerConfigRef:
+                    name: clops-dev-us-aws
+              name: natgateway-1
+              patches:
+                - patchSetName: common-parameters
+                  type: PatchSet
+                - fromFieldPath: spec.parameters.subnet1-public-availabilityZone
+                  toFieldPath: spec.forProvider.subnetIdSelector.matchLabels.zone
+                  type: FromCompositeFieldPath
+            - base:
+                apiVersion: ec2.aws.upbound.io/v1beta1
+                kind: NATGateway
+                metadata:
+                  labels:
+                    type: natgw-2
+                spec:
+                  forProvider:
+                    allocationIdSelector:
+                      matchLabels:
+                        type: eip-2
+                    subnetIdSelector:
+                      matchLabels:
+                        type: subnet
+                        visibility: public
+                  providerConfigRef:
+                    name: clops-dev-us-aws
+              name: natgateway-2
+              patches:
+                - patchSetName: common-parameters
+                  type: PatchSet
+                - fromFieldPath: spec.parameters.subnet2-public-availabilityZone
+                  toFieldPath: spec.forProvider.subnetIdSelector.matchLabels.zone
+                  type: FromCompositeFieldPath
+            - base:
+                apiVersion: ec2.aws.upbound.io/v1beta1
+                kind: RouteTable
+                spec:
+                  forProvider:
+                    region: PATCHED
+                    vpcIdSelector:
+                      matchControllerRef: true
+                  providerConfigRef:
+                    name: clops-dev-us-aws
+              name: routetable-public
+              patches:
+                - patchSetName: common-parameters
+                  type: PatchSet
+            - base:
+                apiVersion: ec2.aws.upbound.io/v1beta1
+                kind: RouteTable
+                spec:
+                  forProvider:
+                    region: PATCHED
+                    vpcIdSelector:
+                      matchControllerRef: true
+                  providerConfigRef:
+                    name: clops-dev-us-aws
+              name: routetable-private-1
+              patches:
+                - patchSetName: common-parameters
+                  type: PatchSet
+            - base:
+                apiVersion: ec2.aws.upbound.io/v1beta1
+                kind: RouteTable
+                spec:
+                  forProvider:
+                    region: PATCHED
+                    vpcIdSelector:
+                      matchControllerRef: true
+                  providerConfigRef:
+                    name: clops-dev-us-aws
+              name: routetable-private-2
+              patches:
+                - patchSetName: common-parameters
+                  type: PatchSet
+            - base:
+                apiVersion: eks.aws.upbound.io/v1beta1
+                kind: Cluster
+                spec:
+                  providerConfigRef:
+                    name: clops-dev-us-aws
+                  forProvider:
+                    vpcConfig:
+                      - endpointPrivateAccess: false
+                        endpointPublicAccess: true
+                        subnetIdSelector:
+                          matchLabels:
+                            type: subnet
+                            visibility: private
+                  writeConnectionSecretToRef:
+                    namespace: crossplane-system
+                    name: clops-dev-us-connection-secret
+              connectionDetails:
+                - fromConnectionSecretKey: kubeconfig
+                  name: kubeconfig-value
+                  type: FromConnectionSecretKey
+              name: eks-cluster
+              patches:
+                - patchSetName: common-parameters
+                  type: PatchSet
+                - fromFieldPath: spec.parameters.k8s-version
+                  toFieldPath: spec.forProvider.version
+                  type: FromCompositeFieldPath
+                - fromFieldPath: metadata.uid
+                  toFieldPath: spec.writeConnectionSecretToRef.name
+                  transforms:
+                    - string:
+                        fmt: '%s-ekscluster-connection'
+                        type: Format
+                      type: string
+                  type: FromCompositeFieldPath
+                - fromFieldPath: spec.parameters.cluster-role
+                  toFieldPath: spec.forProvider.roleArn
+                  type: FromCompositeFieldPath
+            - base:
+                apiVersion: iam.aws.upbound.io/v1beta1
+                kind: Role
+                spec:
+                  forProvider:
+                    assumeRolePolicy: |
+                      {
+                        "Version": "2012-10-17",
+                        "Statement": [
+                          {
+                            "Effect": "Allow",
+                            "Principal": {
+                              "Service": "eks.amazonaws.com"
+                            },
+                            "Action": "sts:AssumeRole"
+                          }
+                        ]
+                      }
+                  providerConfigRef:
+                    name: clops-dev-us-aws
+              name: role
+            - base:
+                apiVersion: iam.aws.upbound.io/v1beta1
+                kind: RolePolicyAttachment
+                spec:
+                  forProvider:
+                    roleSelector:
+                      matchControllerRef: true
+                    policyArn: arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
+                  providerConfigRef:
+                    name: clops-dev-us-aws
+              name: rolePolicyAttachment
+            - base:
+                apiVersion: eks.aws.upbound.io/v1beta1
+                kind: NodeGroup
+                spec:
+                  forProvider:
+                    clusterNameSelector:
+                      matchControllerRef: true
+                    instanceTypes:
+                      - t3.medium
+                    scalingConfig:
+                      - minSize: 1
+                    subnetIdSelector:
+                      matchControllerRef: true
+                      matchLabels:
+                        type: subnet
+                        visibility: private
+                  providerConfigRef:
+                    name: clops-dev-us-aws
+              name: eks-nodegroup
+              patches:
+                - patchSetName: common-parameters
+                  type: PatchSet
+                - fromFieldPath: spec.parameters.workers-size
+                  toFieldPath: spec.forProvider.scalingConfig[0].desiredSize
+                  type: FromCompositeFieldPath
+                - fromFieldPath: spec.parameters.workers-size
+                  toFieldPath: spec.forProvider.scalingConfig[0].maxSize
+                  type: FromCompositeFieldPath
+                - fromFieldPath: spec.parameters.workload-type
+                  toFieldPath: spec.forProvider.amiType
+                  transforms:
+                    - map:
+                        gpu: AL2_x86_64_GPU
+                        non-gpu: AL2_x86_64
+                      type: map
+                  type: FromCompositeFieldPath
+                - fromFieldPath: spec.parameters.workernode-role
+                  toFieldPath: spec.forProvider.nodeRoleArn
+                  type: FromCompositeFieldPath
+        step: patch-and-transform
+- name: "vpc" 
+  spec:
+    mode: "Pipeline"
+    pipeline:
+    - step: compose-resources
+      functionRef:
+        name: go-templating
+      input:
+        apiVersion: gotemplating.fn.crossplane.io/v1beta1
+        kind: GoTemplate
+        source: Inline
+        inline:
+          template: |
+            {{ $claimNamespace := index $.observed.composite.resource.metadata.labels "crossplane.io/claim-namespace" }}
+            {{ $tenantAwsProviderConfigRef := printf "%s-aws" $claimNamespace }}
+            {{ $params := get .observed.composite.resource.spec "parameters" | default dict }}
+            ---
+            apiVersion: ec2.aws.crossplane.io/v1beta1
+            kind: VPC
+            metadata:
+              annotations:
+                {{ setResourceNameAnnotation "vpc" }}
+                crossplane.io/external-name: {{ get $params "id" | default ( print $claimNamespace "-vpc" ) }}
+            spec:
+              forProvider:
+                region: {{ get $params "region" | default "us-east-1" }}
+                vpcCidrBlock: {{ get $params "vpcCIDRBlock" | default "192.168.0.0/16" }}
+                enableDnsSupport: true
+                enableDnsHostNames: true
+                instanceTenancy: default
+              providerConfigRef:
+                name: {{ $tenantAwsProviderConfigRef }}
+- name: "rdsinstance" 
+  spec:
+    mode: "Pipeline"
+    pipeline:
+    - step: compose-resources
+      functionRef:
+        name: go-templating
+      input:
+        apiVersion: gotemplating.fn.crossplane.io/v1beta1
+        kind: GoTemplate
+        source: Inline
+        inline:
+          template: |
+            {{ $claimNamespace := index $.observed.composite.resource.metadata.labels "crossplane.io/claim-namespace" }}
+            {{ $claimNamespaceTrimmed := $claimNamespace | replace "-" "" }}
+            {{ $tenantAwsProviderConfigRef := printf "%s-aws" $claimNamespace }}
+            {{ $params := get .observed.composite.resource.spec "parameters" | default dict }}
+            ---
+            apiVersion: rds.aws.upbound.io/v1beta2
+            kind: Instance
+            metadata:
+              annotations:
+                {{ setResourceNameAnnotation "rdsInstance" }}
+                crossplane.io/external-name: {{ get $params "id" | default ( print $claimNamespace "-rds-instance" ) }}
+            spec:
+              forProvider:
+                allocatedStorage: {{ get $params "storage" | default 20 }}
+                autoGeneratePassword: true
+                autoMinorVersionUpgrade: true
+                backupRetentionPeriod: 14
+                backupWindow: "09:46-10:16"
+                dbName: {{ get $params "name" | default ( print $claimNamespaceTrimmed "db" ) }}
+                engine: postgres
+                engineVersion: "16.1" # 16.3? console shows RDS 16.1-R2 (PostgreSQL 13.1-R2)
+                instanceClass: {{ printf "db.t3.%s" (get $params "size" | default "micro") }}
+                maintenanceWindow: Mon:00:00-Mon:03:00
+                passwordSecretRef:
+                  key: password
+                  name: {{ printf "%s-rds-admin-pw" $claimNamespace }}
+                  namespace: {{ $claimNamespace }}
+                publiclyAccessible: false
+                region: {{ printf "us-%s-1" (get $params "region" | default "east") }}
+                skipFinalSnapshot: true
+                storageEncrypted: true
+                storageType: gp2
+                username: adminuser
+              writeConnectionSecretToRef:
+                name: {{ printf "%s-rds-connection-details" $claimNamespace }}
+                namespace: {{ $claimNamespace }}
+              providerConfigRef:
+                name: {{ $tenantAwsProviderConfigRef }}
+
+########################################################################################################################

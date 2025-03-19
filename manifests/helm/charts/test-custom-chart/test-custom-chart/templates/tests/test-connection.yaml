@@ -1,0 +1,23 @@
+---
+# Source: test-custom-chart/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "helm-release-name-test-custom-chart-test-connection"
+  labels:
+    openmcp.cloud/blueprint-building-block: "test-custom-chart"
+    openmcp.cloud/blueprint-building-block-version: "0.0.8"
+    helm.sh/chart: test-custom-chart-0.0.8
+    app.kubernetes.io/name: test-custom-chart
+    app.kubernetes.io/instance: helm-release-name
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['helm-release-name-test-custom-chart:80']
+  restartPolicy: Never

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":prImmediately",
+    ":prHourlyLimitNone",
+    ":prConcurrentLimitNone",
+    ":label(renovate)",
+    ":separateMultipleMajorReleases",
+    ":separatePatchReleases",
+    ":enableVulnerabilityAlertsWithLabel(security)",
+    ":dependencyDashboard",
+    ":semanticCommits"
+  ],
+  "assignees": [
+    "I540484"
+  ],
+  "timezone": "Europe/Berlin",
+  "semanticCommitType": "chore",
+  "semanticCommitScope": "deps",
+  "automerge": true,
+  "automergeType": "pr",
+  "automergeStrategy": "squash",
+  "platformAutomerge": true,
+  "rebaseWhen": "auto",
+  "packageRules": [
+    {
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      "automerge": true
+    }
+  ]
+}

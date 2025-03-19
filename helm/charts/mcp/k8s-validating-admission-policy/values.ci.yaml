@@ -1,0 +1,38 @@
+---
+###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
+#########################################################################################################
+validatingAdmissionPolicies:  
+  - name: "crossplane-helm-provider-config-if-secret-exists"
+    spec:
+      failurePolicy: Fail
+      paramKind:
+        kind: ProviderConfig
+        apiVersion: helm.crossplane.io/v1beta1
+      matchConstraints:
+        resourceRules:
+          - apiGroups: [""]
+            apiVersions: ["v1"]
+            resources: ["secrets"]
+            operations: ["DELETE"]
+      validations:
+        - expression: |
+            ( 
+            has(params.spec) && 
+            has(params.spec.credentials) && 
+            has(params.spec.credentials.secretRef) && 
+            has(params.spec.credentials.secretRef.name) && 
+            oldObject.metadata.name != params.spec.credentials.secretRef.name &&
+            oldObject.metadata.namespace != params.spec.credentials.secretRef.namespace
+            )
+          messageExpression: "'Secret %s cannot be deleted because its referenced in Kind:%s (%s) %s'.format([oldObject.metadata.name,params.kind,params.apiVersion,params.metadata.name])"
+          reason: "Invalid"
+#########################################################################################################
+validatingAdmissionPolicyBindings:  
+  - name: "crossplane-helm-provider-config-secret-binding"
+    spec:
+      policyName: crossplane-helm-provider-config-if-secret-exists
+      validationActions: [Deny]
+      paramRef:
+        selector: {}
+        parameterNotFoundAction: "Allow"
+##################################################################################

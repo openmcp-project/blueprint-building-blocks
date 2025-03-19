@@ -1,0 +1,37 @@
+# pipeline feature flags obsolete (Bash Scripts)
+jfrog.sh:
+  enabled: true #false
+  
+# pipeline feature flags
+yamllint: # not implemented yet!
+  enable: false
+helm-docs:
+  enable: true # default is true, even if you do NOT declare this feature flag!
+  options:
+    --badge-style: "flat-square" # badge style to use for charts (default "flat-square")
+    --document-dependency-values: true # For charts with dependencies, include the dependency values in the chart values documentation
+    --documentation-strict-mode: false # Fail the generation of docs if there are undocumented values
+    --skip-version-footer: false # if true the helm-docs version footer will not be shown in the default README template
+    --sort-values-order: "file" # order in which to sort the values table ("alphanum" or "file") (default "alphanum")
+    --output-file: "README.md" #  markdown file path relative to each chart directory to which rendered documentation will be written (default "README.md")
+helm-chart-linting:
+  enable: true # default is true, even if you do NOT declare this feature flag!
+  options:
+    --strict: true # fail on lint warnings (default true)
+    --with-subcharts: false # lint dependent charts (default true)
+helm-chart-validation:
+  enable: true # default is true, even if you do NOT declare this feature flag!
+  options:
+    --skip-crds: false # if set, no CRDs will be installed. By default, CRDs are installed if not already present (default false)
+    --skip-tests: false # skip tests from templated output (default false)
+    --include-crds: false # include CRDs in the templated output (default false)
+    --debug: false # enable verbose output (default false)
+    --dependency-update: true # update dependencies if they are missing before installing the chart (default true)
+helm-chart-version-bump:
+  enable: true
+helm-chart-dependency-update:
+  enable: true
+k8s-manifest-templating:
+  enable: true
+  options:
+    --skip-crds: true # if set, no CRDs will be installed. By default, CRDs are installed if not already present (default true)

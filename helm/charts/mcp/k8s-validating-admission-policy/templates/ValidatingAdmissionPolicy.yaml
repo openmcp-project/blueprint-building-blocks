@@ -1,0 +1,14 @@
+{{- range $item := .Values.validatingAdmissionPolicies }}
+  {{- if and ($item) (ne $item.name "") }}
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: {{required "A valid value is required (.Values.validatingAdmissionPolicies[].name)" $item.name }}
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+spec:
+  {{- required "A valid value is required! (.Values.validatingAdmissionPolicies[].spec)" $item.spec | toYaml | nindent 2 }}  
+  {{- end}}
+{{- end}}
