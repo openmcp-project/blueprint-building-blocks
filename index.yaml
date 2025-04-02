@@ -1,0 +1,354 @@
+apiVersion: v1
+entries:
+  crossplane-gardener-core-cloud:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-04-02T11:08:05.146277972Z"
+    description: A Helm chart to template crossplane manifests to manage core.gardener.cloud
+      resources.
+    digest: 4326898db7d88bb027e444682042704bcc997dbe152514a1167e2e003f81e63a
+    home: https://gardener.cloud/docs/gardener/api-reference/core/#core.gardener.cloud/v1beta1
+    icon: https://gardener.cloud/images/lp/gardener-logo.svg
+    name: crossplane-gardener-core-cloud
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-gardener-core-cloud-0.0.2/crossplane-gardener-core-cloud-0.0.2.tgz
+    version: 0.0.2
+  crossplane-gardener-shoot-clusters:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-04-02T11:08:05.344770145Z"
+    description: A Helm chart to template crossplane manifests to manage Gardener
+      Shoot resources.
+    digest: ddf2338a3893c351f12e6c0ca313c697e69d27c7b0828cdfd25cd03059abfb4b
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-gardener-shoot-clusters
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-gardener-shoot-clusters-0.0.8/crossplane-gardener-shoot-clusters-0.0.8.tgz
+    version: 0.0.8
+  crossplane-gardener-shoot-kubeconfigs:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-04-02T11:08:05.485196639Z"
+    description: A Helm chart to template crossplane manifests to request kubeconfigs
+      of existing Gardener Shoots.
+    digest: 6ffcc687a3a2ea4865d5806cda0a239ec138234e2cfe8271d991d5d8572357c6
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-gardener-shoot-kubeconfigs
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-gardener-shoot-kubeconfigs-0.0.7/crossplane-gardener-shoot-kubeconfigs-0.0.7.tgz
+    version: 0.0.7
+  crossplane-provider-apiextensions:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-04-02T11:08:05.632231642Z"
+    description: A Helm Chart to template crossplane API extensions compositions.
+    digest: c750fb92e85b5ac9ed6edd807e725bdfa36bbac3b2d1eeee1c788a96b19f66f7
+    home: https://github.com/openmcp-project/blueprints
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-provider-apiextensions
+    sources:
+    - https://docs.crossplane.io/latest/api/
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-provider-apiextensions-0.0.1/crossplane-provider-apiextensions-0.0.1.tgz
+    version: 0.0.1
+  crossplane-provider-apiextensions-composition:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-04-02T11:08:05.804225772Z"
+    description: A Helm Chart to template crossplane API extensions compositions.
+    digest: 9883f8ec24e949c5333139a3335ac73cd80ef107286d533dc9b4b9d85ddfeab5
+    home: https://github.com/openmcp-project/blueprints
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-provider-apiextensions-composition
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    - https://doc.crds.dev/github.com/crossplane/crossplane/apiextensions.crossplane.io/Composition/v1
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-provider-apiextensions-composition-0.0.8/crossplane-provider-apiextensions-composition-0.0.8.tgz
+    version: 0.0.8
+  crossplane-provider-aws-ec2:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-04-02T11:08:05.986737295Z"
+    description: A Helm Chart to template AWS EC2 manifests for its crossplane provider.
+    digest: a4524e25ebdb1c055fc9aea34e1e34daffffda0a34eb8dc887b87b5602fddae7
+    home: https://github.com/openmcp-project/blueprints
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-provider-aws-ec2
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2
+    - https://docs.upbound.io/providers/
+    - https://docs.upbound.io/providers/provider-families/
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-provider-aws-ec2-0.0.9/crossplane-provider-aws-ec2-0.0.9.tgz
+    version: 0.0.9
+  crossplane-provider-aws-eks:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-04-02T11:08:06.175062853Z"
+    description: A Helm Chart to template AWS EKS manifests for its crossplane provider.
+    digest: 5a490d32dfd577a8cbbe5dde8a7b48f2860accdf8ba0acaefcb69624e4792230
+    home: https://github.com/openmcp-project/blueprints
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-provider-aws-eks
+    sources:
+    - https://marketplace.upbound.io/providers/upbound/provider-aws-eks/
+    - https://docs.upbound.io/providers/
+    - https://docs.upbound.io/providers/provider-families/
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-provider-aws-eks-0.0.9/crossplane-provider-aws-eks-0.0.9.tgz
+    version: 0.0.9
+  crossplane-provider-aws-iam:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-04-02T11:08:06.336189654Z"
+    description: A Helm Chart to template AWS IAM manifests for its crossplane provider.
+    digest: 43bcb621103beb2625481e321da2af72731cfd6bdcc633ddbb1003203fa6614b
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-provider-aws-iam
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/
+    - https://docs.upbound.io/providers/
+    - https://docs.upbound.io/providers/provider-families/
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-provider-aws-iam-0.0.10/crossplane-provider-aws-iam-0.0.10.tgz
+    version: 0.0.10
+  crossplane-provider-aws-rdr:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-04-02T11:08:06.489329875Z"
+    description: A Helm Chart to template AWS RDR manifests for its crossplane provider.
+    digest: 737036dbc1025ce0e33c15d3c0d15b2b47ad7c96dbae32226f3ee7974f82be8b
+    home: https://github.com/openmcp-project/blueprints
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-provider-aws-rdr
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/
+    - https://docs.upbound.io/providers/
+    - https://docs.upbound.io/providers/provider-families/
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-provider-aws-rdr-0.0.8/crossplane-provider-aws-rdr-0.0.8.tgz
+    version: 0.0.8
+  crossplane-provider-btp-security:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-04-02T11:08:06.694115031Z"
+    description: A Helm Chart to template crossplane manifests to manage BTP resources
+      such as Directory, TrustConfiguration and RoleCollection Assignment on BTP.
+    digest: 580a0eed3005911dca4d86bee22abb6b68fe9b7bd691486ecf8a6b94b9422366
+    home: https://github.com/openmcp-project/blueprints
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-provider-btp-security
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    - https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp-account
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-provider-btp-security-0.0.10/crossplane-provider-btp-security-0.0.10.tgz
+    version: 0.0.10
+  crossplane-provider-configs:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-04-02T11:08:06.89372147Z"
+    description: A Helm chart to template crossplane provider config manifests to
+      orchestrate resources.
+    digest: a0e1af8bcc99c315c46166a457845541a8f49275cb734363ff737b6f2eddad42
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-provider-configs
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-provider-configs-0.0.15/crossplane-provider-configs-0.0.15.tgz
+    version: 0.0.15
+  crossplane-provider-gcp:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-04-02T11:08:07.07380965Z"
+    description: A Helm Chart to template GCP manifests for its crossplane provider.
+    digest: 8fbcdc8d4c001a7e3e5249dea957cd399d443f62a0414253dd8a35ff8dd67740
+    home: https://github.com/openmcp-project/blueprints
+    name: crossplane-provider-gcp
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    - https://marketplace.upbound.io/providers/crossplane-contrib/provider-gcp
+    - https://docs.upbound.io/providers/
+    - https://docs.upbound.io/providers/provider-families/
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-provider-gcp-0.0.9/crossplane-provider-gcp-0.0.9.tgz
+    version: 0.0.9
+  crossplane-provider-helm:
+  - apiVersion: v2
+    appVersion: 0.19.0
+    created: "2025-04-02T11:08:07.283488021Z"
+    description: A Helm Chart to template crossplane provider "helm" manifests to
+      manage k8s cluster stack on a k8s Gardener/Kyma clusters.
+    digest: cd76607db2b5284b39f4a2f003d378900f1a342201b98c24939ebfd37d63af61
+    home: https://github.com/openmcp-project/blueprints
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-provider-helm
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    - https://github.com/crossplane-contrib/provider-helm
+    - https://github.com/crossplane-contrib/provider-kubernetes/blob/main/docs/enhanced-provider-k8s.md
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-provider-helm-0.0.8/crossplane-provider-helm-0.0.8.tgz
+    version: 0.0.8
+  crossplane-provider-kubernetes:
+  - apiVersion: v2
+    appVersion: 0.14.1
+    created: "2025-04-02T11:08:07.449971546Z"
+    description: A Helm Chart to template crossplane provider "kubernetes" manifests
+      to manage k8s cluster stack on a k8s Gardener/Kyma clusters.
+    digest: c91f131edae21a2459a075e0d307ca07ae34332601d55aa96e80fb80e16311ad
+    home: https://github.com/openmcp-project/blueprints
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-provider-kubernetes
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    - https://github.com/crossplane-contrib/provider-kubernetes
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-provider-kubernetes-0.0.9/crossplane-provider-kubernetes-0.0.9.tgz
+    version: 0.0.9
+  crossplane-provider-pkgs:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-04-02T11:08:07.615601293Z"
+    description: A Helm Chart to template crossplane provider "kind Provider" manifests
+      to install crossplane family providers.
+    digest: f012e99e0e508533b3610b2552fcc48005f37093a2e9b41b97530e74a1fe66e4
+    home: https://github.com/openmcp-project/blueprints
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-provider-pkgs
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    - https://docs.upbound.io/providers/
+    - https://docs.upbound.io/providers/provider-families/
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-provider-pkgs-0.0.10/crossplane-provider-pkgs-0.0.10.tgz
+    version: 0.0.10
+  crossplane-provider-sap-btp-account:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-04-02T11:08:07.803615534Z"
+    description: A Helm chart to template crossplane manifests to manage SAP BTP resources.
+    digest: dd29951f140d5d5805682d3dc2008290a7b8320be44b890d93ae8f2db319cbf2
+    home: https://pages.github.tools.sap/cloud-orchestration/docs/category/sap-cloud-services
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-provider-sap-btp-account
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-provider-sap-btp-account-0.0.6/crossplane-provider-sap-btp-account-0.0.6.tgz
+    version: 0.0.6
+  crossplane-provider-sap-btp-environment:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-04-02T11:08:08.005087703Z"
+    description: A Helm Chart to template crossplane manifests to manage Cloud Foundry
+      or BTP Kyma environments on BTP.
+    digest: ffe7a78318920707dfa07258760ee5f119c59723460ee297bff9ba39575938f4
+    home: https://github.com/openmcp-project/blueprints
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-provider-sap-btp-environment
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    - https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp/environment.btp.sap.crossplane.io/cloudfoundryenvironment/v1alpha1
+    - https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp/environment.btp.sap.crossplane.io/kymaenvironment/v1alpha1
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-provider-sap-btp-environment-0.0.12/crossplane-provider-sap-btp-environment-0.0.12.tgz
+    version: 0.0.12
+  external-secrets-config:
+  - apiVersion: v2
+    appVersion: 0.10.0
+    created: "2025-04-02T11:08:08.217143055Z"
+    description: A Helm Chart to template external-secrets.io manifests to sync credentials
+      from remote vault (e.g. SAP HashiCorp Vault).
+    digest: a87ddbdf4d440fd34bd82eae031fbfe4ea58590e52dcc341ca984d068373ab07
+    home: https://github.com/openmcp-project/blueprints
+    icon: https://github.com/external-secrets/external-secrets/raw/main/assets/eso-logo-large.png
+    name: external-secrets-config
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    - https://external-secrets.io
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/external-secrets-config-0.1.7/external-secrets-config-0.1.7.tgz
+    version: 0.1.7
+  flux-config:
+  - apiVersion: v2
+    appVersion: 2.3.0
+    created: "2025-04-02T11:08:08.430510618Z"
+    description: A Helm Chart to template flux manifests to leverage GitOps on a CO
+      MCP cluster.
+    digest: e33192818d9aaa5017eb56dccd9ce821f33353b0cbea5dcf6ac54f247985537a
+    home: https://github.com/openmcp-project/blueprints
+    icon: https://avatars.githubusercontent.com/u/52158677?s=200&v=4
+    name: flux-config
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    - https://fluxcd.io/flux/releases/
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/flux-config-0.0.14/flux-config-0.0.14.tgz
+    version: 0.0.14
+  k8s-validating-admission-policy:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-04-02T11:08:08.582997492Z"
+    description: A Helm Chart to orchestrate k8s ValidatingAdmissionPolicy & ValidatingAdmissionPolicyBinding
+    digest: ab8f2f6caee32bfb1f0ab71fbd5c5ffea473982bf3361817e60257ad6449479f
+    icon: https://www.svgrepo.com/show/376331/kubernetes.svg
+    kubeVersion: '>=1.20.0'
+    name: k8s-validating-admission-policy
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    - https://kubernetes.io/docs/reference/access-authn-authz/validating-admission-policy/
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/k8s-validating-admission-policy-0.0.2/k8s-validating-admission-policy-0.0.2.tgz
+    version: 0.0.2
+  sap-btp-services:
+  - apiVersion: v2
+    appVersion: 0.2.0
+    created: "2025-04-02T11:08:08.769075766Z"
+    description: A Helm Chart to create dynamically SAP BTP Services instances and
+      bindings.
+    digest: 0887132ee7345918d6d161af9f2683a05fa59f87f81f54b453ef9a51920f0bea
+    icon: https://www.sap.com/content/dam/application/shared/logos/partner/powering-sap-btp-color-logo.svg
+    kubeVersion: '>=1.20.0'
+    name: sap-btp-services
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    - https://github.com/SAP/sap-btp-service-operator
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/sap-btp-services-0.0.9/sap-btp-services-0.0.9.tgz
+    version: 0.0.9
+generated: "2025-04-02T11:08:08.769090804Z"
