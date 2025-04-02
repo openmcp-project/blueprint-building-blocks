@@ -27,3 +27,8 @@ jobs:
           charts_dir: helm/charts/mcp
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Upload to OCI-based registry
+        run: |
+          helm registry login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
+          find .cr-release-packages/ -name *.tgz -exec helm push oci://ghcr.io/openmcp-project {} \;
