@@ -351,4 +351,22 @@ entries:
     urls:
     - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/sap-btp-services-0.0.9/sap-btp-services-0.0.9.tgz
     version: 0.0.9
-generated: "2025-04-02T11:08:08.769090804Z"
+  test-custom-chart:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-04-03T11:12:19.842562084Z"
+    dependencies:
+    - name: sap-btp-services
+      repository: file://../mcp/sap-btp-services
+      version: ~0.x.x
+    description: A Helm chart to test github action and workflows. NOTHING MORE!
+    digest: fddb1b5ad27cbb338cd9977afc79b8abc2573c0da6967cebced9d41f10255497
+    home: https://github.com/openmcp-project/blueprint-building-blocks
+    name: test-custom-chart
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/test-custom-chart-0.0.8/test-custom-chart-0.0.8.tgz
+    version: 0.0.8
+generated: "2025-04-03T11:12:19.842569217Z"
