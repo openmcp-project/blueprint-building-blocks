@@ -7,12 +7,6 @@ concurrency:
   group: building-blocks-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
-<<<<<<< Updated upstream
-jobs:
-  pr-status-check:
-    uses: "openmcp-project/blueprint-workflows/.github/workflows/git-pr-status-checks.yml@main"
-    secrets: inherit
-=======
 permissions:
   pull-requests: write
   contents: write
@@ -30,4 +24,3 @@ jobs:
     secrets:
       HELM_REPO_USERNAME: "${{ secrets.GITHUB_TOKEN }}"
       HELM_REPO_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
->>>>>>> Stashed changes
