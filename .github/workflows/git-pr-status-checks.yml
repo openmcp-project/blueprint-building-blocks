@@ -14,7 +14,7 @@ permissions:
   actions: write
   checks: write
   statuses: write
-  
+
 jobs:
   pr-status-check:
     uses: "openmcp-project/blueprint-workflows/.github/workflows/git-pr-status-checks.yml@chore/os_preparations"
@@ -24,4 +24,3 @@ jobs:
     secrets:
       HELM_REPO_USERNAME: "${{ secrets.GITHUB_TOKEN }}"
       HELM_REPO_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-      BUILDING_BLOCKS_GIT_REPO_TOKEN: "" #"${{ secrets.ORG_REPO_TOKEN }}"
