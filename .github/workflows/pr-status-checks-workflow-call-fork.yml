@@ -9,8 +9,21 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
+permissions:
+  pull-requests: write
+  contents: write
+  packages: read
+  actions: write
+  checks: write
+  statuses: write
+
 jobs:  
   pr-status-check:    
     if: ${{ github.event.pull_request.head.repo.full_name != 'openmcp-project/blueprint-building-blocks' }}
-    uses: "openmcp-project/blueprint-building-blocks/.github/workflows/git-pr-status-checks.yml@main"
-    secrets: inherit
+    uses: "openmcp-project/blueprint-workflows/.github/workflows/git-pr-status-checks.yml@chore/os_preparations"
+    with:
+      HELM_OCI_REGISTRY: 'ghcr.io'
+      BUILDING_BLOCKS_GIT_REPO_URL: 'https://github.com/openmcp-project/blueprint-building-blocks.git'
+    secrets:
+      HELM_REPO_USERNAME: "${{ secrets.GITHUB_TOKEN }}"
+      HELM_REPO_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
