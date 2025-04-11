@@ -3,17 +3,17 @@
 ###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
 ########################################################################################################################
 clusters:
-  - name: "clops-dev-us-ekscluster"
+  - name: "dev-us-ekscluster"
     labels:
-      crossplane.io/composite: clops-dev-us-ekscluster
-      crossplane.io/claim-namespace: clops-dev-us
+      crossplane.io/composite: dev-us-ekscluster
+      crossplane.io/claim-namespace: dev-us
     annotations:
       crossplane.io/composition-resource-name: eks-cluster
     spec:
       deletionPolicy: ""
       forProvider:
         region: us-west-2
-        roleArn: arn:aws:iam::XXXX:role/CLOPS-EKS-Cluster-Role
+        roleArn: arn:aws:iam::XXXX:role/DEV-EKS-Cluster-Role
         version: "1.29"
         vpcConfig:
           - endpointPrivateAccess: false
@@ -23,16 +23,16 @@ clusters:
                 type: subnet
                 visibility: private
       providerConfigRef:
-        name: clops-dev-us-aws
+        name: dev-us-aws
       writeConnectionSecretToRef:
-        name: clops-dev-us-connection-secret
+        name: dev-us-connection-secret
         namespace: crossplane-system
       publishConnectionDetailsTo: {}
 nodeGroups:
-  - name: "clops-dev-us-ekscluster"
+  - name: "dev-us-ekscluster"
     labels:
-      crossplane.io/composite: clops-dev-us-ekscluster
-      crossplane.io/claim-namespace: clops-dev-us
+      crossplane.io/composite: dev-us-ekscluster
+      crossplane.io/claim-namespace: dev-us
     annotations:
       crossplane.io/composition-resource-name: eks-nodegroup
     spec:
@@ -43,7 +43,7 @@ nodeGroups:
           matchControllerRef: true
         instanceTypes:
           - t3.medium
-        nodeRoleArn: arn:aws:iam::XXXX:role/CLOPS-EKS-WorkerNode-Role
+        nodeRoleArn: arn:aws:iam::XXXX:role/DEV-EKS-WorkerNode-Role
         region: us-west-2
         scalingConfig:
           - desiredSize: 2
@@ -55,7 +55,7 @@ nodeGroups:
             type: subnet
             visibility: private
       providerConfigRef:
-        name: clops-dev-us-aws
+        name: dev-us-aws
       publishConnectionDetailsTo: {}
       writeConnectionSecretToRef: {}  
 ########################################################################################################################

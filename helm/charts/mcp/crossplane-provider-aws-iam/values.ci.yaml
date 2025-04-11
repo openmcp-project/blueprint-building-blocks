@@ -3,10 +3,10 @@
 ###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
 ########################################################################################################################
 roles:
-- name: "clops-dev-us-ekscluster"
+- name: "dev-us-ekscluster"
   labels:
-    crossplane.io/composite: clops-dev-us-ekscluster
-    crossplane.io/claim-namespace: clops-dev-us
+    crossplane.io/composite: dev-us-ekscluster
+    crossplane.io/claim-namespace: dev-us
   annotations:
     crossplane.io/composition-resource-name: role   
   spec:
@@ -26,14 +26,14 @@ roles:
           ]
         }
     providerConfigRef:
-      name: clops-dev-us-aws
+      name: dev-us-aws
     publishConnectionDetailsTo: {}
     writeConnectionSecretToRef: {}  
 rolePolicyAttachments:
-- name: "clops-dev-us-ekscluster"
+- name: "dev-us-ekscluster"
   labels:
-    crossplane.io/composite: clops-dev-us-ekscluster
-    crossplane.io/claim-namespace: clops-dev-us
+    crossplane.io/composite: dev-us-ekscluster
+    crossplane.io/claim-namespace: dev-us
   annotations:
     crossplane.io/composition-resource-name: rolePolicyAttachment
   spec:
@@ -43,7 +43,7 @@ rolePolicyAttachments:
       roleSelector:
         matchControllerRef: true
     providerConfigRef:
-      name: clops-dev-us-aws
+      name: dev-us-aws
     publishConnectionDetailsTo: {}
     writeConnectionSecretToRef: {}  
 policies:

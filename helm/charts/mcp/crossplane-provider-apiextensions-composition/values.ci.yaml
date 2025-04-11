@@ -28,7 +28,7 @@ compositions:
                     enableDnsHostnames: true
                     enableDnsSupport: true
                   providerConfigRef:
-                    name: clops-dev-us-aws
+                    name: dev-us-aws
               name: vpc
               patches:
                 - patchSetName: common-parameters
@@ -47,7 +47,7 @@ compositions:
                     vpcIdSelector:
                       matchControllerRef: true
                   providerConfigRef:
-                    name: clops-dev-us-aws
+                    name: dev-us-aws
               name: internetgateway
               patches:
                 - patchSetName: common-parameters
@@ -65,7 +65,7 @@ compositions:
                     vpcIdSelector:
                       matchControllerRef: true
                   providerConfigRef:
-                    name: clops-dev-us-aws
+                    name: dev-us-aws
               name: subnet-public-1
               patches:
                 - patchSetName: common-parameters
@@ -92,7 +92,7 @@ compositions:
                     vpcIdSelector:
                       matchControllerRef: true
                   providerConfigRef:
-                    name: clops-dev-us-aws
+                    name: dev-us-aws
               name: subnet-public-2
               patches:
                 - patchSetName: common-parameters
@@ -119,7 +119,7 @@ compositions:
                     vpcIdSelector:
                       matchControllerRef: true
                   providerConfigRef:
-                    name: clops-dev-us-aws
+                    name: dev-us-aws
               name: subnet-private-1
               patches:
                 - patchSetName: common-parameters
@@ -146,7 +146,7 @@ compositions:
                     vpcIdSelector:
                       matchControllerRef: true
                   providerConfigRef:
-                    name: clops-dev-us-aws
+                    name: dev-us-aws
               name: subnet-private-2
               patches:
                 - patchSetName: common-parameters
@@ -170,7 +170,7 @@ compositions:
                   forProvider:
                     domain: vpc
                   providerConfigRef:
-                    name: clops-dev-us-aws
+                    name: dev-us-aws
               name: elastic-ip-1
               patches:
                 - patchSetName: common-parameters
@@ -185,7 +185,7 @@ compositions:
                   forProvider:
                     domain: vpc
                   providerConfigRef:
-                    name: clops-dev-us-aws
+                    name: dev-us-aws
               name: elastic-ip-2
               patches:
                 - patchSetName: common-parameters
@@ -206,7 +206,7 @@ compositions:
                         type: subnet
                         visibility: public
                   providerConfigRef:
-                    name: clops-dev-us-aws
+                    name: dev-us-aws
               name: natgateway-1
               patches:
                 - patchSetName: common-parameters
@@ -230,7 +230,7 @@ compositions:
                         type: subnet
                         visibility: public
                   providerConfigRef:
-                    name: clops-dev-us-aws
+                    name: dev-us-aws
               name: natgateway-2
               patches:
                 - patchSetName: common-parameters
@@ -247,7 +247,7 @@ compositions:
                     vpcIdSelector:
                       matchControllerRef: true
                   providerConfigRef:
-                    name: clops-dev-us-aws
+                    name: dev-us-aws
               name: routetable-public
               patches:
                 - patchSetName: common-parameters
@@ -261,7 +261,7 @@ compositions:
                     vpcIdSelector:
                       matchControllerRef: true
                   providerConfigRef:
-                    name: clops-dev-us-aws
+                    name: dev-us-aws
               name: routetable-private-1
               patches:
                 - patchSetName: common-parameters
@@ -275,7 +275,7 @@ compositions:
                     vpcIdSelector:
                       matchControllerRef: true
                   providerConfigRef:
-                    name: clops-dev-us-aws
+                    name: dev-us-aws
               name: routetable-private-2
               patches:
                 - patchSetName: common-parameters
@@ -285,7 +285,7 @@ compositions:
                 kind: Cluster
                 spec:
                   providerConfigRef:
-                    name: clops-dev-us-aws
+                    name: dev-us-aws
                   forProvider:
                     vpcConfig:
                       - endpointPrivateAccess: false
@@ -296,7 +296,7 @@ compositions:
                             visibility: private
                   writeConnectionSecretToRef:
                     namespace: crossplane-system
-                    name: clops-dev-us-connection-secret
+                    name: dev-us-connection-secret
               connectionDetails:
                 - fromConnectionSecretKey: kubeconfig
                   name: kubeconfig-value
@@ -338,7 +338,7 @@ compositions:
                         ]
                       }
                   providerConfigRef:
-                    name: clops-dev-us-aws
+                    name: dev-us-aws
               name: role
             - base:
                 apiVersion: iam.aws.upbound.io/v1beta1
@@ -349,7 +349,7 @@ compositions:
                       matchControllerRef: true
                     policyArn: arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
                   providerConfigRef:
-                    name: clops-dev-us-aws
+                    name: dev-us-aws
               name: rolePolicyAttachment
             - base:
                 apiVersion: eks.aws.upbound.io/v1beta1
@@ -368,7 +368,7 @@ compositions:
                         type: subnet
                         visibility: private
                   providerConfigRef:
-                    name: clops-dev-us-aws
+                    name: dev-us-aws
               name: eks-nodegroup
               patches:
                 - patchSetName: common-parameters

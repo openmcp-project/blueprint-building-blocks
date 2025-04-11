@@ -3,11 +3,11 @@
 ########################################################################################################################
 providerConfigs:
   kubernetesCrossplane:
-    - providerConfigRefName: "garden-ketos-co-sa-mcp-test"
+    - providerConfigRefName: "openmcp-test"
       credentials:
         source: "Secret"
         secretRef:
-          name: "garden-ketos-co-sa-mcp-test"
+          name: "openmcp-test"
           namespace: default
           key: kubeconfig
   helmCrossplane:
@@ -19,12 +19,12 @@ providerConfigs:
           name: "gardener-shoot-kubeconfig-steffen-test"
           key: kubeconfig
   gardenerOrchestrateCloud:
-    - providerConfigRefName: "garden-ketos-co-sa-mcp-test"
+    - providerConfigRefName: "openmcp-test"
       credentials:
         source: "Secret"
         secretRef:
           namespace: default
-          name: "garden-ketos-co-sa-mcp-test"
+          name: "openmcp-test"
           key: kubeconfig     
   dynatraceOrchestrateCloud:
     - providerConfigRefName: "providerConfigRefName"

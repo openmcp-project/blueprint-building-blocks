@@ -3,12 +3,12 @@
 ###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
 ########################################################################################################################
 clusterSecretStores:  
-  - name: "sap-hashicorp-vault-cluster-store"
+  - name: "hashicorp-vault-cluster-store"
     controller: "controller"
     provider:
       vault:
-        server: "https://vault.tools.sap/"
-        namespace: "s4/ketos"
+        server: "https://vault.example/"
+        namespace: "ns1"
         path: "k8s-clusters"
         version: "v2"
         auth:
@@ -16,11 +16,11 @@ clusterSecretStores:
             path: "approle"
             roleId: "cf33bb15"
             secretRef:
-              name: "sap-hashicorp-vault-token"
+              name: "hashicorp-vault-token"
               key: "token"
 ########################################################################################################################
 clusterExternalSecret:
-- name: "garden-ketos-co-sa-mcp-test"
+- name: "openmcp-test"
   externalSecretName: "externalSecretName"
   refreshTime: "1m"            
   namespaceSelectors:
@@ -60,12 +60,12 @@ clusterExternalSecret:
       property: provider-key-property
 ########################################################################################################################
 secretStores:
-- name: "sap-hashicorp-vault"
+- name: "hashicorp-vault"
   namespace: "default"
   provider:
     vault:
-      server: "https://vault.tools.sap/"
-      namespace: "s4/ketos"
+      server: "https://vault.example/"
+      namespace: "ns1"
       path: "k8s-clusters"
       version: "v2"
       auth:
@@ -73,16 +73,16 @@ secretStores:
           path: "approle"
           roleId: "cf33bb15"
           secretRef:
-            name: "sap-hashicorp-vault-token"
+            name: "hashicorp-vault-token"
             key: "token"
 ########################################################################################################################
 externalSecret:
-  - name: "garden-ketos-co-sa-mcp-test"
+  - name: "openmcp-test"
     namespace: "default"
     refreshInterval: "15m"
-    targetSecretName: garden-ketos-co-sa-mcp-test
+    targetSecretName: "openmcp-test"
     secretStore:
-      name: "sap-hashicorp-vault"
+      name: "hashicorp-vault"
     data:
       - secretKey: kubeconfig
         remoteRef:
@@ -93,7 +93,7 @@ externalSecret:
     refreshInterval: "15m"
     targetSecretName: garden-ketos-co-sa-mcp-test-2
     secretStore:
-      name: "sap-hashicorp-vault"
+      name: "hashicorp-vault"
     data:
       - secretKey: kubeconfig
         remoteRef:
@@ -104,7 +104,7 @@ externalSecret:
     refreshInterval: "15m"
     targetSecretName: btp-account-ketos-kita-test
     secretStore:
-      name: "sap-hashicorp-vault-cluster-store"
+      name: "hashicorp-vault-cluster-store"
       kind: "ClusterSecretStore"
     data:
       - secretKey: btp-cis-provider-credentials
@@ -117,7 +117,7 @@ externalSecret:
           property: btp-service-account-provider-credentials
 ########################################################################################################################
 pushSecrets:
-  - name: "garden-ketos-co-sa-mcp-test"
+  - name: "openmcp-test"
     namespace: "default"
     spec:
       updatePolicy: Replace # Policy to overwrite existing secrets in the provider on sync

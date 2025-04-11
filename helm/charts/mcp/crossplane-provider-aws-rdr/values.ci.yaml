@@ -14,15 +14,15 @@ instances:
         autoMinorVersionUpgrade: true
         backupRetentionPeriod: 14
         backupWindow: 09:46-10:16
-        dbName: clopsdevusdb
+        dbName: devusdb
         engine: postgres
         engineVersion: "16.1"
         instanceClass: db.t3.micro
         maintenanceWindow: Mon:00:00-Mon:03:00
         passwordSecretRef:
           key: password
-          name: clops-dev-us-rds-admin-pw
-          namespace: clops-dev-us
+          name: dev-us-rds-admin-pw
+          namespace: dev-us
         publiclyAccessible: false
         region: us-east-1
         skipFinalSnapshot: true
@@ -30,8 +30,8 @@ instances:
         storageType: gp2
         username: adminuser
       providerConfigRef:
-        name: clops-dev-us-aws
+        name: dev-us-aws
       writeConnectionSecretToRef:
-        name: clops-dev-us-rds-connection-details
-        namespace: clops-dev-us
+        name: dev-us-rds-connection-details
+        namespace: dev-us
 ########################################################################################################################

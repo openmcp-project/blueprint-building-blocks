@@ -3,7 +3,7 @@
 ###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
 ########################################################################################################################
 eips:
-  - name: "clops-dev-us-ekscluster"
+  - name: "dev-us-ekscluster"
     labels: {}
     annotations: {}
     ownerReferences: {}      
@@ -13,8 +13,8 @@ eips:
         omain: vpc
         region: us-west-2
       providerConfigRef:
-        name: clops-dev-us-aws
-  - name: "clops-dev-us-ekscluster-2"
+        name: dev-us-aws
+  - name: "dev-us-ekscluster-2"
     labels: {}
     annotations: {}
     ownerReferences: {}      
@@ -24,10 +24,10 @@ eips:
         omain: vpc
         region: us-west-2
       providerConfigRef:
-        name: clops-dev-us-aws
+        name: dev-us-aws
 # -- https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/v1.11.0/resources/ec2.aws.upbound.io/InternetGateway/v1beta1
 internetGateways:
-  - name: "clops-dev-us-ekscluster"
+  - name: "dev-us-ekscluster"
     labels: {}
     annotations: {}
     ownerReferences: {}      
@@ -38,10 +38,10 @@ internetGateways:
         vpcIdSelector:
           matchControllerRef: true
       providerConfigRef:
-        name: clops-dev-us-aws
+        name: dev-us-aws
 # -- https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/v1.11.0/resources/ec2.aws.upbound.io/NATGateway/v1beta1
 natGateways:
-  - name: "clops-dev-us-ekscluster"
+  - name: "dev-us-ekscluster"
     labels: {}
     annotations: {}
     ownerReferences: {}      
@@ -58,10 +58,10 @@ natGateways:
             visibility: public
             zone: us-west-2a
       providerConfigRef:
-        name: clops-dev-us-aws 
+        name: dev-us-aws 
 # -- https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/v1.11.0/resources/ec2.aws.upbound.io/RouteTable/v1beta1
 routeTables:
-  - name: "clops-dev-us-ekscluster"
+  - name: "dev-us-ekscluster"
     labels: {}
     annotations: {}
     ownerReferences: {}      
@@ -72,10 +72,10 @@ routeTables:
         vpcIdSelector:
           matchControllerRef: true
       providerConfigRef:
-        name: clops-dev-us-aws        
+        name: dev-us-aws        
 # -- https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/v1.11.0/resources/ec2.aws.upbound.io/Subnet/v1beta1
 subnets:
-  - name: "clops-dev-us-ekscluster"
+  - name: "dev-us-ekscluster"
     labels: {}
     annotations: {}
     ownerReferences: {}      
@@ -89,10 +89,10 @@ subnets:
         vpcIdSelector:
           matchControllerRef: true
       providerConfigRef:
-        name: clops-dev-us-aws 
+        name: dev-us-aws 
 # -- https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/v1.11.0/resources/ec2.aws.upbound.io/VPC/v1beta1
 vpcs:
-  - name: "clops-dev-us-ekscluster"
+  - name: "dev-us-ekscluster"
     labels: {}
     annotations: {}
     ownerReferences: {}      
@@ -104,6 +104,6 @@ vpcs:
         enableDnsSupport: true
         region: us-west-2
       providerConfigRef:
-        name: clops-dev-us-aws 
+        name: dev-us-aws 
   
 ########################################################################################################################
