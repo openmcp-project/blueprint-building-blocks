@@ -6,11 +6,11 @@
 
 A Helm Chart to template GCP manifests for its crossplane provider.
 
-**Homepage:** <https://github.tools.sap/cloud-orchestration/mcp-blueprints>
+**Homepage:** <https://github.com/openmcp-project/blueprints>
 
 ## Source Code
 
-* <https://github.tools.sap/cloud-orchestration/mcp-blueprint-building-blocks>
+* <https://github.com/openmcp-project/blueprint-building-blocks>
 * <https://marketplace.upbound.io/providers/crossplane-contrib/provider-gcp>
 * <https://docs.upbound.io/providers/>
 * <https://docs.upbound.io/providers/provider-families/>
