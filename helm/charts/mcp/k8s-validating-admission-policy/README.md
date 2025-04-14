@@ -8,6 +8,7 @@ A Helm Chart to orchestrate k8s ValidatingAdmissionPolicy & ValidatingAdmissionP
 
 ## Source Code
 
+* <https://github.com/openmcp-project/blueprint-building-blocks>
 * <https://kubernetes.io/docs/reference/access-authn-authz/validating-admission-policy/>
 
 ## Requirements
