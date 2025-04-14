@@ -6,11 +6,11 @@
 
 A Helm Chart to template crossplane provider "helm" manifests to manage k8s cluster stack on a k8s Gardener/Kyma clusters.
 
-**Homepage:** <https://github.tools.sap/cloud-orchestration/mcp-blueprints>
+**Homepage:** <https://github.com/openmcp-project/blueprints>
 
 ## Source Code
 
-* <https://github.tools.sap/cloud-orchestration/mcp-blueprint-building-blocks>
+* <https://github.com/openmcp-project/blueprint-building-blocks>
 * <https://github.com/crossplane-contrib/provider-helm>
 * <https://github.com/crossplane-contrib/provider-kubernetes/blob/main/docs/enhanced-provider-k8s.md>
 
