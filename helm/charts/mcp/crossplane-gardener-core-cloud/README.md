@@ -8,6 +8,9 @@ A Helm chart to template crossplane manifests to manage core.gardener.cloud reso
 
 **Homepage:** <https://gardener.cloud/docs/gardener/api-reference/core/#core.gardener.cloud/v1beta1>
 
+## Source Code
+
+* <https://github.com/openmcp-project/blueprint-building-blocks>
 
 ## Values
 
