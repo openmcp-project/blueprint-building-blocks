@@ -25,6 +25,11 @@ env:
 
 permissions:
   pull-requests: write
+  contents: write
+  packages: read
+  actions: write
+  checks: write
+  statuses: write
 
 jobs:
   shellcheck:
