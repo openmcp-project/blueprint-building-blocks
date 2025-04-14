@@ -10,6 +10,6 @@ permissions:
 jobs:
   git-tag-modified-helm-chart:
     name: Tag modified Helm Chart
-    runs-on: [solinas]    
+    runs-on: ubuntu-latest    
     steps:
     - uses: openmcp-project/blueprint-building-blocks/.github/actions/git-tag-modified-helm-chart@main      

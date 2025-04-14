@@ -38,7 +38,7 @@ providerConfigs:
   # -- creates k8s manifest `kind: ProviderConfig` of `apiVersion: gardener.orchestrate.cloud.sap/v1alpha1`
   # This `ProviderConfig` typically points to k8s secret in which a `kubeconfig` of SAP Garden k8s Service Account
   # is located in order to create a SAP Gardener Shoot Cluster Admin Kubeconfig Request `kind: AdminKubeconfigRequest` of `apiVersion: gardener.orchestrate.cloud.sap/v1alpha1`
-  # on SAP Garden cluster to pull  `kubeconfig` of a SAP Gardener Shoot Clusters into your CO MCP cluster as a k8s secret.
+  # on SAP Garden cluster to pull  `kubeconfig` of a SAP Gardener Shoot Clusters into your OpenMCP cluster as a k8s secret.
   # @default -- []
   gardenerOrchestrateCloud:
     - providerConfigRefName: ""

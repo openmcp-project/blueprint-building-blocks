@@ -2,7 +2,7 @@
 # The Chart.yaml file is required for a chart. See all avaiable fields: https://helm.sh/docs/topics/charts/#the-chartyaml-file
 apiVersion: v2
 name: flux-config
-description: A Helm Chart to template flux manifests to leverage GitOps on a CO MCP cluster.
+description: A Helm Chart to template flux manifests to leverage GitOps on a OpenMCP cluster.
 # A chart can be either an 'application' or a 'library' chart.
 #
 # Application charts are a collection of templates that can be packaged into versioned archives

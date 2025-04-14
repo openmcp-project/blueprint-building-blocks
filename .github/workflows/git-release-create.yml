@@ -9,7 +9,7 @@ on:
 jobs:
   git-release-create:
     name: Helm Chart Release Tag
-    runs-on: [solinas]
+    runs-on: ubuntu-latest
     steps:
       - name: Login to GitHub Enterprise with token
         run: |
