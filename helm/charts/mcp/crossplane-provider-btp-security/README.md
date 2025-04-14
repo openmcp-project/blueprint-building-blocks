@@ -6,11 +6,11 @@
 
 A Helm Chart to template crossplane manifests to manage BTP resources such as Directory, TrustConfiguration and RoleCollection Assignment on BTP.
 
-**Homepage:** <https://github.tools.sap/cloud-orchestration/mcp-blueprints>
+**Homepage:** <https://github.com/openmcp-project/blueprints>
 
 ## Source Code
 
-* <https://github.tools.sap/cloud-orchestration/mcp-blueprint-building-blocks>
+* <https://github.com/openmcp-project/blueprint-building-blocks>
 * <https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp-account>
 
 ## Values
