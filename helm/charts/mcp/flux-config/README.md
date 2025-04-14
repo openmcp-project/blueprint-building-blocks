@@ -6,11 +6,11 @@
 
 A Helm Chart to template flux manifests to leverage GitOps on a CO MCP cluster.
 
-**Homepage:** <https://github.tools.sap/cloud-orchestration/mcp-blueprints>
+**Homepage:** <https://github.com/openmcp-project/blueprints>
 
 ## Source Code
 
-* <https://github.tools.sap/cloud-orchestration/mcp-blueprint-building-blocks>
+* <https://github.com/openmcp-project/blueprint-building-blocks>
 * <https://fluxcd.io/flux/releases/>
 
 ## Values
@@ -53,7 +53,7 @@ A Helm Chart to template flux manifests to leverage GitOps on a CO MCP cluster.
 | gitRepositorys[0].spec.ref.branch | string | `""` | *(optional)* [branch](https://fluxcd.io/flux/components/source/api/v1/#source.toolkit.fluxcd.io/v1.GitRepositoryRef) Branch to check out, defaults to ‘master’ if no other field is defined. e.g. "main" |
 | gitRepositorys[0].spec.secretRef | object | `{"name":""}` | *(optional)* [SecretRef](https://fluxcd.io/flux/components/source/api/v1/#source.toolkit.fluxcd.io/v1.GitRepositorySpec) specifies the Secret containing authentication credentials for the GitRepository. For HTTPS repositories the Secret must contain ‘username’ and ‘password’ fields for basic auth or ‘bearerToken’ field for token auth. For SSH repositories the Secret must contain ‘identity’ and ‘known_hosts’ fields. |
 | gitRepositorys[0].spec.secretRef.name | string | `""` | [`type SecretKeySelector `](https://pkg.go.dev/github.com/external-secrets/external-secrets/apis/meta/v1#SecretKeySelector) |
-| gitRepositorys[0].spec.url | string | `""` | [URL]() specifies the Git repository URL, it can be an HTTP/S or SSH address. E.g. https://github.tools.sap/.../... |
+| gitRepositorys[0].spec.url | string | `""` | [URL]() specifies the Git repository URL, it can be an HTTP/S or SSH address.  |
 | kustomizations | list | `[{"commonMetadata":[],"components":{},"decryption":[],"dependsOn":{},"force":null,"healthChecks":{},"images":{},"interval":null,"kubeConfig":[],"name":"","namePrefix":null,"nameSuffix":null,"namespace":"","patches":null,"path":"","postBuild":[],"prune":null,"retryInterval":null,"serviceAccountName":null,"sourceRef":{"apiVersion":"","kind":"GitRepository","name":"","namespace":""},"suspend":null,"targetNamespace":"","timeout":null,"wait":null}]` | defines independent [`kind: Kustomization`](https://fluxcd.io/flux/components/kustomize/api/v1/#kustomize.toolkit.fluxcd.io/v1.Kustomization) manifest without the generation of `kind: GitRepository`. |
 | kustomizations[0].commonMetadata | list | `[]` | [commonMetadata](https://fluxcd.io/flux/components/kustomize/kustomizations/#common-metadata)  is an *(optional)*field used to specify any metadata that should be applied to all the Kustomization’s resources. |
 | kustomizations[0].components | object | `{}` | [components](https://fluxcd.io/flux/components/kustomize/kustomizations/#components) is an *(optional)*list used to specify Kustomize components. This allows using reusable pieces of configuration logic that can be included from multiple overlays. |
