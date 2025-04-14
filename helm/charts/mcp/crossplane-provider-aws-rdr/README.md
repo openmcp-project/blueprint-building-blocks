@@ -2,15 +2,15 @@
 
 # crossplane-provider-aws-rdr
 
-![Version: 0.0.8](https://img.shields.io/badge/Version-0.0.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.0.9](https://img.shields.io/badge/Version-0.0.9-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 A Helm Chart to template AWS RDR manifests for its crossplane provider.
 
-**Homepage:** <https://github.tools.sap/cloud-orchestration/mcp-blueprints>
+**Homepage:** <https://github.com/openmcp-project/blueprints>
 
 ## Source Code
 
-* <https://github.tools.sap/cloud-orchestration/mcp-blueprint-building-blocks>
+* <https://github.com/openmcp-project/blueprint-building-blocks>
 * <https://marketplace.upbound.io/providers/upbound/provider-aws-iam/>
 * <https://docs.upbound.io/providers/>
 * <https://docs.upbound.io/providers/provider-families/>
