@@ -6,11 +6,9 @@
 
 A Helm Chart to create dynamically SAP BTP Services instances and bindings.
 
-**Homepage:** <https://pages.github.tools.sap/cloud-orchestration/>
-
 ## Source Code
 
-* <https://github.tools.sap/cloud-orchestration/mcp-blueprint-building-blocks>
+* <https://github.com/openmcp-project/blueprint-building-blocks>
 * <https://github.com/SAP/sap-btp-service-operator>
 
 ## Requirements
