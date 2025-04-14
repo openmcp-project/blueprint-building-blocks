@@ -2,15 +2,15 @@
 
 # external-secrets-config
 
-![Version: 0.1.7](https://img.shields.io/badge/Version-0.1.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.10.0](https://img.shields.io/badge/AppVersion-0.10.0-informational?style=flat-square)
+![Version: 0.1.8](https://img.shields.io/badge/Version-0.1.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.10.0](https://img.shields.io/badge/AppVersion-0.10.0-informational?style=flat-square)
 
 A Helm Chart to template external-secrets.io manifests to sync credentials from remote vault (e.g. SAP HashiCorp Vault).
 
-**Homepage:** <https://github.tools.sap/cloud-orchestration/mcp-blueprints>
+**Homepage:** <https://github.com/openmcp-project/blueprints>
 
 ## Source Code
 
-* <https://github.tools.sap/cloud-orchestration/mcp-blueprint-building-blocks>
+* <https://github.com/openmcp-project/blueprint-building-blocks>
 * <https://external-secrets.io>
 
 ## Values
@@ -38,9 +38,9 @@ A Helm Chart to template external-secrets.io manifests to sync credentials from 
 | clusterSecretStores[0].provider.vault.auth.appRole.roleId | string | `""` | *(optional)* [roleId](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultAppRole) configured in the App Role authentication backend when setting up the authentication backend in Vault. |
 | clusterSecretStores[0].provider.vault.auth.appRole.secretRef.key | string | `""` | [`type SecretKeySelector `](https://pkg.go.dev/github.com/external-secrets/external-secrets/apis/meta/v1#SecretKeySelector) |
 | clusterSecretStores[0].provider.vault.auth.appRole.secretRef.name | string | `""` | [`type SecretKeySelector `](https://pkg.go.dev/github.com/external-secrets/external-secrets/apis/meta/v1#SecretKeySelector) |
-| clusterSecretStores[0].provider.vault.namespace | string | `""` | *(optional)* Name of the [vault namespace](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultProvider). Namespaces is a set of features within Vault Enterprise that allows Vault environments to support Secure Multi-tenancy. e.g: “ns1”. More about namespaces can be found here https://www.vaultproject.io/docs/enterprise/namespaces. E.g. s4/ketos |
+| clusterSecretStores[0].provider.vault.namespace | string | `""` | *(optional)* Name of the [vault namespace](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultProvider). Namespaces is a set of features within Vault Enterprise that allows Vault environments to support Secure Multi-tenancy. e.g: “ns1”. More about namespaces can be found here https://www.vaultproject.io/docs/enterprise/namespaces. E.g. "ns1" |
 | clusterSecretStores[0].provider.vault.path | string | `""` | *(optional)* [Path](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultProvider) is the mount path of the Vault KV backend endpoint, e.g: “secret”. The v2 KV secret engine version specific “/data” path suffix for fetching secrets from Vault is optional and will be appended if not present in specified path. |
-| clusterSecretStores[0].provider.vault.server | string | `""` | [Server](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultProvider) is the connection address for the Vault server, e.g: "https://vault.tools.sap/". |
+| clusterSecretStores[0].provider.vault.server | string | `"https://vault.example/"` | [Server](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultProvider) is the connection address for the Vault server, e.g: "https://vault.example/". |
 | clusterSecretStores[0].provider.vault.version | string | `"v2"` | [Version](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultProvider) is the Vault KV secret engine version. This can be either “v1” or “v2”. Version defaults to “v2”. |
 | credentials[0].data | list | `[]` | *(optional)* [data](https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/secret-v1/) *(map[string][]byte)* Data contains the secret data. Each key must consist of alphanumeric characters, '-', '_' or '.'. The serialized form of the secret data is a base64 encoded string, representing the arbitrary (possibly non-string) data value here. Described in https://tools.ietf.org/html/rfc4648#section-4 |
 | credentials[0].name | string | `""` | defines k8s `metadata.name` value of `kind: Secret` |
@@ -52,7 +52,7 @@ A Helm Chart to template external-secrets.io manifests to sync credentials from 
 | externalSecret[0].creationPolicy | string | `""` | *(optional)* CreationPolicy defines rules on how to create the resulting Secret Defaults to ‘Owner’ |
 | externalSecret[0].data | list | [] | *(optional)* [Data](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.ExternalSecret) defines the connection between the Kubernetes Secret keys and the Provider data |
 | externalSecret[0].data[0].remoteRef | object | `{"key":"","property":""}` | [RemoteRef](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.ExternalSecretData) points to the remote secret and defines which secret (version/property/..) to fetch. |
-| externalSecret[0].data[0].remoteRef.key | string | `""` | [Key](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.ExternalSecretDataRemoteRef) is the key used in the Provider, mandatory. E.g. "j4azdfnld24bts5.laasds.shoot.live.k8s-hana.ondemand.com/garden-ketos-co-sa-mcp-test" |
+| externalSecret[0].data[0].remoteRef.key | string | `""` | [Key](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.ExternalSecretDataRemoteRef) is the key used in the Provider, mandatory. E.g. "btp-endpoint.example/btp-account" |
 | externalSecret[0].data[0].remoteRef.property | string | `""` | *(optional)* Used to select a [specific property](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.ExternalSecretDataRemoteRef) of the Provider value (if a map), if supported. E.g. "kubeconfig" |
 | externalSecret[0].deletionPolicy | string | `""` | *(optional)* DeletionPolicy defines rules on how to delete the resulting Secret Defaults to ‘Retain’ |
 | externalSecret[0].immutable | bool | `false` | *(optional)* Immutable defines if the final secret will be immutable |
@@ -82,9 +82,9 @@ A Helm Chart to template external-secrets.io manifests to sync credentials from 
 | secretStores[0].provider.vault.auth.appRole.roleId | string | `""` | *(optional)* [roleId](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultAppRole) configured in the App Role authentication backend when setting up the authentication backend in Vault. |
 | secretStores[0].provider.vault.auth.appRole.secretRef.key | string | `""` | [`type SecretKeySelector `](https://pkg.go.dev/github.com/external-secrets/external-secrets/apis/meta/v1#SecretKeySelector) |
 | secretStores[0].provider.vault.auth.appRole.secretRef.name | string | `""` | [`type SecretKeySelector `](https://pkg.go.dev/github.com/external-secrets/external-secrets/apis/meta/v1#SecretKeySelector) |
-| secretStores[0].provider.vault.namespace | string | `""` | *(optional)* Name of the [vault namespace](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultProvider). Namespaces is a set of features within Vault Enterprise that allows Vault environments to support Secure Multi-tenancy. e.g: “ns1”. More about namespaces can be found here https://www.vaultproject.io/docs/enterprise/namespaces. E.g. s4/ketos |
+| secretStores[0].provider.vault.namespace | string | `""` | *(optional)* Name of the [vault namespace](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultProvider). Namespaces is a set of features within Vault Enterprise that allows Vault environments to support Secure Multi-tenancy. e.g: “ns1”. More about namespaces can be found here https://www.vaultproject.io/docs/enterprise/namespaces. E.g. "ns1" |
 | secretStores[0].provider.vault.path | string | `""` | *(optional)* [Path](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultProvider) is the mount path of the Vault KV backend endpoint, e.g: “secret”. The v2 KV secret engine version specific “/data” path suffix for fetching secrets from Vault is optional and will be appended if not present in specified path. |
-| secretStores[0].provider.vault.server | string | `""` | [Server](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultProvider) is the connection address for the Vault server, e.g: "https://vault.tools.sap/". |
+| secretStores[0].provider.vault.server | string | `""` | [Server](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultProvider) is the connection address for the Vault server, e.g: "https://vault.example/". |
 | secretStores[0].provider.vault.version | string | `"v2"` | [Version](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultProvider) is the Vault KV secret engine version. This can be either “v1” or “v2”. Version defaults to “v2”. |
 
 ----------------------------------------------
