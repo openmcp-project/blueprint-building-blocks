@@ -6,12 +6,12 @@
 
 A Helm Chart to template crossplane API extensions compositions.
 
-**Homepage:** <https://github.tools.sap/cloud-orchestration/mcp-blueprints>
+**Homepage:** <https://github.com/openmcp-project/blueprints>
 
 ## Source Code
 
 * <https://docs.crossplane.io/latest/api/>
-* <https://github.tools.sap/cloud-orchestration/mcp-blueprint-building-blocks>
+* <https://github.com/openmcp-project/blueprint-building-blocks>
 
 ## Values
 
