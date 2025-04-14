@@ -6,11 +6,11 @@
 
 A Helm Chart to template crossplane provider "kind Provider" manifests to install crossplane family providers.
 
-**Homepage:** <https://github.tools.sap/cloud-orchestration/mcp-blueprints>
+**Homepage:** <https://github.com/openmcp-project/blueprints>
 
 ## Source Code
 
-* <https://github.tools.sap/cloud-orchestration/mcp-blueprint-building-blocks>
+* <https://github.com/openmcp-project/blueprint-building-blocks>
 * <https://docs.upbound.io/providers/>
 * <https://docs.upbound.io/providers/provider-families/>
 
