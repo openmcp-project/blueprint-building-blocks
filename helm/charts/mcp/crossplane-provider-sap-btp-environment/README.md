@@ -6,11 +6,11 @@
 
 A Helm Chart to template crossplane manifests to manage Cloud Foundry or BTP Kyma environments on BTP.
 
-**Homepage:** <https://github.tools.sap/cloud-orchestration/mcp-blueprints>
+**Homepage:** <https://github.com/openmcp-project/blueprints>
 
 ## Source Code
 
-* <https://github.tools.sap/cloud-orchestration/mcp-blueprint-building-blocks>
+* <https://github.com/openmcp-project/blueprint-building-blocks>
 * <https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp/environment.btp.sap.crossplane.io/cloudfoundryenvironment/v1alpha1>
 * <https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp/environment.btp.sap.crossplane.io/kymaenvironment/v1alpha1>
 
@@ -19,9 +19,25 @@ A Helm Chart to template crossplane manifests to manage Cloud Foundry or BTP Kym
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | cloudFoundryEnvironments | list | object | cloudFoundryEnvironments contains configuration of [cloudfoundry Environments](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp-account/environment.btp.sap.crossplane.io/cloudfoundryenvironment/v1alpha1). |
-| cloudFoundryEnvironments[0] | object | `{"btpSapCrossplaneProviderConfigRefName":"","cloudManagementRef":{"name":""},"forProvider":{"initialOrgManagers":["steffen.brunner@sap.com"],"landscape":""},"name":"","subaccountRef":{"name":""},"writeConnectionSecretToRef":[]}` | btpSapCrossplaneProviderConfigRefName defines crossplane provider configuration reference name (identifier) of a ...! |
+| cloudFoundryEnvironments[0] | object | `{"btpSapCrossplaneProviderConfigRefName":"","cloudManagementRef":{"name":""},"forProvider":{"initialOrgManagers":[""],"landscape":""},"name":"","subaccountRef":{"name":""},"writeConnectionSecretToRef":[]}` | btpSapCrossplaneProviderConfigRefName defines crossplane provider configuration reference name (identifier) of a ...! |
 | cloudFoundryEnvironments[0].writeConnectionSecretToRef | list | `[]` | *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)! |
-| kymaEnvironments | list | `[{"btpSapCrossplaneProviderConfigRefName":"","cloudManagementRef":{"name":""},"forProvider":{"administrators":["...@sap.com"],"autoScalerMax":3,"autoScalerMin":3,"machineType":"m5.xlarge","oidc":{"clientID":"<your client id>","groupsClaim":"groups","issuerURL":"https://<IAS host>.accounts400.ondemand.com","signingAlgs":["RS256"],"usernameClaim":"email","usernamePrefix":"-"},"parameters":null,"region":"eu-west-2"},"name":"","planName":"aws","subaccountRef":{"name":""},"writeConnectionSecretToRef":{"name":"demo-kyma-kubeconfig-local","namespace":"default"}}]` | https://pages.github.tools.sap/cloud-orchestration/docs/use-cases/workload_to_kyma |
+| kymaEnvironments[0].btpSapCrossplaneProviderConfigRefName | string | `""` |  |
+| kymaEnvironments[0].cloudManagementRef.name | string | `""` |  |
+| kymaEnvironments[0].forProvider.administrators[0] | string | `"...@sap.com"` |  |
+| kymaEnvironments[0].forProvider.autoScalerMax | int | `3` |  |
+| kymaEnvironments[0].forProvider.autoScalerMin | int | `3` |  |
+| kymaEnvironments[0].forProvider.machineType | string | `"m5.xlarge"` |  |
+| kymaEnvironments[0].forProvider.oidc.clientID | string | `"<your client id>"` |  |
+| kymaEnvironments[0].forProvider.oidc.groupsClaim | string | `"groups"` |  |
+| kymaEnvironments[0].forProvider.oidc.issuerURL | string | `"https://<IAS host>.accounts400.ondemand.com"` |  |
+| kymaEnvironments[0].forProvider.oidc.signingAlgs[0] | string | `"RS256"` |  |
+| kymaEnvironments[0].forProvider.oidc.usernameClaim | string | `"email"` |  |
+| kymaEnvironments[0].forProvider.oidc.usernamePrefix | string | `"-"` |  |
+| kymaEnvironments[0].forProvider.parameters | string | `nil` |  |
+| kymaEnvironments[0].forProvider.region | string | `"eu-west-2"` |  |
+| kymaEnvironments[0].name | string | `""` |  |
+| kymaEnvironments[0].planName | string | `"aws"` |  |
+| kymaEnvironments[0].subaccountRef.name | string | `""` |  |
 | kymaEnvironments[0].writeConnectionSecretToRef | object | `{"name":"demo-kyma-kubeconfig-local","namespace":"default"}` | *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)! |
 
 ----------------------------------------------
