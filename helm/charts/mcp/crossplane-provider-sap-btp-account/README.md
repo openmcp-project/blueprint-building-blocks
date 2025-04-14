@@ -10,7 +10,7 @@ A Helm chart to template crossplane manifests to manage SAP BTP resources.
 
 ## Source Code
 
-* <https://github.tools.sap/cloud-orchestration/mcp-blueprint-building-blocks>
+* <https://github.com/openmcp-project/blueprint-building-blocks>
 
 ## Values
 
