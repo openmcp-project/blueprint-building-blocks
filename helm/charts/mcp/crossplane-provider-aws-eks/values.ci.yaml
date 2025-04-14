@@ -9,6 +9,13 @@ clusters:
       crossplane.io/claim-namespace: dev-us
     annotations:
       crossplane.io/composition-resource-name: eks-cluster
+    ownerReferences:
+      - apiVersion: api.example/v1alpha1
+        blockOwnerDeletion: true
+        controller: true
+        kind: XEKSCluster
+        name: dev-us-ekscluster
+        uid: ""
     spec:
       deletionPolicy: ""
       forProvider:
@@ -35,6 +42,13 @@ nodeGroups:
       crossplane.io/claim-namespace: dev-us
     annotations:
       crossplane.io/composition-resource-name: eks-nodegroup
+    ownerReferences: 
+      - apiVersion: api.example/v1alpha1
+        blockOwnerDeletion: true
+        controller: true
+        kind: XEKSCluster
+        name: dev-us-ekscluster
+        uid: ""
     spec:
       deletionPolicy: ""
       forProvider:

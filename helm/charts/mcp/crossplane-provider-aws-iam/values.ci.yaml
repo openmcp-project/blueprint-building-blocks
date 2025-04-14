@@ -8,7 +8,14 @@ roles:
     crossplane.io/composite: dev-us-ekscluster
     crossplane.io/claim-namespace: dev-us
   annotations:
-    crossplane.io/composition-resource-name: role   
+    crossplane.io/composition-resource-name: role
+  ownerReferences:
+    - apiVersion: api.example/v1alpha1
+      blockOwnerDeletion: true
+      controller: true
+      kind: XEKSCluster
+      name: dev-us-ekscluster
+      uid: ""    
   spec:
     deletionPolicy: ""
     forProvider:
@@ -36,6 +43,13 @@ rolePolicyAttachments:
     crossplane.io/claim-namespace: dev-us
   annotations:
     crossplane.io/composition-resource-name: rolePolicyAttachment
+  ownerReferences:
+    - apiVersion: api.example/v1alpha1
+      blockOwnerDeletion: true
+      controller: true
+      kind: XEKSCluster
+      name: dev-us-ekscluster
+      uid: ""
   spec:
     deletionPolicy: ""
     forProvider:

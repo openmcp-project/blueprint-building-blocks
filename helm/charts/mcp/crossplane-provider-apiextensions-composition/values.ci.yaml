@@ -3,8 +3,61 @@
 ###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
 ########################################################################################################################
 compositions:
+- name: "nosqls.aws.api.example" 
+  spec:
+    compositeTypeRef:
+      apiVersion: aws.api.example/v1alpha1
+      kind: NoSQL
+    resources:
+      - name: s3Bucket
+        base:
+          apiVersion: s3.aws.upbound.io/v1beta1
+          kind: Bucket
+          metadata:
+            name: basic-bucket
+          spec:
+            forProvider:
+              region: us-east-2
+            providerConfigRef:
+              name: default
+        patches:
+          - type: FromCompositeFieldPath
+            fromFieldPath: "spec.location"
+            toFieldPath: "spec.forProvider.region"
+            transforms:
+              - type: map
+                map:
+                  EU: "eu-north-1"
+                  US: "us-east-2"
+      - name: dynamoDB
+        base:
+          apiVersion: dynamodb.aws.upbound.io/v1beta1
+          kind: Table
+          metadata:
+            name: nosql-database
+          spec:
+            forProvider:
+              region: "us-east-2"
+              writeCapacity: 1
+              readCapacity: 1
+              attribute:
+                - name: S3ID
+                  type: S
+              hashKey: S3ID
+        patches:
+          - type: FromCompositeFieldPath
+            fromFieldPath: "spec.location"
+            toFieldPath: "spec.forProvider.region"
+            transforms:
+              - type: map
+                map:
+                  EU: "eu-north-1"
+                  US: "us-east-2"
 - name: "eks-cluster" 
   spec:
+    compositeTypeRef:
+      apiVersion: api.example/v1alpha1
+      kind: XEKSCluster
     mode: "Pipeline"
     writeConnectionSecretsToNamespace: "crossplane-system"
     pipeline:
@@ -393,6 +446,9 @@ compositions:
         step: patch-and-transform
 - name: "vpc" 
   spec:
+    compositeTypeRef:
+      apiVersion: api.example/v1alpha1
+      kind: XVPC
     mode: "Pipeline"
     pipeline:
     - step: compose-resources
@@ -425,6 +481,9 @@ compositions:
                 name: {{ $tenantAwsProviderConfigRef }}
 - name: "rdsinstance" 
   spec:
+    compositeTypeRef:
+      apiVersion: api.example/v1alpha1
+      kind: XRDSInstance
     mode: "Pipeline"
     pipeline:
     - step: compose-resources
@@ -474,5 +533,271 @@ compositions:
                 namespace: {{ $claimNamespace }}
               providerConfigRef:
                 name: {{ $tenantAwsProviderConfigRef }}
-
+- name: "eksnetwork.api.example" 
+  spec:
+    compositeTypeRef:
+      apiVersion: api.example/v1alpha1
+      kind: XEKSNetwork
+    mode: "Pipeline"
+    pipeline:
+      - step: compose-resources
+        functionRef:
+          name: go-templating
+        input:
+          apiVersion: gotemplating.fn.crossplane.io/v1beta1
+          kind: GoTemplate
+          source: Inline
+          inline:
+            template: |
+              {{ $claimNamespace := index $.observed.composite.resource.metadata.labels "crossplane.io/claim-namespace" }}
+              {{ $tenantAwsProviderConfigRef := printf "%s-aws" $claimNamespace }}
+              {{ $params := get .observed.composite.resource.spec "parameters" | default dict }}
+              ---
+              {{ $vpcResourceName := "vpc" }}
+              apiVersion: ec2.aws.upbound.io/v1beta1
+              kind: VPC
+              metadata:
+                labels:
+                  eksnetworks.api.example/network-id: {{ $params.id | toYaml }}
+                annotations:
+                  {{ setResourceNameAnnotation $vpcResourceName }}
+              spec:
+                forProvider:
+                  cidrBlock: {{ $params.vpcCidrBlock | toYaml }}
+                  enableDnsHostnames: true
+                  enableDnsSupport: true
+                  tags:
+                    Name: {{ printf "%s-%s" $params.id $vpcResourceName | toYaml }}
+                  region: {{ $params.region | toYaml }}
+                providerConfigRef:
+                  name: {{ $tenantAwsProviderConfigRef | toYaml }}
+              ---
+              {{ $igwResourceName := "internet-gateway" }}
+              apiVersion: ec2.aws.upbound.io/v1beta1
+              kind: InternetGateway
+              metadata:
+                labels:
+                  eksnetworks.api.example/network-id: {{ $params.id | toYaml }}
+                annotations:
+                  {{ setResourceNameAnnotation $igwResourceName }}
+              spec:
+                forProvider:
+                  region: {{ $params.region | toYaml }}
+                  tags:
+                    Name: {{ printf "%s-%s" $params.id $igwResourceName | toYaml }}
+                  vpcIdSelector:
+                    matchControllerRef: true
+                providerConfigRef:
+                  name: {{ $tenantAwsProviderConfigRef | toYaml }}
+              {{ $region := $params.region | toYaml }}
+              {{- range $i, $subnet := $params.subnets }}
+              ---
+              {{ $subnetResourceName := printf "subnet-%s-%s-%s" $subnet.availabilityZone $subnet.type (toString $i) }}
+              apiVersion: ec2.aws.upbound.io/v1beta1
+              kind: Subnet
+              metadata:
+                labels:
+                    zone: {{ $subnet.availabilityZone }}
+                    {{- if eq $subnet.type "private" }}
+                    access: private
+                    {{- else }}
+                    access: public
+                    {{- end }}
+                    eksnetworks.api.example/network-id: {{ $params.id | toYaml }}
+                annotations:
+                  {{ setResourceNameAnnotation $subnetResourceName }}
+              spec:
+                forProvider:
+                  cidrBlock: {{ $subnet.cidrBlock | toYaml }}
+                  {{ if eq $subnet.type "public" }}
+                  mapPublicIpOnLaunch: true
+                  {{ end }}
+                  tags:
+                  {{- if eq $subnet.type "private" }}
+                    kubernetes.io/role/internal-elb: "1"
+                  {{- else }}
+                    kubernetes.io/role/elb: "1"
+                  {{- end }}
+                    Name: {{ printf "%s-%s" $params.id $subnetResourceName | toYaml }}
+                  region: {{ $region }}
+                  vpcIdSelector:
+                    matchControllerRef: true
+                  availabilityZone: {{ $subnet.availabilityZone | toYaml }}
+                providerConfigRef:
+                  name: {{ $tenantAwsProviderConfigRef | toYaml }}
+              {{- end }}
+              ---
+              {{ $routeTableResourceName := "route-table" }}
+              apiVersion: ec2.aws.upbound.io/v1beta1
+              kind: RouteTable
+              metadata:
+                labels:
+                  eksnetworks.api.example/network-id: {{ $params.id | toYaml }}
+                annotations:
+                  {{ setResourceNameAnnotation $routeTableResourceName }}
+              spec:
+                forProvider:
+                  vpcIdSelector:
+                    matchControllerRef: true
+                  region: {{ $params.region | toYaml }}
+                  tags:
+                    Name: {{ printf "%s-%s" $params.id $routeTableResourceName | toYaml }}
+                providerConfigRef:
+                  name: {{ $tenantAwsProviderConfigRef | toYaml }}
+              ---
+              {{ $publicRouteResourceName := "public-route" }}
+              apiVersion: ec2.aws.upbound.io/v1beta1
+              kind: Route
+              metadata:
+                labels:
+                  eksnetworks.api.example/network-id: {{ $params.id | toYaml }}
+                annotations:
+                  {{ setResourceNameAnnotation $publicRouteResourceName }}
+              spec:
+                forProvider:
+                  destinationCidrBlock: 0.0.0.0/0
+                  gatewayIdSelector:
+                    matchControllerRef: true
+                  routeTableIdSelector:
+                    matchControllerRef: true
+                  region: {{ $params.region | toYaml }}
+                providerConfigRef:
+                  name: {{ $tenantAwsProviderConfigRef | toYaml }}
+              ---
+              {{ $mainRouteTableAssociationResourceName := "main-route-table-association" }}
+              apiVersion: ec2.aws.upbound.io/v1beta1
+              kind: MainRouteTableAssociation
+              metadata:
+                labels:
+                  eksnetworks.api.example/network-id: {{ $params.id | toYaml }}
+                annotations:
+                  {{ setResourceNameAnnotation $mainRouteTableAssociationResourceName }}
+              spec:
+                forProvider:
+                  region: {{ $params.region | toYaml }}
+                  routeTableIdSelector:
+                    matchControllerRef: true
+                  vpcIdSelector:
+                    matchControllerRef: true
+                providerConfigRef:
+                  name: {{ $tenantAwsProviderConfigRef | toYaml }}
+              {{- range $i, $subnet := $params.subnets }}
+              ---
+              {{ $routeTableAssociationResourceName := printf "route-table-association-%s-%s-%s" $subnet.availabilityZone $subnet.type (toString $i) }}
+              apiVersion: ec2.aws.upbound.io/v1beta1
+              kind: RouteTableAssociation
+              metadata:
+                labels:
+                  eksnetworks.api.example/network-id: {{ $params.id | toYaml }}
+                annotations:
+                  {{ setResourceNameAnnotation $routeTableAssociationResourceName }}
+              spec:
+                forProvider:
+                  region: {{ $region }}
+                  routeTableIdSelector:
+                    matchControllerRef: true
+                  subnetIdSelector:
+                    matchControllerRef: true
+                    matchLabels:
+                      {{- if eq $subnet.type "private" }}
+                      access: private
+                      {{- else }}
+                      access: public
+                      {{- end }}
+                      zone: {{ $subnet.availabilityZone | toYaml }}
+                providerConfigRef:
+                  name: {{ $tenantAwsProviderConfigRef | toYaml }}
+              {{- end }}
+              ---
+              {{ $sgResourceName := "security-group" }}
+              apiVersion: ec2.aws.upbound.io/v1beta1
+              kind: SecurityGroup
+              metadata:
+                labels:
+                  eksnetworks.api.example/network-id: {{ $params.id | toYaml }}
+                annotations:
+                  {{ setResourceNameAnnotation $sgResourceName }}
+              spec:
+                forProvider:
+                  description: Allow access to databases
+                  name: {{ printf "%s-%s" $params.id $sgResourceName | toYaml }}
+                  vpcIdSelector:
+                    matchControllerRef: true
+                  region: {{ $params.region | toYaml }}
+                  tags:
+                    Name: {{ printf "%s-%s" $params.id $sgResourceName | toYaml }}
+                providerConfigRef:
+                  name: {{ $tenantAwsProviderConfigRef | toYaml }}
+              ---
+              {{ $sgrpRulePostGresResourceName := "security-group-rule-postgres" }}
+              apiVersion: ec2.aws.upbound.io/v1beta1
+              kind: SecurityGroupRule
+              metadata:
+                labels:
+                  eksnetworks.api.example/network-id: {{ $params.id | toYaml }}
+                annotations:
+                  {{ setResourceNameAnnotation $sgrpRulePostGresResourceName }}
+              spec:
+                forProvider:
+                  cidrBlocks:
+                    - 192.168.0.0/16
+                  description: Everywhere
+                  fromPort: 5432
+                  protocol: tcp
+                  securityGroupIdSelector:
+                    matchControllerRef: true
+                  toPort: 5432
+                  type: ingress
+                  region: {{ $params.region | toYaml }}
+                providerConfigRef:
+                  name: {{ $tenantAwsProviderConfigRef | toYaml }}
+              ---
+              {{ $sgrpRuleMySQLResourceName := "security-group-rule-mysql" }}
+              apiVersion: ec2.aws.upbound.io/v1beta1
+              kind: SecurityGroupRule
+              metadata:
+                labels:
+                  eksnetworks.api.example/network-id: {{ $params.id | toYaml }}
+                annotations:
+                  {{ setResourceNameAnnotation $sgrpRuleMySQLResourceName }}
+              spec:
+                forProvider:
+                  cidrBlocks:
+                    - 192.168.0.0/16
+                  description: Everywhere
+                  fromPort: 3306
+                  protocol: tcp
+                  securityGroupIdSelector:
+                    matchControllerRef: true
+                  toPort: 3306
+                  type: ingress
+                  region: {{ $params.region | toYaml }}
+                providerConfigRef:
+                  name: {{ $tenantAwsProviderConfigRef | toYaml }}
+      - step: set-xr-status
+        functionRef:
+          name: go-templating
+        input:
+          apiVersion: gotemplating.fn.crossplane.io/v1beta1
+          kind: GoTemplate
+          source: Inline
+          inline:
+            template: |
+              {{ $observedResources := get .observed "resources" | default dict }}
+              {{ $params := get .observed.composite.resource.spec "parameters" | default dict }}
+              {{ $vpcStatus := dig "vpc" "resource" "status" dict $observedResources }}
+              {{ $subnetsStatus := dict }}
+              {{ range $i, $subnet := $params.subnets }}
+                {{ $subnetResourceName := printf "subnet-%s-%s-%s" $subnet.availabilityZone $subnet.type (toString $i) }}
+                {{ $subnetStatuses := dig $subnetResourceName "resource" "status" dict $observedResources }}
+                {{ $subnetsStatus = merge $subnetsStatus (dict $subnetResourceName $subnetStatuses) }}
+              {{ end }}
+              apiVersion: api.example/v1alpha1
+              kind: XEKSNetwork
+              status:
+                vpc: {{ $vpcStatus | toYaml | nindent 4 }}
+                subnets: {{ $subnetsStatus | toYaml | nindent 4 }}
+      - step: automatically-detect-ready-composed-resources
+        functionRef:
+          name: auto-ready
 ########################################################################################################################
