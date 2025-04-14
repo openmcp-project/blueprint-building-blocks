@@ -6,6 +6,10 @@
 
 A Helm chart to template crossplane manifests to request kubeconfigs of existing Gardener Shoots.
 
+## Source Code
+
+* <https://github.com/openmcp-project/blueprint-building-blocks>
+
 ## Values
 
 | Key | Type | Default | Description |
