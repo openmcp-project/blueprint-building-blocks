@@ -7,7 +7,7 @@ metadata:
   namespace: default
   labels:
     openmcp.cloud/blueprint-building-block: "sap-btp-services"
-    openmcp.cloud/blueprint-building-block-version: "0.0.9"
+    openmcp.cloud/blueprint-building-block-version: "0.0.10"
 spec:
   serviceInstanceName: ketos-op-cluster-ias
   secretName: btp-ias
