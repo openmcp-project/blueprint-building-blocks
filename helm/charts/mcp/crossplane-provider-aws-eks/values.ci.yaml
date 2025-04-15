@@ -21,7 +21,7 @@ clusters:
       forProvider:
         region: us-west-2
         roleArn: arn:aws:iam::XXXX:role/DEV-EKS-Cluster-Role
-        version: "1.29"
+        version: "1.30"
         vpcConfig:
           - endpointPrivateAccess: false
             endpointPublicAccess: true
