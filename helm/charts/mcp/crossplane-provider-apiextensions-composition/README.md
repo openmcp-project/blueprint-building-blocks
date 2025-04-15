@@ -28,7 +28,7 @@ A Helm Chart to template crossplane API extensions compositions.
 | compositions[0].spec.pipeline | list | `[]` |  |
 | compositions[0].spec.resources | list | `[]` |  |
 | compositions[0].spec.writeConnectionSecretToRef | list | `[]` | *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)! |
-| compositions[0].spec.writeConnectionSecretsToNamespace | string | `""` |  |
+| compositions[0].spec.writeConnectionSecretsTonamespace | string | `"ns1"` |  |
 | defaults | list | `[]` |  |
 
 ----------------------------------------------
