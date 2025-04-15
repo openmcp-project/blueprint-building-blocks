@@ -17,7 +17,7 @@ All [Helm Charts](http://helm.sh) located in this repository will be [automatica
 
 ### [Github Workflows](#github-workflows)
 #### [`PR Status Checks`](#github-workflow-git-pr-status-checks)
-More details see Github Workflow [`.github/workflows/git-pr-status-checks.yml`](https://github.com/openmcp-project/blueprint-workflows/tree/main/.github/workflows/git-pr-status-checks.yml) of [mcp-blueprint-gh-actions](https://github.com/openmcp-project/blueprint-workflows/tree/main/)
+More details see Github Workflow [`.github/workflows/git-pr-status-checks.yml`](https://github.com/openmcp-project/blueprint-workflows/tree/main/.github/workflows/git-pr-status-checks.yml) of [blueprint-workflows](https://github.com/openmcp-project/blueprint-workflows/tree/main/)
 
 #### [`.ci.config.yaml`](#github-workflow-ci-config-yaml)
 
