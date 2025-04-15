@@ -10,7 +10,7 @@ gitRepositorys:
   # gitRepositorys[0].name -- defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: GitRepository`
   - name: ""
     # -- *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: GitRepository`
-    namespace: ""
+    namespace: "ns1"
     # spec -- defines k8s `spec` structured value of `kind: GitRepository`. See [API broswer](https://fluxcd.io/flux/components/source/api/v1/#source.toolkit.fluxcd.io/v1.GitRepositorySpec)
     spec:
       # -- [Interval](https://fluxcd.io/flux/components/source/api/v1/#source.toolkit.fluxcd.io/v1.GitRepositorySpec) at which the GitRepository URL is checked for updates. This interval is approximate and may be subject to jitter to ensure efficient use of resources.
@@ -29,9 +29,9 @@ gitRepositorys:
       # gitRepositorys[0].kustomizations[0].name -- defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: Kustomization` e.g. "co-helm-charts-blueprint"
       - name: ""
         # -- *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: Kustomization`
-        namespace: ""
+        namespace: "ns1"
         # -- *(optional)* targetNamespace defines the namespace in the `kind: Kustomization` manifests.
-        targetNamespace: ""
+        targetnamespace: "ns1"
         # -- The [interval](https://fluxcd.io/flux/components/kustomize/api/v1/#kustomize.toolkit.fluxcd.io/v1.KustomizationSpec) at which to reconcile the Kustomization. This interval is approximate and may be subject to jitter to ensure efficient use of resources. E.g. 10s
         interval: 
         # -- *(optional)* [Path](https://fluxcd.io/flux/components/kustomize/api/v1/#kustomize.toolkit.fluxcd.io/v1.KustomizationSpec) to the directory containing the kustomization.yaml file, or the set of plain YAMLs a kustomization.yaml should be generated for. Defaults to ‘None’, which translates to the root path of the SourceRef. e.g. "./manifests/mcps/j4azdfnld24bts5.laasds.shoot.live.k8s-hana.ondemand.com"
@@ -78,9 +78,9 @@ kustomizations:
   # kustomizations[0].name -- defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: Kustomization` e.g. "co-helm-charts-blueprint"
   - name: ""
     # -- *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: Kustomization`
-    namespace: ""
+    namespace: "ns1"
     # -- *(optional)* targetNamespace defines the namespace in the `kind: Kustomization` manifests.
-    targetNamespace: ""
+    targetnamespace: "ns1"
     # -- The [interval](https://fluxcd.io/flux/components/kustomize/api/v1/#kustomize.toolkit.fluxcd.io/v1.KustomizationSpec) at which to reconcile the Kustomization. This interval is approximate and may be subject to jitter to ensure efficient use of resources. E.g. 10s
     interval: 
     # -- *(optional)* [Path](https://fluxcd.io/flux/components/kustomize/api/v1/#kustomize.toolkit.fluxcd.io/v1.KustomizationSpec) to the directory containing the kustomization.yaml file, or the set of plain YAMLs a kustomization.yaml should be generated for. Defaults to ‘None’, which translates to the root path of the SourceRef. e.g. "./manifests/mcps/j4azdfnld24bts5.laasds.shoot.live.k8s-hana.ondemand.com"
@@ -98,7 +98,7 @@ kustomizations:
       # -- string	Name of the referent.
       name: ""
       # -- string	(Optional) Namespace of the referent, defaults to the namespace of the Kubernetes resource object that contains the reference.
-      namespace: ""
+      namespace: "ns1"
     # -- [dependsOn](https://fluxcd.io/flux/components/kustomize/kustomizations/#dependencies) is an *(optional)*list used to refer to other Kustomization objects that the Kustomization depends on. If specified, then the Kustomization is only applied after the referred Kustomizations are ready, i.e. have the Ready condition marked as True. The readiness state of a Kustomization is determined by its last applied status condition.
     dependsOn: {}
     # -- [healthChecks](https://fluxcd.io/flux/components/kustomize/kustomizations/#health-checks) is an *(optional)*list used to refer to resources for which the controller will perform health checks used to determine the rollout status of deployed workloads and the Ready status of custom resources.
@@ -137,7 +137,7 @@ credentials:
   # credentials[0].name -- defines k8s `metadata.name` value of `kind: Secret`
   - name: ""
     # -- *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: Secret`
-    namespace: ""
+    namespace: "ns1"
     # -- *(optional)* [stringData](https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/secret-v1/) *(map[string]string)* allows specifying non-binary secret data in string form. It is provided as a write-only input field for convenience. All keys and values are merged into the data field on write, overwriting any existing values. The stringData field is never output when reading from the API.
     stringData: []
     # -- *(optional)* [data](https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/secret-v1/) *(map[string][]byte)* Data contains the secret data. Each key must consist of alphanumeric characters, '-', '_' or '.'. The serialized form of the secret data is a base64 encoded string, representing the arbitrary (possibly non-string) data value here. Described in https://tools.ietf.org/html/rfc4648#section-4

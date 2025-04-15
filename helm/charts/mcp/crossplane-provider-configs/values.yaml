@@ -104,7 +104,7 @@ providerConfigs:
         # -- Required origin URL of the Vault server. This is a URL with a scheme, a hostname and a port but with no path.
         address: ""
         # -- Set the namespace to use.
-        namespace: ""
+        namespace: "ns1"
         # -- Set this to true to disable creation of an intermediate ephemeral Vault token for Terraform to use. Enabling this is strongly discouraged since it increases the potential for a renewable Vault token being exposed in clear text. Only change this setting when the provided token cannot be permitted to create child tokens and there is no risk of exposure from the output of Terraform.
         skip_child_token:
         # -- Credentials required to authenticate to this provider. There are many options to authenticate. They include - token - (Optional) Vault token that will be used by Terraform to authenticate. May be set via the VAULT_TOKEN environment variable. If none is otherwise supplied, Terraform will attempt to read it from ~/.vault-token (where the vault command stores its current token). Terraform will issue itself a new token that is a child of the one given, with a short TTL to limit the exposure of any requested secrets, unless skip_child_token is set to true (see below). Note that the given token must have the update capability on the auth/token/create path in Vault in order to create child tokens. A token is required for the provider. A token can explicitly set via token argument, alternatively a token can be dynamically set via an auth_login* block.
@@ -115,7 +115,7 @@ providerConfigs:
           # @default -- []
           secretRef:
             name: ""
-            namespace: ""
+            namespace: "ns1"
             key: ""
   ########################################################################################################################
   # -- creates k8s manifest `kind: ProviderConfig` of `apiVersion: btp.sap.crossplane.io`
@@ -159,7 +159,7 @@ secrets:
   # secrets[0].name -- defines k8s `metadata.name` value of `kind: Secret`
   - name: ""
     # -- *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: Secret`
-    namespace: ""
+    namespace: "ns1"
     # -- *(optional)* [stringData](https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/secret-v1/) *(map[string]string)* allows specifying non-binary secret data in string form. It is provided as a write-only input field for convenience. All keys and values are merged into the data field on write, overwriting any existing values. The stringData field is never output when reading from the API.
     # @default -- []
     stringData: []

@@ -12,7 +12,7 @@ compositions:
     ownerReferences: []      
     spec:
       mode: ""
-      writeConnectionSecretsToNamespace: ""
+      writeConnectionSecretsTonamespace: "ns1"
       compositeTypeRef: []
       environment: []
       patchSets: []

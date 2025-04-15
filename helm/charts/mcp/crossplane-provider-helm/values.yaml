@@ -18,7 +18,7 @@ helmReleases:
       # -- [Version](https://github.com/crossplane-contrib/provider-helm/blob/master/apis/release/v1beta1/types.go) of Helm chart, late initialized with latest version if not set
       version: ""
     # --  [Namespace]() to install the release into.
-    namespace: ""
+    namespace: "ns1"
     # -- define [value overrides](https://github.com/crossplane/crossplane/blob/master/design/one-pager-helm-provider.md#value-overrides). [example](https://github.com/crossplane-contrib/provider-helm/blob/master/examples/sample/release.yaml).
     values: []
     # -- define [value overrides](https://github.com/crossplane/crossplane/blob/master/design/one-pager-helm-provider.md#value-overrides). [example](https://github.com/crossplane-contrib/provider-helm/blob/master/examples/sample/release.yaml).
