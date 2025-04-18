@@ -86,34 +86,34 @@ externalSecret:
     data:
       - secretKey: kubeconfig
         remoteRef:
-          key: "j4azdf.laasds.shoot.live.k8s-hana.ondemand.com/garden-ketos-co-sa-mcp-test"
+          key: "j4azdf.laasds.shoot.live.k8s-hana.ondemand.com/garden-openmcp-test"
           property: kubeconfig
-  - name: "garden-ketos-co-sa-mcp-test-2"
+  - name: "garden-openmcp-test-2"
     namespace: "default"
     refreshInterval: "15m"
-    targetSecretName: garden-ketos-co-sa-mcp-test-2
+    targetSecretName: garden-openmcp-test-2
     secretStore:
       name: "hashicorp-vault"
     data:
       - secretKey: kubeconfig
         remoteRef:
-          key: "j4azdf.laasds.shoot.live.k8s-hana.ondemand.com/garden-ketos-co-sa-mcp-test"
+          key: "j4azdf.laasds.shoot.live.k8s-hana.ondemand.com/garden-openmcp-test"
           property: kubeconfig
-  - name: "btp-account-ketos-kita-test"
+  - name: "btp-account-openmcp-test"
     namespace: "default"
     refreshInterval: "15m"
-    targetSecretName: btp-account-ketos-kita-test
+    targetSecretName: btp-account-openmcp-test
     secretStore:
       name: "hashicorp-vault-cluster-store"
       kind: "ClusterSecretStore"
     data:
       - secretKey: btp-cis-provider-credentials
         remoteRef:
-          key: "j4azdf.laasds.shoot.live.k8s-hana.ondemand.com/btp-accounts-ketos-kita-test"
+          key: "j4azdf.laasds.shoot.live.k8s-hana.ondemand.com/btp-accounts-openmcp-test"
           property: btp-cis-provider-credentials
       - secretKey: btp-service-account-provider-credentials
         remoteRef:
-          key: "j4azdf.laasds.shoot.live.k8s-hana.ondemand.com/btp-accounts-ketos-kita-test"
+          key: "j4azdf.laasds.shoot.live.k8s-hana.ondemand.com/btp-accounts-openmcp-test"
           property: btp-service-account-provider-credentials
 ########################################################################################################################
 pushSecrets:

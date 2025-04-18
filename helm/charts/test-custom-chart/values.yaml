@@ -6,7 +6,7 @@ sap-btp-services:
   - name: "identityApplication"
     namespace: "default"
     instance:
-      name: "ketos-op-cluster-ias"
+      name: "openmcp-op-cluster-ias"
       serviceOfferingName: "identity"
       servicePlanName: "application"
       parameters:
@@ -20,7 +20,7 @@ sap-btp-services:
         multi-tenant: true
         xsuaa-cross-consumption: true
     bindings:
-      - name: "ketos-op-cluster-ias"
+      - name: "openmcp-op-cluster-ias"
         secretName: "btp-ias"
         parameters:
           credential-type: SECRET

@@ -5,7 +5,7 @@ services:
   - name: "identityApplication"
     namespace: "default"
     instance:
-      name: "ketos-op-cluster-ias"
+      name: "openmcp-op-cluster-ias"
       serviceOfferingName: "identity"
       servicePlanName: "application"
       parameters:
@@ -19,7 +19,7 @@ services:
         multi-tenant: true
         xsuaa-cross-consumption: true
     bindings:
-      - name: "ketos-op-cluster-ias"
+      - name: "openmcp-op-cluster-ias"
         secretName: "btp-ias"
         parameters:
           credential-type: SECRET
@@ -189,7 +189,7 @@ services:
   - name: "cloudLoggingStandardOperationCluster"    
     namespace: "default"
     instance:
-      name: "ketos-op-cluster-cls"
+      name: "openmcp-op-cluster-cls"
       serviceOfferingName: "cloud-logging"
       servicePlanName: "standard"
       # -- cloud logging service config:  list of parameter:  https://pages.github.tools.sap/perfx/cloud-logging-service/consumption/service-configuration-parameters/
@@ -200,7 +200,7 @@ services:
         ingest_otlp:
           enabled: true
     bindings:
-      - name: "ketos-op-cluster-cls"
+      - name: "openmcp-op-cluster-cls"
         secretName: "btp-cls"
         parameters: {}
         credentialsRotationPolicy:
@@ -211,7 +211,7 @@ services:
   - name: "dynatraceEnvironmentOperationCluster"    
     namespace: "default"
     instance:
-      name: "ketos-op-cluster-dynatrace"
+      name: "openmcp-op-cluster-dynatrace"
       serviceOfferingName: "dynatrace"
       servicePlanName: "environment"
       parameters:
@@ -232,8 +232,8 @@ services:
         service_parameters:
           skiperrors: 'true'
     bindings:
-      - name: "ketos-op-cluster-dynatrace-provider"
-        secretName: "ketos-op-cluster-dynatrace-provider"
+      - name: "openmcp-op-cluster-dynatrace-provider"
+        secretName: "openmcp-op-cluster-dynatrace-provider"
         parameters:
           tokens:
             - name: apiToken
@@ -285,8 +285,8 @@ services:
           rotationFrequency: 2160h  #90 days
           rotatedBindingTTL: 48h
       - enable: true
-        name: "ketos-op-cluster-dynatrace-operator"
-        secretName: "ketos-op-cluster-dynatrace-operator"
+        name: "openmcp-op-cluster-dynatrace-operator"
+        secretName: "openmcp-op-cluster-dynatrace-operator"
         parameters:
           tokens:
             - name: apiToken

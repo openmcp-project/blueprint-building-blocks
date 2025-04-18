@@ -2,7 +2,7 @@
 ###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
 ########################################################################################################################
 kustomizations:
-  - name: nexus-cobalt-root-app
+  - name: chrome-hub-root-app
     namespace: "default"
     interval: "10s"
     path: "manifests/application/root"
@@ -106,7 +106,7 @@ kustomizations:
       kind: "GitRepository"
       name: "mcp-blueprint-building-blocks"
     dependsOn:
-    - name: nexus-cobalt-root-app
+    - name: chrome-hub-root-app
 ########################################################################################################################
 gitRepositorys:
   - name: "mcp-blueprint-building-blocks"

@@ -3,7 +3,7 @@
 apiVersion: services.cloud.sap.com/v1alpha1
 kind: ServiceInstance
 metadata:
-  name: ketos-op-cluster-ias
+  name: openmcp-op-cluster-ias
   namespace: default
   labels:
     openmcp.cloud/blueprint-building-block: "sap-btp-services"

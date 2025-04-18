@@ -24,7 +24,7 @@ A Helm chart to test github action and workflows. NOTHING MORE!
 |-----|------|---------|-------------|
 | sap-btp-services.services[0].name | string | `"identityApplication"` |  |
 | sap-btp-services.services[0].namespace | string | `"default"` |  |
-| sap-btp-services.services[0].instance.name | string | `"ketos-op-cluster-ias"` |  |
+| sap-btp-services.services[0].instance.name | string | `"openmcp-op-cluster-ias"` |  |
 | sap-btp-services.services[0].instance.serviceOfferingName | string | `"identity"` |  |
 | sap-btp-services.services[0].instance.servicePlanName | string | `"application"` |  |
 | sap-btp-services.services[0].instance.parameters.oauth2-configuration.redirect-uris[0] | string | `"https://*.../oauth2/callback"` |  |
@@ -34,7 +34,7 @@ A Helm chart to test github action and workflows. NOTHING MORE!
 | sap-btp-services.services[0].instance.parameters.display-name | string | `""` |  |
 | sap-btp-services.services[0].instance.parameters.multi-tenant | bool | `true` |  |
 | sap-btp-services.services[0].instance.parameters.xsuaa-cross-consumption | bool | `true` |  |
-| sap-btp-services.services[0].bindings[0].name | string | `"ketos-op-cluster-ias"` |  |
+| sap-btp-services.services[0].bindings[0].name | string | `"openmcp-op-cluster-ias"` |  |
 | sap-btp-services.services[0].bindings[0].secretName | string | `"btp-ias"` |  |
 | sap-btp-services.services[0].bindings[0].parameters.credential-type | string | `"SECRET"` |  |
 | sap-btp-services.services[0].bindings[0].credentialsRotationPolicy.enabled | bool | `true` |  |

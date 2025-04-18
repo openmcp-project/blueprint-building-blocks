@@ -1,4 +1,4 @@
-name: Git PR Status Checks
+name: PR Status Checks
 
 on:
   workflow_call: {}

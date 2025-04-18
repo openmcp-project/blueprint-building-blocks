@@ -67,36 +67,36 @@ providerConfigs:
           name: "name"
           key: kubeconfig
   accountBtpOrchestrateCloud:
-    - providerConfigRefName: "ketos-kita-test"
+    - providerConfigRefName: "openmcp-test"
       cliServerUrl: "cliServerUrl"
       globalAccountSubDomain: "globalAccountSubDomain"
       cisCredentials:
         source: "Secret"
         secretRef:
           namespace: default
-          name: "btp-account-ketos-kita-test"
+          name: "btp-account-openmcp-test"
           key: btp-cis-provider-credentials
       serviceAccountSecret:
         source: "Secret"
         secretRef:
           namespace: default
-          name: "btp-account-ketos-kita-test"
+          name: "btp-account-openmcp-test"
           key: btp-service-account-provider-credentials
   btpSapCrossplane:
-    - providerConfigRefName: "ketos-kita-test"
+    - providerConfigRefName: "openmcp-test"
       cliServerUrl: "cliServerUrl"
       globalAccountSubDomain: "globalAccountSubDomain"
       cisCredentials:
         source: "Secret"
         secretRef:
           namespace: default
-          name: "btp-account-ketos-kita-test"
+          name: "btp-account-openmcp-test"
           key: btp-cis-provider-credentials
       serviceAccountSecret:
         source: "Secret"
         secretRef:
           namespace: default
-          name: "btp-account-ketos-kita-test"
+          name: "btp-account-openmcp-test"
           key: btp-service-account-provider-credentials
   cloudfoundryBtpOrchestrateCloud:
     - providerConfigRefName: "cloudfoundryBtpOrchestrateCloud"
