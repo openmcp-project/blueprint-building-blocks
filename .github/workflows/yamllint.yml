@@ -7,7 +7,7 @@ on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   pull_request:
     branches:
-      - "main-not-activated-yet"
+      - "main-branch-not-activated-yet"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
