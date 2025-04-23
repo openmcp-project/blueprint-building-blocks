@@ -1,0 +1,40 @@
+{{- range $key, $kubernetesObject := .Values.kubernetesObjects}}
+  {{- if eq $key "kubernetesObject" }}
+  {{- else }}  
+---
+apiVersion: kubernetes.crossplane.io/v1alpha1
+kind: Object
+metadata:
+  name: {{required "A valid value is required! (.Values.kubernetesObjects[].kubernetesCrossplaneProviderConfigRefName)" $kubernetesObject.kubernetesCrossplaneProviderConfigRefName | lower }}-{{required "A valid value is required! (.Values.kubernetesObjects[].name)" $kubernetesObject.name | lower }}  
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+spec:
+  deletionPolicy: {{ $kubernetesObject.deletionPolicy | default $.Values.defaults.object.deletionPolicy| quote }}  
+  providerConfigRef:
+    name: {{required "A valid value is required! (.Values.kubernetesObjects[].kubernetesCrossplaneProviderConfigRefName)" $kubernetesObject.kubernetesCrossplaneProviderConfigRefName}}
+  forProvider:
+    manifest:
+      {{- required "A valid value is required! (.Values.kubernetesObjects[].manifest)" $kubernetesObject.manifest | toYaml | nindent 6 }}
+  {{- if $kubernetesObject.references}}
+  references:
+    {{- $kubernetesObject.references | toYaml | nindent 4 }}
+  {{- end }}
+  {{- if $kubernetesObject.managementPolicies}}
+  managementPolicies:
+    {{- $kubernetesObject.managementPolicies | toYaml | nindent 4 }}
+  {{- end }}
+  {{- if $kubernetesObject.writeConnectionSecretToRef}}
+  writeConnectionSecretToRef:
+    {{- $kubernetesObject.writeConnectionSecretToRef | toYaml | nindent 4 }}
+  {{- end }}
+  {{- if $kubernetesObject.readiness}}
+  readiness:
+    {{- $kubernetesObject.readiness | toYaml | nindent 4 }}
+  {{- end }}
+  {{- if $kubernetesObject.publishConnectionDetailsTo}}
+  publishConnectionDetailsTo:  
+    {{- $kubernetesObject.publishConnectionDetailsTo | toYaml | nindent 4 }}
+  {{- end }}
+  {{- end }}
+{{- end }}

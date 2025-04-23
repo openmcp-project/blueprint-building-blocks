@@ -1,0 +1,36 @@
+{{- range $key, $helmRelease := .Values.helmReleases }}
+  {{- if eq $key "helmRelease" }}
+  {{- else }}
+---
+apiVersion: helm.crossplane.io/v1beta1
+kind: Release
+metadata:
+  name: {{required "A valid value is required! (.Values.helmReleases[].helmCrossplaneProviderConfigRefName)" $helmRelease.helmCrossplaneProviderConfigRefName | lower }}-{{required "A valid value is required! (.Values.helmReleases[].name)" $helmRelease.name | lower }}  
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+spec:
+  providerConfigRef:
+    name: {{required "A valid value is required! (.Values.helmReleases[].helmCrossplaneProviderConfigRefName)" $helmRelease.helmCrossplaneProviderConfigRefName }}
+  # rollbackLimit: 3
+  forProvider:
+    chart: {{- toYaml $helmRelease.chart | nindent 6 }}
+    namespace: {{required "A valid value is required! (.Values.helmReleases[].namespace)" $helmRelease.namespace }}
+    #   insecureSkipTLSVerify: true/false
+    #   skipCreateNamespace: true/false
+    #   wait: true/false
+    #   skipCRDs: true/false
+  {{- if $helmRelease.values}}
+    values: {{- toYaml $helmRelease.values | nindent 6 }}
+  {{- end }}
+  {{- if $helmRelease.setValues }}
+    set: {{- toYaml $helmRelease.setValues | nindent 6 }}
+  {{- end }}
+  {{- if $helmRelease.valuesFrom }}
+    valuesFrom: {{- toYaml $helmRelease.valuesFrom | nindent 6 }}
+  {{- end }}
+  {{- if $helmRelease.connectionDetails}}
+    connectionDetails: {{- toYaml $helmRelease.connectionDetails | nindent 6 }}
+  {{- end }}
+  {{- end }}
+{{- end }}

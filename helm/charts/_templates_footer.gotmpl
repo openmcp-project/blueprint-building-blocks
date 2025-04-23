@@ -1,0 +1,9 @@
+{{/* 
+This file defines textblocks which are used by multiple README go templates.
+Use this command from ./helm/charts/ folder to programatically create README.md for every sub helm chart.
+$ helm-docs --template-files=./_templates.gotmpl --template-files=README.md.gotmpl --chart-search-root=.
+*/}}
+
+{{ template "chart.valuesSection" . }}
+
+{{ template "helm-docs.versionFooter" . }}

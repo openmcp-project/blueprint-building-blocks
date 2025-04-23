@@ -1,0 +1,48 @@
+---
+########################################################################################################################
+# -- helmReleases contains information and configuration of a [helm chart](https://helm.sh) to be managed by flux [Helm Controller](https://fluxcd.io/flux/components/helm/api/v2/).
+# @default -- object
+helmReleases:
+  # @default -- object
+  helmRelease:
+    # -- helm chart release name
+    name: ""    
+    # -- defines [crossplane provider config reference name](https://docs.crossplane.io/latest/concepts/providers/) reference configuration name. :exclamation::exclamation: Must match `providerConfigs.helmCrossplane[].providerConfigRefName` of `/helm/charts/mcp/crossplane-provider-configs/values.yaml` :exclamation::exclamation:
+    helmCrossplaneProviderConfigRefName: ""
+    # -- [ChartSpec](https://github.com/crossplane-contrib/provider-helm/blob/master/apis/release/v1beta1/types.go) defines the chart spec for a Release
+    chart:
+      # -- [Name](https://github.com/crossplane-contrib/provider-helm/blob/master/apis/release/v1beta1/types.go) of Helm chart, required if ChartSpec.URL not set
+      name: ""
+      # --  [Repository](https://github.com/crossplane-contrib/provider-helm/blob/master/apis/release/v1beta1/types.go): Helm repository URL, required if ChartSpec.URL not set
+      repository: ""
+      # -- [Version](https://github.com/crossplane-contrib/provider-helm/blob/master/apis/release/v1beta1/types.go) of Helm chart, late initialized with latest version if not set
+      version: ""
+    # --  [Namespace]() to install the release into.
+    namespace: "ns1"
+    # -- define [value overrides](https://github.com/crossplane/crossplane/blob/master/design/one-pager-helm-provider.md#value-overrides). [example](https://github.com/crossplane-contrib/provider-helm/blob/master/examples/sample/release.yaml).
+    values: []
+    # -- define [value overrides](https://github.com/crossplane/crossplane/blob/master/design/one-pager-helm-provider.md#value-overrides). [example](https://github.com/crossplane-contrib/provider-helm/blob/master/examples/sample/release.yaml).
+    setValues:
+    - name: param1
+      value: value2
+    # -- define value overrides via k8s [downward api](https://kubernetes.io/docs/concepts/workloads/pods/downward-api/). [example](https://github.com/crossplane-contrib/provider-helm/blob/master/examples/sample/release.yaml).
+    valuesFrom:
+    - configMapKeyRef:
+      key: values.yaml
+      name: default-vals
+      namespace: wordpress
+      optional: false
+    - secretKeyRef:
+      key: svalues.yaml
+      name: svals
+      namespace: wordpress
+      optional: false
+    # -- [Crossplane connection details](https://docs.crossplane.io/v1.12/concepts/composition/#connection-details) and [FAQ](https://blog.crossplane.io/faq-2-claim-connection-details/)
+    connectionDetails:
+    - apiVersion: v1
+      kind: Service
+      name: wordpress-example
+      namespace: wordpress
+      fieldPath: spec.clusterIP         
+      toConnectionSecretKey: ip
+########################################################################################################################

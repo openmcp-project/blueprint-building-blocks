@@ -1,0 +1,23 @@
+---
+#########################################################################################################
+### !!! FOLLOWING serviceS SHOULD NEVER BE ENABLED BY DEFAULT! USE THEM AS TEMPLATE FOR YOUR REMOTE CLUSTER CONFIG !!!
+#########################################################################################################
+services:
+  - name: ""    
+    namespace: "default"
+    instance:
+      name: "name"
+      serviceOfferingName: "serviceOfferingName"
+      servicePlanName: "servicePlanName"
+      parameters: |
+        parameters
+    bindings:
+      - name: ""
+        secretName: "secretName"
+        parameters:
+          credential-type: SECRET
+        credentialsRotationPolicy:
+          enabled: true
+          rotationFrequency: 1s
+          rotatedBindingTTL: 1s    
+##################################################################################

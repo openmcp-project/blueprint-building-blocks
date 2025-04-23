@@ -1,0 +1,50 @@
+---
+########################################################################################################################
+# -- cloudFoundryEnvironments contains configuration of [cloudfoundry Environments](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp-account/environment.btp.sap.crossplane.io/cloudfoundryenvironment/v1alpha1).
+# @default -- object
+cloudFoundryEnvironments:
+  # -- btpSapCrossplaneProviderConfigRefName defines crossplane provider configuration reference name (identifier) of a ...!
+  - btpSapCrossplaneProviderConfigRefName: ""
+    name: ""
+    forProvider:
+      initialOrgManagers:      
+      - ""
+      landscape: ""
+    cloudManagementRef:
+      name: "dev-eu01"
+    subaccountRef:
+      name: "dev-eu01"
+    # -- *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.
+    #   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)!
+    writeConnectionSecretToRef: []
+########################################################################################################################
+kymaEnvironments:
+  - btpSapCrossplaneProviderConfigRefName: ""
+    name: ""
+    forProvider:
+      parameters:
+      administrators:
+        - "...@sap.com"
+      autoScalerMax: 3
+      autoScalerMin: 3
+      machineType: "m5.xlarge"
+      oidc:
+        clientID: "<your client id>"        #i.e. applicatonId    
+        groupsClaim: "groups"               #i.e. name of group   
+        issuerURL: "https://<IAS host>.accounts400.ondemand.com"  
+        signingAlgs:
+          - "RS256"
+        usernameClaim: "email"
+        usernamePrefix: "-"
+      region: "eu-west-2"
+    planName: "aws"
+    cloudManagementRef:
+      name: "dev-eu01"
+    subaccountRef:
+      name: "dev-eu01"
+    # -- *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.
+    #   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)!
+    writeConnectionSecretToRef:
+      name: "demo-kyma-kubeconfig-local"
+      namespace: "default"
+########################################################################################################################

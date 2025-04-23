@@ -1,0 +1,37 @@
+{{- range $item := .Values.accessKeys}}
+  {{- if and ($item) (ne $item.name "") }}
+---
+apiVersion: iam.aws.upbound.io/v1beta1
+kind: AccessKey
+metadata:
+  name: {{required "A valid value is required! (.Values.accessKeys[].name)" $item.name | lower }}
+  {{- if $item.annotations}}
+  annotations:
+    {{- $item.annotations | toYaml | nindent 4 }}
+  {{- end }}
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+  {{- if $item.labels}}
+    {{- $item.labels | toYaml | nindent 4 }}
+  {{- end }}
+  {{- if $item.ownerReferences}}
+  ownerReferences:
+    {{- $item.ownerReferences | toYaml | nindent 4 }}  
+  {{- end }}
+spec:
+  deletionPolicy: {{ $item.spec.deletionPolicy | default $.Values.defaults.accessKeys.deletionPolicy| quote }}
+  forProvider:
+    {{- required "A valid value is required! (.Values.accessKeys[].spec.forProvider)" $item.spec.forProvider | toYaml | nindent 4 }}
+  providerConfigRef:
+    {{- required "A valid value is required! (.Values.accessKeys[].spec.providerConfigRef)" $item.spec.providerConfigRef | toYaml | nindent 4 }}    
+  {{- if $item.spec.writeConnectionSecretToRef}}
+  writeConnectionSecretToRef:
+    {{- $item.spec.writeConnectionSecretToRef | toYaml | nindent 4 }}
+  {{- end }}
+  {{- if $item.spec.publishConnectionDetailsTo}}
+  publishConnectionDetailsTo:
+    {{- $item.spec.publishConnectionDetailsTo | toYaml | nindent 4 }}
+  {{- end }}
+  {{- end }}
+{{- end }}

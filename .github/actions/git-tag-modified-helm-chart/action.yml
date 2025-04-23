@@ -1,0 +1,40 @@
+name: 'Tag modified Helm Chart'
+description: 'Create Git Tag for every modified Helm Chart'
+ 
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:        
+        fetch-depth: 0
+    - name: Print commit SHA
+      shell: bash
+      run: echo ${{ github.sha }}
+    - name: Tag modified Helm Chart
+      shell: bash
+      run: |
+        set +e
+         ${GITHUB_ACTION_PATH}/git-tag-modified-helm-chart.sh &> ${GITHUB_WORKSPACE}/bash_output.txt        
+      env:        
+        COMMIT_HASH: ${{ github.sha }}
+
+    - name: Bash Output
+      shell: bash
+      if: always()
+      run: |
+        if [ -f "${GITHUB_WORKSPACE}/bash_output.txt" ]; then
+          echo "::group:: Bash Script Output"
+          cat ${GITHUB_WORKSPACE}/bash_output.txt
+          echo "::endgroup::"
+        fi
+
+        if [ -f "${GITHUB_WORKSPACE}/pr-status-check-human-friendly.txt" ]; then
+          echo "::group:: PR Status Check Human Friendly Output"
+          cat "${GITHUB_WORKSPACE}/pr-status-check-human-friendly.txt"
+          echo "::endgroup::"
+        fi
+
+        if [ -f "${GITHUB_WORKSPACE}/github-workflow-commands.txt" ]; then
+          cat "${GITHUB_WORKSPACE}/github-workflow-commands.txt"
+        fi

@@ -1,0 +1,21 @@
+{{- range $item := .Values.directories }}
+  {{- if and ($item) (ne $item.name "") }}
+---
+apiVersion: account.btp.sap.crossplane.io/v1alpha1
+kind: Directory 
+metadata:
+  name: {{required "A valid value is required! (.Values.directories[].name)" $item.name | lower }}
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+spec:
+  providerConfigRef:
+    name: {{required "A valid value is required! (.Values.directories[].btpSapCrossplaneProviderConfigRefName)" $item.btpSapCrossplaneProviderConfigRefName }}
+  forProvider:
+    {{- required "A valid value is required! (.Values.directories[].forProvider)" $item.forProvider | toYaml | nindent 4 }}
+    {{- if $item.writeConnectionSecretToRef}}
+  writeConnectionSecretToRef:
+    {{- $item.writeConnectionSecretToRef | toYaml | nindent 4 }}
+    {{- end }}
+  {{- end }}
+{{- end }}

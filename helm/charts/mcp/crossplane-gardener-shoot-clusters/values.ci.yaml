@@ -1,0 +1,50 @@
+---
+########################################################################################################################
+###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
+########################################################################################################################
+kubernetesVersion: &kubernetesVersion "1.30.3"
+#########################################################################################################
+shootClusters:
+  - name: "name"
+    projectNamespace: "projectNamespace"
+    kubernetesCrossplaneProviderConfigRefName: "kubernetesCrossplaneProviderConfigRefName"
+    gardenerOrchestrateCloudProviderConfigRefName: "gardenerOrchestrateCloudProviderConfigRefName"
+    secretBindingName: "secretBindingName"
+    cloudProfile: "cloudProfile"
+    region: "region"
+    purpose: "purpose"
+    kubernetesVersion: *kubernetesVersion
+    workers: {}
+    hibernation: {}
+    maintenance: {}
+    addons: {}
+    networking: {}
+    infrastructureConfig: {}      
+  - name: "iad-test-gcp"
+    kubernetesCrossplaneProviderConfigRefName: "garden-co-golden"
+    gardenerOrchestrateCloudProviderConfigRefName: "garden-co-golden"
+    projectNamespace: "garden-co-golden"      
+    secretBindingName: "gcp-sa-garden-co-golden"
+    cloudProfile: "gcp"
+    region: "europe-west1"
+    purpose: "testing"
+    kubernetesVersion: *kubernetesVersion
+  - name: "iad-test-aws"
+    kubernetesCrossplaneProviderConfigRefName: "garden-co-golden"
+    gardenerOrchestrateCloudProviderConfigRefName: "garden-co-golden"
+    projectNamespace: "garden-co-golden"      
+    secretBindingName: "trial-secretbinding-aws"
+    cloudProfile: "aws"
+    region: "eu-central-1"
+    purpose: "testing"
+    kubernetesVersion: *kubernetesVersion
+  - name: "iad-test-az"
+    kubernetesCrossplaneProviderConfigRefName: "garden-co-golden"
+    gardenerOrchestrateCloudProviderConfigRefName: "garden-co-golden"
+    projectNamespace: "garden-co-golden"      
+    secretBindingName: "trial-secretbinding-az"
+    cloudProfile: "azure"
+    region: "germanywestcentral"
+    purpose: "testing"
+    kubernetesVersion: *kubernetesVersion
+#########################################################################################################

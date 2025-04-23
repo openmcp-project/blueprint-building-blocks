@@ -1,0 +1,65 @@
+---
+########################################################################################################################
+###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
+########################################################################################################################
+subaccountTrustConfigurations:
+  - btpSapCrossplaneProviderConfigRefName: "btpSapCrossplaneProviderConfigRefName"
+    name: "subaccountTrustConfiguration"
+    forProvider:
+      autoCreateShadowUsers: true
+      availableForUserLogon: true
+      description: "description"
+      domain: "domain"
+      identityProvider: "identityProvider"
+      linkText: "linkText"
+      name: "name"
+      status: "status"
+      subaccountId: "subaccountId"
+      subaccountRef: 
+        name: "name"
+        policy: 
+          resolution: "resolution"
+          resolve: "Always"
+      subaccountSelector: 
+        matchControllerRef: true
+        matchLabels: 
+        policy: 
+          resolution: "resolution"          
+    writeConnectionSecretToRef:
+      name: "name"
+      namespace: "namespace"
+########################################################################################################################
+roleCollectionAssignments:
+  - btpSapCrossplaneProviderConfigRefName: "btpSapCrossplaneProviderConfigRefName"
+    name: "roleCollectionAssignments"
+    forProvider:
+      groupName: "groupName"
+      origin: "origin"
+      roleCollectionName: "roleCollectionName"
+      userName: "userName"
+    apiCredentials:
+      env:
+        name: "name"
+      fs:
+        path: "path"
+      secretRef:
+        key: "key"
+        name: "name"
+        namespace: "namespace"
+      source: "source"
+    writeConnectionSecretToRef:
+      name: "name"
+      namespace: "namespace"
+########################################################################################################################
+globalaccountTrustConfigurations:
+  - btpSapCrossplaneProviderConfigRefName: "btpSapCrossplaneProviderConfigRefName"
+    name: "globalaccountTrustConfiguration"
+    forProvider:
+      description: "description"
+      identityProvider: "identityProvider"
+      name: "name"
+      origin: "origin"
+    writeConnectionSecretToRef:
+      name: "name"
+      namespace: "namespace"
+########################################################################################################################

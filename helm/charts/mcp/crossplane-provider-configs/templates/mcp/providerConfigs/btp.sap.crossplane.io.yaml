@@ -1,0 +1,19 @@
+{{- range $item := .Values.providerConfigs.btpSapCrossplane}}
+  {{- if and ($item) (ne $item.providerConfigRefName "")}}
+---
+apiVersion: btp.sap.crossplane.io/v1alpha1
+kind: ProviderConfig
+metadata:
+  name: {{required "A valid value is required! (.Values.providerConfigs.btpSapCrossplane[].providerConfigRefName)" $item.providerConfigRefName | lower | quote}}
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+spec:
+  cliServerUrl: {{required "A valid value is required! (.Values.providerConfigs.btpSapCrossplane[].cliServerUrl)" $item.cliServerUrl | quote}}
+  globalAccount: {{required "A valid value is required! (.Values.providerConfigs.btpSapCrossplane[].globalAccountSubDomain)" $item.globalAccountSubDomain | lower | quote}}
+  cisCredentials:
+    {{- required "A valid value is required! (.Values.providerConfigs.btpSapCrossplane[].cisCredentials)" $item.cisCredentials | toYaml | nindent 4 }}
+  serviceAccountSecret:
+    {{- required "A valid value is required! (.Values.providerConfigs.btpSapCrossplane[].serviceAccountSecret)" $item.serviceAccountSecret | toYaml | nindent 4 }}
+  {{- end }}
+{{- end }}

@@ -1,0 +1,15 @@
+{{- range $item := .Values.providerConfigs.gardenerOrchestrateCloud}}
+  {{- if and ($item) (ne $item.providerConfigRefName "")}}
+---
+apiVersion: gardener.orchestrate.cloud.sap/v1alpha1
+kind: ProviderConfig
+metadata:
+  name: {{required "A valid value is required! (.Values.providerConfigs.gardenerOrchestrateCloud[].providerConfigRefName)" $item.providerConfigRefName | lower | quote}}
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+spec:
+  credentials:
+    {{- required "A valid value is required! (.Values.providerConfigs.gardenerOrchestrateCloud[].credentials)" $item.credentials | toYaml | nindent 4 }}    
+  {{- end }}
+{{- end }}

@@ -1,0 +1,135 @@
+---
+########################################################################################################################
+###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
+########################################################################################################################
+roles:
+- name: "dev-us-ekscluster"
+  labels:
+    crossplane.io/composite: dev-us-ekscluster
+    crossplane.io/claim-namespace: dev-us
+  annotations:
+    crossplane.io/composition-resource-name: role
+  ownerReferences:
+    - apiVersion: api.example/v1alpha1
+      blockOwnerDeletion: true
+      controller: true
+      kind: XEKSCluster
+      name: dev-us-ekscluster
+      uid: ""    
+  spec:
+    deletionPolicy: ""
+    forProvider:
+      assumeRolePolicy: |
+        {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "eks.amazonaws.com"
+              },
+              "Action": "sts:AssumeRole"
+            }
+          ]
+        }
+    providerConfigRef:
+      name: dev-us-aws
+    publishConnectionDetailsTo: {}
+    writeConnectionSecretToRef: {}  
+rolePolicyAttachments:
+- name: "dev-us-ekscluster"
+  labels:
+    crossplane.io/composite: dev-us-ekscluster
+    crossplane.io/claim-namespace: dev-us
+  annotations:
+    crossplane.io/composition-resource-name: rolePolicyAttachment
+  ownerReferences:
+    - apiVersion: api.example/v1alpha1
+      blockOwnerDeletion: true
+      controller: true
+      kind: XEKSCluster
+      name: dev-us-ekscluster
+      uid: ""
+  spec:
+    deletionPolicy: ""
+    forProvider:
+      policyArn: arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
+      roleSelector:
+        matchControllerRef: true
+    providerConfigRef:
+      name: dev-us-aws
+    publishConnectionDetailsTo: {}
+    writeConnectionSecretToRef: {}  
+policies:
+- name: user-policy
+  labels:
+    testing.upbound.io/example-name: user
+  spec:
+    providerConfigRef:
+      name: provider-config-ref
+    forProvider:
+      policy: |
+        {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+                "Sid": "VisualEditor0",
+                "Effect": "Allow",
+                "Action": "elastic-inference:Connect",
+                "Resource": "*"
+            }
+          ]
+        }
+users:
+- name: sample-user-RFC1123Subdomain-1
+  annotations:
+    meta.upbound.io/example-id: iam/v1beta1/accesskey
+  labels:
+    testing.upbound.io/example-name: accesskey
+  spec:
+    providerConfigRef:
+      name: provider-config-ref
+    forProvider: {}
+
+userPolicyAttachments:
+- name: example
+  spec:
+    providerConfigRef:
+      name: provider-config-ref
+    forProvider:      
+      policyArnSelector:
+        matchLabels:
+          testing.upbound.io/example-name: user
+      userSelector:
+        matchLabels:
+          testing.upbound.io/example-name: user
+accessKeys:
+- name: sample-access-key-RFC1123Subdomain
+  annotations:
+    meta.upbound.io/example-id: iam/v1beta1/accesskey
+  labels:
+    testing.upbound.io/example-name: user
+  spec:
+    providerConfigRef:
+      name: provider-config-ref
+    forProvider:
+      userSelector:
+        matchLabels:
+          testing.upbound.io/example-name: accesskey
+    writeConnectionSecretToRef:
+      name: sample-access-key-secret
+      namespace: upbound-system
+- name: sample-access-key
+  labels:
+    testing.upbound.io/example-name: user
+  spec:
+    providerConfigRef:
+      name: provider-config-ref
+    forProvider:
+      userSelector:
+        matchLabels:
+          testing.upbound.io/example-name: user
+    writeConnectionSecretToRef:
+      name: sample-access-key-secret
+      namespace: upbound-system
+########################################################################################################################

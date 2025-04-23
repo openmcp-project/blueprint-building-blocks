@@ -1,0 +1,19 @@
+---
+# Source: test-custom-chart/charts/sap-btp-services/templates/services-binding-services-cloud-sap.yaml
+apiVersion: services.cloud.sap.com/v1alpha1
+kind: ServiceBinding
+metadata:
+  name: openmcp-op-cluster-ias
+  namespace: default
+  labels:
+    openmcp.cloud/blueprint-building-block: "sap-btp-services"
+    openmcp.cloud/blueprint-building-block-version: "0.0.10"
+spec:
+  serviceInstanceName: openmcp-op-cluster-ias
+  secretName: btp-ias
+  parameters:
+    credential-type: SECRET
+  credentialsRotationPolicy:
+    enabled: true
+    rotatedBindingTTL: 2h
+    rotationFrequency: 480h

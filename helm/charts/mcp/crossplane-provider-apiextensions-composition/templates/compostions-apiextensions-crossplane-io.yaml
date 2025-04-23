@@ -1,0 +1,52 @@
+{{- range $item := .Values.compositions}}
+  {{- if and ($item) (ne $item.name "") }}
+---
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: {{required "A valid value is required! (.Values.compositions[].name)" $item.name | lower }}
+  {{- if $item.annotations}}
+  annotations:
+    {{- $item.annotations | toYaml | nindent 4 }}
+  {{- end }}
+  {{- if $item.labels}}
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+    {{- $item.labels | toYaml | nindent 4 }}
+  {{- end }}
+  {{- if $item.ownerReferences}}
+  ownerReferences:
+    {{- $item.ownerReferences | toYaml | nindent 4 }}  
+  {{- end }}
+spec:
+  compositeTypeRef:
+    {{- required "A valid value is required! (.Values.compositions[].spec.compositeTypeRef)" $item.spec.compositeTypeRef | toYaml | nindent 4 }}
+  {{- if $item.spec.mode}}
+  mode: {{ $item.spec.mode | quote }}
+  {{- end }}
+  {{- if $item.spec.writeConnectionSecretsToNamespace}}
+  writeConnectionSecretsToNamespace: {{ $item.spec.writeConnectionSecretsToNamespace | quote }}
+  {{- end }}
+  {{- if $item.spec.environment}}
+  environment:
+    {{- $item.spec.environment | toYaml | nindent 4 }}
+  {{- end }}
+  {{- if $item.spec.patchSets}}
+  patchSets:
+    {{- $item.spec.patchSets | toYaml | nindent 4 }}
+  {{- end }}
+  {{- if $item.spec.pipeline}}
+  pipeline:
+    {{- $item.spec.pipeline | toYaml | nindent 4 }}
+  {{- end }}
+  {{- if $item.spec.resources}}
+  resources:
+    {{- $item.spec.resources | toYaml | nindent 4 }}
+  {{- end }}
+  {{- if $item.spec.writeConnectionSecretToRef}}
+  writeConnectionSecretToRef:
+    {{- $item.spec.writeConnectionSecretToRef | toYaml | nindent 4 }}
+  {{- end }}
+  {{- end }}
+{{- end }}

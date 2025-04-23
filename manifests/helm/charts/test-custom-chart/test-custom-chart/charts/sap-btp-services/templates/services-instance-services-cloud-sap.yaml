@@ -1,0 +1,23 @@
+---
+# Source: test-custom-chart/charts/sap-btp-services/templates/services-instance-services-cloud-sap.yaml
+apiVersion: services.cloud.sap.com/v1alpha1
+kind: ServiceInstance
+metadata:
+  name: openmcp-op-cluster-ias
+  namespace: default
+  labels:
+    openmcp.cloud/blueprint-building-block: "sap-btp-services"
+    openmcp.cloud/blueprint-building-block-version: "0.0.10"
+spec:
+  serviceOfferingName: identity
+  servicePlanName: application
+  parameters:
+    consumed-apis: []
+    display-name: ""
+    multi-tenant: true
+    oauth2-configuration:
+      redirect-uris:
+      - https://*.../oauth2/callback
+      - https://*.../callback
+      - https://*.../*
+    xsuaa-cross-consumption: true

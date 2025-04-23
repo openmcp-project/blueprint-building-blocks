@@ -1,0 +1,11 @@
+---
+#########################################################################################################
+# -- shootClusters contains information and configuration of Gardener shoot clusters.
+# @default -- -
+shootClusters:
+  # gardener.controlPlane.shootClusters[0].name -- name defines technical gardener shoot cluster. Max length 15 and must only be lowercase letters, numbers and hyphens!
+  - name: ""
+    # -- gardener project name. Starts with "garden..." e.g. "garden-aas-dt"
+    projectnamespace: "ns1"
+    # -- gardenerOrchestrateCloudProviderConfigRefName needs to match crossplane provider configuration reference name (identifier) of SAP garden cluster control plane! (.gardener.controlPlane.shootClusters[*].gardenerOrchestrateCloudProviderConfigRefName)
+    gardenerOrchestrateCloudProviderConfigRefName: ""        

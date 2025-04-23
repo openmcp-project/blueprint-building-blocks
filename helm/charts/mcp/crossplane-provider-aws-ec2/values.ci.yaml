@@ -1,0 +1,109 @@
+---
+########################################################################################################################
+###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
+########################################################################################################################
+eips:
+  - name: "dev-us-ekscluster"
+    labels: {}
+    annotations: {}
+    ownerReferences: {}      
+    spec:
+      deletionPolicy: ""
+      forProvider:
+        omain: vpc
+        region: us-west-2
+      providerConfigRef:
+        name: dev-us-aws
+  - name: "dev-us-ekscluster-2"
+    labels: {}
+    annotations: {}
+    ownerReferences: {}      
+    spec:
+      deletionPolicy: ""
+      forProvider:
+        omain: vpc
+        region: us-west-2
+      providerConfigRef:
+        name: dev-us-aws
+# -- https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/v1.11.0/resources/ec2.aws.upbound.io/InternetGateway/v1beta1
+internetGateways:
+  - name: "dev-us-ekscluster"
+    labels: {}
+    annotations: {}
+    ownerReferences: {}      
+    spec:
+      deletionPolicy: ""
+      forProvider:
+        region: us-west-2
+        vpcIdSelector:
+          matchControllerRef: true
+      providerConfigRef:
+        name: dev-us-aws
+# -- https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/v1.11.0/resources/ec2.aws.upbound.io/NATGateway/v1beta1
+natGateways:
+  - name: "dev-us-ekscluster"
+    labels: {}
+    annotations: {}
+    ownerReferences: {}      
+    spec:
+      deletionPolicy: ""
+      forProvider:
+        allocationIdSelector:
+          matchLabels:
+            type: eip-1
+        region: us-west-2
+        subnetIdSelector:
+          matchLabels:
+            type: subnet
+            visibility: public
+            zone: us-west-2a
+      providerConfigRef:
+        name: dev-us-aws 
+# -- https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/v1.11.0/resources/ec2.aws.upbound.io/RouteTable/v1beta1
+routeTables:
+  - name: "dev-us-ekscluster"
+    labels: {}
+    annotations: {}
+    ownerReferences: {}      
+    spec:
+      deletionPolicy: ""
+      forProvider:
+        region: us-west-2
+        vpcIdSelector:
+          matchControllerRef: true
+      providerConfigRef:
+        name: dev-us-aws        
+# -- https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/v1.11.0/resources/ec2.aws.upbound.io/Subnet/v1beta1
+subnets:
+  - name: "dev-us-ekscluster"
+    labels: {}
+    annotations: {}
+    ownerReferences: {}      
+    spec:
+      deletionPolicy: ""
+      forProvider:
+        availabilityZone: us-west-2a
+        cidrBlock: 192.168.50.0/24
+        mapPublicIpOnLaunch: false
+        region: us-west-2
+        vpcIdSelector:
+          matchControllerRef: true
+      providerConfigRef:
+        name: dev-us-aws 
+# -- https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/v1.11.0/resources/ec2.aws.upbound.io/VPC/v1beta1
+vpcs:
+  - name: "dev-us-ekscluster"
+    labels: {}
+    annotations: {}
+    ownerReferences: {}      
+    spec:
+      deletionPolicy: ""
+      forProvider:
+        cidrBlock: 192.168.48.0/20
+        enableDnsHostnames: true
+        enableDnsSupport: true
+        region: us-west-2
+      providerConfigRef:
+        name: dev-us-aws 
+  
+########################################################################################################################

@@ -1,0 +1,24 @@
+{{- range $service := .Values.services }}
+  {{- if and ($service) (ne $service.name "") }}
+    {{- range $binding := $service.bindings }}
+      {{- if and ($binding) (ne $binding.name "") }}
+---
+apiVersion: services.cloud.sap.com/v1alpha1
+kind: ServiceBinding
+metadata:
+  name: {{required "A valid bindingName is required (.Values.services[].bindings[].name)" $binding.name }}
+  namespace: {{required "A valid namespace is required (.Values.services[].bindings[].namespace)" $service.namespace }}
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+spec:
+  serviceInstanceName: {{required "A valid instanceName is required (.Values.services[].instance.name)" $service.instance.name }}
+  secretName: {{required "A valid secretName is required (.Values.services[].bindings[].secretName)" $binding.secretName }}
+  parameters:
+    {{- toYaml  $binding.parameters | nindent 4 }}
+  credentialsRotationPolicy:
+    {{- toYaml  $binding.credentialsRotationPolicy | nindent 4 }}
+      {{- end}}
+    {{- end}}
+  {{- end}}
+{{- end}}

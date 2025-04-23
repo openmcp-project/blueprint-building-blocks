@@ -1,0 +1,228 @@
+---
+###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
+########################################################################################################################
+kustomizations:
+  - name: chrome-hub-root-app
+    namespace: "default"
+    interval: "10s"
+    path: "manifests/application/root"
+    prune: true
+    timeout: "1m"
+    sourceRef:
+      kind: "GitRepository"
+      name: "mcp-blueprint-building-blocks"
+    dependsOn:
+    - name: cert-manager
+    healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: backend
+      namespace: dev
+    retryInterval: "30s"
+    suspend: true
+    wait: false
+    serviceAccountName: "serviceAccountName"
+    commonMetadata:
+      labels:
+        a: "bc"
+      annotations:
+        d: "efg"
+    namePrefix: "prefix-"
+    nameSuffix: "-suffix"
+    force: true
+    patches:
+    - patch: |-
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: not-used
+        spec:
+          template:
+            metadata:
+              annotations:
+                cluster-autoscaler.kubernetes.io/safe-to-evict: "true"        
+      target:
+        kind: Deployment
+        labelSelector: "app.kubernetes.io/part-of=my-app"
+    - patch: |
+        - op: add
+          path: /spec/template/spec/securityContext
+          value:
+            runAsUser: 10000
+            fsGroup: 1337
+        - op: add
+          path: /spec/template/spec/containers/0/securityContext
+          value:
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            capabilities:
+              drop:
+                - ALL        
+      target:
+        kind: Deployment
+        name: podinfo
+        namespace: apps
+    images:
+    - name: podinfo
+      newName: my-registry/podinfo
+      newTag: v1
+    - name: podinfo
+      newTag: 1.8.0
+    - name: podinfo
+      newName: my-podinfo
+    - name: podinfo
+      digest: sha256:24a0c4b4a4c0eb97a1aabb8e29f18e917d05abfe1b7a7c07857230879ce7d3d3
+    components:
+    - ../ingress
+    - ../tls
+    postBuild:
+      substitute:
+        cluster_env: "prod"
+        cluster_region: "eu-central-1"
+      substituteFrom:
+        - kind: ConfigMap
+          name: cluster-vars
+          # Use this ConfigMap if it exists, but proceed if it doesn't.
+          optional: true
+        - kind: Secret
+          name: cluster-secret-vars
+          # Fail if this Secret does not exist.
+    kubeConfig:
+      secretRef:
+        name: "name"
+        value: "value"
+    decryption:
+      provider: sops
+      secretRef:
+        name: sops-keys
+  - name: kustomizations-2
+    namespace: "default"
+    interval: "10s"
+    path: "manifests/application/base"
+    prune: true
+    timeout: "1m"
+    sourceRef:
+      kind: "GitRepository"
+      name: "mcp-blueprint-building-blocks"
+    dependsOn:
+    - name: chrome-hub-root-app
+########################################################################################################################
+gitRepositorys:
+  - name: "mcp-blueprint-building-blocks"
+    namespace: "default"    
+    spec:
+      interval: 1m
+      url: https://github.com/openmcp-project/blueprints
+      ref:
+        branch: main
+      secretRef:
+        name: github-tools-secret
+    kustomizations:
+      - name: "mcp-blueprint-building-blocks"
+        namespace: "default"
+        interval: 10s
+        path: "./manifests/templates/provider-btp-accounts.abc.shoot.live.k8s-hana.ondemand.com"
+        prune: true
+        timeout: 1m
+        dependsOn:
+        - name: cert-manager
+        healthChecks:
+        - apiVersion: apps/v1
+          kind: Deployment
+          name: backend
+          namespace: dev
+        retryInterval: "30s"
+        suspend: true
+        wait: false
+        serviceAccountName: "serviceAccountName"
+        commonMetadata:
+          labels:
+            a: "bc"
+          annotations:
+            d: "efg"
+        namePrefix: "prefix-"
+        nameSuffix: "-suffix"
+        force: true
+        patches:
+        - patch: |-
+            apiVersion: apps/v1
+            kind: Deployment
+            metadata:
+              name: not-used
+            spec:
+              template:
+                metadata:
+                  annotations:
+                    cluster-autoscaler.kubernetes.io/safe-to-evict: "true"        
+          target:
+            kind: Deployment
+            labelSelector: "app.kubernetes.io/part-of=my-app"
+        - patch: |
+            - op: add
+              path: /spec/template/spec/securityContext
+              value:
+                runAsUser: 10000
+                fsGroup: 1337
+            - op: add
+              path: /spec/template/spec/containers/0/securityContext
+              value:
+                readOnlyRootFilesystem: true
+                allowPrivilegeEscalation: false
+                runAsNonRoot: true
+                capabilities:
+                  drop:
+                    - ALL        
+          target:
+            kind: Deployment
+            name: podinfo
+            namespace: apps
+        images:
+        - name: podinfo
+          newName: my-registry/podinfo
+          newTag: v1
+        - name: podinfo
+          newTag: 1.8.0
+        - name: podinfo
+          newName: my-podinfo
+        - name: podinfo
+          digest: sha256:24a0c4b4a4c0eb97a1aabb8e29f18e917d05abfe1b7a7c07857230879ce7d3d3
+        components:
+        - ../ingress
+        - ../tls
+        postBuild:
+          substitute:
+            cluster_env: "prod"
+            cluster_region: "eu-central-1"
+          substituteFrom:
+            - kind: ConfigMap
+              name: cluster-vars
+              # Use this ConfigMap if it exists, but proceed if it doesn't.
+              optional: true
+            - kind: Secret
+              name: cluster-secret-vars
+              # Fail if this Secret does not exist.
+        kubeConfig:
+          secretRef:
+            name: "name"
+            value: "value"
+        decryption:
+          provider: sops
+          secretRef:
+            name: sops-keys
+      - name: "mcp-blueprint-building-blocks-2"
+        namespace: "default"
+        targetNamespace: "default2"
+        interval: 10s
+        path: "./manifests/templates/provider-btp-accounts.abc.shoot.live.k8s-hana.ondemand.com"
+        prune: true
+        timeout: 1m
+########################################################################################################################
+credentials:
+  - name: "github-tools-secret"
+    namespace: "default"
+    stringData:
+      username: username
+      password: password
+    data: []
+########################################################################################################################

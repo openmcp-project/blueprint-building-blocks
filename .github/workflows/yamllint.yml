@@ -1,0 +1,120 @@
+# Workflow is deactivated
+name: Yamllint
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  pull_request:
+    branches:
+      - "main-branch-not-activated-yet"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  BASH_SCRIPT: "yamllint.sh"
+  BASH_SCRIPT_RESULT: 0  
+  MESSAGE_HEADER: "Yaml Lint Validation"
+  MESSAGE: ""
+
+
+jobs:
+  yamllint:
+    runs-on: ubuntu-latest    
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Gather Helm Chart Folders
+        shell: bash
+        run: |
+          ${GITHUB_WORKSPACE}/scripts/ci/helm-chart-listing.sh
+          echo "::group:: Found Helm Chart Folders"
+          cat "${GITHUB_WORKSPACE}/helm-charts-templated.yaml"
+          echo "::endgroup::"
+        env:
+          BASH_SCRIPT: ${{ env.BASH_SCRIPT }}
+      - name: Dependency Build
+        run: bash ${GITHUB_WORKSPACE}/scripts/ci/helm-dep-build.sh
+      - name: Manifest Linting + Validation
+        run: |
+          set +e
+          ${GITHUB_WORKSPACE}/scripts/ci/helm-chart-linting-manifest-validation.sh &> bash_output.txt
+          echo "BASH_SCRIPT_RESULT=$?" >> "$GITHUB_ENV"
+          
+          echo "::group:: Bash Script Output"
+          cat bash_output.txt
+          echo "::endgroup::"
+        env:
+          BASH_SCRIPT: ${{ env.BASH_SCRIPT }}
+      - if: env.BASH_SCRIPT_RESULT != 0
+        name: "Set Message"
+        shell: bash
+        run: |
+          # https://docs.github.com/en/enterprise-cloud@latest/actions/using-workflows/workflow-commands-for-github-actions#multiline-strings
+          echo 'MESSAGE<<EOF' >> $GITHUB_ENV
+          cat "${GITHUB_WORKSPACE}/pr-status-check-human-friendly.txt" >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
+
+      - if: env.BASH_SCRIPT_RESULT == 0
+        name: yamllint
+        id: "yamllint"
+        shell: bash  
+        run: |
+          set +e
+          echo "/home/runner/.local/bin" >> $GITHUB_PATH
+          
+          ${GITHUB_WORKSPACE}/scripts/ci/${{ env.BASH_SCRIPT }} &> bash_output.txt
+          echo "BASH_SCRIPT_RESULT=$?" >> "$GITHUB_ENV"
+          
+          echo "::group:: Bash Script Output"
+          cat bash_output.txt
+          echo "::endgroup::"
+          
+          # https://docs.github.com/en/enterprise-cloud@latest/actions/using-workflows/workflow-commands-for-github-actions#multiline-strings
+          echo 'MESSAGE<<EOF' >> $GITHUB_ENV
+          cat "${GITHUB_WORKSPACE}/pr-status-check-human-friendly.txt" >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
+          
+              
+      - if: env.BASH_SCRIPT_RESULT != 0
+        name: "Workflow Commands"
+        shell: bash
+        run: |
+          if [ -f "${GITHUB_WORKSPACE}/github-workflow-commands.txt" ]; then
+            cat "${GITHUB_WORKSPACE}/github-workflow-commands.txt"
+          fi
+      
+      - if: env.BASH_SCRIPT_RESULT != 0
+        name: "Add Sticky Pull Request Comment"
+        uses: marocchino/sticky-pull-request-comment@v2.9.1
+        with:
+          recreate: true          
+          header: ":star2: :collision: :collision: [${{ env.MESSAGE_HEADER }}] :collision: :collision: :collision:"
+          message: |
+            ## :star2: :collision: :collision: [${{ env.MESSAGE_HEADER }}] :collision: :collision: :collision:
+            :collision: TRY TO FIX AS MANY ERRORS/WARNINGS AS POSSIBLE! :collision:
+            <details>
+            <summary><code>detail</code></summary>
+
+            ```bash
+            
+            ${{ env.MESSAGE }}
+            
+            ```    
+            </details>
+      - if: env.BASH_SCRIPT_RESULT == 0
+        name: "Remove Sticky Pull Request Comment"
+        uses: marocchino/sticky-pull-request-comment@v2.9.1
+        with:
+          header: ":star2: :collision: :collision: [${{ env.MESSAGE_HEADER }}] :collision: :collision: :collision:"
+          delete: true
+      - if: env.BASH_SCRIPT_RESULT != 0
+        name: Throw Error
+        id: "throw-error"
+        run: |
+          echo "::group:: human readable validation result"
+          echo -e "${{ env.MESSAGE }}"
+          echo "::endgroup::"
+          exit 1

@@ -1,0 +1,31 @@
+{{- range $account := .Values.accounts}}
+  {{- range $item := $account.subAccounts }}
+    {{- if and ($item) (ne $item.name "") }}
+      {{- range $entitlement := $item.entitlements }}
+        {{- if and ($entitlement) (ne $entitlement.name "") }}
+---
+apiVersion: account.btp.sap.crossplane.io/v1alpha1
+kind: Entitlement
+metadata:  
+  name: {{ required "A valid value is required! (.Values.accounts[].subAccounts[].entitlements[].name)" $entitlement.name | lower }}  
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+spec:
+  forProvider:    
+    serviceName: {{required "A valid value is required! (.Values.accounts[].subAccounts[].entitlements[].serviceName)" $entitlement.serviceName}}
+    servicePlanName: {{required "A valid value is required! (.Values.accounts[].subAccounts[].entitlements[].servicePlanName)" $entitlement.servicePlanName}}
+    {{- if $entitlement.permitNumericQuota}}
+    amount: {{required "A valid value is required! (.Values.accounts[].subAccounts[].entitlements[].amount)" $entitlement.amount}}
+    {{- else}}
+    enable: {{default $entitlement.enable true}}
+    {{- end }}
+    subaccountRef:
+      name: {{required "A valid value is required! (.Values.accounts[].subAccounts[].name)" $item.name | lower }}
+  providerConfigRef:
+    name: {{ required "A valid value is required! (.Values.accounts[].btpSapCrossplaneProviderConfigRefName)" $account.btpSapCrossplaneProviderConfigRefName | quote }}
+        {{- end }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+{{- end }}

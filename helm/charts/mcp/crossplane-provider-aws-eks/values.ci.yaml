@@ -1,0 +1,75 @@
+---
+########################################################################################################################
+###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
+########################################################################################################################
+clusters:
+  - name: "dev-us-ekscluster"
+    labels:
+      crossplane.io/composite: dev-us-ekscluster
+      crossplane.io/claim-namespace: dev-us
+    annotations:
+      crossplane.io/composition-resource-name: eks-cluster
+    ownerReferences:
+      - apiVersion: api.example/v1alpha1
+        blockOwnerDeletion: true
+        controller: true
+        kind: XEKSCluster
+        name: dev-us-ekscluster
+        uid: ""
+    spec:
+      deletionPolicy: ""
+      forProvider:
+        region: us-west-2
+        roleArn: arn:aws:iam::XXXX:role/DEV-EKS-Cluster-Role
+        version: "1.30"
+        vpcConfig:
+          - endpointPrivateAccess: false
+            endpointPublicAccess: true
+            subnetIdSelector:
+              matchLabels:
+                type: subnet
+                visibility: private
+      providerConfigRef:
+        name: dev-us-aws
+      writeConnectionSecretToRef:
+        name: dev-us-connection-secret
+        namespace: crossplane-system
+      publishConnectionDetailsTo: {}
+nodeGroups:
+  - name: "dev-us-ekscluster"
+    labels:
+      crossplane.io/composite: dev-us-ekscluster
+      crossplane.io/claim-namespace: dev-us
+    annotations:
+      crossplane.io/composition-resource-name: eks-nodegroup
+    ownerReferences: 
+      - apiVersion: api.example/v1alpha1
+        blockOwnerDeletion: true
+        controller: true
+        kind: XEKSCluster
+        name: dev-us-ekscluster
+        uid: ""
+    spec:
+      deletionPolicy: ""
+      forProvider:
+        amiType: AL2_x86_64
+        clusterNameSelector:
+          matchControllerRef: true
+        instanceTypes:
+          - t3.medium
+        nodeRoleArn: arn:aws:iam::XXXX:role/DEV-EKS-WorkerNode-Role
+        region: us-west-2
+        scalingConfig:
+          - desiredSize: 2
+            maxSize: 2
+            minSize: 1
+        subnetIdSelector:
+          matchControllerRef: true
+          matchLabels:
+            type: subnet
+            visibility: private
+      providerConfigRef:
+        name: dev-us-aws
+      publishConnectionDetailsTo: {}
+      writeConnectionSecretToRef: {}  
+########################################################################################################################

@@ -1,0 +1,14 @@
+{{- range $item := .Values.functions}}
+  {{- if and ($item) (ne $item.name "")}}
+---
+apiVersion: pkg.crossplane.io/v1beta1
+kind: Function
+metadata:
+  name: {{required "A valid value is required! (.Values.functions[].name)" $item.name | lower }}
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+spec:
+  {{- required "A valid value is required! (.Values.functions[].spec)" $item.spec | toYaml | nindent 2 }}
+  {{- end }}
+{{- end }}

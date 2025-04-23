@@ -1,0 +1,147 @@
+---
+########################################################################################################################
+###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
+########################################################################################################################
+subaccountServiceBrokers:
+  - btpSapCrossplaneProviderConfigRefName: "btpSapCrossplaneProviderConfigRefName"
+    name: "subaccountServiceBrokers"
+    forProvider:
+      description: "This is a description of the provider."
+      name: "example-name"
+      passwordSecretRef:
+        key: "password-key"
+        name: "secret-name"
+        namespace: "default"
+      subaccountId: "subaccount-12345"
+      subaccountRef:
+        name: "subaccount-ref-name"
+        policy:
+          resolution: "Required"
+          resolve: "Always"
+      subaccountSelector:
+        matchControllerRef: true
+        matchLabels:
+          app: "example-app"
+          environment: "production"
+        policy:
+          resolution: "Optional"
+          resolve: "IfNotPresent"
+      url: "https://example.com"
+      username: "example-username"      
+# ########################################################################################################################
+directories:
+  - btpSapCrossplaneProviderConfigRefName: "btpSapCrossplaneProviderConfigRefName"
+    name: "directories"
+    forProvider:
+      description: "description"
+      directoryAdmins:
+        - "admin1"
+        - "admin2"
+      directoryFeatures:
+        - "feat1"
+      directoryGuid: "guid"
+      directoryRef: # object
+        name: "refName"
+        policy: # object
+          resolution: "Required" # string: Required, Optional
+          resolve: "Always" # string: Always, IfNotPresent
+      directorySelector: # object
+        matchControllerRef: true # boolean        
+        policy: # object
+          resolution: "Required" # string: Required, Optional
+          resolve: "Always" # string: Always, IfNotPresent
+      displayName: "name to be displayed :)" # string (required)      
+      subdomain: "subdomain123"
+# ########################################################################################################################
+directoryEntitlements:
+  - btpSapCrossplaneProviderConfigRefName: "btpSapCrossplaneProviderConfigRefName"
+    name: "directoryEntitlement"
+    forProvider:
+        amount: "123"
+        autoAssign: true
+        autoDistributeAmount: "123"
+        directoryId: "directoryId"
+        directoryRef:
+          name: "name"
+          policy:
+            resolution: "resolution"
+            resolve: "resolve"
+        directorySelector:
+          matchControllerRef: false          
+          policy:
+            resolution: "resolution"
+            resolve: "Always"
+        distribute: true
+        planName: "planName"
+        serviceName: "serviceName"
+    writeConnectionSecretToRef:
+      name: "name"
+      namespace: "namespace"
+########################################################################################################################
+accounts:
+  - btpSapCrossplaneProviderConfigRefName: "btp-sap-crossplane-cloud-provider-config-ref-name"      
+    subAccounts:
+      - name: "test1"
+        forProvider:
+          displayName: "sub-account1"
+          description: "description"
+          subdomain: "subdomain"
+          betaEnabled: false
+          usedForProduction: "NOT_USED_FOR_PRODUCTION"
+          region: "region"
+          subaccountAdmins:
+            - your.name@sap.com
+      - name: "test2"
+        metadata:
+          annotations:
+            CloudManagement:
+              "crossplane.io/external-name": "e01c61b5-18dc-40d7-bba9-fd8eaaa859c8/5c9d74c7-3784-4bff-8172-ec99285f8009"
+            ServiceManager:
+              "crossplane.io/external-name": "e01c61b5-18dc-40d7-bba9-fd8eaaa859c8/5c9d74c7-3784-4bff-8172-ec99285f8009" 
+        forProvider:
+          displayName: "sub-account1"
+          description: "description"
+          subdomain: "subdomain"
+          betaEnabled: false
+          usedForProduction: "NOT_USED_FOR_PRODUCTION"
+          region: "region"
+          subaccountAdmins:
+            - your.name@sap.com
+        services:
+          serviceManager: true
+          cloudManagement: true
+        entitlements:
+          - name: "entitlement-1"
+            serviceName: "service-name"
+            servicePlanName: "service-plan-name"
+            permitNumericQuota: false
+            amount: 1
+        subscriptions:
+          - name: "name"
+            appName: "appName"
+            planName: "planName"
+            writeConnectionSecretToRef:
+              name: "name"
+              namespace: "namespace"
+      - name: "test3"
+        forProvider:
+          displayName: "sub-account2"
+          description: "description"
+          betaEnabled: true
+          usedForProduction: "USED_FOR_PRODUCTION"
+          subdomain: "subdomain"
+          region: "region"
+          subaccountAdmins:
+            - your.name@sap.com
+        entitlements:
+          - name: "entitlement-2"
+            serviceName: "service-name"
+            servicePlanName: "service-plan-name"
+            permitNumericQuota: true
+            amount: 1       
+          - name: "cis-some-name.local"
+            serviceName: "cis_some_name"
+            servicePlanName: "service-plan-name"
+            permitNumericQuota: false
+            amount: 1
+#########################################################################################################

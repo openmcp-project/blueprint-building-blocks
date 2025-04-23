@@ -1,0 +1,63 @@
+{{- range $shootCluster := .Values.shootClusters}}
+  {{- if empty $shootCluster.cloudProfile}}
+    {{- fail "A valid value is required! (.Values.shootClusters[].cloudProfile)"}}
+  {{- end }}
+  {{- if and ($shootCluster) (eq $shootCluster.cloudProfile "gcp") }}
+---
+apiVersion: kubernetes.crossplane.io/v1alpha1
+kind: Object
+metadata:
+  name: {{required "A valid value is required! (.Values.shootClusters[].name)" $shootCluster.name | lower | quote}}
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+spec:
+  providerConfigRef:
+    name: {{required "A valid value is required! (.Values.shootClusters[].kubernetesCrossplaneProviderConfigRefName)" $shootCluster.kubernetesCrossplaneProviderConfigRefName | quote}} # Set to Kubernetes ProviderConfig
+  forProvider:
+    manifest:
+      # gardener shoot api: https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md
+      apiVersion: core.gardener.cloud/v1beta1
+      kind: Shoot
+      metadata:
+        annotations:
+          confirmation.gardener.cloud/deletion: "true" # otherwise it can't be destroyed using IAD
+        name: {{required "A valid Gardener Shoot Name is required! (.Values.shootClusters[].name)" $shootCluster.name}}
+        namespace: {{required "A valid Gardener Project Namespace is required! (.Values.shootClusters[].projectNamespace)" $shootCluster.projectNamespace}}    
+      
+      spec:
+        secretBindingName: {{required "A valid Secret Binding Name is required! (.Values.shootClusters[].secretBindingName)" $shootCluster.secretBindingName}} # Set your SecretBinding name
+        cloudProfileName: gcp
+        region: {{required "A valid value is required! (.Values.shootClusters[].region)" $shootCluster.region | quote}}
+        purpose: {{required "A valid value is required! (.Values.shootClusters[].purpose)" $shootCluster.purpose | quote}}
+        #### START hyperscaler specific stuff START ####
+        provider:
+          type: gcp
+          infrastructureConfig:
+            {{- $shootCluster.providerInfrastructureConfig | default $.Values.defaults.gcp.infrastructureConfig | toYaml | nindent 12 }}
+          controlPlaneConfig:
+            {{- $shootCluster.providerControlPlaneConfig | default $.Values.defaults.gcp.controlPlaneConfig | toYaml | nindent 12 }}
+          workers:
+            {{- $shootCluster.workers | default $.Values.defaults.gcp.workers | toYaml | nindent 12 }}
+        #### END hyperscaler specific stuff END ####
+        kubernetes:
+          version: {{required "A valid value is required! (.Values.shootClusters[].kubernetesVersion)" $shootCluster.kubernetesVersion | quote}}
+          kubeAPIServer:            
+            {{- $shootCluster.kubernetesKubeAPIServer | default $.Values.defaults.kubernetesKubeAPIServer | toYaml | nindent 12 }}                        
+          kubeControllerManager:
+            nodeCIDRMaskSize: 24
+          clusterAutoscaler:
+            {{- $shootCluster.kubernetesClusterAutoscaler | default $.Values.defaults.kubernetesClusterAutoscaler | toYaml | nindent 12 }}
+        extensions: {{ $shootCluster.extensions | default $.Values.defaults.extensions | toYaml | nindent 10 }}
+        networking:
+          {{- $shootCluster.networking | default $.Values.defaults.networking | toYaml | nindent 10 }}
+        maintenance:
+          {{- $shootCluster.maintenance | default $.Values.defaults.maintenance | toYaml | nindent 10 }}
+        hibernation:
+          {{- $shootCluster.hibernation | default $.Values.defaults.hibernation | toYaml | nindent 10 }}
+        addons:
+          {{- $shootCluster.addons | default $.Values.defaults.addons | toYaml | nindent 10 }}
+        resources:
+          {{- $shootCluster.resources | default $.Values.defaults.resources | toYaml | nindent 10 }}
+  {{- end }}
+{{- end }}

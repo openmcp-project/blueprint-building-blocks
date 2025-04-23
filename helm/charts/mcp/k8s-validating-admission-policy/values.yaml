@@ -1,0 +1,22 @@
+---
+#########################################################################################################
+# -- [ValidatingAdmissionPolicy](https://kubernetes.io/docs/reference/kubernetes-api/policy-resources/validating-admission-policy-v1/) describes the definition of an admission validation policy that accepts or rejects an object without changing it.
+# @default -- []
+validatingAdmissionPolicies:  
+  # validatingAdmissionPolicies[0].name -- kubernetes crossplane object `metadata.name` on managed control plane.
+  - name: ""
+    # -- Specification of the desired behavior of the ValidatingAdmissionPolicy.
+    # [ValidatingAdmissionPolicySpec](https://kubernetes.io/docs/reference/kubernetes-api/policy-resources/validating-admission-policy-v1/) is the specification of the desired behavior of the AdmissionPolicy.
+    # @default -- []
+    spec: []
+#########################################################################################################
+# -- [ValidatingAdmissionPolicyBinding](https://kubernetes.io/docs/reference/kubernetes-api/policy-resources/validating-admission-policy-binding-v1/) binds the ValidatingAdmissionPolicy with paramerized resources.
+# @default -- []
+validatingAdmissionPolicyBindings:  
+  # validatingAdmissionPolicyBindings[0].name -- kubernetes crossplane object `metadata.name` on managed control plane.
+  - name: ""
+    # -- Specification of the desired behavior of the ValidatingAdmissionPolicyBinding.
+    # [ValidatingAdmissionPolicyBindingSpec](https://kubernetes.io/docs/reference/kubernetes-api/policy-resources/validating-admission-policy-binding-v1/) is the specification of the ValidatingAdmissionPolicyBinding.
+    # @default -- []
+    spec: []
+#########################################################################################################

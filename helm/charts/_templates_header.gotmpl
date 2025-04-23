@@ -1,0 +1,30 @@
+{{/* 
+This file defines textblocks which are used by multiple README go templates.
+Use this command from ./helm/charts/ folder to programatically create README.md for every sub helm chart.
+$ helm-docs --template-files=./_templates.gotmpl --template-files=README.md.gotmpl --chart-search-root=.
+*/}}
+
+{{ define "sap.helm.valuesModificationInfo" -}}
+Modify [values.yaml](./values.yaml) file to change any available variable to your needs. It is mandatory to modify at least `domain` variable via values.yaml or `--set domain='...'` during helm chart execution. [See official helm chart template guide...](https://helm.sh/docs/chart_template_guide/values_files/)
+{{- end }}
+
+{{ define "sap.classification" -}}
+> Classification: INTERNAL
+
+*The keywords "MUST", "MUST NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).*
+{{- end }}
+
+{{ template "chart.header" . }}
+{{ template "chart.deprecationWarning" . }}
+
+{{ template "chart.badgesSection" . }}
+
+{{ template "chart.description" . }}
+
+{{ template "chart.homepageLine" . }}
+
+{{ template "chart.maintainersSection" . }}
+
+{{ template "chart.sourcesSection" . }}
+
+{{ template "chart.requirementsSection" . }}

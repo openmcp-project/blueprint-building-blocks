@@ -1,0 +1,55 @@
+name: Semantic Release
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - main
+
+permissions:  
+  contents: write # to be able to publish a GitHub release
+  id-token: write # to enable use of OIDC for npm provenance
+
+jobs:
+  git-tag-modify-helm-chart:
+    name: Helm Chart Github Tags
+    uses: "openmcp-project/blueprint-building-blocks/.github/workflows/git-tag-modified-helm-chart.yml@main"
+    secrets: inherit
+  release:
+    name: Release
+    runs-on: ubuntu-latest    
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+      id-token: write # to enable use of OIDC for npm provenance
+      packages: write # to be able to publish a GitHub Packages
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.CO_GOLDEN_PATH_SERVICEUSER_GH_TOKEN }}          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ">=20.8"
+          check-latest: true
+      - name: Install dependencies
+        run: |
+          npm install semantic-release
+          npm install @semantic-release/changelog
+          npm install conventional-changelog-conventionalcommits
+          npm install @semantic-release/git
+        env:
+          GITHUB_TOKEN: ${{ secrets.CO_GOLDEN_PATH_SERVICEUSER_GH_TOKEN }}
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.CO_GOLDEN_PATH_SERVICEUSER_GH_TOKEN }}
+        run: npx semantic-release
+  git-release-create:    
+    uses: "openmcp-project/blueprint-building-blocks/.github/workflows/gh-pages-release.yml@main"
+    name: Helm Chart Github Releases
+    needs: release
+    secrets: inherit    
+    
