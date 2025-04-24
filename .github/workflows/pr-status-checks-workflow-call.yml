@@ -20,7 +20,7 @@ permissions:
 jobs:  
   pr-status-check:
     if: ${{ github.event.pull_request.head.repo.full_name == 'openmcp-project/blueprint-building-blocks' }}        
-    uses: "openmcp-project/blueprint-workflows/.github/workflows/git-pr-status-checks.yml@chore/os_preparations"
+    uses: "openmcp-project/blueprint-workflows/.github/workflows/git-pr-status-checks.yml@main"
     with:
       HELM_OCI_REGISTRY: 'ghcr.io'
       BUILDING_BLOCKS_GIT_REPO_URL: 'https://github.com/openmcp-project/blueprint-building-blocks.git'
