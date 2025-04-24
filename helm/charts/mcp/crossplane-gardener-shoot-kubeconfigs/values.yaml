@@ -8,4 +8,5 @@ shootClusters:
     # -- gardener project name. Starts with "garden..." e.g. "garden-aas-dt"
     projectnamespace: "ns1"
     # -- gardenerOrchestrateCloudProviderConfigRefName needs to match crossplane provider configuration reference name (identifier) of SAP garden cluster control plane! (.gardener.controlPlane.shootClusters[*].gardenerOrchestrateCloudProviderConfigRefName)
-    gardenerOrchestrateCloudProviderConfigRefName: ""        
+    gardenerOrchestrateCloudProviderConfigRefName: ""
+#########################################################################################################
