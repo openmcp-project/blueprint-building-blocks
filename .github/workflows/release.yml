@@ -20,7 +20,7 @@ jobs:
     secrets: inherit
   git-release-create:
     name: Release Create
-    uses: "openmcp-project/blueprint-building-blocks/.github/workflows/git-tag-modified-helm-chart.yml@main"
+    uses: "openmcp-project/blueprint-building-blocks/.github/workflows/git-release-create.yml@main"
     secrets: inherit
   release:
     name: Release
