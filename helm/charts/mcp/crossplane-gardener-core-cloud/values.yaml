@@ -19,3 +19,4 @@ secretBindings:
     quotas: {}
     # -- [secretRef](https://gardener.cloud/docs/gardener/api-reference/core/#core.gardener.cloud/v1beta1.SecretBinding) is a reference to a secret object in the same or another namespace. This field is immutable.
     secretRef: []
+#########################################################################################################
