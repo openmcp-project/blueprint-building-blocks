@@ -23,7 +23,7 @@ dependencies:
   # see https://helm.sh/docs/helm/helm_dependency/#synopsis
   - name: sap-btp-services
     version: ~0.x.x
-    repository: "file://../mcp/sap-btp-services"
+    repository: "file://../sap-btp-services"
 # The URL of this projects home page (optional)
 home: "https://github.com/openmcp-project/blueprint-building-blocks"
 # A list of URLs to source code for this project (optional)
