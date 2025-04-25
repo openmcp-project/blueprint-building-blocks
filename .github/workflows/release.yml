@@ -2,9 +2,6 @@ name: Semantic Release
 
 on:
   workflow_dispatch: {}
-  push:
-    branches:
-      - main
 
 permissions:  
   contents: write # to be able to publish a GitHub release
