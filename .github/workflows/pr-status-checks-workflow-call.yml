@@ -4,9 +4,12 @@ on:
   pull_request:
     branches:
       - main
-  
+  pull_request_target:
+    branches:
+      - main
+
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  group: ${{ github.event.pull_request.head.repo.full_name }}-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 permissions:
@@ -17,7 +20,6 @@ permissions:
   checks: write
   statuses: write
 
-jobs:  
+jobs:
   pr-status-check:
-    if: ${{ github.event.pull_request.head.repo.full_name == 'openmcp-project/blueprint-building-blocks' }}        
     uses: "openmcp-project/blueprint-workflows/.github/workflows/git-pr-status-checks.yml@main"
