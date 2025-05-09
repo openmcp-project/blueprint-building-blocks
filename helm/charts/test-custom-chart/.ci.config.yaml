@@ -3,6 +3,8 @@ jfrog.sh:
   enabled: true #false
   
 # pipeline feature flags
+yamllint: # not implemented yet!
+  enable: false
 helm-docs:
   enable: true # default is true, even if you do NOT declare this feature flag!
   options:
