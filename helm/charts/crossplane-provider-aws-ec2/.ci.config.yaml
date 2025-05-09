@@ -3,8 +3,6 @@ jfrog.sh:
   enabled: true
 
 # pipeline feature flags
-yamllint:
-  enable: true
 helm-docs:
   enable: true
 helm-chart-linting:

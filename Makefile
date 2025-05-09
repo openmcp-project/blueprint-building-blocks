@@ -13,10 +13,6 @@ SHELL = /usr/bin/env bash -o pipefail
 git-tags-modified-helm-charts:  
 	$(PWD)/.github/actions/git-tag-modified-helm-chart/git-tag-modified-helm-chart.sh;
 
-.PHONY: shell-check
-shell-check: 
-	$(PWD)/scripts/ci/shellcheck.sh
-
 .PHONY: clean
 clean: 
 	rm -rf helm-template-*.yaml
