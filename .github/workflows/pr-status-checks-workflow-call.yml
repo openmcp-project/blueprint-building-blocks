@@ -22,4 +22,4 @@ permissions:
 
 jobs:
   pr-status-check:
-    uses: "openmcp-project/blueprint-workflows/.github/workflows/git-pr-status-checks.yml@main"
+    uses: "openmcp-project/blueprint-workflows/.github/workflows/git-pr-status-checks.yml@chore/ignored_chart_files2"
