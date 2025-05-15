@@ -2,15 +2,15 @@ import manifests
 
 import schema
 
-# Convert the `BTPSapCrossplaneIO` model into Kubernetes Manifest
-kubernetesRender = lambda a: schema.BTPSapCrossplaneIO {
+# Convert the `ProviderConfig` model into Kubernetes Manifest
+kubernetesRender = lambda a: schema.ProviderConfig {
     # Construct the deployment manifest.
-    btpsapcrossplaneio = {
+    providerconfig = {
         apiVersion = "btp.sap.crossplane.io/v1alpha1"
         kind = "ProviderConfig"
         metadata.name = a.name
         metadata.labels = a.labels
-        metadata.namespace = "default"
+        metadata.namespace = a.namespace
         spec = {
             cliServerUrl = a.cliServerUrl
             globalAccount = a.globalAccount
@@ -33,7 +33,7 @@ kubernetesRender = lambda a: schema.BTPSapCrossplaneIO {
         }
     }
     # Returns Kubernetes manifests
-    [btpsapcrossplaneio]
+    [providerconfig]
 }
 
-manifests.yaml_stream(sum([kubernetesRender(a) for a in schema.BTPSapCrossplaneIO.instances()], []))
+manifests.yaml_stream(sum([kubernetesRender(a) for a in schema.ProviderConfig.instances()], []))

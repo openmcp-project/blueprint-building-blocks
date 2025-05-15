@@ -1,6 +1,7 @@
-schema BTPSapCrossplaneIO:
-    """The BTPSapCrossplaneIO model."""
+schema ProviderConfig:
+    """The ProviderConfig model."""
     name: str
+    namespace: str = "default"
     labels: {str:str}
     cliServerUrl: str
     globalAccount: str

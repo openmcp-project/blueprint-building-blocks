@@ -1,7 +1,7 @@
 import schema
 
-config = schema.BTPSapCrossplaneIO {
-    name = "provider-config-ref-name-btp-account-mcp-blueprints"
+config = schema.ProviderConfig {
+    name = "KCL-provider-config-ref-name-btp-account-mcp-blueprints"
     labels = {
         "openmcp.cloud/blueprint-building-block" = "crossplane-provider-configs"
         "openmcp.cloud/blueprint-building-block-version" = "0.0.18"
