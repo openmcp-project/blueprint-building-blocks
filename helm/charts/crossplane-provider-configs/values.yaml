@@ -154,8 +154,8 @@ providerConfigs:
           key: ""
 ########################################################################################################################
   ########################################################################################################################
-  # -- creates k8s manifest `kind: ProviderConfig` of `apiVersion: cloudfoundry.btp.orchestrate.cloud.sap/v1beta1`
-  # This [`ProviderConfig`](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/providerconfig/v1beta1) typically points to k8s secret in which the credentials required for the [BTP Cloud Foundry](https://pages.github.tools.sap/cloud-orchestration/docs/sap-services/btp-services/cloudfoundry/provider) provider to communicate with the Cloud Foundry Environment on BTP.
+  # -- creates k8s manifest `kind: ProviderConfig` of `apiVersion: cloudfoundry.crossplane.io/v1beta1`
+  # This `ProviderConfig` typically points to k8s secret in which the credentials required for the BTP Cloud Foundry provider to communicate with the Cloud Foundry Environment on BTP.
   # @default -- []
   cloudfoundryBtpOrchestrateCloud:
     - providerConfigRefName: ""
