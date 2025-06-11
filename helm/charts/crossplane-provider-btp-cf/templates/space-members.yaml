@@ -1,0 +1,17 @@
+{{- range $item := .Values.spaceMembers }}
+  {{- if and ($item) (ne $item.name "") }}
+---
+apiVersion: cloudfoundry.crossplane.io/v1alpha1
+kind: SpaceMembers
+metadata:
+  name: {{required "A valid value is required! (.Values.spaceMembers[].name)" $item.name | lower }}
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+spec:
+  providerConfigRef:
+    name: {{required "A valid value is required! (.Values.spaceMembers[].cloudfoundryBtpOrchestrateCloudProviderConfigRefName)" $item.cloudfoundryBtpOrchestrateCloudProviderConfigRefName }}
+  forProvider:
+    {{- toYaml  $item.forProvider | nindent 4 }}   
+  {{- end }}
+{{- end }}

@@ -153,6 +153,31 @@ providerConfigs:
           name: ""
           key: ""
 ########################################################################################################################
+  ########################################################################################################################
+  # -- creates k8s manifest `kind: ProviderConfig` of `apiVersion: cloudfoundry.btp.orchestrate.cloud.sap/v1beta1`
+  # This [`ProviderConfig`](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/providerconfig/v1beta1) typically points to k8s secret in which the credentials required for the [BTP Cloud Foundry](https://pages.github.tools.sap/cloud-orchestration/docs/sap-services/btp-services/cloudfoundry/provider) provider to communicate with the Cloud Foundry Environment on BTP.
+  # @default -- []
+  cloudfoundryBtpOrchestrateCloud:
+    - providerConfigRefName: ""
+      # @default -- []
+      endpoint:
+        source: "Secret"
+        # -- A SecretRef is a reference to a secret key that contains the credentials that must be used to connect to the provider.
+        # @default -- []
+        secretRef:
+          namespace: "default"
+          name: ""
+          key: ""
+          # @default -- []
+      credentials:
+        source: "Secret"
+        # -- A SecretRef is a reference to a secret key that contains the credentials that must be used to connect to the provider.
+        # @default -- []
+        secretRef:
+          namespace: "default"
+          name: ""
+          key: ""
+########################################################################################################################
 # @secrets -- :exclamation::exclamation: never EVER PUSH confidential secrets/credentials in plain text into GIT :exclamation::exclamation:
 # @default -- []
 secrets:

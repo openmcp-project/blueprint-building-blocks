@@ -1,0 +1,68 @@
+---
+########################################################################################################################
+# -- `apps[].` orchestrate [`kind: App`](https://pages.github.tools.sap/cloud-orchestration/docs/sap-services/btp-services/cloudfoundry/app) of [BTP Cloud foundry](https://pages.github.tools.sap/cloud-orchestration/docs/category/cloudfoundry).
+# @default -- object
+apps:
+  - cloudfoundryBtpOrchestrateCloudProviderConfigRefName: ""
+    name: ""
+    # -- [forProvider](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/app/v1alpha1) CRD
+    forProvider: []
+########################################################################################################################
+# -- `routes[].` orchestrate [`kind: Route`](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/route/v1alpha1) of [BTP Cloud foundry](https://pages.github.tools.sap/cloud-orchestration/docs/category/cloudfoundry).
+routes:
+  - cloudfoundryBtpOrchestrateCloudProviderConfigRefName: ""
+    name: ""
+    # -- [RouteParameters](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/route/v1alpha1) parameters for Routes CRD.
+    forProvider: []
+########################################################################################################################
+# -- `serviceInstances[].` orchestrate [`kind: ServiceInstance`](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/serviceinstance/v1alpha1) of [BTP Cloud foundry](https://pages.github.tools.sap/cloud-orchestration/docs/category/cloudfoundry).
+serviceInstances:
+  - cloudfoundryBtpOrchestrateCloudProviderConfigRefName: ""
+    name: ""
+    # -- [ServiceInstanceParameters](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/serviceinstance/v1alpha1) defines the desired state of Service Instance.
+    forProvider: []
+########################################################################################################################
+# -- `serviceKeys[].` orchestrate [`kind: ServiceKey`](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/servicekey/v1alpha1) of [BTP Cloud foundry](https://pages.github.tools.sap/cloud-orchestration/docs/category/cloudfoundry).
+serviceKeys:
+  - cloudfoundryBtpOrchestrateCloudProviderConfigRefName: ""
+    name: ""
+    # -- [ServiceKeyParameters](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/servicekey/v1alpha1) define the desired state of the forProvider field of ServiceKey.
+    forProvider: []
+    # -- *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.
+    #   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)!
+    writeConnectionSecretToRef: []
+########################################################################################################################
+# -- `orgMembers[].` orchestrate [`kind: OrgMembers`](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/orgmembers/v1alpha1) of [BTP Cloud foundry](https://pages.github.tools.sap/cloud-orchestration/docs/category/cloudfoundry).
+orgMembers:
+  - cloudfoundryBtpOrchestrateCloudProviderConfigRefName: ""
+    name: ""
+    # -- [OrgMembersParameters](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/orgmembers/v1alpha1) encapsulate role assignments to CloudFoundry Organizations.
+    forProvider: []   
+########################################################################################################################
+# -- `organizations[].` orchestrate [`kind: Organization`](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/organization/v1alpha1) of [BTP Cloud foundry](https://pages.github.tools.sap/cloud-orchestration/docs/category/cloudfoundry).
+organizations:
+  - cloudfoundryBtpOrchestrateCloudProviderConfigRefName: ""
+    name: ""
+    # -- must match the actual name of the Cloud Foundry organization in BTP! More information about [Import Cloud Foundry Organization](https://pages.github.tools.sap/cloud-orchestration/docs/sap-services/btp-services/cloudfoundry/org_space#import-cloud-foundry-organization).
+    externalName: ""
+    # -- [OrganizationParameters](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/organization/v1alpha1) Parameters for a Organization.
+    forProvider: []
+########################################################################################################################
+# -- `spaceMembers[].` orchestrate [`kind: SpaceMembers`](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/spacemembers/v1alpha1?view=docs) of [BTP Cloud foundry](https://pages.github.tools.sap/cloud-orchestration/docs/category/cloudfoundry).
+spaceMembers:
+  - cloudfoundryBtpOrchestrateCloudProviderConfigRefName: ""
+    name: ""
+    # -- [SpaceMembersParameters](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/spacemembers/v1alpha1?view=docs) encapsulate role assignments to CloudFoundry Spaces.
+    forProvider: []
+########################################################################################################################
+# @secrets -- :exclamation::exclamation: never EVER PUSH confidential secrets/credentials in plain text into GIT :exclamation::exclamation:
+secrets:
+  # secrets[0].name -- defines k8s `metadata.name` value of `kind: Secret`
+  - name: ""
+    # -- *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: Secret`
+    namespace: ""
+    # -- *(optional)* [stringData](https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/secret-v1/) *(map[string]string)* allows specifying non-binary secret data in string form. It is provided as a write-only input field for convenience. All keys and values are merged into the data field on write, overwriting any existing values. The stringData field is never output when reading from the API.
+    stringData: []
+    # -- *(optional)* [data](https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/secret-v1/) *(map[string][]byte)* Data contains the secret data. Each key must consist of alphanumeric characters, '-', '_' or '.'. The serialized form of the secret data is a base64 encoded string, representing the arbitrary (possibly non-string) data value here. Described in [here](https://tools.ietf.org/html/rfc4648#section-4)
+    data: []  
+########################################################################################################################
