@@ -2,10 +2,9 @@ apiVersion: v2
 appVersion: 0.0.1
 description: A Helm Chart to template crossplane manifests to manage BTP Cloud Foundry
   resources on BTP.
-home: https://github.tools.sap/cloud-orchestration/mcp-blueprints
 icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
 name: crossplane-provider-btp-cf
 sources:
-- https://pages.github.tools.sap/cloud-orchestration/docs/category/cloudfoundry
+  - https://github.com/openmcp-project/blueprint-building-blocks
 type: application
 version: 0.0.10
