@@ -1,0 +1,92 @@
+package kube
+
+externalSecret: "openmcp-test": {
+	// Source: external-secrets-config/templates/external-secret.yaml
+	apiVersion: "external-secrets.io/v1beta1"
+	kind:       "ExternalSecret"
+	metadata: {
+		name:      "openmcp-test"
+		namespace: "default"
+		labels: {
+			"openmcp.cloud/blueprint-building-block":         "external-secrets-config"
+			"openmcp.cloud/blueprint-building-block-version": "0.1.10"
+		}
+	}
+	spec: {
+		refreshInterval: "15m"
+		secretStoreRef: {
+			name: "hashicorp-vault"
+			kind: "SecretStore"
+		}
+		target: name: "openmcp-test"
+		data: [{
+			remoteRef: {
+				key:      "j4azdf.laasds.shoot.live.k8s-hana.ondemand.com/garden-openmcp-test"
+				property: "kubeconfig"
+			}
+			secretKey: "kubeconfig"
+		}]
+	}
+}
+externalSecret: "garden-openmcp-test-2": {
+	// Source: external-secrets-config/templates/external-secret.yaml
+	apiVersion: "external-secrets.io/v1beta1"
+	kind:       "ExternalSecret"
+	metadata: {
+		name:      "garden-openmcp-test-2"
+		namespace: "default"
+		labels: {
+			"openmcp.cloud/blueprint-building-block":         "external-secrets-config"
+			"openmcp.cloud/blueprint-building-block-version": "0.1.10"
+		}
+	}
+	spec: {
+		refreshInterval: "15m"
+		secretStoreRef: {
+			name: "hashicorp-vault"
+			kind: "SecretStore"
+		}
+		target: name: "garden-openmcp-test-2"
+		data: [{
+			remoteRef: {
+				key:      "j4azdf.laasds.shoot.live.k8s-hana.ondemand.com/garden-openmcp-test"
+				property: "kubeconfig"
+			}
+			secretKey: "kubeconfig"
+		}]
+	}
+}
+externalSecret: "btp-account-openmcp-test": {
+	// Source: external-secrets-config/templates/external-secret.yaml
+	apiVersion: "external-secrets.io/v1beta1"
+	kind:       "ExternalSecret"
+	metadata: {
+		name:      "btp-account-openmcp-test"
+		namespace: "default"
+		labels: {
+			"openmcp.cloud/blueprint-building-block":         "external-secrets-config"
+			"openmcp.cloud/blueprint-building-block-version": "0.1.10"
+		}
+	}
+	spec: {
+		refreshInterval: "15m"
+		secretStoreRef: {
+			name: "hashicorp-vault-cluster-store"
+			kind: "ClusterSecretStore"
+		}
+		target: name: "btp-account-openmcp-test"
+		data: [{
+			remoteRef: {
+				key:      "j4azdf.laasds.shoot.live.k8s-hana.ondemand.com/btp-accounts-openmcp-test"
+				property: "btp-cis-provider-credentials"
+			}
+			secretKey: "btp-cis-provider-credentials"
+		}, {
+			remoteRef: {
+				key:      "j4azdf.laasds.shoot.live.k8s-hana.ondemand.com/btp-accounts-openmcp-test"
+				property: "btp-service-account-provider-credentials"
+			}
+			secretKey: "btp-service-account-provider-credentials"
+		}]
+	}
+}

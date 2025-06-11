@@ -1,0 +1,31 @@
+package kube
+
+clusterSecretStore: "hashicorp-vault-cluster-store": {
+	// Source: external-secrets-config/templates/cluster-secret-store.yaml
+	apiVersion: "external-secrets.io/v1beta1"
+	kind:       "ClusterSecretStore"
+	metadata: {
+		name: "hashicorp-vault-cluster-store"
+		labels: {
+			"openmcp.cloud/blueprint-building-block":         "external-secrets-config"
+			"openmcp.cloud/blueprint-building-block-version": "0.1.10"
+		}
+	}
+	spec: {
+		controller: "controller"
+		provider: vault: {
+			auth: appRole: {
+				path:   "approle"
+				roleId: "cf33bb15"
+				secretRef: {
+					key:  "token"
+					name: "hashicorp-vault-token"
+				}
+			}
+			namespace: "ns1"
+			path:      "k8s-clusters"
+			server:    "https://vault.example/"
+			version:   "v2"
+		}
+	}
+}
