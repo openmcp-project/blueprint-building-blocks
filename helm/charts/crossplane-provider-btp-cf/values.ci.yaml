@@ -42,7 +42,7 @@ serviceInstances:
         offering: destination
         plan: lite
 ########################################################################################################################
-serviceKeys:
+serviceCredentialsBindings:
   - cloudfoundryBtpOrchestrateCloudProviderConfigRefName: "cloudfoundryBtpOrchestrateCloudProviderConfigRefName"
     name: "name"
     forProvider:

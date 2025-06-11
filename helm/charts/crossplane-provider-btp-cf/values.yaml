@@ -22,11 +22,11 @@ serviceInstances:
     # -- [ServiceInstanceParameters](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/serviceinstance/v1alpha1) defines the desired state of Service Instance.
     forProvider: []
 ########################################################################################################################
-# -- `serviceKeys[].` orchestrate [`kind: ServiceKey`](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/servicekey/v1alpha1) of [BTP Cloud foundry](https://pages.github.tools.sap/cloud-orchestration/docs/category/cloudfoundry).
-serviceKeys:
+# -- `serviceCredentialsBindings[].` orchestrate [`kind: ServiceKey`](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/servicekey/v1alpha1) of [BTP Cloud foundry](https://pages.github.tools.sap/cloud-orchestration/docs/category/cloudfoundry).
+serviceCredentialsBindings:
   - cloudfoundryBtpOrchestrateCloudProviderConfigRefName: ""
     name: ""
-    # -- [ServiceKeyParameters](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/servicekey/v1alpha1) define the desired state of the forProvider field of ServiceKey.
+    # -- [serviceCredentialsBindingParameters](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/servicekey/v1alpha1) define the desired state of the forProvider field of ServiceKey.
     forProvider: []
     # -- *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.
     #   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)!
