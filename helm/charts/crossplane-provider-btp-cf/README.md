@@ -6,11 +6,9 @@
 
 A Helm Chart to template crossplane manifests to manage BTP Cloud Foundry resources on BTP.
 
-**Homepage:** <https://github.tools.sap/cloud-orchestration/mcp-blueprints>
-
 ## Source Code
 
-* <https://pages.github.tools.sap/cloud-orchestration/docs/category/cloudfoundry>
+* <https://github.com/openmcp-project/blueprint-building-blocks>
 
 ## Values
 
@@ -29,11 +27,11 @@ A Helm Chart to template crossplane manifests to manage BTP Cloud Foundry resour
 | secrets[0].name | string | `""` | defines k8s `metadata.name` value of `kind: Secret` |
 | secrets[0].namespace | string | `""` | *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: Secret` |
 | secrets[0].stringData | list | `[]` | *(optional)* [stringData](https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/secret-v1/) *(map[string]string)* allows specifying non-binary secret data in string form. It is provided as a write-only input field for convenience. All keys and values are merged into the data field on write, overwriting any existing values. The stringData field is never output when reading from the API. |
+| serviceCredentialsBindings | list | `[{"cloudfoundryBtpOrchestrateCloudProviderConfigRefName":"","forProvider":[],"name":"","writeConnectionSecretToRef":[]}]` | `serviceCredentialsBindings[].` orchestrate [`kind: ServiceKey`](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.crossplane.io/servicecredentialbinding/v1alpha1) of [BTP Cloud foundry](https://pages.github.tools.sap/cloud-orchestration/docs/category/cloudfoundry). |
+| serviceCredentialsBindings[0].forProvider | list | `[]` | [serviceCredentialsBindingParameters](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.crossplane.io/servicecredentialbinding/v1alpha1) define the desired state of the forProvider field of serviceCredentialsBindings. |
+| serviceCredentialsBindings[0].writeConnectionSecretToRef | list | `[]` | *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)! |
 | serviceInstances | list | `[{"cloudfoundryBtpOrchestrateCloudProviderConfigRefName":"","forProvider":[],"name":""}]` | `serviceInstances[].` orchestrate [`kind: ServiceInstance`](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/serviceinstance/v1alpha1) of [BTP Cloud foundry](https://pages.github.tools.sap/cloud-orchestration/docs/category/cloudfoundry). |
 | serviceInstances[0].forProvider | list | `[]` | [ServiceInstanceParameters](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/serviceinstance/v1alpha1) defines the desired state of Service Instance. |
-| serviceKeys | list | `[{"cloudfoundryBtpOrchestrateCloudProviderConfigRefName":"","forProvider":[],"name":"","writeConnectionSecretToRef":[]}]` | `serviceKeys[].` orchestrate [`kind: ServiceKey`](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/servicekey/v1alpha1) of [BTP Cloud foundry](https://pages.github.tools.sap/cloud-orchestration/docs/category/cloudfoundry). |
-| serviceKeys[0].forProvider | list | `[]` | [ServiceKeyParameters](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/servicekey/v1alpha1) define the desired state of the forProvider field of ServiceKey. |
-| serviceKeys[0].writeConnectionSecretToRef | list | `[]` | *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)! |
 | spaceMembers | list | `[{"cloudfoundryBtpOrchestrateCloudProviderConfigRefName":"","forProvider":[],"name":""}]` | `spaceMembers[].` orchestrate [`kind: SpaceMembers`](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/spacemembers/v1alpha1?view=docs) of [BTP Cloud foundry](https://pages.github.tools.sap/cloud-orchestration/docs/category/cloudfoundry). |
 | spaceMembers[0].forProvider | list | `[]` | [SpaceMembersParameters](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/spacemembers/v1alpha1?view=docs) encapsulate role assignments to CloudFoundry Spaces. |
 
