@@ -28,9 +28,6 @@ serviceCredentialsBindings:
     name: ""
     # -- [serviceCredentialsBindingParameters](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.crossplane.io/servicecredentialbinding/v1alpha1) define the desired state of the forProvider field of serviceCredentialsBindings.
     forProvider: []
-    # -- *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.
-    #   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)!
-    writeConnectionSecretToRef: []
 ########################################################################################################################
 # -- `orgMembers[].` orchestrate [`kind: OrgMembers`](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/orgmembers/v1alpha1) of [BTP Cloud foundry](https://pages.github.tools.sap/cloud-orchestration/docs/category/cloudfoundry).
 orgMembers:
