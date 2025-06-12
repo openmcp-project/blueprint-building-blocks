@@ -1,0 +1,17 @@
+{{- range $item := .Values.apps }}
+  {{- if and ($item) (ne $item.name "") }}
+---
+apiVersion: cloudfoundry.crossplane.io/v1alpha1
+kind: App
+metadata:
+  name: {{required "A valid value is required! (.Values.apps[].name)" $item.name | lower }}
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+spec:
+  providerConfigRef:
+    name: {{required "A valid value is required! (.Values.apps[].cloudfoundryBtpOrchestrateCloudProviderConfigRefName)" $item.cloudfoundryBtpOrchestrateCloudProviderConfigRefName }}
+  forProvider:
+    {{- required "A valid value is required! (.Values.spaces[].forProvider)" $item.forProvider | toYaml | nindent 4 }}
+  {{- end }}
+{{- end }}
