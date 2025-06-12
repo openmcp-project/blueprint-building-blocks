@@ -6,7 +6,7 @@ on:
       - main
 
 concurrency:
-  group: ${{ github.event.pull_request.head.repo.full_name }}-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  group: ${{ github.event.pull_request.head.repo.full_name }}-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}-fork
   cancel-in-progress: true
 
 permissions:
