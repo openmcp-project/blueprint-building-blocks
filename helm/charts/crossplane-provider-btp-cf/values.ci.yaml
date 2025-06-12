@@ -7,7 +7,7 @@ apps:
     name: "name"
     forProvider:
       name: my-app
-      dockerImage: cloud-orchestration-experimental.common.repositories.cloud.sap/hello-cf:latest
+      dockerImage: hello-cf:latest
       dockerCredentialsSecretRef:
         name: registry-secret
         namespace: crossplane-system
@@ -70,7 +70,6 @@ orgMembers:
 spaceMembers:
   - cloudfoundryBtpOrchestrateCloudProviderConfigRefName: "cloudfoundryBtpOrchestrateCloudProviderConfigRefName"
     name: "name"
-    # -- [SpaceMembersParameters](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-cloudfoundry/cloudfoundry.btp.orchestrate.cloud.sap/spacemembers/v1alpha1?view=docs) encapsulate role assignments to CloudFoundry Spaces.
     forProvider:
       enforcementPolicy: "enforcementPolicy"
       members:
