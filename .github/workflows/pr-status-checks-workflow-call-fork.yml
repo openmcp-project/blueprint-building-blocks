@@ -1,7 +1,7 @@
 name: PR Status Checks
 
 on:
-  pull_request:
+  pull_request_target:
     branches:
       - main
 
@@ -19,5 +19,5 @@ permissions:
 
 jobs:
   pr-status-check:
-    if: ${{ github.event.pull_request.head.repo.full_name == 'cloud-orchestration/mcp-blueprint-building-blocks' }}
+    if: ${{ github.event.pull_request.head.repo.full_name != 'cloud-orchestration/mcp-blueprint-building-blocks' }}
     uses: "openmcp-project/blueprint-workflows/.github/workflows/git-pr-status-checks.yml@main"
