@@ -1,0 +1,58 @@
+---
+########################################################################################################################
+# -- `apps[].` orchestrate `kind: App` of BTP Cloud foundry.
+# @default -- object
+apps:
+  - cloudfoundryProviderConfigRefName: ""
+    name: ""
+    forProvider: []
+########################################################################################################################
+# -- `routes[].` orchestrate `kind: Route` of BTP Cloud foundry.
+routes:
+  - cloudfoundryProviderConfigRefName: ""
+    name: ""
+    forProvider: []
+########################################################################################################################
+# -- `serviceInstances[].` orchestrate `kind: ServiceInstance` of BTP Cloud foundry.
+serviceInstances:
+  - cloudfoundryProviderConfigRefName: ""
+    name: ""
+    forProvider: []
+########################################################################################################################
+# -- `serviceCredentialsBindings[].` orchestrate `kind: ServiceKey` of BTP Cloud foundry.
+serviceCredentialsBindings:
+  - cloudfoundryProviderConfigRefName: ""
+    name: ""
+    forProvider: []
+########################################################################################################################
+# -- `orgMembers[].` orchestrate `kind: OrgMembers` of BTP Cloud foundry.
+orgMembers:
+  - cloudfoundryProviderConfigRefName: ""
+    name: ""
+    forProvider: []   
+########################################################################################################################
+# -- `organizations[].` orchestrate `kind: Organization` of BTP Cloud foundry.
+organizations:
+  - cloudfoundryProviderConfigRefName: ""
+    name: ""
+    # -- must match the actual name of the Cloud Foundry organization in BTP!
+    externalName: ""
+    forProvider: []
+########################################################################################################################
+# -- `spaceMembers[].` orchestrate `kind: SpaceMembers` of BTP Cloud foundry.
+spaceMembers:
+  - cloudfoundryProviderConfigRefName: ""
+    name: ""
+    forProvider: []
+########################################################################################################################
+# @secrets -- :exclamation::exclamation: never EVER PUSH confidential secrets/credentials in plain text into GIT :exclamation::exclamation:
+secrets:
+  # secrets[0].name -- defines k8s `metadata.name` value of `kind: Secret`
+  - name: ""
+    # -- *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: Secret`
+    namespace: ""
+    # -- *(optional)* [stringData](https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/secret-v1/) *(map[string]string)* allows specifying non-binary secret data in string form. It is provided as a write-only input field for convenience. All keys and values are merged into the data field on write, overwriting any existing values. The stringData field is never output when reading from the API.
+    stringData: []
+    # -- *(optional)* [data](https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/secret-v1/) *(map[string][]byte)* Data contains the secret data. Each key must consist of alphanumeric characters, '-', '_' or '.'. The serialized form of the secret data is a base64 encoded string, representing the arbitrary (possibly non-string) data value here. Described in [here](https://tools.ietf.org/html/rfc4648#section-4)
+    data: []  
+########################################################################################################################
