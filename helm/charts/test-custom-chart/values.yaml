@@ -7,7 +7,7 @@ sap-btp-services:
     namespace: "default"
     instance:
       name: "openmcp-op-cluster-ias"
-      serviceOfferingName: "identity"
+      serviceOfferingName: "identity1"
       servicePlanName: "application"
       parameters:
         oauth2-configuration:
