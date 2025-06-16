@@ -322,7 +322,36 @@ entries:
     urls:
     - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-provider-btp-security-0.0.10/crossplane-provider-btp-security-0.0.10.tgz
     version: 0.0.10
+  crossplane-provider-cloudfoundry:
+  - apiVersion: v2
+    appVersion: 0.3.0
+    created: "2025-06-16T09:50:09.255724051Z"
+    description: A Helm Chart to template crossplane manifests to manage BTP Cloud
+      Foundry resources on BTP.
+    digest: 8d7165677ddad4a37c6267aab42d9ab7b38c74b6cfa109037c13573dca0c470c
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-provider-cloudfoundry
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-provider-cloudfoundry-0.1.0/crossplane-provider-cloudfoundry-0.1.0.tgz
+    version: 0.1.0
   crossplane-provider-configs:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-06-16T09:50:09.481667195Z"
+    description: A Helm chart to template crossplane provider config manifests to
+      orchestrate resources.
+    digest: 4d95296d0b4c11f47ed8cf44225f2b88ffb41387285b8014a3c1688fd89b0218
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-provider-configs
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-provider-configs-0.0.19/crossplane-provider-configs-0.0.19.tgz
+    version: 0.0.19
   - apiVersion: v2
     appVersion: 0.1.0
     created: "2025-04-25T07:21:39.945770201Z"
@@ -733,4 +762,4 @@ entries:
     urls:
     - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/test-custom-chart-0.0.8/test-custom-chart-0.0.8.tgz
     version: 0.0.8
-generated: "2025-04-25T07:21:41.20272618Z"
+generated: "2025-06-16T09:50:11.765271381Z"
