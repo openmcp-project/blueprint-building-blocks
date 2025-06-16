@@ -9,7 +9,7 @@ metadata:
     openmcp.cloud/blueprint-building-block: "sap-btp-services"
     openmcp.cloud/blueprint-building-block-version: "0.0.12"
 spec:
-  serviceOfferingName: identity
+  serviceOfferingName: identity1
   servicePlanName: application
   parameters:
     consumed-apis: []
