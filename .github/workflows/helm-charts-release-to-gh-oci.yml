@@ -29,8 +29,9 @@ jobs:
           charts_dir: helm/charts
         env:
           CR_GENERATE_RELEASE_NOTES: true
+          CR_SKIP_EXISTING: true
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-
+    
       - name: Upload to OCI-based registry
         run: |
           if [ -d ".cr-release-packages" ]; then
