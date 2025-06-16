@@ -3,37 +3,37 @@
 # -- `apps[].` orchestrate `kind: App` of BTP Cloud foundry.
 # @default -- object
 apps:
-  - cloudfoundryBtpOrchestrateCloudProviderConfigRefName: ""
+  - cloudfoundryProviderConfigRefName: ""
     name: ""
     forProvider: []
 ########################################################################################################################
 # -- `routes[].` orchestrate `kind: Route` of BTP Cloud foundry.
 routes:
-  - cloudfoundryBtpOrchestrateCloudProviderConfigRefName: ""
+  - cloudfoundryProviderConfigRefName: ""
     name: ""
     forProvider: []
 ########################################################################################################################
 # -- `serviceInstances[].` orchestrate `kind: ServiceInstance` of BTP Cloud foundry.
 serviceInstances:
-  - cloudfoundryBtpOrchestrateCloudProviderConfigRefName: ""
+  - cloudfoundryProviderConfigRefName: ""
     name: ""
     forProvider: []
 ########################################################################################################################
 # -- `serviceCredentialsBindings[].` orchestrate `kind: ServiceKey` of BTP Cloud foundry.
 serviceCredentialsBindings:
-  - cloudfoundryBtpOrchestrateCloudProviderConfigRefName: ""
+  - cloudfoundryProviderConfigRefName: ""
     name: ""
     forProvider: []
 ########################################################################################################################
 # -- `orgMembers[].` orchestrate `kind: OrgMembers` of BTP Cloud foundry.
 orgMembers:
-  - cloudfoundryBtpOrchestrateCloudProviderConfigRefName: ""
+  - cloudfoundryProviderConfigRefName: ""
     name: ""
     forProvider: []   
 ########################################################################################################################
 # -- `organizations[].` orchestrate `kind: Organization` of BTP Cloud foundry.
 organizations:
-  - cloudfoundryBtpOrchestrateCloudProviderConfigRefName: ""
+  - cloudfoundryProviderConfigRefName: ""
     name: ""
     # -- must match the actual name of the Cloud Foundry organization in BTP!
     externalName: ""
@@ -41,7 +41,7 @@ organizations:
 ########################################################################################################################
 # -- `spaceMembers[].` orchestrate `kind: SpaceMembers` of BTP Cloud foundry.
 spaceMembers:
-  - cloudfoundryBtpOrchestrateCloudProviderConfigRefName: ""
+  - cloudfoundryProviderConfigRefName: ""
     name: ""
     forProvider: []
 ########################################################################################################################

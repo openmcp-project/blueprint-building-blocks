@@ -157,7 +157,7 @@ providerConfigs:
   # -- creates k8s manifest `kind: ProviderConfig` of `apiVersion: cloudfoundry.crossplane.io/v1beta1`
   # This `ProviderConfig` typically points to k8s secret in which the credentials required for the BTP Cloud Foundry provider to communicate with the Cloud Foundry Environment on BTP.
   # @default -- []
-  cloudfoundryBtpOrchestrateCloud:
+  cloudfoundry:
     - providerConfigRefName: ""
       # @default -- []
       endpoint:
