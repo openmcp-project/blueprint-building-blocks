@@ -98,8 +98,8 @@ providerConfigs:
           namespace: default
           name: "btp-account-openmcp-test"
           key: btp-service-account-provider-credentials
-  cloudfoundryBtpOrchestrateCloud:
-    - providerConfigRefName: "cloudfoundryBtpOrchestrateCloud"
+  cloudfoundry:
+    - providerConfigRefName: "cloudfoundry"
       endpoint:
         source: "Secret"
         secretRef:

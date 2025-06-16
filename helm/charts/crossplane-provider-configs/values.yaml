@@ -153,6 +153,31 @@ providerConfigs:
           name: ""
           key: ""
 ########################################################################################################################
+  ########################################################################################################################
+  # -- creates k8s manifest `kind: ProviderConfig` of `apiVersion: cloudfoundry.crossplane.io/v1beta1`
+  # This `ProviderConfig` typically points to k8s secret in which the credentials required for the BTP Cloud Foundry provider to communicate with the Cloud Foundry Environment on BTP.
+  # @default -- []
+  cloudfoundry:
+    - providerConfigRefName: ""
+      # @default -- []
+      endpoint:
+        source: "Secret"
+        # -- A SecretRef is a reference to a secret key that contains the credentials that must be used to connect to the provider.
+        # @default -- []
+        secretRef:
+          namespace: "default"
+          name: ""
+          key: ""
+          # @default -- []
+      credentials:
+        source: "Secret"
+        # -- A SecretRef is a reference to a secret key that contains the credentials that must be used to connect to the provider.
+        # @default -- []
+        secretRef:
+          namespace: "default"
+          name: ""
+          key: ""
+########################################################################################################################
 # @secrets -- :exclamation::exclamation: never EVER PUSH confidential secrets/credentials in plain text into GIT :exclamation::exclamation:
 # @default -- []
 secrets:

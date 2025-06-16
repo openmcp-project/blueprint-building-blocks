@@ -1,0 +1,105 @@
+---
+########################################################################################################################
+###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
+########################################################################################################################
+apps:
+  - cloudfoundryProviderConfigRefName: "cloudfoundryProviderConfigRefName"
+    name: "name"
+    forProvider:
+      name: my-app
+      dockerImage: hello-cf:latest
+      dockerCredentialsSecretRef:
+        name: registry-secret
+        namespace: crossplane-system
+      spaceRef:
+        name: my-space
+      routes:
+      - routeRef:
+          name: my-route
+########################################################################################################################
+routes:
+  - cloudfoundryProviderConfigRefName: "cloudfoundryProviderConfigRefName"
+    name: "name"
+    forProvider:
+      domain:
+        name: cfapps.eu10.hana.ondemand.com 
+      hostname: my-app
+      path: /hello # must begin with a `/`
+      spaceRef:
+        name: my-space
+        policy:
+          resolve: Always
+########################################################################################################################
+serviceInstances:
+  - cloudfoundryProviderConfigRefName: "cloudfoundryProviderConfigRefName"
+    name: "name"
+    forProvider:
+      type: managed
+      name: my-destination
+      spaceRef:
+        name: my-space
+      servicePlan:
+        offering: destination
+        plan: lite
+########################################################################################################################
+serviceCredentialsBindings:
+  - cloudfoundryProviderConfigRefName: "cloudfoundryProviderConfigRefName"
+    name: "name"
+    forProvider:
+      name: my-service-key
+      serviceInstanceRef:
+        name: my-service-instance
+      connectionDetailsAsJSON: false    
+    writeConnectionSecretToRef:
+      name: my-service-key-secret
+      namespace: default
+########################################################################################################################
+orgMembers:
+  - cloudfoundryProviderConfigRefName: "cloudfoundryProviderConfigRefName"
+    name: "name"
+    forProvider:
+      orgRef:
+        name: my-org
+      roleType: Managers
+      members:
+      - username: user1@sap.com
+        origin: sap.ids
+      - username: user2@sap.com
+      enforcementPolicy: Lax
+########################################################################################################################
+spaceMembers:
+  - cloudfoundryProviderConfigRefName: "cloudfoundryProviderConfigRefName"
+    name: "name"
+    forProvider:
+      enforcementPolicy: "enforcementPolicy"
+      members:
+        - origin: "origin"
+          username: "username"
+      roleType: "Developers"
+      space: "space"
+      spaceRef:
+        name: "name"
+        policy:
+          resolution: "resolution"
+          resolve: "Always"
+      spaceSelector:
+        matchControllerRef: true
+        matchLabels:
+        policy:
+          resolution: "resolution"          
+########################################################################################################################
+organizations:
+  - cloudfoundryProviderConfigRefName: "cloudfoundryProviderConfigRefName"
+    name: "name"
+    externalName: "externalName"
+    forProvider:
+      id: "The external GUID of the org"
+      name: "The name of the Organization in Cloud Foundry"
+########################################################################################################################
+secrets:
+  - name: "name"
+    namespace: "namespace"
+    stringData:
+      foo: "bar"
+    #data: []
+########################################################################################################################

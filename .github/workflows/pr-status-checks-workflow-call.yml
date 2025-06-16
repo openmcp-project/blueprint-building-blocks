@@ -1,9 +1,6 @@
 name: PR Status Checks
 
 on:
-  pull_request:
-    branches:
-      - main
   pull_request_target:
     branches:
       - main
