@@ -3,7 +3,7 @@
 ###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
 ########################################################################################################################
 apps:
-  - cloudfoundryBtpOrchestrateCloudProviderConfigRefName: "cloudfoundryBtpOrchestrateCloudProviderConfigRefName"
+  - cloudfoundryProviderConfigRefName: "cloudfoundryProviderConfigRefName"
     name: "name"
     forProvider:
       name: my-app
@@ -18,7 +18,7 @@ apps:
           name: my-route
 ########################################################################################################################
 routes:
-  - cloudfoundryBtpOrchestrateCloudProviderConfigRefName: "cloudfoundryBtpOrchestrateCloudProviderConfigRefName"
+  - cloudfoundryProviderConfigRefName: "cloudfoundryProviderConfigRefName"
     name: "name"
     forProvider:
       domain:
@@ -31,7 +31,7 @@ routes:
           resolve: Always
 ########################################################################################################################
 serviceInstances:
-  - cloudfoundryBtpOrchestrateCloudProviderConfigRefName: "cloudfoundryBtpOrchestrateCloudProviderConfigRefName"
+  - cloudfoundryProviderConfigRefName: "cloudfoundryProviderConfigRefName"
     name: "name"
     forProvider:
       type: managed
@@ -43,7 +43,7 @@ serviceInstances:
         plan: lite
 ########################################################################################################################
 serviceCredentialsBindings:
-  - cloudfoundryBtpOrchestrateCloudProviderConfigRefName: "cloudfoundryBtpOrchestrateCloudProviderConfigRefName"
+  - cloudfoundryProviderConfigRefName: "cloudfoundryProviderConfigRefName"
     name: "name"
     forProvider:
       name: my-service-key
@@ -55,7 +55,7 @@ serviceCredentialsBindings:
       namespace: default
 ########################################################################################################################
 orgMembers:
-  - cloudfoundryBtpOrchestrateCloudProviderConfigRefName: "cloudfoundryBtpOrchestrateCloudProviderConfigRefName"
+  - cloudfoundryProviderConfigRefName: "cloudfoundryProviderConfigRefName"
     name: "name"
     forProvider:
       orgRef:
@@ -68,7 +68,7 @@ orgMembers:
       enforcementPolicy: Lax
 ########################################################################################################################
 spaceMembers:
-  - cloudfoundryBtpOrchestrateCloudProviderConfigRefName: "cloudfoundryBtpOrchestrateCloudProviderConfigRefName"
+  - cloudfoundryProviderConfigRefName: "cloudfoundryProviderConfigRefName"
     name: "name"
     forProvider:
       enforcementPolicy: "enforcementPolicy"
@@ -89,7 +89,7 @@ spaceMembers:
           resolution: "resolution"          
 ########################################################################################################################
 organizations:
-  - cloudfoundryBtpOrchestrateCloudProviderConfigRefName: "cloudfoundryBtpOrchestrateCloudProviderConfigRefName"
+  - cloudfoundryProviderConfigRefName: "cloudfoundryProviderConfigRefName"
     name: "name"
     externalName: "externalName"
     forProvider:

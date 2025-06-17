@@ -10,7 +10,7 @@ metadata:
     openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
 spec:
   providerConfigRef:
-    name: {{required "A valid value is required! (.Values.serviceInstances[].cloudfoundryBtpOrchestrateCloudProviderConfigRefName)" $item.cloudfoundryBtpOrchestrateCloudProviderConfigRefName }}
+    name: {{required "A valid value is required! (.Values.serviceInstances[].cloudfoundryProviderConfigRefName)" $item.cloudfoundryProviderConfigRefName }}
   forProvider:
     {{- required "A valid value is required! (.Values.spaces[].forProvider)" $item.forProvider | toYaml | nindent 4 }}
   {{- end }}
