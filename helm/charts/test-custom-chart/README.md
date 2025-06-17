@@ -2,7 +2,7 @@
 
 # test-custom-chart
 
-![Version: 0.0.10](https://img.shields.io/badge/Version-0.0.10-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.16.0](https://img.shields.io/badge/AppVersion-1.16.0-informational?style=flat-square)
+![Version: 0.0.11](https://img.shields.io/badge/Version-0.0.11-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.16.0](https://img.shields.io/badge/AppVersion-1.16.0-informational?style=flat-square)
 
 A Helm chart to test github action and workflows. NOTHING MORE!
 
@@ -25,7 +25,7 @@ A Helm chart to test github action and workflows. NOTHING MORE!
 | sap-btp-services.services[0].name | string | `"identityApplication"` |  |
 | sap-btp-services.services[0].namespace | string | `"default"` |  |
 | sap-btp-services.services[0].instance.name | string | `"openmcp-op-cluster-ias"` |  |
-| sap-btp-services.services[0].instance.serviceOfferingName | string | `"identity"` |  |
+| sap-btp-services.services[0].instance.serviceOfferingName | string | `"identity1"` |  |
 | sap-btp-services.services[0].instance.servicePlanName | string | `"application"` |  |
 | sap-btp-services.services[0].instance.parameters.oauth2-configuration.redirect-uris[0] | string | `"https://*.../oauth2/callback"` |  |
 | sap-btp-services.services[0].instance.parameters.oauth2-configuration.redirect-uris[1] | string | `"https://*.../callback"` |  |
