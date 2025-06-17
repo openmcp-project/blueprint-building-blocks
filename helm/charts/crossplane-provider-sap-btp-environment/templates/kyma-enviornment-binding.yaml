@@ -10,11 +10,11 @@ metadata:
     openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
 spec:
   providerConfigRef:
-    name: {{required "A valid value is required! (.Values.kymaEnvironments[].btpSapCrossplaneProviderConfigRefName)" $item.btpSapCrossplaneProviderConfigRefName }}
+    name: {{required "A valid value is required! .Values.kymaEnvironments[].btpSapCrossplaneProviderConfigRefName)" $item.btpSapCrossplaneProviderConfigRefName }}
   forProvider:
-    {{- toYaml  $item.forProvider | nindent 4 }}
+    {{ required "A valid value is required! (.Values.kymaEnvironmentBindings[].forProvider)" toYaml  $item.forProvider | nindent 4 }}
   cloudManagementRef:
-    {{- toYaml  $item.cloudManagementRef | nindent 4 }}
+    {{ required "A valid value is required! (.Values.kymaEnvironmentBindings[].cloudManagementRef)" toYaml  $item.cloudManagementRef | nindent 4 }}
   kymaEnvironmentRef:
     name: {{required "A valid value is required! (.Values.kymaEnvironmentBindings[].kymaEnvironmentRef.name)" $item.kymaEnvironmentRef.name }}
   {{- if $item.writeConnectionSecretToRef}}
