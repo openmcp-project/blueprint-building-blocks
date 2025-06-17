@@ -1,0 +1,25 @@
+{{- range $item := .Values.kymaEnvironmentBindings }}
+  {{- if and ($item) (ne $item.name "") }}
+---
+apiVersion: environment.btp.sap.crossplane.io/v1alpha1
+kind: KymaEnvironmentBinding
+metadata:
+  name: {{required "A valid value is required! (.Values.kymaEnvironmentBindings[].btpSapCrossplaneProviderConfigRefName)" $item.btpSapCrossplaneProviderConfigRefName | lower }}-{{required "A valid value is required! (.Values.kymaEnvironments[].name)" $item.name | lower }}
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+spec:
+  providerConfigRef:
+    name: {{required "A valid value is required! (.Values.kymaEnvironments[].btpSapCrossplaneProviderConfigRefName)" $item.btpSapCrossplaneProviderConfigRefName }}
+  forProvider:
+    {{- toYaml  $item.forProvider | nindent 4 }}
+  cloudManagementRef:
+    {{- toYaml  $item.cloudManagementRef | nindent 4 }}
+  kymaEnvironmentRef:
+    name: {{required "A valid value is required! (.Values.kymaEnvironmentBindings[].kymaEnvironmentRef.name)" $item.kymaEnvironmentRef.name }}
+  {{- if $item.writeConnectionSecretToRef}}
+  writeConnectionSecretToRef:
+    {{- $item.writeConnectionSecretToRef | toYaml | nindent 4 }}
+  {{- end }}
+  {{- end }}
+{{- end }}
