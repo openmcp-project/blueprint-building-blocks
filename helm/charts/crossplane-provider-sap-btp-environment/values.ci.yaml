@@ -45,3 +45,16 @@ kymaEnvironments:
       name: "demo-kyma-kubeconfig-local"
       namespace: "default"
 ########################################################################################################################
+kymaEnvironmentBindings:
+  - btpSapCrossplaneProviderConfigRefName: "btpSapCrossplaneProviderConfigRefName"
+    name: "name"
+    kymaEnvironmentRef:
+      name: "my-kyma-instance"
+    forProvider:
+      rotationInterval: "6h"
+      ttl: "8h"
+    cloudManagementRef:
+      name: "dev-eu01"
+    writeConnectionSecretToRef:
+      name: "demo-kyma-binding-local"
+      namespace: "default"
