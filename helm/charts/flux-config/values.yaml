@@ -6,12 +6,28 @@ defaults:
   # -- targetNamespace sets or overrides the default namespace in the `kind: Kustomization` manifests.
   targetNamespace: "default"
 ########################################################################################################################
+ociRepositorys:
+  # ociRepositorys[0].name -- defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: GitRepository`
+  - name: ""
+    # -- *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: GitRepository`
+    namespace: "default"
+    # spec -- defines k8s `spec` structured value of `kind: OCIRepository`. See [API browser](https://fluxcd.io/flux/components/source/ocirepositories/)
+    spec:
+########################################################################################################################
+helmReleases:
+  # helmReleases[0].name -- defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: GitRepository`
+  - name: ""
+    # -- *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: GitRepository`
+    namespace: "default"
+    # spec -- defines k8s `spec` structured value of `kind: HelmRelease`. See [API browser](https://fluxcd.io/flux/components/helm/helmreleases/)
+    spec:
+########################################################################################################################
 gitRepositorys:
   # gitRepositorys[0].name -- defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: GitRepository`
   - name: ""
     # -- *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: GitRepository`
     namespace: "ns1"
-    # spec -- defines k8s `spec` structured value of `kind: GitRepository`. See [API broswer](https://fluxcd.io/flux/components/source/api/v1/#source.toolkit.fluxcd.io/v1.GitRepositorySpec)
+    # spec -- defines k8s `spec` structured value of `kind: GitRepository`. See [API browser](https://fluxcd.io/flux/components/source/api/v1/#source.toolkit.fluxcd.io/v1.GitRepositorySpec)
     spec:
       # -- [Interval](https://fluxcd.io/flux/components/source/api/v1/#source.toolkit.fluxcd.io/v1.GitRepositorySpec) at which the GitRepository URL is checked for updates. This interval is approximate and may be subject to jitter to ensure efficient use of resources.
       interval: 1m
