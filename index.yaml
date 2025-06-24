@@ -548,6 +548,23 @@ entries:
   crossplane-provider-sap-btp-environment:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2025-06-24T13:15:24.748138509Z"
+    description: A Helm Chart to template crossplane manifests to manage Cloud Foundry
+      or BTP Kyma environments on BTP.
+    digest: 340e06561e8e1dd0d5f18273b3bc4215b4ec6117bea5d47a379f539bb358a403
+    home: https://github.com/openmcp-project/blueprints
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-provider-sap-btp-environment
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    - https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp/environment.btp.sap.crossplane.io/cloudfoundryenvironment/v1alpha1
+    - https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp/environment.btp.sap.crossplane.io/kymaenvironment/v1alpha1
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-provider-sap-btp-environment-0.0.17/crossplane-provider-sap-btp-environment-0.0.17.tgz
+    version: 0.0.17
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2025-06-18T09:01:04.614338535Z"
     description: A Helm Chart to template crossplane manifests to manage Cloud Foundry
       or BTP Kyma environments on BTP.
@@ -812,4 +829,4 @@ entries:
     urls:
     - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/test-custom-chart-0.0.8/test-custom-chart-0.0.8.tgz
     version: 0.0.8
-generated: "2025-06-24T09:40:23.735082804Z"
+generated: "2025-06-24T13:15:24.748222736Z"
