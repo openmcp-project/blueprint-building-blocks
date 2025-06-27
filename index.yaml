@@ -634,6 +634,22 @@ entries:
   external-secrets-config:
   - apiVersion: v2
     appVersion: 0.10.0
+    created: "2025-06-27T06:48:16.34262855Z"
+    description: A Helm Chart to template external-secrets.io manifests to sync credentials
+      from remote vault (e.g. SAP HashiCorp Vault).
+    digest: f1613623ea6cd8b1c43ac29250184ad3e33934f797459946875ddcb757cfd03f
+    home: https://github.com/openmcp-project/blueprints
+    icon: https://github.com/external-secrets/external-secrets/raw/main/assets/eso-logo-large.png
+    name: external-secrets-config
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    - https://external-secrets.io
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/external-secrets-config-0.1.11/external-secrets-config-0.1.11.tgz
+    version: 0.1.11
+  - apiVersion: v2
+    appVersion: 0.10.0
     created: "2025-04-25T07:21:40.759419078Z"
     description: A Helm Chart to template external-secrets.io manifests to sync credentials
       from remote vault (e.g. SAP HashiCorp Vault).
@@ -846,4 +862,4 @@ entries:
     urls:
     - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/test-custom-chart-0.0.8/test-custom-chart-0.0.8.tgz
     version: 0.0.8
-generated: "2025-06-25T12:54:55.765463735Z"
+generated: "2025-06-27T06:48:16.342699352Z"
