@@ -14,55 +14,55 @@ secretStores:
   - name: ""
     # -- *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: SecretStore`
     namespace: "ns1"
-    # -- Used to configure the [provider](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.SecretStoreSpec). Only one provider may be set.
+    # -- Used to configure the [provider](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.SecretStoreSpec). Only one provider may be set.
     # @default -- []
     provider:
-      # -- *(optional)* [Vault](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.SecretStoreProvider) configures this store to sync secrets using Hashi provider
+      # -- *(optional)* [Vault](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.SecretStoreProvider) configures this store to sync secrets using Hashi provider
       # @default -- []
       vault:
-        # -- [Server](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultProvider) is the connection address for the Vault server, e.g: "https://vault.example/".
+        # -- [Server](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.VaultProvider) is the connection address for the Vault server, e.g: "https://vault.example/".
         server: ""
-        # -- *(optional)* Name of the [vault namespace](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultProvider). Namespaces is a set of features within Vault Enterprise that allows Vault environments to support Secure Multi-tenancy. e.g: “ns1”. More about namespaces can be found here https://www.vaultproject.io/docs/enterprise/namespaces. E.g. "ns1"
+        # -- *(optional)* Name of the [vault namespace](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.VaultProvider). Namespaces is a set of features within Vault Enterprise that allows Vault environments to support Secure Multi-tenancy. e.g: “ns1”. More about namespaces can be found here https://www.vaultproject.io/docs/enterprise/namespaces. E.g. "ns1"
         namespace: "ns1"
-        # -- *(optional)* [Path](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultProvider) is the mount path of the Vault KV backend endpoint, e.g: “secret”. The v2 KV secret engine version specific “/data” path suffix for fetching secrets from Vault is optional and will be appended if not present in specified path.
+        # -- *(optional)* [Path](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.VaultProvider) is the mount path of the Vault KV backend endpoint, e.g: “secret”. The v2 KV secret engine version specific “/data” path suffix for fetching secrets from Vault is optional and will be appended if not present in specified path.
         path: ""
-        # -- [Version](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultProvider) is the Vault KV secret engine version. This can be either “v1” or “v2”. Version defaults to “v2”.
+        # -- [Version](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.VaultProvider) is the Vault KV secret engine version. This can be either “v1” or “v2”. Version defaults to “v2”.
         version: "v2"
-        # -- [Auth](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultProvider) configures how secret-manager authenticates with the Vault server.
+        # -- [Auth](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.VaultProvider) configures how secret-manager authenticates with the Vault server.
         # @default -- []
         auth:
-          # -- *(optional)* [appRole](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultAuth) authenticates with Vault using the App Role auth mechanism, with the role and secret stored in a Kubernetes Secret resource.  VaultAppRole authenticates with Vault using the [App Role auth mechanism](https://www.vaultproject.io/docs/auth/approle).
+          # -- *(optional)* [appRole](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.VaultAuth) authenticates with Vault using the App Role auth mechanism, with the role and secret stored in a Kubernetes Secret resource.  VaultAppRole authenticates with Vault using the [App Role auth mechanism](https://www.vaultproject.io/docs/auth/approle).
           # @default -- []
           appRole:
-            # -- [Path](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultAppRole) where the App Role authentication backend is mounted in Vault, e.g: “approle”
+            # -- [Path](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.VaultAppRole) where the App Role authentication backend is mounted in Vault, e.g: “approle”
             path: "approle"
-            # -- *(optional)* [roleId](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultAppRole) configured in the App Role authentication backend when setting up the authentication backend in Vault.
+            # -- *(optional)* [roleId](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.VaultAppRole) configured in the App Role authentication backend when setting up the authentication backend in Vault.
             roleId: ""
-            # *(optional)* [secretRef])(https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultAppRole) to a key in a Secret that contains the App Role secret used to authenticate with Vault. The key field must be specified and denotes which entry within the Secret resource is used as the app role secret.
+            # *(optional)* [secretRef])(https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.VaultAppRole) to a key in a Secret that contains the App Role secret used to authenticate with Vault. The key field must be specified and denotes which entry within the Secret resource is used as the app role secret.
             secretRef:
               # -- [`type SecretKeySelector `](https://pkg.go.dev/github.com/external-secrets/external-secrets/apis/meta/v1#SecretKeySelector)
               name: ""
               # -- [`type SecretKeySelector `](https://pkg.go.dev/github.com/external-secrets/external-secrets/apis/meta/v1#SecretKeySelector)
               key: ""
 ########################################################################################################################
-# -- [ExternalSecret](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.ExternalSecret) is the Schema for the external-secrets API.
+# -- [ExternalSecret](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.ExternalSecret) is the Schema for the external-secrets API.
 # @default -- {}
 externalSecret:
 # externalSecret[0].name -- defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: ExternalSecret`
 - name: ""
   # -- *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: ExternalSecret`
   namespace: "ns1"
-  # -- [SecretStoreRef](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.SecretStoreRef) defines which SecretStore to fetch the ExternalSecret data.
+  # -- [SecretStoreRef](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.SecretStoreRef) defines which SecretStore to fetch the ExternalSecret data.
   secretStore:
     # -- Name of the SecretStore resource
     name: ""
     # -- *(optional)* Kind of the SecretStore resource (`SecretStore` or `ClusterSecretStore`) Defaults to `.Values.defaults.externalSecret.secretStoreRef.kind`
     kind: ""
-  # -- [RefreshInterval](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.ExternalSecret) is the amount of time before the values are read again from the SecretStore provider Valid time units are “ns”, “us” (or “µs”), “ms”, “s”, “m”, “h” May be set to zero to fetch and create it once. Defaults to 1h.
+  # -- [RefreshInterval](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.ExternalSecret) is the amount of time before the values are read again from the SecretStore provider Valid time units are “ns”, “us” (or “µs”), “ms”, “s”, “m”, “h” May be set to zero to fetch and create it once. Defaults to 1h.
   refreshInterval: ""
-  # -- [targetSecretName](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.ExternalSecretTarget) defines the name of the Secret resource to be managed This field is immutable Defaults to the .metadata.name of the ExternalSecret resource
+  # -- [targetSecretName](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.ExternalSecretTarget) defines the name of the Secret resource to be managed This field is immutable Defaults to the .metadata.name of the ExternalSecret resource
   targetSecretName: ""
-  # -- *(optional)* [Template](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.ExternalSecretTemplate) defines a blueprint for the created Secret resource.
+  # -- *(optional)* [Template](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.ExternalSecretTemplate) defines a blueprint for the created Secret resource.
   template: []
   # -- *(optional)* CreationPolicy defines rules on how to create the resulting Secret Defaults to ‘Owner’
   creationPolicy: ""
@@ -70,16 +70,16 @@ externalSecret:
   deletionPolicy: ""
   # -- *(optional)* Immutable defines if the final secret will be immutable
   immutable: false
-  # -- *(optional)* [Data](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.ExternalSecret) defines the connection between the Kubernetes Secret keys and the Provider data
+  # -- *(optional)* [Data](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.ExternalSecret) defines the connection between the Kubernetes Secret keys and the Provider data
   # @default -- []
   data:
-    # secretKey -- [SecretKey](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.ExternalSecretData) defines the key in which the controller stores the value. This is the key in the Kind=Secret. e.g. "kubeconfig"
+    # secretKey -- [SecretKey](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.ExternalSecretData) defines the key in which the controller stores the value. This is the key in the Kind=Secret. e.g. "kubeconfig"
     - secretKey: ""
-      # -- [RemoteRef](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.ExternalSecretData) points to the remote secret and defines which secret (version/property/..) to fetch.
+      # -- [RemoteRef](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.ExternalSecretData) points to the remote secret and defines which secret (version/property/..) to fetch.
       remoteRef:
-        # -- [Key](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.ExternalSecretDataRemoteRef) is the key used in the Provider, mandatory. E.g. "btp-endpoint.example/btp-account"
+        # -- [Key](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.ExternalSecretDataRemoteRef) is the key used in the Provider, mandatory. E.g. "btp-endpoint.example/btp-account"
         key: ""
-        # -- *(optional)* Used to select a [specific property](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.ExternalSecretDataRemoteRef) of the Provider value (if a map), if supported. E.g. "kubeconfig"
+        # -- *(optional)* Used to select a [specific property](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.ExternalSecretDataRemoteRef) of the Provider value (if a map), if supported. E.g. "kubeconfig"
         property: ""
 ########################################################################################################################
 # @clusterSecretStores -- -
@@ -89,31 +89,31 @@ clusterSecretStores:
   - name: ""
     # -- *(optional)* Used to select the correct ESO controller (think: ingress.ingressClassName) The ESO controller is instantiated with a specific controller name and filters ES based on this property
     controller: ""
-    # -- Used to configure the [provider](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.SecretStoreSpec). Only one provider may be set.
+    # -- Used to configure the [provider](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.SecretStoreSpec). Only one provider may be set.
     # @default -- []
     provider:
-      # -- *(optional)* [Vault](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.SecretStoreProvider) configures this store to sync secrets using Hashi provider
+      # -- *(optional)* [Vault](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.SecretStoreProvider) configures this store to sync secrets using Hashi provider
       # @default -- []
       vault:
-        # -- [Server](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultProvider) is the connection address for the Vault server, e.g: "https://vault.example/".
+        # -- [Server](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.VaultProvider) is the connection address for the Vault server, e.g: "https://vault.example/".
         server: "https://vault.example/"
-        # -- *(optional)* Name of the [vault namespace](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultProvider). Namespaces is a set of features within Vault Enterprise that allows Vault environments to support Secure Multi-tenancy. e.g: “ns1”. More about namespaces can be found here https://www.vaultproject.io/docs/enterprise/namespaces. E.g. "ns1"
+        # -- *(optional)* Name of the [vault namespace](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.VaultProvider). Namespaces is a set of features within Vault Enterprise that allows Vault environments to support Secure Multi-tenancy. e.g: “ns1”. More about namespaces can be found here https://www.vaultproject.io/docs/enterprise/namespaces. E.g. "ns1"
         namespace: "ns1"
-        # -- *(optional)* [Path](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultProvider) is the mount path of the Vault KV backend endpoint, e.g: “secret”. The v2 KV secret engine version specific “/data” path suffix for fetching secrets from Vault is optional and will be appended if not present in specified path.
+        # -- *(optional)* [Path](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.VaultProvider) is the mount path of the Vault KV backend endpoint, e.g: “secret”. The v2 KV secret engine version specific “/data” path suffix for fetching secrets from Vault is optional and will be appended if not present in specified path.
         path: ""
-        # -- [Version](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultProvider) is the Vault KV secret engine version. This can be either “v1” or “v2”. Version defaults to “v2”.
+        # -- [Version](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.VaultProvider) is the Vault KV secret engine version. This can be either “v1” or “v2”. Version defaults to “v2”.
         version: "v2"
-        # -- [Auth](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultProvider) configures how secret-manager authenticates with the Vault server.
+        # -- [Auth](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.VaultProvider) configures how secret-manager authenticates with the Vault server.
         # @default -- []
         auth:
-          # -- *(optional)* [appRole](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultAuth) authenticates with Vault using the App Role auth mechanism, with the role and secret stored in a Kubernetes Secret resource.  VaultAppRole authenticates with Vault using the [App Role auth mechanism](https://www.vaultproject.io/docs/auth/approle).
+          # -- *(optional)* [appRole](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.VaultAuth) authenticates with Vault using the App Role auth mechanism, with the role and secret stored in a Kubernetes Secret resource.  VaultAppRole authenticates with Vault using the [App Role auth mechanism](https://www.vaultproject.io/docs/auth/approle).
           # @default -- []
           appRole:
-            # -- [Path](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultAppRole) where the App Role authentication backend is mounted in Vault, e.g: “approle”
+            # -- [Path](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.VaultAppRole) where the App Role authentication backend is mounted in Vault, e.g: “approle”
             path: "approle"
-            # -- *(optional)* [roleId](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultAppRole) configured in the App Role authentication backend when setting up the authentication backend in Vault.
+            # -- *(optional)* [roleId](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.VaultAppRole) configured in the App Role authentication backend when setting up the authentication backend in Vault.
             roleId: ""
-            # *(optional)* [secretRef])(https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.VaultAppRole) to a key in a Secret that contains the App Role secret used to authenticate with Vault. The key field must be specified and denotes which entry within the Secret resource is used as the app role secret.
+            # *(optional)* [secretRef])(https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.VaultAppRole) to a key in a Secret that contains the App Role secret used to authenticate with Vault. The key field must be specified and denotes which entry within the Secret resource is used as the app role secret.
             # @default -- []
             secretRef:
               # -- [`type SecretKeySelector `](https://pkg.go.dev/github.com/external-secrets/external-secrets/apis/meta/v1#SecretKeySelector)
@@ -121,29 +121,29 @@ clusterSecretStores:
               # -- [`type SecretKeySelector `](https://pkg.go.dev/github.com/external-secrets/external-secrets/apis/meta/v1#SecretKeySelector)
               key: ""
 ########################################################################################################################    
-# -- [ClusterExternalSecret](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.ClusterExternalSecretSpec) is the Schema for the external-secrets API.
+# -- [ClusterExternalSecret](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.ClusterExternalSecretSpec) is the Schema for the external-secrets API.
 # @default -- {}
 clusterExternalSecret:
 # clusterExternalSecret[0].name -- defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: ExternalSecret`
 - name: ""
   # -- *(optional)* The name of the external secrets to be created defaults to the name of the ClusterExternalSecret
   externalSecretName: ""
-  # -- [refreshTime](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.ClusterExternalSecretSpec) is the  time in which the controller should reconcile its objects and recheck namespaces for labels.
+  # -- [refreshTime](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.ClusterExternalSecretSpec) is the  time in which the controller should reconcile its objects and recheck namespaces for labels.
   refreshTime: ""      
-  # -- *(optional)* [namespaceSelectors](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.ClusterExternalSecretSpec) defines a list of labels to select by to find the Namespaces to create the ExternalSecrets in. The selectors are ORed.
+  # -- *(optional)* [namespaceSelectors](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.ClusterExternalSecretSpec) defines a list of labels to select by to find the Namespaces to create the ExternalSecrets in. The selectors are ORed.
   namespaceSelectors: []
-  # -- The [spec](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.ExternalSecretSpec) for the ExternalSecrets to be created
+  # -- The [spec](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.ExternalSecretSpec) for the ExternalSecrets to be created
   # @default -- []
   externalSecretSpec:
-    # -- (optional) - [SecretStoreRef](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.ExternalSecretSpec) defines which SecretStore to fetch the ExternalSecret data.
+    # -- (optional) - [SecretStoreRef](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.ExternalSecretSpec) defines which SecretStore to fetch the ExternalSecret data.
     secretStoreRef: []
-    # -- [ExternalSecretTarget](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.ExternalSecretTarget) defines the Kubernetes Secret to be created There can be only one target per ExternalSecret.
+    # -- [ExternalSecretTarget](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.ExternalSecretTarget) defines the Kubernetes Secret to be created There can be only one target per ExternalSecret.
     target: []
-    # -- [RefreshInterval](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.ExternalSecret) is the amount of time before the values are read again from the SecretStore provider Valid time units are “ns”, “us” (or “µs”), “ms”, “s”, “m”, “h” May be set to zero to fetch and create it once. Defaults to 1h.
+    # -- [RefreshInterval](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.ExternalSecret) is the amount of time before the values are read again from the SecretStore provider Valid time units are “ns”, “us” (or “µs”), “ms”, “s”, “m”, “h” May be set to zero to fetch and create it once. Defaults to 1h.
     refreshInterval: ""
-    # -- *(optional)* [Data](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.ExternalSecretData) defines the connection between the Kubernetes Secret keys and the Provider data
+    # -- *(optional)* [Data](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.ExternalSecretData) defines the connection between the Kubernetes Secret keys and the Provider data
     data: []
-    # -- *(optional)* [DataFrom](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1beta1.ExternalSecretDataFromRemoteRef) is used to fetch all properties from a specific Provider data If multiple entries are specified, the Secret keys are merged in the specified order
+    # -- *(optional)* [DataFrom](https://external-secrets.io/latest/api/spec/#external-secrets.io/v1.ExternalSecretDataFromRemoteRef) is used to fetch all properties from a specific Provider data If multiple entries are specified, the Secret keys are merged in the specified order
     dataFrom: []
 ########################################################################################################################
 # -- The [PushSecret](https://external-secrets.io/latest/api/pushsecret/) is namespaced and it describes what data should be pushed to the secret provider.
