@@ -519,6 +519,20 @@ entries:
   crossplane-provider-sap-btp-account:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2025-07-11T07:35:15.055816775Z"
+    description: A Helm chart to template crossplane manifests to manage SAP BTP resources.
+    digest: c389c78c1f4880416bce746f9dae1b6d2396f0878a5dc62c5a7f34280282b22b
+    home: https://pages.github.tools.sap/cloud-orchestration/docs/category/sap-cloud-services
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-provider-sap-btp-account
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-provider-sap-btp-account-0.0.10/crossplane-provider-sap-btp-account-0.0.10.tgz
+    version: 0.0.10
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2025-04-25T07:21:40.538412627Z"
     description: A Helm chart to template crossplane manifests to manage SAP BTP resources.
     digest: b275a4b9a811df466d677d2c18a2fe7fd93b0fb5d8425d2b55ea8c30c285e4dc
@@ -862,4 +876,4 @@ entries:
     urls:
     - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/test-custom-chart-0.0.8/test-custom-chart-0.0.8.tgz
     version: 0.0.8
-generated: "2025-06-27T06:48:16.342699352Z"
+generated: "2025-07-11T07:35:15.055900622Z"
