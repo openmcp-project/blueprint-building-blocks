@@ -2,7 +2,7 @@
 
 # crossplane-provider-helm
 
-![Version: 0.0.11](https://img.shields.io/badge/Version-0.0.11-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.19.0](https://img.shields.io/badge/AppVersion-0.19.0-informational?style=flat-square)
+![Version: 0.0.12](https://img.shields.io/badge/Version-0.0.12-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.21.0](https://img.shields.io/badge/AppVersion-0.21.0-informational?style=flat-square)
 
 A Helm Chart to template crossplane provider "helm" manifests to manage k8s cluster stack on a k8s Gardener/Kyma clusters.
 
@@ -18,7 +18,7 @@ A Helm Chart to template crossplane provider "helm" manifests to manage k8s clus
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| helmReleases | object | object | helmReleases contains information and configuration of a [helm chart](https://helm.sh) to be managed by flux [Helm Controller](https://fluxcd.io/flux/components/helm/api/v2/). |
+| helmReleases | object | object | [helmReleases](https://marketplace.upbound.io/providers/crossplane-contrib/provider-helm/v0.21.0/resources/helm.crossplane.io/Release/v1beta1) contains information and configuration of a [helm chart](https://helm.sh) to be managed by flux [Helm Controller](https://fluxcd.io/flux/components/helm/api/v2/). |
 | helmReleases.helmRelease.chart | object | `{"name":"","repository":"","version":""}` | [ChartSpec](https://github.com/crossplane-contrib/provider-helm/blob/master/apis/release/v1beta1/types.go) defines the chart spec for a Release |
 | helmReleases.helmRelease.chart.name | string | `""` | [Name](https://github.com/crossplane-contrib/provider-helm/blob/master/apis/release/v1beta1/types.go) of Helm chart, required if ChartSpec.URL not set |
 | helmReleases.helmRelease.chart.repository | string | `""` | [Repository](https://github.com/crossplane-contrib/provider-helm/blob/master/apis/release/v1beta1/types.go): Helm repository URL, required if ChartSpec.URL not set |
