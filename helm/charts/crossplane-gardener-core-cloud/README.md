@@ -2,7 +2,7 @@
 
 # crossplane-gardener-core-cloud
 
-![Version: 0.0.5](https://img.shields.io/badge/Version-0.0.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
+![Version: 0.0.6](https://img.shields.io/badge/Version-0.0.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.10.0](https://img.shields.io/badge/AppVersion-0.10.0-informational?style=flat-square)
 
 A Helm chart to template crossplane manifests to manage core.gardener.cloud resources.
 
@@ -16,7 +16,7 @@ A Helm chart to template crossplane manifests to manage core.gardener.cloud reso
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| secretBindings | list | - | [secretBindings](https://gardener.cloud/docs/gardener/api-reference/core/#core.gardener.cloud/v1beta1.SecretBinding) represents a binding to a secret in the same or another namespace. |
+| secretBindings | list | - | [secretBindings](https://gardener.cloud/docs/gardener/api-reference/core/#core.gardener.cloud/v1beta1.SecretBinding) represents a binding to a secret in the same or another namespace via [crossplane provider kubernetes](https://marketplace.upbound.io/providers/crossplane-contrib/provider-kubernetes/v0.10.0). |
 | secretBindings[0].cloudProfile | string | `""` | cloudProfile is a name (field `type`) of a [CloudProfile object](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#cloudprofile). This field is immutable. E.g. gcp / azure / aws |
 | secretBindings[0].kubernetesCrossplaneProviderConfigRefName | string | `""` | kubernetesCrossplaneProviderConfigRefName needs to match crossplane provider configuration reference name (identifier) of SAP garden cluster control plane! (.shootClusters[*].kubernetesCrossplaneProviderConfigRefName) |
 | secretBindings[0].labels | list | `[]` | [labels](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#objectmeta-v1-meta) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels |
