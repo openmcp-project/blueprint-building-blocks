@@ -6,11 +6,12 @@
 
 A Helm chart to template crossplane manifests to manage SAP BTP resources.
 
-**Homepage:** <https://pages.github.tools.sap/cloud-orchestration/docs/category/sap-cloud-services>
+**Homepage:** <https://github.com/SAP/crossplane-provider-btp>
 
 ## Source Code
 
 * <https://github.com/openmcp-project/blueprint-building-blocks>
+* <https://github.com/SAP/crossplane-provider-btp>
 
 ## Values
 
