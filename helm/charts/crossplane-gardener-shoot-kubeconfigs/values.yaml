@@ -1,6 +1,6 @@
 ---
 #########################################################################################################
-# -- shootClusters contains information and configuration of Gardener shoot clusters.
+# -- shootClusters contains information and configuration of Gardener shoot clusters via [kind: AdminKubeconfigRequest](https://gardener.cloud/docs/gardener/api-reference/authentication/).
 # @default -- -
 shootClusters:
   # gardener.controlPlane.shootClusters[0].name -- name defines technical gardener shoot cluster. Max length 15 and must only be lowercase letters, numbers and hyphens!

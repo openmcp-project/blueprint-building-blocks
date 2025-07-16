@@ -2,7 +2,7 @@
 
 # crossplane-provider-apiextensions
 
-![Version: 0.0.4](https://img.shields.io/badge/Version-0.0.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.0.5](https://img.shields.io/badge/Version-0.0.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.20.0](https://img.shields.io/badge/AppVersion-1.20.0-informational?style=flat-square)
 
 A Helm Chart to template crossplane API extensions compositions.
 
@@ -19,7 +19,7 @@ A Helm Chart to template crossplane API extensions compositions.
 |-----|------|---------|-------------|
 | environmentConfigs | list | list | An [EnvironmentConfig](https://docs.crossplane.io/latest/api/) contains user-defined unstructured values for use in a Composition.  Read the Crossplane documentation for [more information about EnvironmentConfigs](https://docs.crossplane.io/latest/concepts/environment-configs/). |
 | environmentConfigs[0].data | list | `[]` | The data of this [EnvironmentConfig](https://docs.crossplane.io/latest/api/). This may contain any kind of structure that can be serialized into JSON. |
-| usages | list | list | A Usage defines a deletion blocking relationship between two resources.  Usages prevent accidental deletion of a single resource or deletion of resources with dependent resources. Read the Crossplane documentation for [more information about Compositions](https://docs.crossplane.io/latest/concepts/usages/). |
+| usages | list | list | A [Usage](https://docs.crossplane.io/latest/concepts/usages/) defines a deletion blocking relationship between two resources.  Usages prevent accidental deletion of a single resource or deletion of resources with dependent resources. Read the Crossplane documentation for [more information about Compositions](https://docs.crossplane.io/latest/concepts/usages/). |
 | usages[0].spec | list | `[]` | The data of this [EnvironmentConfig](https://docs.crossplane.io/latest/api/). This may contain any kind of structure that can be serialized into JSON. |
 
 ----------------------------------------------

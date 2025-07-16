@@ -1,6 +1,6 @@
 ---
 ########################################################################################################################
-# -- [providers](https://docs.crossplane.io/latest/concepts/providers/) contains information and configuration of k8s [manifest/resource](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/). Learn more with this [example](../../../../argo-cd-generator-config/remote-clusters-temp/template/template.aas-dt.shoot.canary.k8s-hana.ondemand.com.yaml.file).
+# -- [providers](https://docs.crossplane.io/latest/concepts/providers/) contains information and configuration of k8s [manifest/resource](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/).
 # @default -- list
 providers:
   # providers[0].name -- kubernetes crossplane object `metadata.name` on managed control plane.

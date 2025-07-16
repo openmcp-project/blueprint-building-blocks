@@ -4,7 +4,7 @@
 defaults: []
 ########################################################################################################################
 # @default -- list
-# https://doc.crds.dev/github.com/crossplane/crossplane/apiextensions.crossplane.io/Composition/v1
+# A [Composition](https://doc.crds.dev/github.com/crossplane/crossplane/apiextensions.crossplane.io/Composition/v1) defines a collection of managed resources or functions that Crossplane uses to create and manage new composite resources. [Read the Crossplane documentation](https://docs.crossplane.io/latest/concepts/compositions/) for more information about Compositions.
 compositions:
   - name: ""
     labels: []

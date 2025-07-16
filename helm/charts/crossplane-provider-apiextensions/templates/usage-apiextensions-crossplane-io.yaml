@@ -1,7 +1,7 @@
 {{- range $item := .Values.usages}}
   {{- if and ($item) (ne $item.name "") }}
 ---
-apiVersion: apiextensions.crossplane.io/v1alpha1
+apiVersion: apiextensions.crossplane.io/v1beta1
 kind: Usage
 metadata:
   name: {{required "A valid value is required! (.Values.usages[].name)" $item.name | lower }}

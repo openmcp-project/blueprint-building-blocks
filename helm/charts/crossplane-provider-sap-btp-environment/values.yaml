@@ -1,6 +1,6 @@
 ---
 ########################################################################################################################
-# -- cloudFoundryEnvironments contains configuration of [cloudfoundry Environments](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp-account/environment.btp.sap.crossplane.io/cloudfoundryenvironment/v1alpha1).
+# -- cloudFoundryEnvironments contains configuration of [kind: CloudFoundryEnvironment](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/environment.btp.sap.crossplane.io/CloudFoundryEnvironment/v1alpha1@v1.1.2).
 # @default -- object
 cloudFoundryEnvironments:
   # -- btpSapCrossplaneProviderConfigRefName defines crossplane provider configuration reference name (identifier) of a ...!
@@ -18,6 +18,7 @@ cloudFoundryEnvironments:
     #   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)!
     writeConnectionSecretToRef: []
 ########################################################################################################################
+# -- kymaEnvironments contains configuration of [kind: KymaEnvironment](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/environment.btp.sap.crossplane.io/KymaEnvironment/v1alpha1@v1.1.2).
 kymaEnvironments:
   - btpSapCrossplaneProviderConfigRefName: ""
     name: ""
@@ -48,6 +49,7 @@ kymaEnvironments:
       name: "demo-kyma-kubeconfig-local"
       namespace: "default"
 ########################################################################################################################
+# -- kymaEnvironmentBindings contains configuration of [kind: KymaEnvironmentBinding](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/environment.btp.sap.crossplane.io/KymaEnvironmentBinding/v1alpha1@v1.1.2).
 kymaEnvironmentBindings:
   - btpSapCrossplaneProviderConfigRefName: ""
     name: ""
@@ -63,3 +65,4 @@ kymaEnvironmentBindings:
     writeConnectionSecretToRef:
       name: "demo-kyma-binding-local"
       namespace: "default"
+########################################################################################################################

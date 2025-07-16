@@ -2,7 +2,7 @@
 
 # crossplane-provider-pkgs
 
-![Version: 0.0.13](https://img.shields.io/badge/Version-0.0.13-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.0.14](https://img.shields.io/badge/Version-0.0.14-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.20.0](https://img.shields.io/badge/AppVersion-1.20.0-informational?style=flat-square)
 
 A Helm Chart to template crossplane provider "kind Provider" manifests to install crossplane family providers.
 
@@ -50,7 +50,7 @@ A Helm Chart to template crossplane provider "kind Provider" manifests to instal
 | imageConfigs[0].spec.verification.cosign.authorities[0].keyless.identities[0].subject | string | `""` | Subject defines the subject for this identity. |
 | imageConfigs[0].spec.verification.cosign.authorities[0].keyless.identities[0].subjectRegExp | string | `""` | SubjectRegExp specifies a regular expression to match the subject for this identity. This has precedence over the Subject field. |
 | imageConfigs[0].spec.verification.cosign.authorities[0].name | string | {} | Name is the name for this authority. |
-| providers | list | list | [providers](https://docs.crossplane.io/latest/concepts/providers/) contains information and configuration of k8s [manifest/resource](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/). Learn more with this [example](../../../../argo-cd-generator-config/remote-clusters-temp/template/template.aas-dt.shoot.canary.k8s-hana.ondemand.com.yaml.file). |
+| providers | list | list | [providers](https://docs.crossplane.io/latest/concepts/providers/) contains information and configuration of k8s [manifest/resource](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/). |
 | providers[0].name | string | `""` | kubernetes crossplane object `metadata.name` on managed control plane. |
 | providers[0].spec | list | [] | [spec](https://docs.crossplane.io/latest/api/#Provider-spec) defines plain kubernetes [manifest](https://monokle.io/learn/kubernetes-manifest-files-explained). |
 

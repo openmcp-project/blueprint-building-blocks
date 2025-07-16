@@ -172,7 +172,7 @@ defaults:
         type: gp3
         size: 50Gi 
 #########################################################################################################
-# -- shootClusters contains information and configuration of Gardener shoot clusters.
+# -- shootClusters contains information and configuration of Gardener shoot clusters via [crossplane provider kubernetes](https://marketplace.upbound.io/providers/crossplane-contrib/provider-kubernetes/v0.10.0).
 # @default -- -
 shootClusters:
   # shootClusters[0].name -- name defines technical gardener shoot cluster. Max length 15 and must only be lowercase letters, numbers and hyphens!

@@ -2,7 +2,7 @@
   {{- if eq $key "kubernetesObject" }}
   {{- else }}  
 ---
-apiVersion: kubernetes.crossplane.io/v1alpha1
+apiVersion: kubernetes.crossplane.io/v1alpha2
 kind: Object
 metadata:
   name: {{required "A valid value is required! (.Values.kubernetesObjects[].kubernetesCrossplaneProviderConfigRefName)" $kubernetesObject.kubernetesCrossplaneProviderConfigRefName | lower }}-{{required "A valid value is required! (.Values.kubernetesObjects[].name)" $kubernetesObject.name | lower }}  

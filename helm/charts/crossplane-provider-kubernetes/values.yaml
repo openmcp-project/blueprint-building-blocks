@@ -5,7 +5,7 @@ defaults:
   object:
     deletionPolicy: ""
 ########################################################################################################################
-# -- kubernetesObjects contains information and configuration of k8s [manifest/resource](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/). Learn more with this [example](../../../../argo-cd-generator-config/remote-clusters-temp/template/template.aas-dt.shoot.canary.k8s-hana.ondemand.com.yaml.file).
+# -- [kubernetesObjects](https://marketplace.upbound.io/providers/crossplane-contrib/provider-kubernetes/v0.18.0/resources/kubernetes.crossplane.io/Object/v1alpha2) contains information and configuration of k8s [manifest/resource](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/).
 # @default -- []
 kubernetesObjects:
   # @default -- []
