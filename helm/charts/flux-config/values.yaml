@@ -6,6 +6,7 @@ defaults:
   # -- targetNamespace sets or overrides the default namespace in the `kind: Kustomization` manifests.
   targetNamespace: "default"
 ########################################################################################################################
+# -- defines [`kind: OCIRepository`](https://fluxcd.io/flux/components/source/api/v1/) manifest.
 ociRepositorys:
   # ociRepositorys[0].name -- defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: GitRepository`
   - name: ""
@@ -14,6 +15,7 @@ ociRepositorys:
     # spec -- defines k8s `spec` structured value of `kind: OCIRepository`. See [API browser](https://fluxcd.io/flux/components/source/ocirepositories/)
     spec:
 ########################################################################################################################
+# -- defines independent [`kind: HelmReleases`](https://fluxcd.io/flux/components/helm/api/v2/) manifest without the generation of `kind: GitRepository`.
 helmReleases:
   # helmReleases[0].name -- defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: GitRepository`
   - name: ""
@@ -22,6 +24,7 @@ helmReleases:
     # spec -- defines k8s `spec` structured value of `kind: HelmRelease`. See [API browser](https://fluxcd.io/flux/components/helm/helmreleases/)
     spec:
 ########################################################################################################################
+# -- defines [`kind: GitRepository`](https://fluxcd.io/flux/components/source/api/v1/) manifest with `kustomize` childs.
 gitRepositorys:
   # gitRepositorys[0].name -- defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: GitRepository`
   - name: ""

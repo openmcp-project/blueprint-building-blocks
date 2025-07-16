@@ -6,6 +6,7 @@ icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
 name: crossplane-provider-cloudfoundry
 sources:
   - https://github.com/openmcp-project/blueprint-building-blocks
+  - https://github.com/SAP/crossplane-provider-cloudfoundry
 type: application
 version: 0.1.0
 

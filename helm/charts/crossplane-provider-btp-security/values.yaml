@@ -1,42 +1,42 @@
 ---
 ########################################################################################################################
-# -- `subaccountTrustConfigurations[].` orchestrate [`kind: SubaccountTrustConfiguration`](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp-account/security.btp.sap.crossplane.io/subaccounttrustconfiguration/v1alpha1) of [BTP Accounts](https://pages.github.tools.sap/cloud-orchestration/docs/category/account-management).
+# -- `subaccountTrustConfigurations[].` orchestrate [`kind: SubaccountTrustConfiguration`](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/SubaccountTrustConfiguration/v1alpha1@v1.1.2) of [BTP Accounts](https://pages.github.tools.sap/cloud-orchestration/docs/category/account-management).
 # @default -- object
 subaccountTrustConfigurations:
   # -- btpSapCrossplaneProviderConfigRefName defines crossplane provider configuration reference name (identifier) of a [BTP Global Account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account)!
   - btpSapCrossplaneProviderConfigRefName: ""
-    # subaccountTrustConfigurations[0].name -- Name of the SubaccountTrustConfiguration resource - [CRD Browser](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp-account/security.btp.sap.crossplane.io/subaccounttrustconfiguration/v1alpha1?path=metadata).
+    # subaccountTrustConfigurations[0].name -- Name of the SubaccountTrustConfiguration resource - [CRD Browser](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/SubaccountTrustConfiguration/v1alpha1@v1.1.2?path=metadata).
     # @default -- -
     name: ""
-    # -- [forProvider](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp-account/security.btp.sap.crossplane.io/subaccounttrustconfiguration/v1alpha1) CRD
+    # -- [forProvider](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/SubaccountTrustConfiguration/v1alpha1@v1.1.2) CRD
     forProvider: []
     # -- optional
     writeConnectionSecretToRef: []
 ########################################################################################################################
-# -- `roleCollectionAssignments[].` orchestrate [`kind: RoleCollectionAssignment`](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp-account/security.btp.sap.crossplane.io/rolecollectionassignment/v1alpha1) of [BTP Accounts](https://pages.github.tools.sap/cloud-orchestration/docs/category/account-management).
+# -- `roleCollectionAssignments[].` orchestrate [`kind: RoleCollectionAssignment`](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/RoleCollectionAssignment/v1alpha1@v1.1.2) of [BTP Accounts](https://pages.github.tools.sap/cloud-orchestration/docs/category/account-management).
 # @default -- object
 roleCollectionAssignments:
   # -- btpSapCrossplaneProviderConfigRefName defines crossplane provider configuration reference name (identifier) of a [BTP Global Account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account)!
   - btpSapCrossplaneProviderConfigRefName: ""
-    # roleCollectionAssignments[0].name -- Name of the RoleCollectionAssignment resource - [CRD Browser](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp-account/security.btp.sap.crossplane.io/rolecollectionassignment/v1alpha1?path=metadata).
+    # roleCollectionAssignments[0].name -- Name of the RoleCollectionAssignment resource - [CRD Browser](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/RoleCollectionAssignment/v1alpha1@v1.1.2?path=metadata).
     # @default -- -
     name: ""
-    # -- [forProvider](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp-account/security.btp.sap.crossplane.io/rolecollectionassignment/v1alpha1) CRD
+    # -- [forProvider](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/RoleCollectionAssignment/v1alpha1@v1.1.2) CRD
     forProvider: []
-    # -- [apiCredentials](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp-account/security.btp.sap.crossplane.io/rolecollectionassignment/v1alpha1) CRD
+    # -- [apiCredentials](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/RoleCollectionAssignment/v1alpha1@v1.1.2) CRD
     apiCredentials: []
     # -- optional
     writeConnectionSecretToRef: []
 ########################################################################################################################
-# -- `globalaccountTrustConfigurations[].` orchestrate [`kind: GlobalaccountTrustConfiguration`](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp-account/security.btp.sap.crossplane.io/globalaccounttrustconfiguration/v1alpha1) of [BTP Accounts](https://pages.github.tools.sap/cloud-orchestration/docs/category/account-management).
+# -- `globalaccountTrustConfigurations[].` orchestrate [`kind: GlobalaccountTrustConfiguration`](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/GlobalaccountTrustConfiguration/v1alpha1@v1.1.2) of [BTP Accounts](https://pages.github.tools.sap/cloud-orchestration/docs/category/account-management).
 # @default -- object
 globalaccountTrustConfigurations:
   # -- btpSapCrossplaneProviderConfigRefName defines crossplane provider configuration reference name (identifier) of a [BTP Global Account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account)!
   - btpSapCrossplaneProviderConfigRefName: ""
-    # globalaccountTrustConfigurations[0].name -- Name of the GlobalaccountTrustConfiguration resource - [CRD Browser](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp-account/security.btp.sap.crossplane.io/globalaccounttrustconfiguration/v1alpha1?path=metadata).
+    # globalaccountTrustConfigurations[0].name -- Name of the GlobalaccountTrustConfiguration resource - [CRD Browser](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/GlobalaccountTrustConfiguration/v1alpha1@v1.1.2?path=metadata).
     # @default -- -
     name: ""
-    # -- [forProvider](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp-account/security.btp.sap.crossplane.io/globalaccounttrustconfiguration/v1alpha1) CRD
+    # -- [forProvider](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/GlobalaccountTrustConfiguration/v1alpha1@v1.1.2) CRD
     forProvider: []
     # -- optional
     writeConnectionSecretToRef: []

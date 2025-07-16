@@ -1,6 +1,6 @@
 ---
 #########################################################################################################
-# -- accounts contains information and configuration about a specifig [BTP Global Account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account). :exclamation::exclamation: Managing BTP Global Accounts is [NOT possible](https://pages.github.tools.sap/cloud-orchestration/docs/sap-services/btp-services/account-managment/accounts#use-existing-global-account) at the moment :exclamation::exclamation:
+# -- accounts contains information and configuration about a specifig [BTP Global Account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account). :exclamation::exclamation: Managing BTP Global Accounts is NOT possible at the moment :exclamation::exclamation:
 # @default -- {}
 accounts:
   # btp.accounts[0].id -- id contains technical identifier of a [BTP Global Account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account).
@@ -23,7 +23,7 @@ accounts:
               "crossplane.io/external-name": "..."
             ServiceManager:
               "crossplane.io/external-name": "..."
-        # -- SubaccountParameters are the configurable fields of a Subaccount. [CRD Browser](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp/account.btp.sap.crossplane.io/subaccount/v1alpha1?path=spec-forProvider)
+        # -- SubaccountParameters are the configurable fields of a Subaccount. [CRD Browser](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/Subaccount/v1alpha1@v1.1.2?path=spec-forProvider)
         # @default -- []
         forProvider:
           # -- defines the display name of the [BTP Sub-Accounts](https://help.sap.com/docs/btp/sap-business-technology-platform/account-model#loio8d6e3a0fa4ab43e4a421d3ed08128afa).
@@ -44,7 +44,7 @@ accounts:
         # -- Define Subscriptions for this [BTP Sub-Account](https://help.sap.com/docs/btp/sap-business-technology-platform/account-model#loio8d6e3a0fa4ab43e4a421d3ed08128afa) to subscribe to [BTP Services](https://help.sap.com/docs/btp/sap-business-technology-platform/solutions-and-services?locale=en-US&q=Subscription#services).
         # @default -- {}
         subscriptions:
-          # accounts[0].subAccounts[0].subscriptions[0].name -- Name of the Subscription resource - [CRD Browser](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp/account.btp.sap.crossplane.io/subscription/v1alpha1).
+          # accounts[0].subAccounts[0].subscriptions[0].name -- Name of the Subscription resource - [CRD Browser](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/Subscription/v1alpha1@v1.1.2).
           - name: ""
             # -- AppName of the app to subscribe to
             appName: ""
@@ -61,15 +61,15 @@ accounts:
         services:
           # -- Enable/Disable (true/false) BTP Service Manager Subscription.
           #    Please make sure the P/I/D users, used in the Secrets referenced in the `ProviderConfig` are part of your Subaccount's `subaccountAdmins``.
-          #    Note: updating subaccountAdmins on an existing Subaccount is not yet supported by the provider. We are aware of this issue (see [feature request](https://github.tools.sap/cloud-orchestration/crossplane-provider-btp-account/issues/284)).
+          #    Note: updating subaccountAdmins on an existing Subaccount is not yet supported by the provider. We are aware of this issue.
           serviceManager: false
           # -- Enable/Disable (true/false) BTP Cloud Management Service.
           cloudManagement: false
         # -- entitlements defines [BTP Entitlements](https://help.sap.com/docs/btp/sap-business-technology-platform/entitlements-and-quotas) for this [BTP Sub-Account](https://help.sap.com/docs/btp/sap-business-technology-platform/account-model#loio8d6e3a0fa4ab43e4a421d3ed08128afa). 
-        # Learn more about managing BTP Entitlement with crossplane [here](https://pages.github.tools.sap/cloud-orchestration/docs/sap-services/btp-services/account-managment/entitlements).
+        # Learn more about managing BTP Entitlement with crossplane [here](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/Entitlement/v1alpha1@v1.1.2).
         # @default -- {}
         entitlements:
-          # btp.accounts[0].subAccounts[0].entitlements[0].name -- Name of the Entitlement resource - [CRD Browser](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp-account/account.btp.sap.crossplane.io/entitlement/v1alpha1).
+          # btp.accounts[0].subAccounts[0].entitlements[0].name -- Name of the Entitlement resource - [CRD Browser](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/Entitlement/v1alpha1@v1.1.2?path=metadata).
           # @default -- -
           - name: ""            
             # serviceName defines the service name of [BTP Entitlements](https://help.sap.com/docs/btp/sap-business-technology-platform/entitlements-and-quotas).
@@ -81,43 +81,43 @@ accounts:
             # -- Used when permitNumericQuota=true. Only set amount for multitenant applications and services that do not permit a numeric quota assignment!
             amount: 0
 ########################################################################################################################
-# -- `directoryEntitlements[].` orchestrate [`kind: DirectoryEntitlement`](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp/account.btp.sap.crossplane.io/directoryentitlement/v1alpha1) of [BTP Accounts](https://pages.github.tools.sap/cloud-orchestration/docs/category/account-management).
+# -- `directoryEntitlements[].` orchestrate [`kind: DirectoryEntitlement`](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/DirectoryEntitlement/v1alpha1@v1.1.2) of [BTP Accounts](https://help.sap.com/docs/btp/sap-business-technology-platform/account-model).
 # @default -- object
 directoryEntitlements:
   # -- btpSapCrossplaneProviderConfigRefName defines crossplane provider configuration reference name (identifier) of a [BTP Global Account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account)!
   - btpSapCrossplaneProviderConfigRefName: ""
-    # directoryEntitlements[0].name -- Name of the DirectoryEntitlement resource - [CRD Browser](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp/account.btp.sap.crossplane.io/directoryentitlement/v1alpha1?path=metadata).
+    # directoryEntitlements[0].name -- Name of the DirectoryEntitlement resource - [CRD Browser](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/DirectoryEntitlement/v1alpha1@v1.1.2?path=metadata).
     # @default -- -
     name: ""
-    # -- [forProvider](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp/account.btp.sap.crossplane.io/directoryentitlement/v1alpha1) CRD
+    # -- [forProvider](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/DirectoryEntitlement/v1alpha1@v1.1.2) CRD
     forProvider: []
     # -- *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.
     #   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)!
     writeConnectionSecretToRef: []
 #########################################################################################################
-# -- `directories[].` orchestrate [`kind: Directory`](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp/account.btp.sap.crossplane.io/directory) of [BTP Accounts](https://pages.github.tools.sap/cloud-orchestration/docs/category/account-management).
+# -- `directories[].` orchestrate [`kind: Directory`](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/Directory/v1alpha1@v1.1.2) of [BTP Accounts](https://help.sap.com/docs/btp/sap-business-technology-platform/account-model).
 # @default -- object
 directories:
   # -- btpSapCrossplaneProviderConfigRefName defines crossplane provider configuration reference name (identifier) of a [BTP Global Account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account)!
   - btpSapCrossplaneProviderConfigRefName: ""
-    # directories[0].name -- Name of the Directory resource - [CRD Browser](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp/account.btp.sap.crossplane.io/directory).
+    # directories[0].name -- Name of the Directory resource - [CRD Browser](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/Directory/v1alpha1@v1.1.2?path=metadata).
     # @default -- -
     name: ""
-    # -- [forProvider](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp/account.btp.sap.crossplane.io/directory) CRD
+    # -- [forProvider](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/Directory/v1alpha1@v1.1.2) CRD
     forProvider: []
     # -- *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.
     #   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)!
     writeConnectionSecretToRef: []
 #########################################################################################################
-# -- `subaccountServiceBrokers[].` orchestrate [`kind: SubaccountServiceBroker`](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp/account.btp.sap.crossplane.io/subaccountservicebroker/) of [BTP Accounts](https://pages.github.tools.sap/cloud-orchestration/docs/category/account-management).
+# -- `subaccountServiceBrokers[].` orchestrate [`kind: SubaccountServiceBroker`](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/SubaccountServiceBroker/v1alpha1@v1.1.2) of [BTP Accounts](https://help.sap.com/docs/btp/sap-business-technology-platform/account-model).
 # @default -- object
 subaccountServiceBrokers:
   # -- btpSapCrossplaneProviderConfigRefName defines crossplane provider configuration reference name (identifier) of a [BTP Global Account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account)!
   - btpSapCrossplaneProviderConfigRefName: ""
-    # subaccountServiceBrokers[0].name -- Name of the SubaccountServiceBroker resource - [CRD Browser](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp/account.btp.sap.crossplane.io/subaccountservicebroker/).
+    # subaccountServiceBrokers[0].name -- Name of the SubaccountServiceBroker resource - [CRD Browser](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/SubaccountServiceBroker/v1alpha1@v1.1.2?path=metadata).
     # @default -- -
     name: ""
-    # -- [forProvider](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp/account.btp.sap.crossplane.io/subaccountservicebroker/) CRD
+    # -- [forProvider](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/SubaccountServiceBroker/v1alpha1@v1.1.2) CRD
     forProvider: []
     # -- *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.
     #   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)!

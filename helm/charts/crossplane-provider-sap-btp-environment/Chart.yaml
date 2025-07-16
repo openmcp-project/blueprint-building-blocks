@@ -22,13 +22,12 @@ version: 0.0.18
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
-appVersion: "0.0.1"
+appVersion: "1.1.2"
 # The URL of this projects home page (optional)
 home: "https://github.com/openmcp-project/blueprints"
 # A list of URLs to source code for this project (optional)
 sources:
   - https://github.com/openmcp-project/blueprint-building-blocks
-  - https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp/environment.btp.sap.crossplane.io/cloudfoundryenvironment/v1alpha1
-  - https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp/environment.btp.sap.crossplane.io/kymaenvironment/v1alpha1
+  - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp@v1.1.2
 # Whether this chart is deprecated (optional, boolean)
 deprecated: false

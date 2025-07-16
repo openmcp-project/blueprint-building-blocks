@@ -1,6 +1,6 @@
 ---
 #########################################################################################################
-# -- [secretBindings](https://gardener.cloud/docs/gardener/api-reference/core/#core.gardener.cloud/v1beta1.SecretBinding) represents a binding to a secret in the same or another namespace.
+# -- [secretBindings](https://gardener.cloud/docs/gardener/api-reference/core/#core.gardener.cloud/v1beta1.SecretBinding) represents a binding to a secret in the same or another namespace via [crossplane provider kubernetes](https://marketplace.upbound.io/providers/crossplane-contrib/provider-kubernetes/v0.10.0).
 # @default -- -
 secretBindings:
   # secretBindings[0].name -- name defines technical gardener shoot cluster. Max length 15 and must only be lowercase letters, numbers and hyphens!

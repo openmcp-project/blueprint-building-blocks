@@ -19,7 +19,7 @@ version: 0.0.12
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
-appVersion: "0.2.0"
+appVersion: "0.6.8"
 # A list of URLs to source code for this project (optional)
 sources:
   - https://github.com/openmcp-project/blueprint-building-blocks

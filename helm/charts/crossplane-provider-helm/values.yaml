@@ -1,6 +1,6 @@
 ---
 ########################################################################################################################
-# -- helmReleases contains information and configuration of a [helm chart](https://helm.sh) to be managed by flux [Helm Controller](https://fluxcd.io/flux/components/helm/api/v2/).
+# -- [helmReleases](https://marketplace.upbound.io/providers/crossplane-contrib/provider-helm/v0.21.0/resources/helm.crossplane.io/Release/v1beta1) contains information and configuration of a [helm chart](https://helm.sh) to be managed by flux [Helm Controller](https://fluxcd.io/flux/components/helm/api/v2/).
 # @default -- object
 helmReleases:
   # @default -- object
