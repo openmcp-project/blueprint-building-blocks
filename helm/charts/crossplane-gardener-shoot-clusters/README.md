@@ -2,7 +2,7 @@
 
 # crossplane-gardener-shoot-clusters
 
-![Version: 0.0.11](https://img.shields.io/badge/Version-0.0.11-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
+![Version: 0.0.12](https://img.shields.io/badge/Version-0.0.12-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.10.0](https://img.shields.io/badge/AppVersion-0.10.0-informational?style=flat-square)
 
 A Helm chart to template crossplane manifests to manage Gardener Shoot resources.
 
@@ -34,7 +34,7 @@ A Helm chart to template crossplane manifests to manage Gardener Shoot resources
 | defaults.maintenance | object | `{"autoUpdate":{"kubernetesVersion":false,"machineImageVersion":true},"confineSpecUpdateRollout":true,"timeWindow":{"begin":"120000+0000","end":"130000+0000"}}` | [maintenance](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#core.gardener.cloud/v1beta1.Maintenance) contains information about the time window for maintenance operations and which operations should be performed. |
 | defaults.networking | object | `{"nodes":"10.180.0.0/16","type":"calico"}` | [networking](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#core.gardener.cloud/v1beta1.Networking) contains information about cluster networking such as CNI Plugin type, CIDRs, …etc. |
 | kubernetesVersion | string | `"1.30.3"` | kubernetesVersion defines gardener shoot cluster kubernetes version. |
-| shootClusters | list | - | shootClusters contains information and configuration of Gardener shoot clusters. |
+| shootClusters | list | - | shootClusters contains information and configuration of Gardener shoot clusters via [crossplane provider kubernetes](https://marketplace.upbound.io/providers/crossplane-contrib/provider-kubernetes/v0.10.0). |
 | shootClusters[0].addons | list | `[]` | [addons](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#core.gardener.cloud/v1beta1.Addons) contains information about enabled/disabled addons and their configuration. Setting this value will override .gardener.defaults.addons for this shoot cluster! |
 | shootClusters[0].cloudProfile | string | `""` | cloudProfile is a name of a [CloudProfile object](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#cloudprofile). This field is immutable. E.g. gcp / azure / aws |
 | shootClusters[0].gardenerOrchestrateCloudProviderConfigRefName | string | `""` | gardenerOrchestrateCloudProviderConfigRefName needs to match crossplane provider configuration reference name (identifier) of SAP garden cluster control plane! (.shootClusters[*].kubernetesCrossplaneProviderConfigRefName) |
