@@ -2,7 +2,7 @@
 
 # flux-config
 
-![Version: 0.0.18](https://img.shields.io/badge/Version-0.0.18-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.3.0](https://img.shields.io/badge/AppVersion-2.3.0-informational?style=flat-square)
+![Version: 0.0.19](https://img.shields.io/badge/Version-0.0.19-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.6.0](https://img.shields.io/badge/AppVersion-2.6.0-informational?style=flat-square)
 
 A Helm Chart to template flux manifests to leverage GitOps on a OpenMCP cluster.
 
@@ -23,6 +23,7 @@ A Helm Chart to template flux manifests to leverage GitOps on a OpenMCP cluster.
 | credentials[0].stringData | list | `[]` | *(optional)* [stringData](https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/secret-v1/) *(map[string]string)* allows specifying non-binary secret data in string form. It is provided as a write-only input field for convenience. All keys and values are merged into the data field on write, overwriting any existing values. The stringData field is never output when reading from the API. |
 | defaults.namespace | string | `"default"` | default namespace value for *(optional)*`namespace` fields. |
 | defaults.targetNamespace | string | `"default"` | targetNamespace sets or overrides the default namespace in the `kind: Kustomization` manifests. |
+| gitRepositorys | list | `[{"kustomizations":[{"commonMetadata":[],"components":{},"decryption":[],"dependsOn":{},"force":null,"healthChecks":{},"images":{},"interval":null,"kubeConfig":[],"name":"","namePrefix":null,"nameSuffix":null,"namespace":"ns1","patches":null,"path":"","postBuild":[],"prune":null,"retryInterval":null,"serviceAccountName":null,"suspend":null,"targetnamespace":"ns1","timeout":null,"wait":null}],"name":"","namespace":"ns1","spec":{"interval":"1m","ref":{"branch":""},"secretRef":{"name":""},"url":""}}]` | defines [`kind: GitRepository`](https://fluxcd.io/flux/components/source/api/v1/) manifest with `kustomize` childs. |
 | gitRepositorys[0].kustomizations[0].commonMetadata | list | `[]` | [commonMetadata](https://fluxcd.io/flux/components/kustomize/kustomizations/#common-metadata)  is an *(optional)*field used to specify any metadata that should be applied to all the Kustomization’s resources. |
 | gitRepositorys[0].kustomizations[0].components | object | `{}` | [components](https://fluxcd.io/flux/components/kustomize/kustomizations/#components) is an *(optional)*list used to specify Kustomize components. This allows using reusable pieces of configuration logic that can be included from multiple overlays. |
 | gitRepositorys[0].kustomizations[0].decryption | list | `[]` | [decryption](https://fluxcd.io/flux/components/kustomize/kustomizations/#decryption) is an *(optional)*field to specify the configuration to decrypt Secrets that are a part of the Kustomization. |
@@ -54,9 +55,9 @@ A Helm Chart to template flux manifests to leverage GitOps on a OpenMCP cluster.
 | gitRepositorys[0].spec.secretRef | object | `{"name":""}` | *(optional)* [SecretRef](https://fluxcd.io/flux/components/source/api/v1/#source.toolkit.fluxcd.io/v1.GitRepositorySpec) specifies the Secret containing authentication credentials for the GitRepository. For HTTPS repositories the Secret must contain ‘username’ and ‘password’ fields for basic auth or ‘bearerToken’ field for token auth. For SSH repositories the Secret must contain ‘identity’ and ‘known_hosts’ fields. |
 | gitRepositorys[0].spec.secretRef.name | string | `""` | [`type SecretKeySelector `](https://pkg.go.dev/github.com/external-secrets/external-secrets/apis/meta/v1#SecretKeySelector) |
 | gitRepositorys[0].spec.url | string | `""` | [URL]() specifies the Git repository URL, it can be an HTTP/S or SSH address.  |
+| helmReleases | list | `[{"name":"","namespace":"default","spec":null}]` | defines independent [`kind: HelmReleases`](https://fluxcd.io/flux/components/helm/api/v2/) manifest without the generation of `kind: GitRepository`. |
 | helmReleases[0].name | string | `""` | defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: GitRepository` |
 | helmReleases[0].namespace | string | `"default"` | *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: GitRepository` |
-| helmReleases[0].spec | string | `nil` |  |
 | kustomizations | list | `[{"commonMetadata":[],"components":{},"decryption":[],"dependsOn":{},"force":null,"healthChecks":{},"images":{},"interval":null,"kubeConfig":[],"name":"","namePrefix":null,"nameSuffix":null,"namespace":"ns1","patches":null,"path":"","postBuild":[],"prune":null,"retryInterval":null,"serviceAccountName":null,"sourceRef":{"apiVersion":"","kind":"GitRepository","name":"","namespace":"ns1"},"suspend":null,"targetnamespace":"ns1","timeout":null,"wait":null}]` | defines independent [`kind: Kustomization`](https://fluxcd.io/flux/components/kustomize/api/v1/#kustomize.toolkit.fluxcd.io/v1.Kustomization) manifest without the generation of `kind: GitRepository`. |
 | kustomizations[0].commonMetadata | list | `[]` | [commonMetadata](https://fluxcd.io/flux/components/kustomize/kustomizations/#common-metadata)  is an *(optional)*field used to specify any metadata that should be applied to all the Kustomization’s resources. |
 | kustomizations[0].components | object | `{}` | [components](https://fluxcd.io/flux/components/kustomize/kustomizations/#components) is an *(optional)*list used to specify Kustomize components. This allows using reusable pieces of configuration logic that can be included from multiple overlays. |
@@ -86,9 +87,9 @@ A Helm Chart to template flux manifests to leverage GitOps on a OpenMCP cluster.
 | kustomizations[0].targetnamespace | string | `"ns1"` | *(optional)* targetNamespace defines the namespace in the `kind: Kustomization` manifests. |
 | kustomizations[0].timeout | string | `nil` | *(optional)* [Timeout](https://fluxcd.io/flux/components/kustomize/api/v1/#kustomize.toolkit.fluxcd.io/v1.KustomizationSpec) for validation, apply and health checking operations. Defaults to ‘Interval’ duration. e.g. 1m |
 | kustomizations[0].wait | string | `nil` | [wait](https://fluxcd.io/flux/components/kustomize/kustomizations/#wait)  is an *(optional)*boolean field to perform health checks for all reconciled resources as part of the Kustomization. If set to true, .spec.healthChecks is ignored. |
+| ociRepositorys | list | `[{"name":"","namespace":"default","spec":null}]` | defines [`kind: OCIRepository`](https://fluxcd.io/flux/components/source/api/v1/) manifest. |
 | ociRepositorys[0].name | string | `""` | defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: GitRepository` |
 | ociRepositorys[0].namespace | string | `"default"` | *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: GitRepository` |
-| ociRepositorys[0].spec | string | `nil` |  |
 
 ----------------------------------------------
 Autogenerated from chart metadata using [helm-docs v1.14.2](https://github.com/norwoodj/helm-docs/releases/v1.14.2)
