@@ -2,7 +2,7 @@
 
 # crossplane-gardener-shoot-kubeconfigs
 
-![Version: 0.0.10](https://img.shields.io/badge/Version-0.0.10-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
+![Version: 0.0.11](https://img.shields.io/badge/Version-0.0.11-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1alpha1](https://img.shields.io/badge/AppVersion-v1alpha1-informational?style=flat-square)
 
 A Helm chart to template crossplane manifests to request kubeconfigs of existing Gardener Shoots.
 
@@ -14,7 +14,7 @@ A Helm chart to template crossplane manifests to request kubeconfigs of existing
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| shootClusters | list | - | shootClusters contains information and configuration of Gardener shoot clusters. |
+| shootClusters | list | - | shootClusters contains information and configuration of Gardener shoot clusters via [kind: AdminKubeconfigRequest](https://gardener.cloud/docs/gardener/api-reference/authentication/). |
 | shootClusters[0].gardenerOrchestrateCloudProviderConfigRefName | string | `""` | gardenerOrchestrateCloudProviderConfigRefName needs to match crossplane provider configuration reference name (identifier) of SAP garden cluster control plane! (.gardener.controlPlane.shootClusters[*].gardenerOrchestrateCloudProviderConfigRefName) |
 | shootClusters[0].projectnamespace | string | `"ns1"` | gardener project name. Starts with "garden..." e.g. "garden-aas-dt" |
 
