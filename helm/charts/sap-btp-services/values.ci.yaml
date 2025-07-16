@@ -192,7 +192,7 @@ services:
       name: "openmcp-op-cluster-cls"
       serviceOfferingName: "cloud-logging"
       servicePlanName: "standard"
-      # -- cloud logging service config:  list of parameter:  https://pages.github.tools.sap/perfx/cloud-logging-service/consumption/service-configuration-parameters/
+      # -- cloud logging service config:  list of parameter:  https://help.sap.com/docs/cloud-logging/cloud-logging/what-is-sap-cloud-logging
       parameters:
         retentionPeriod: 14
         esApiEnabled: true

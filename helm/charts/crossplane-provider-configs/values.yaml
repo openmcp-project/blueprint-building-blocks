@@ -5,7 +5,7 @@ providerConfigs:
   # This `ProviderConfig` typically points to k8s secret in which a `kubeconfig` of K8s Service Account or SAP Gardener Shoot Cluster Admin Kubeconfig Request `kind: AdminKubeconfigRequest` of `apiVersion: gardener.orchestrate.cloud.sap/v1alpha1` is stored.
   # The `ProviderConfig` is required to orchestrate SAP Gardener Shoot Clusters such as [`kind: Shoot`](../crossplane-gardener-shoot-clusters/templates/garden-manifests/gardener-shoot-cluster.yaml) of `apiVersion: core.gardener.cloud/v1beta1`
   # or manage plain k8s `manifests` (e.g. ConfigMap...) on a k8s cluster (e.g. SAP Gardern Shoot Cluster) [`kind: Object`](../crossplane-provider-kubernetes/templates/kubernetes.yaml) of `apiVersion: kubernetes.crossplane.io/v1alpha1` directly.
-  # See Cloud Orchestrator [SAP Gardener Setup](https://pages.github.tools.sap/cloud-orchestration/docs/sap-services/gardener/provider#gardener-providerconfig).
+  # See Cloud Orchestrator [SAP Gardener Setup](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp).
   # @default -- []
   kubernetesCrossplane:
     - providerConfigRefName: ""
@@ -120,19 +120,19 @@ providerConfigs:
   ########################################################################################################################
   # -- creates k8s manifest `kind: ProviderConfig` of `apiVersion: btp.sap.crossplane.io`
   # This `ProviderConfig` typically points to k8s secret in which the json credentials of a
-  # BTP's [Cloud Management Service](https://pages.github.tools.sap/cloud-orchestration/docs/sap-services/btp-services/account-managment/provider#setup-btp-cloud-management-service) Binding is in order to manage [BTP Cloud Resources](https://pages.github.tools.sap/cloud-orchestration/docs/sap-services/btp-services/account-managment/provider#configure-providerconfig)
-  # such as [BTP Sub-Accounts](https://pages.github.tools.sap/cloud-orchestration/docs/sap-services/btp-services/account-managment/accounts), [Entitlements](https://pages.github.tools.sap/cloud-orchestration/docs/sap-services/btp-services/account-managment/entitlements), ect...
+  # BTP's [Cloud Management Service](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp) Binding is in order to manage [BTP Cloud Resources](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp)
+  # such as [BTP Sub-Accounts](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp), [Entitlements](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp), ect...
   # @default -- []
   btpSapCrossplane:
     - providerConfigRefName: ""
       # -- contains BTP CLI server url. E.g. https://cli.btp.cloud.sap or canary: https://canary.cli.btp.int.sap/ . More landscapes see [here](https://wiki.one.int.sap/wiki/pages/viewpage.action?spaceKey=CPCLI&title=Landscapes)
       cliServerUrl: ""
-      # -- contains the [Global Account Subdomain](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp-account/account.btp.orchestrate.cloud.sap/providerconfig/v1alpha1?path=spec-globalAccount).
+      # -- contains the [Global Account Subdomain](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp).
       globalAccountSubDomain: ""
       # -- Secret which contains credentials required to authenticate to this provider. 
       # Reference to a secret containing the CIS Accounts service credentials. The Cloud Management (CIS) instance must be of plan central. 
       # The Service Binding should be created with the following parameters `{"grantType": "clientCredentials"}` 
-      # See [Setup](https://pages.github.tools.sap/cloud-orchestration/docs/sap-services/btp-services/account-managment/provider) and [CRD browser](https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp/btp.sap.crossplane.io/providerconfig/v1alpha1?view=docs) for more details.
+      # See [Setup](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp) and [CRD browser](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp) for more details.
       # @default -- []
       cisCredentials:
         source: "Secret"

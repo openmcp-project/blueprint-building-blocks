@@ -22,7 +22,8 @@ version: 0.0.11
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
 appVersion: "1.1.2"
-home: "https://pages.github.tools.sap/cloud-orchestration/docs/category/sap-cloud-services"
+home: "https://github.com/SAP/crossplane-provider-btp"
 # A list of URLs to source code for this project (optional)
 sources:
   - https://github.com/openmcp-project/blueprint-building-blocks
+  - https://github.com/SAP/crossplane-provider-btp

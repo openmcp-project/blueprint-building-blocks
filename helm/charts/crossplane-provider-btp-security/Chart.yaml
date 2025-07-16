@@ -28,6 +28,6 @@ home: "https://github.com/openmcp-project/blueprints"
 # A list of URLs to source code for this project (optional)
 sources:
   - https://github.com/openmcp-project/blueprint-building-blocks
-  - https://pages.github.tools.sap/cloud-orchestration/browser/Providers/provider-btp-account
+  - https://github.com/SAP/crossplane-provider-btp
 # Whether this chart is deprecated (optional, boolean)
 deprecated: false

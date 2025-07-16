@@ -1,6 +1,6 @@
 ---
 ########################################################################################################################
-# -- `subaccountTrustConfigurations[].` orchestrate [`kind: SubaccountTrustConfiguration`](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/SubaccountTrustConfiguration/v1alpha1@v1.1.2) of [BTP Accounts](https://pages.github.tools.sap/cloud-orchestration/docs/category/account-management).
+# -- `subaccountTrustConfigurations[].` orchestrate [`kind: SubaccountTrustConfiguration`](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/SubaccountTrustConfiguration/v1alpha1@v1.1.2) of [BTP Accounts](https://help.sap.com/docs/btp/sap-business-technology-platform/account-model).
 # @default -- object
 subaccountTrustConfigurations:
   # -- btpSapCrossplaneProviderConfigRefName defines crossplane provider configuration reference name (identifier) of a [BTP Global Account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account)!
@@ -13,7 +13,7 @@ subaccountTrustConfigurations:
     # -- optional
     writeConnectionSecretToRef: []
 ########################################################################################################################
-# -- `roleCollectionAssignments[].` orchestrate [`kind: RoleCollectionAssignment`](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/RoleCollectionAssignment/v1alpha1@v1.1.2) of [BTP Accounts](https://pages.github.tools.sap/cloud-orchestration/docs/category/account-management).
+# -- `roleCollectionAssignments[].` orchestrate [`kind: RoleCollectionAssignment`](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/RoleCollectionAssignment/v1alpha1@v1.1.2) of [BTP Accounts](https://help.sap.com/docs/btp/sap-business-technology-platform/account-model).
 # @default -- object
 roleCollectionAssignments:
   # -- btpSapCrossplaneProviderConfigRefName defines crossplane provider configuration reference name (identifier) of a [BTP Global Account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account)!
@@ -28,7 +28,7 @@ roleCollectionAssignments:
     # -- optional
     writeConnectionSecretToRef: []
 ########################################################################################################################
-# -- `globalaccountTrustConfigurations[].` orchestrate [`kind: GlobalaccountTrustConfiguration`](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/GlobalaccountTrustConfiguration/v1alpha1@v1.1.2) of [BTP Accounts](https://pages.github.tools.sap/cloud-orchestration/docs/category/account-management).
+# -- `globalaccountTrustConfigurations[].` orchestrate [`kind: GlobalaccountTrustConfiguration`](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/GlobalaccountTrustConfiguration/v1alpha1@v1.1.2) of [BTP Accounts](https://help.sap.com/docs/btp/sap-business-technology-platform/account-model).
 # @default -- object
 globalaccountTrustConfigurations:
   # -- btpSapCrossplaneProviderConfigRefName defines crossplane provider configuration reference name (identifier) of a [BTP Global Account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account)!
