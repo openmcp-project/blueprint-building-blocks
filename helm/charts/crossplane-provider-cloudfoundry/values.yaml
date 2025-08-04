@@ -7,31 +7,31 @@ apps:
     name: ""
     forProvider: []
 ########################################################################################################################
-# -- `routes[].` orchestrate `kind: Route` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry)) of BTP Cloud foundry.
+# -- `routes[].` orchestrate `kind: Route` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry) of BTP Cloud foundry.
 routes:
   - cloudfoundryProviderConfigRefName: ""
     name: ""
     forProvider: []
 ########################################################################################################################
-# -- `serviceInstances[].` orchestrate `kind: ServiceInstance` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry)) of BTP Cloud foundry.
+# -- `serviceInstances[].` orchestrate `kind: ServiceInstance` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry)) of BTP Cloud foundry.
 serviceInstances:
   - cloudfoundryProviderConfigRefName: ""
     name: ""
     forProvider: []
 ########################################################################################################################
-# -- `serviceCredentialsBindings[].` orchestrate `kind: ServiceKey` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry)) of BTP Cloud foundry.
+# -- `serviceCredentialsBindings[].` orchestrate `kind: ServiceKey` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry) of BTP Cloud foundry.
 serviceCredentialsBindings:
   - cloudfoundryProviderConfigRefName: ""
     name: ""
     forProvider: []
 ########################################################################################################################
-# -- `orgMembers[].` orchestrate `kind: OrgMembers` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry)) of BTP Cloud foundry.
+# -- `orgMembers[].` orchestrate `kind: OrgMembers` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry) of BTP Cloud foundry.
 orgMembers:
   - cloudfoundryProviderConfigRefName: ""
     name: ""
     forProvider: []   
 ########################################################################################################################
-# -- `organizations[].` orchestrate `kind: Organization` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry)) of BTP Cloud foundry.
+# -- `organizations[].` orchestrate `kind: Organization` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry) of BTP Cloud foundry.
 organizations:
   - cloudfoundryProviderConfigRefName: ""
     name: ""
@@ -39,8 +39,14 @@ organizations:
     externalName: ""
     forProvider: []
 ########################################################################################################################
-# -- `spaceMembers[].` orchestrate `kind: SpaceMembers` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry)) of BTP Cloud foundry.
+# -- `spaceMembers[].` orchestrate `kind: SpaceMembers` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry) of BTP Cloud foundry.
 spaceMembers:
+  - cloudfoundryProviderConfigRefName: ""
+    name: ""
+    forProvider: []
+########################################################################################################################
+# -- `spaces[].` orchestrate `kind: Space` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry) of BTP Cloud foundry.
+spaces:
   - cloudfoundryProviderConfigRefName: ""
     name: ""
     forProvider: []

@@ -2,7 +2,7 @@
 
 # crossplane-provider-cloudfoundry
 
-![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.3.0](https://img.shields.io/badge/AppVersion-0.3.0-informational?style=flat-square)
+![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.3.0](https://img.shields.io/badge/AppVersion-0.3.0-informational?style=flat-square)
 
 A Helm Chart to template crossplane manifests to manage BTP Cloud Foundry resources on BTP.
 
@@ -16,17 +16,18 @@ A Helm Chart to template crossplane manifests to manage BTP Cloud Foundry resour
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | apps | list | object | `apps[].` orchestrate `kind: App` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry)) of BTP Cloud foundry. |
-| orgMembers | list | `[{"cloudfoundryProviderConfigRefName":"","forProvider":[],"name":""}]` | `orgMembers[].` orchestrate `kind: OrgMembers` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry)) of BTP Cloud foundry. |
-| organizations | list | `[{"cloudfoundryProviderConfigRefName":"","externalName":"","forProvider":[],"name":""}]` | `organizations[].` orchestrate `kind: Organization` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry)) of BTP Cloud foundry. |
+| orgMembers | list | `[{"cloudfoundryProviderConfigRefName":"","forProvider":[],"name":""}]` | `orgMembers[].` orchestrate `kind: OrgMembers` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry) of BTP Cloud foundry. |
+| organizations | list | `[{"cloudfoundryProviderConfigRefName":"","externalName":"","forProvider":[],"name":""}]` | `organizations[].` orchestrate `kind: Organization` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry) of BTP Cloud foundry. |
 | organizations[0].externalName | string | `""` | must match the actual name of the Cloud Foundry organization in BTP! |
-| routes | list | `[{"cloudfoundryProviderConfigRefName":"","forProvider":[],"name":""}]` | `routes[].` orchestrate `kind: Route` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry)) of BTP Cloud foundry. |
+| routes | list | `[{"cloudfoundryProviderConfigRefName":"","forProvider":[],"name":""}]` | `routes[].` orchestrate `kind: Route` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry) of BTP Cloud foundry. |
 | secrets[0].data | list | `[]` | *(optional)* [data](https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/secret-v1/) *(map[string][]byte)* Data contains the secret data. Each key must consist of alphanumeric characters, '-', '_' or '.'. The serialized form of the secret data is a base64 encoded string, representing the arbitrary (possibly non-string) data value here. Described in [here](https://tools.ietf.org/html/rfc4648#section-4) |
 | secrets[0].name | string | `""` | defines k8s `metadata.name` value of `kind: Secret` |
 | secrets[0].namespace | string | `""` | *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: Secret` |
 | secrets[0].stringData | list | `[]` | *(optional)* [stringData](https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/secret-v1/) *(map[string]string)* allows specifying non-binary secret data in string form. It is provided as a write-only input field for convenience. All keys and values are merged into the data field on write, overwriting any existing values. The stringData field is never output when reading from the API. |
-| serviceCredentialsBindings | list | `[{"cloudfoundryProviderConfigRefName":"","forProvider":[],"name":""}]` | `serviceCredentialsBindings[].` orchestrate `kind: ServiceKey` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry)) of BTP Cloud foundry. |
-| serviceInstances | list | `[{"cloudfoundryProviderConfigRefName":"","forProvider":[],"name":""}]` | `serviceInstances[].` orchestrate `kind: ServiceInstance` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry)) of BTP Cloud foundry. |
-| spaceMembers | list | `[{"cloudfoundryProviderConfigRefName":"","forProvider":[],"name":""}]` | `spaceMembers[].` orchestrate `kind: SpaceMembers` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry)) of BTP Cloud foundry. |
+| serviceCredentialsBindings | list | `[{"cloudfoundryProviderConfigRefName":"","forProvider":[],"name":""}]` | `serviceCredentialsBindings[].` orchestrate `kind: ServiceKey` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry) of BTP Cloud foundry. |
+| serviceInstances | list | `[{"cloudfoundryProviderConfigRefName":"","forProvider":[],"name":""}]` | `serviceInstances[].` orchestrate `kind: ServiceInstance` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry)) of BTP Cloud foundry. |
+| spaceMembers | list | `[{"cloudfoundryProviderConfigRefName":"","forProvider":[],"name":""}]` | `spaceMembers[].` orchestrate `kind: SpaceMembers` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry) of BTP Cloud foundry. |
+| spaces | list | `[{"cloudfoundryProviderConfigRefName":"","forProvider":[],"name":""}]` | `spaces[].` orchestrate `kind: Space` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry) of BTP Cloud foundry. |
 
 ----------------------------------------------
 Autogenerated from chart metadata using [helm-docs v1.14.2](https://github.com/norwoodj/helm-docs/releases/v1.14.2)

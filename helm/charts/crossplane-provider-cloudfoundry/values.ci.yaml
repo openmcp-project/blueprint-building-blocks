@@ -67,6 +67,22 @@ orgMembers:
       - username: user2@sap.com
       enforcementPolicy: Lax
 ########################################################################################################################
+spaces:
+  - cloudfoundryProviderConfigRefName: "cloudfoundryProviderConfigRefName"
+    name: "my-space"
+    forProvider:
+      allowSsh: true
+      name: my-space
+      orgRef:
+        name:  my-org
+  - cloudfoundryProviderConfigRefName: "cloudfoundryProviderConfigRefName"
+    name: "my-space-2"
+    forProvider:
+      allowSsh: true
+      name: my-space-2
+      orgRef:
+        name:  my-org
+########################################################################################################################
 spaceMembers:
   - cloudfoundryProviderConfigRefName: "cloudfoundryProviderConfigRefName"
     name: "name"
@@ -90,8 +106,8 @@ spaceMembers:
 ########################################################################################################################
 organizations:
   - cloudfoundryProviderConfigRefName: "cloudfoundryProviderConfigRefName"
-    name: "name"
-    externalName: "externalName"
+    name: "my-org"
+    externalName: "externalName-my-org"
     forProvider:
       id: "The external GUID of the org"
       name: "The name of the Organization in Cloud Foundry"
