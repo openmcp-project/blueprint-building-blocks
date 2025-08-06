@@ -21,6 +21,10 @@ spec:
   forProvider:
     appName: {{required "A valid value is required! (.Values.accounts[].subAccounts[].subscriptions[].appName)" $subscription.appName }}
     planName: {{required "A valid value is required! (.Values.accounts[].subAccounts[].subscriptions[].planName)" $subscription.planName }}
+    {{- if $subscription.parameters}}
+    parameters:
+      {{- $subscription.parameters | toYaml | nindent 6 }}
+    {{- end }}
   cloudManagementRef:
     name: {{required "A valid value is required! (.Values.accounts[].subAccounts[].name)" $item.name | lower }}   
   {{- if $subscription.writeConnectionSecretToRef}}

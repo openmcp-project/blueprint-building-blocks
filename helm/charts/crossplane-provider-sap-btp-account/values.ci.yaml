@@ -123,6 +123,11 @@ accounts:
             writeConnectionSecretToRef:
               name: "name"
               namespace: "namespace"
+          - name: test-identity
+            appName: sap-identity-services-onboarding
+            planName: additional-tenant
+            parameters:
+              "cloud_service": "TEST"
       - name: "test3"
         forProvider:
           displayName: "sub-account2"
