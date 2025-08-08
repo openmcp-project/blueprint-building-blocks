@@ -1008,6 +1008,22 @@ entries:
   flux-config:
   - apiVersion: v2
     appVersion: 2.6.0
+    created: "2025-08-08T12:06:25.597292763Z"
+    description: A Helm Chart to template flux manifests to leverage GitOps on a OpenMCP
+      cluster.
+    digest: 3888f70e9100c61ec0d46999b244d347d32778551597b211ff2b1bddccee5acb
+    home: https://github.com/openmcp-project/blueprints
+    icon: https://avatars.githubusercontent.com/u/52158677?s=200&v=4
+    name: flux-config
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    - https://fluxcd.io/flux/releases/
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/flux-config-0.0.20/flux-config-0.0.20.tgz
+    version: 0.0.20
+  - apiVersion: v2
+    appVersion: 2.6.0
     created: "2025-07-16T12:50:02.804777898Z"
     description: A Helm Chart to template flux manifests to leverage GitOps on a OpenMCP
       cluster.
@@ -1219,4 +1235,4 @@ entries:
     urls:
     - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/test-custom-chart-0.0.8/test-custom-chart-0.0.8.tgz
     version: 0.0.8
-generated: "2025-08-06T11:39:21.56892454Z"
+generated: "2025-08-08T12:06:25.597435657Z"
