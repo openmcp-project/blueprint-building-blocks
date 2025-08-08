@@ -464,6 +464,21 @@ entries:
   crossplane-provider-cloudfoundry:
   - apiVersion: v2
     appVersion: 0.3.0
+    created: "2025-08-08T16:14:32.0650047Z"
+    description: A Helm Chart to template crossplane manifests to manage BTP Cloud
+      Foundry resources on BTP.
+    digest: e03341d688d7c6b2780bca1b2ede5f914a108adb6f0536dcf4592b07b59c59bf
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-provider-cloudfoundry
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    - https://github.com/SAP/crossplane-provider-cloudfoundry
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-provider-cloudfoundry-0.1.4/crossplane-provider-cloudfoundry-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 0.3.0
     created: "2025-08-08T13:10:18.139748155Z"
     description: A Helm Chart to template crossplane manifests to manage BTP Cloud
       Foundry resources on BTP.
@@ -1250,4 +1265,4 @@ entries:
     urls:
     - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/test-custom-chart-0.0.8/test-custom-chart-0.0.8.tgz
     version: 0.0.8
-generated: "2025-08-08T13:10:18.139921952Z"
+generated: "2025-08-08T16:14:32.065126594Z"
