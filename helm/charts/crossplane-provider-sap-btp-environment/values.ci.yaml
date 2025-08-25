@@ -65,4 +65,4 @@ kymaModules:
     kymaEnvironmentBinding:  "test-binding"
     forProvider:
       name: "api-gateway"
-      releaseChannel: "regular"
+      channel: "regular"
