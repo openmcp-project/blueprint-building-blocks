@@ -9,6 +9,6 @@ spec:
   kymaEnvironmentBindingRef:
     name: {{ required "A valid value is required! (.Values.kymaModules[].kymaEnvironmentBinding)" $item.kymaEnvironmentBinding }}
   forProvider:
-    {{- toYaml  $item.forProvider | nindent 4 }}
+    {{- required "A valid value is required! (.Values.kymaModules[].forProvider)" $item.forProvider | toYaml | trim | nindent 4 }}
   {{- end }}
 {{- end }}
