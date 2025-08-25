@@ -58,3 +58,11 @@ kymaEnvironmentBindings:
     writeConnectionSecretToRef:
       name: "demo-kyma-binding-local"
       namespace: "default"
+########################################################################################################################
+# -- kymaModules contains configuration of kind: KymaModule.
+kymaModules:
+  - name: "test-name"
+    kymaEnvironmentBinding:  "test-binding"
+    forProvider:
+      name: "api-gateway"
+      channel: "regular"

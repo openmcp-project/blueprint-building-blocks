@@ -1,0 +1,14 @@
+{{- range $item := .Values.kymaModules }}
+  {{- if and ($item) (ne $item.name "") }}
+---
+apiVersion: environment.btp.sap.crossplane.io/v1alpha1
+kind: KymaModule
+metadata:
+  name: {{required "A valid value is required! (.Values.kymaModules[].name)" $item.name }}
+spec:
+  kymaEnvironmentBindingRef:
+    name: {{ required "A valid value is required! (.Values.kymaModules[].kymaEnvironmentBinding)" $item.kymaEnvironmentBinding }}
+  forProvider:
+    {{- required "A valid value is required! (.Values.kymaModules[].forProvider)" $item.forProvider | toYaml | trim | nindent 4 }}
+  {{- end }}
+{{- end }}
