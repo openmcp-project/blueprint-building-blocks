@@ -61,6 +61,8 @@ kymaEnvironmentBindings:
 ########################################################################################################################
 # -- kymaModules contains configuration of kind: KymaModule.
 kymaModules:
-  - moduleName: "test-module"
+  - name: "test-name"
     kymaEnvironmentBinding:  "test-binding"
-    releaseChannel: "regular"
+    forProvider:
+      name: "api-gateway"
+      releaseChannel: "regular"
