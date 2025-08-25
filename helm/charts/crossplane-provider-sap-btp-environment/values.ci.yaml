@@ -58,3 +58,9 @@ kymaEnvironmentBindings:
     writeConnectionSecretToRef:
       name: "demo-kyma-binding-local"
       namespace: "default"
+########################################################################################################################
+# -- kymaModules contains configuration of kind: KymaModule.
+kymaModules:
+  - moduleName: "test-module"
+    kymaEnvironmentBinding:  "test-binding"
+    releaseChannel: "regular"

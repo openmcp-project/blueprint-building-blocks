@@ -1,0 +1,15 @@
+{{- range $item := .Values.kymaModules }}
+  {{- if and ($item) (ne $item.name "") }}
+---
+apiVersion: environment.btp.sap.crossplane.io/v1alpha1
+kind: KymaModule
+metadata:
+  name: aas-adapter-dev-{{required "A valid value is required! (.Values.kymaModules[].moduleName)" $item.moduleName}}
+spec:
+  kymaEnvironmentBindingRef:
+    name: {{ required "A valid value is required! (.Values.kymaModules[].kymaEnvironmentBinding)" $item.kymaEnvironmentBinding }}
+  forProvider:
+    name: api-gateway
+    channel: {{ required "A valid value is required! (.Values.kymaModules[].releaseChannel)" $item.releaseChannel }}
+  {{- end }}
+{{- end }}

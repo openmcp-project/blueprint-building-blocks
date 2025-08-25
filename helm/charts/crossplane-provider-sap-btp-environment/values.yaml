@@ -66,3 +66,8 @@ kymaEnvironmentBindings:
       name: "demo-kyma-binding-local"
       namespace: "default"
 ########################################################################################################################
+# -- kymaModules contains configuration of kind: KymaModule.
+kymaModules:
+  - moduleName: "test-module"
+    kymaEnvironmentBinding:  ""
+    releaseChannel: "regular"
