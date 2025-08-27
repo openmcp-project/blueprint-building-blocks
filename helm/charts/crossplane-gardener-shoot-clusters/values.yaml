@@ -76,7 +76,7 @@ defaults:
           type: n2-standard-8
           image:
             name: gardenlinux
-            version: 1312.3.0
+            version: 1877.2.0
         volume:
           type: pd-standard
           size: 50Gi
@@ -114,7 +114,7 @@ defaults:
           type: Standard_A4_v2
           image:
             name: gardenlinux
-            version: 1312.3.0
+            version: 1877.2.0
           architecture: amd64
         zones:
           - "1"
@@ -162,7 +162,7 @@ defaults:
         type: c3.2xlarge
         image:
           name: gardenlinux
-          version: 1312.3.0
+          version: 1877.2.0
         architecture: amd64
       zones:
         - "eu-central-1a"
