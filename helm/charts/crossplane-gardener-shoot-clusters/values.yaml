@@ -134,7 +134,7 @@ defaults:
         vpc:
           cidr: 10.180.0.0/16
         zones:
-          - name: eu-central-1c
+          - name: eu-central-1a
             workers: 10.180.0.0/19
             public: 10.180.32.0/20
             internal: 10.180.48.0/20
