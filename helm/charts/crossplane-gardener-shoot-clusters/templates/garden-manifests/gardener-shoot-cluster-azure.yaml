@@ -23,7 +23,7 @@ spec:
         annotations:
           confirmation.gardener.cloud/deletion: "true" # otherwise it can't be destroyed using IAD
         name: {{required "A valid Gardener Shoot Name is required! (.Values.shootClusters[].name)" $shootCluster.name}}
-        namespace: {{required "A valid Gardener Project Namespace is required! (.Values.shootClusters[]..projectNamespace)" $shootCluster.projectNamespace}}
+        namespace: {{required "A valid Gardener Project Namespace is required! (.Values.shootClusters[].projectNamespace)" $shootCluster.projectNamespace}}
       spec:
         secretBindingName: {{required "A valid Secret Binding Name is required! (.Values.shootClusters[]..secretBindingName)" $shootCluster.secretBindingName}}  ## Set your SecretBinding name
         cloudProfileName: az
