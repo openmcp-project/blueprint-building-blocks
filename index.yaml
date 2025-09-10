@@ -49,6 +49,20 @@ entries:
   crossplane-gardener-shoot-clusters:
   - apiVersion: v2
     appVersion: 0.10.0
+    created: "2025-09-10T07:04:50.990842125Z"
+    description: A Helm chart to template crossplane manifests to manage Gardener
+      Shoot resources.
+    digest: e4d74ee5d7b080f3236bf5f5e25cca4ac4b4e7dae864b701695a087b01fe8346
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-gardener-shoot-clusters
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-gardener-shoot-clusters-0.0.14/crossplane-gardener-shoot-clusters-0.0.14.tgz
+    version: 0.0.14
+  - apiVersion: v2
+    appVersion: 0.10.0
     created: "2025-08-27T12:52:29.349738498Z"
     description: A Helm chart to template crossplane manifests to manage Gardener
       Shoot resources.
@@ -1295,4 +1309,4 @@ entries:
     urls:
     - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/test-custom-chart-0.0.8/test-custom-chart-0.0.8.tgz
     version: 0.0.8
-generated: "2025-08-27T12:52:29.349825562Z"
+generated: "2025-09-10T07:04:50.990991133Z"
