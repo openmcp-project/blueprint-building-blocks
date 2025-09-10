@@ -19,7 +19,9 @@ shootClusters:
     maintenance: {}
     addons: {}
     networking: {}
-    infrastructureConfig: {}      
+    infrastructureConfig: {}
+    adminKubeconfigRequest:
+      secretNamespace: "test-namespace"
   - name: "iad-test-gcp"
     kubernetesCrossplaneProviderConfigRefName: "garden-co-golden"
     gardenerOrchestrateCloudProviderConfigRefName: "garden-co-golden"

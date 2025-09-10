@@ -211,4 +211,7 @@ shootClusters:
     extensions: []
     # --
     resources: []
+    # namespace of the secret from adminKubeconfigRequest:
+    adminKubeconfigRequest:
+      secretNamespace: ""
 #########################################################################################################
