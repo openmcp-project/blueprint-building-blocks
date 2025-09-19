@@ -5,6 +5,7 @@ on:
   pull_request_target:
     branches:
       - main
+      - feat/kustomize
 
 concurrency:
   group: ${{ github.event.pull_request.head.repo.full_name }}-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
