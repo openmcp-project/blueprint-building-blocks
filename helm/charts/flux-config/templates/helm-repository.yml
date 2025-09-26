@@ -1,4 +1,4 @@
-{{- range $item := .Values.helmRepository}}
+{{- range $item := .Values.helmRepositorys}}
   {{- if and ($item) (ne $item.name "")}}
 ---
 apiVersion: source.toolkit.fluxcd.io/v1

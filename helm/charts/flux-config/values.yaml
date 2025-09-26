@@ -16,7 +16,7 @@ ociRepositorys:
     spec:
 ########################################################################################################################
 # -- defines [`kind: HelmRepository`](https://fluxcd.io/flux/components/source/api/v1/) manifest.
-helmRepository:
+helmRepositorys:
   # helmRepositorys[0].name -- defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: HelmRepository`
   - name: ""
     # -- *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: HelmRepository`

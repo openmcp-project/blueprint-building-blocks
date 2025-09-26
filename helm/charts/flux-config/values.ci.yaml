@@ -10,7 +10,7 @@ ociRepositorys:
       ref:
         tag: latest
 ########################################################################################################################
-helmRepository:
+helmRepositorys:
   - name: podinfo
     namespace: "default"
     spec:
