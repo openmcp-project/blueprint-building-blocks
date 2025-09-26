@@ -8,7 +8,14 @@ ociRepositorys:
       interval: 5m0s
       url: oci://ghcr.io/stefanprodan/manifests/podinfo
       ref:
-        tag: lates
+        tag: latest
+########################################################################################################################
+helmRepositorys:
+  - name: podinfo
+    namespace: "default"
+    spec:
+      interval: 5m0s
+      url: https://stefanprodan.github.io/podinfo
 ########################################################################################################################
 helmReleases:
   - name: podinfo

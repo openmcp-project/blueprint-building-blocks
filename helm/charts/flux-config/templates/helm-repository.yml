@@ -1,0 +1,15 @@
+{{- range $item := .Values.helmRepositorys}}
+  {{- if and ($item) (ne $item.name "")}}
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: {{required "A valid value is required! (.Values.helmRepository[].name)" $item.name | lower | quote}}
+  namespace: {{ $item.namespace | default $.Values.defaults.namespace | lower | quote }}
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+spec:
+  {{- toYaml $item.spec | nindent 2 }}
+  {{- end }}
+{{- end }}

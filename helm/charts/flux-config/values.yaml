@@ -8,11 +8,20 @@ defaults:
 ########################################################################################################################
 # -- defines [`kind: OCIRepository`](https://fluxcd.io/flux/components/source/api/v1/) manifest.
 ociRepositorys:
-  # ociRepositorys[0].name -- defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: GitRepository`
+  # ociRepositorys[0].name -- defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: OCIRepository`
   - name: ""
-    # -- *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: GitRepository`
+    # -- *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: OCIRepository`
     namespace: "default"
     # spec -- defines k8s `spec` structured value of `kind: OCIRepository`. See [API browser](https://fluxcd.io/flux/components/source/ocirepositories/)
+    spec:
+########################################################################################################################
+# -- defines [`kind: HelmRepository`](https://fluxcd.io/flux/components/source/api/v1/) manifest.
+helmRepositorys:
+  # helmRepositorys[0].name -- defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: HelmRepository`
+  - name: ""
+    # -- *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: HelmRepository`
+    namespace: "default"
+    # spec -- defines k8s `spec` structured value of `kind: HelmRepository`. See [API browser](https://fluxcd.io/flux/components/source/helmrepositories/)
     spec:
 ########################################################################################################################
 # -- defines independent [`kind: HelmReleases`](https://fluxcd.io/flux/components/helm/api/v2/) manifest without the generation of `kind: GitRepository`.

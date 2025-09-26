@@ -2,7 +2,7 @@
 
 # flux-config
 
-![Version: 0.0.20](https://img.shields.io/badge/Version-0.0.20-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.6.0](https://img.shields.io/badge/AppVersion-2.6.0-informational?style=flat-square)
+![Version: 0.0.21](https://img.shields.io/badge/Version-0.0.21-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.6.0](https://img.shields.io/badge/AppVersion-2.6.0-informational?style=flat-square)
 
 A Helm Chart to template flux manifests to leverage GitOps on a OpenMCP cluster.
 
@@ -58,6 +58,9 @@ A Helm Chart to template flux manifests to leverage GitOps on a OpenMCP cluster.
 | helmReleases | list | `[{"name":"","namespace":"default","spec":null}]` | defines independent [`kind: HelmReleases`](https://fluxcd.io/flux/components/helm/api/v2/) manifest without the generation of `kind: GitRepository`. |
 | helmReleases[0].name | string | `""` | defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: GitRepository` |
 | helmReleases[0].namespace | string | `"default"` | *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: GitRepository` |
+| helmRepositorys | list | `[{"name":"","namespace":"default","spec":null}]` | defines [`kind: HelmRepository`](https://fluxcd.io/flux/components/source/api/v1/) manifest. |
+| helmRepositorys[0].name | string | `""` | defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: HelmRepository` |
+| helmRepositorys[0].namespace | string | `"default"` | *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: HelmRepository` |
 | kustomizations | list | `[{"commonMetadata":[],"components":{},"decryption":[],"dependsOn":{},"force":null,"healthChecks":{},"images":{},"interval":null,"kubeConfig":[],"name":"","namePrefix":null,"nameSuffix":null,"namespace":"ns1","patches":null,"path":"","postBuild":[],"prune":null,"retryInterval":null,"serviceAccountName":null,"sourceRef":{"apiVersion":"","kind":"GitRepository","name":"","namespace":"ns1"},"suspend":null,"targetnamespace":"ns1","timeout":null,"wait":null}]` | defines independent [`kind: Kustomization`](https://fluxcd.io/flux/components/kustomize/api/v1/#kustomize.toolkit.fluxcd.io/v1.Kustomization) manifest without the generation of `kind: GitRepository`. |
 | kustomizations[0].commonMetadata | list | `[]` | [commonMetadata](https://fluxcd.io/flux/components/kustomize/kustomizations/#common-metadata)  is an *(optional)*field used to specify any metadata that should be applied to all the Kustomization’s resources. |
 | kustomizations[0].components | object | `{}` | [components](https://fluxcd.io/flux/components/kustomize/kustomizations/#components) is an *(optional)*list used to specify Kustomize components. This allows using reusable pieces of configuration logic that can be included from multiple overlays. |
@@ -88,8 +91,8 @@ A Helm Chart to template flux manifests to leverage GitOps on a OpenMCP cluster.
 | kustomizations[0].timeout | string | `nil` | *(optional)* [Timeout](https://fluxcd.io/flux/components/kustomize/api/v1/#kustomize.toolkit.fluxcd.io/v1.KustomizationSpec) for validation, apply and health checking operations. Defaults to ‘Interval’ duration. e.g. 1m |
 | kustomizations[0].wait | string | `nil` | [wait](https://fluxcd.io/flux/components/kustomize/kustomizations/#wait)  is an *(optional)*boolean field to perform health checks for all reconciled resources as part of the Kustomization. If set to true, .spec.healthChecks is ignored. |
 | ociRepositorys | list | `[{"name":"","namespace":"default","spec":null}]` | defines [`kind: OCIRepository`](https://fluxcd.io/flux/components/source/api/v1/) manifest. |
-| ociRepositorys[0].name | string | `""` | defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: GitRepository` |
-| ociRepositorys[0].namespace | string | `"default"` | *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: GitRepository` |
+| ociRepositorys[0].name | string | `""` | defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: OCIRepository` |
+| ociRepositorys[0].namespace | string | `"default"` | *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: OCIRepository` |
 
 ----------------------------------------------
 Autogenerated from chart metadata using [helm-docs v1.14.2](https://github.com/norwoodj/helm-docs/releases/v1.14.2)
