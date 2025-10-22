@@ -443,6 +443,22 @@ entries:
   crossplane-provider-btp-security:
   - apiVersion: v2
     appVersion: 1.1.2
+    created: "2025-10-22T13:41:39.988306046Z"
+    description: A Helm Chart to template crossplane manifests to manage BTP resources
+      such as Directory, TrustConfiguration and RoleCollection Assignment on BTP.
+    digest: 072a8cbdf4eff090d16e721b2d0c105746df44e1a16d499c1d07728d383bcaa4
+    home: https://github.com/openmcp-project/blueprints
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-provider-btp-security
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    - https://github.com/SAP/crossplane-provider-btp
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-provider-btp-security-0.0.15/crossplane-provider-btp-security-0.0.15.tgz
+    version: 0.0.15
+  - apiVersion: v2
+    appVersion: 1.1.2
     created: "2025-07-16T12:50:01.234827221Z"
     description: A Helm Chart to template crossplane manifests to manage BTP resources
       such as Directory, TrustConfiguration and RoleCollection Assignment on BTP.
@@ -1325,4 +1341,4 @@ entries:
     urls:
     - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/test-custom-chart-0.0.8/test-custom-chart-0.0.8.tgz
     version: 0.0.8
-generated: "2025-09-26T07:26:41.215149386Z"
+generated: "2025-10-22T13:41:39.98846898Z"
