@@ -43,15 +43,15 @@ globalaccountTrustConfigurations:
     # -- optional
     writeConnectionSecretToRef: []
 ########################################################################################################################
-# -- `subaccountApiCredentials[].` orchestrate [`kind: SubaccountApiCredential`](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/SubaccountApiCredential/v1alpha1@v1.1.2) of [BTP Accounts](https://help.sap.com/docs/btp/sap-business-technology-platform/account-model).
+# -- `subaccountApiCredentials[].` orchestrate [`kind: SubaccountApiCredential`](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/SubaccountApiCredential/v1alpha1@v1.3.0) of [BTP Accounts](https://help.sap.com/docs/btp/sap-business-technology-platform/account-model).
 # @default -- object
 subaccountApiCredentials:
   # -- btpSapCrossplaneProviderConfigRefName defines crossplane provider configuration reference name (identifier) of a [BTP Global Account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account)!
   - btpSapCrossplaneProviderConfigRefName: ""
-    # globalaccountTrustConfigurations[0].name -- Name of the GlobalaccountTrustConfiguration resource - [CRD Browser](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/SubaccountApiCredential/v1alpha1@v1.1.2?path=metadata).
+    # subaccountApiCredentials[0].name -- Name of the GlobalaccountTrustConfiguration resource - [CRD Browser](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/SubaccountApiCredential/v1alpha1@v1.3.0).
     # @default -- -
     name: ""
-    # -- [forProvider](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/SubaccountApiCredential/v1alpha1@v1.1.2) CRD
+    # -- [forProvider](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/SubaccountApiCredential/v1alpha1@v1.3.0) CRD
     forProvider: []
     # -- optional
     writeConnectionSecretToRef: []
