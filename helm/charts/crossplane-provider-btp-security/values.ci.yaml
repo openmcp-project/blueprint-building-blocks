@@ -37,6 +37,8 @@ roleCollectionAssignments:
       origin: "origin"
       roleCollectionName: "roleCollectionName"
       userName: "userName"
+    subaccountApiCredentialRef:
+      name: "name"
     apiCredentials:
       env:
         name: "name"
