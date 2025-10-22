@@ -23,8 +23,10 @@ roleCollectionAssignments:
     name: ""
     # -- [forProvider](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/RoleCollectionAssignment/v1alpha1@v1.1.2) CRD
     forProvider: []
-    # -- [apiCredentials](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/RoleCollectionAssignment/v1alpha1@v1.1.2) CRD
+    # -- optional [apiCredentials](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/RoleCollectionAssignment/v1alpha1@v1.1.2) CRD
     apiCredentials: []
+    # -- optional [subaccountApiCredentialRef](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/RoleCollectionAssignment/v1alpha1@v1.1.2) CRD
+    subaccountApiCredentialRef: []
     # -- optional
     writeConnectionSecretToRef: []
 ########################################################################################################################
