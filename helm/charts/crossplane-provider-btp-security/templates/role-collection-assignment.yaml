@@ -17,6 +17,10 @@ spec:
   apiCredentials:
     {{- $item.apiCredentials | toYaml | nindent 4 }}
     {{- end }}
+    {{- if $item.subaccountApiCredentialRef}}
+  subaccountApiCredentialRef:
+    {{- $item.subaccountApiCredentialRef | toYaml | nindent 4 }}
+    {{- end }}  
     {{- if $item.writeConnectionSecretToRef}}
   writeConnectionSecretToRef:
     {{- $item.writeConnectionSecretToRef | toYaml | nindent 4 }}
