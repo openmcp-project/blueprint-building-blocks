@@ -65,3 +65,13 @@ globalaccountTrustConfigurations:
       name: "name"
       namespace: "namespace"
 ########################################################################################################################
+subaccountApiCredentials:
+  - name: "poc-mcp-btp-kyma"
+    btpSapCrossplaneProviderConfigRefName: "btpSapCrossplaneProviderConfigRefName"
+    forProvider:
+      subaccountRef:
+        name: poc-mcp-btp-kyma
+    writeConnectionSecretToRef:
+      name: xsuaa-creds-my-subaccount
+      namespace: default
+########################################################################################################################
