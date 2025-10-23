@@ -14,11 +14,13 @@ metadata:
     openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
   {{- template "ServiceManager.annotations" $item }}
 spec:
+  {{- if and $item.services.serviceManagerConfiguration $item.services.serviceManagerConfiguration.writeConnectionSecretToRef }}
+  writeConnectionSecretToRef: {{- $item.services.serviceManagerConfiguration.writeConnectionSecretToRef | toYaml | nindent 4 }}
+  {{- else }}
   writeConnectionSecretToRef:
-    # !!! TODO: Make this configurable !!!
-    name: btp-service-manager-{{required "A valid value is required! (.Values.accounts[].btpSapCrossplaneProviderConfigRefName)" $account.btpSapCrossplaneProviderConfigRefName}}-{{required "A valid value is required! (.Values.accounts[].subAccounts[].name)" $item.name | lower }}
-    # !!! TODO: Make this configurable !!!
+    name: btp-service-manager-{{ required "A valid value is required! (.Values.accounts[].btpSapCrossplaneProviderConfigRefName)" $account.btpSapCrossplaneProviderConfigRefName }}-{{ required "A valid value is required! (.Values.accounts[].subAccounts[].name)" $item.name | lower }}
     namespace: default
+  {{- end }}
   forProvider:
     subaccountRef:
       name: {{required "A valid value is required! (.Values.accounts[].subAccounts[].name)" $item.name | lower }}

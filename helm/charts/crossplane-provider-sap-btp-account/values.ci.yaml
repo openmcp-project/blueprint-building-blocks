@@ -109,7 +109,15 @@ accounts:
             - your.name@sap.com
         services:
           serviceManager: true
+          serviceManagerConfiguration:
+            writeConnectionSecretToRef:
+              name: btp-service-manager-test
+              namespace: test-namespace
           cloudManagement: true
+          cloudManagementConfiguration:
+            writeConnectionSecretToRef:
+              name: cis-test
+              namespace: test-namespace
         entitlements:
           - name: "entitlement-1"
             serviceName: "service-name"

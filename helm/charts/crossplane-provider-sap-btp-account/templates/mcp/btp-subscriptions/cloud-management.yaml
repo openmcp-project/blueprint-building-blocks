@@ -25,9 +25,13 @@ spec:
       name: {{required "A valid value is required! (.Values.accounts[].subAccounts[].name)" $item.name | lower }}
     subaccountRef:
       name: {{required "A valid value is required! (.Values.accounts[].subAccounts[].name)" $item.name | lower }}
+  {{- if and $item.services.cloudManagementConfiguration $item.services.cloudManagementConfiguration.writeConnectionSecretToRef }}
+  writeConnectionSecretToRef: {{- $item.services.cloudManagementConfiguration.writeConnectionSecretToRef | toYaml | nindent 4 }}
+  {{- else }}
   writeConnectionSecretToRef:
     name: cis-{{required "A valid value is required! (.Values.accounts[].btpSapCrossplaneProviderConfigRefName)" $account.btpSapCrossplaneProviderConfigRefName | lower }}-{{required "A valid value is required! (.Values.accounts[].subAccounts[].name)" $item.name | lower }}
-    namespace: default    
+    namespace: default
+  {{- end}}
           {{- end }}
         {{- end }}
       {{- end }}
