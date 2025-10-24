@@ -71,6 +71,7 @@ accounts:
           cloudManagement: false
           cloudManagementConfiguration:
             writeConnectionSecretToRef: {}
+
         # -- entitlements defines [BTP Entitlements](https://help.sap.com/docs/btp/sap-business-technology-platform/entitlements-and-quotas) for this [BTP Sub-Account](https://help.sap.com/docs/btp/sap-business-technology-platform/account-model#loio8d6e3a0fa4ab43e4a421d3ed08128afa). 
         # Learn more about managing BTP Entitlement with crossplane [here](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/Entitlement/v1alpha1@v1.1.2).
         # @default -- {}
