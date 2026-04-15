@@ -1,4 +1,3 @@
----
 #########################################################################################################
 # -- kubernetesVersion defines gardener shoot cluster kubernetes version.
 kubernetesVersion: &kubernetesVersion "1.30.3"
@@ -39,7 +38,7 @@ defaults:
   resources: []
   # --
   kubernetesKubeAPIServer:
-    runtimeConfig:
+    runtimeConfig: {}
     scheduling.k8s.io/v1alpha1: true
     enableAnonymousAuthentication: false # See: https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
   kubernetesClusterAutoscaler:
