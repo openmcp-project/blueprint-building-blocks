@@ -1,0 +1,10 @@
+version = 1
+SPDX-PackageName = "blueprint-building-blocks"
+SPDX-PackageDownloadLocation = "https://github.com/openmcp-project/blueprint-building-blocks"
+SPDX-PackageComment = "The code in this project may include calls to APIs (\"API Calls\") of\n third-party products or services developed outside of this project\n (\"External Products\").\n \"APIs\" means application programming interfaces, as well as their respective\n specifications and implementing code that allows software to communicate with\n other software.\n API Calls to External Products are not licensed under the open source license\n that governs this project. The use of such API Calls and related External\n Products are subject to applicable additional agreements with the relevant\n provider of the External Products. In no event shall the open source license\n that governs this project grant any rights in or to any External Products,or\n alter, expand or supersede any terms of the applicable additional agreements."
+
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "Copyright OpenControlPlane contributors."
+SPDX-License-Identifier = "Apache-2.0"
