@@ -2,6 +2,46 @@
 ########################################################################################################################
 ###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
 ########################################################################################################################
+serviceInstances:
+  - btpSapCrossplaneProviderConfigRefName: "btpSapCrossplaneProviderConfigRefName"
+    name: "my-service-instance"
+    forProvider:
+      name: "my-xsuaa-instance"
+      offeringName: "xsuaa"
+      planName: "application"
+      subaccountId: "subaccount-12345"
+      subaccountRef:
+        name: "my-subaccount"
+        policy:
+          resolution: "Required"
+          resolve: "Always"
+      parameters:
+        xsappname: "my-app"
+        tenant-mode: "dedicated"
+    writeConnectionSecretToRef:
+      name: "my-service-instance-conn"
+      namespace: "default"
+# ########################################################################################################################
+serviceBindings:
+  - btpSapCrossplaneProviderConfigRefName: "btpSapCrossplaneProviderConfigRefName"
+    name: "my-service-binding"
+    forProvider:
+      name: "my-xsuaa-binding"
+      subaccountId: "subaccount-12345"
+      subaccountRef:
+        name: "my-subaccount"
+        policy:
+          resolution: "Required"
+          resolve: "Always"
+      serviceInstanceRef:
+        name: "my-service-instance"
+        policy:
+          resolution: "Required"
+          resolve: "Always"
+    writeConnectionSecretToRef:
+      name: "my-service-binding-conn"
+      namespace: "default"
+# ########################################################################################################################
 subaccountServiceBrokers:
   - btpSapCrossplaneProviderConfigRefName: "btpSapCrossplaneProviderConfigRefName"
     name: "subaccountServiceBrokers"
