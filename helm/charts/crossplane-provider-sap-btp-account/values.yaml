@@ -115,6 +115,34 @@ directories:
     #   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)!
     writeConnectionSecretToRef: []
 #########################################################################################################
+# -- `serviceInstances[].` orchestrate [`kind: ServiceInstance`](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/ServiceInstance/v1alpha1@v1.11.0) of [BTP Accounts](https://help.sap.com/docs/btp/sap-business-technology-platform/account-model).
+# @default -- object
+serviceInstances:
+  # -- btpSapCrossplaneProviderConfigRefName defines crossplane provider configuration reference name (identifier) of a [BTP Global Account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account)!
+  - btpSapCrossplaneProviderConfigRefName: ""
+    # serviceInstances[0].name -- Name of the ServiceInstance resource - [CRD Browser](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/ServiceInstance/v1alpha1@v1.11.0?path=metadata).
+    # @default -- -
+    name: ""
+    # -- [forProvider](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/ServiceInstance/v1alpha1@v1.11.0) CRD
+    forProvider: []
+    # -- *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.
+    #   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)!
+    writeConnectionSecretToRef: []
+#########################################################################################################
+# -- `serviceBindings[].` orchestrate [`kind: ServiceBinding`](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/ServiceBinding/v1alpha1@v1.11.0) of [BTP Accounts](https://help.sap.com/docs/btp/sap-business-technology-platform/account-model).
+# @default -- object
+serviceBindings:
+  # -- btpSapCrossplaneProviderConfigRefName defines crossplane provider configuration reference name (identifier) of a [BTP Global Account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account)!
+  - btpSapCrossplaneProviderConfigRefName: ""
+    # serviceBindings[0].name -- Name of the ServiceBinding resource - [CRD Browser](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/ServiceBinding/v1alpha1@v1.11.0?path=metadata).
+    # @default -- -
+    name: ""
+    # -- [forProvider](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/ServiceBinding/v1alpha1@v1.11.0) CRD
+    forProvider: []
+    # -- *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.
+    #   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)!
+    writeConnectionSecretToRef: []
+#########################################################################################################
 # -- `subaccountServiceBrokers[].` orchestrate [`kind: SubaccountServiceBroker`](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/SubaccountServiceBroker/v1alpha1@v1.1.2) of [BTP Accounts](https://help.sap.com/docs/btp/sap-business-technology-platform/account-model).
 # @default -- object
 subaccountServiceBrokers:
