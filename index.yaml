@@ -755,6 +755,22 @@ entries:
   crossplane-provider-kubernetes:
   - apiVersion: v2
     appVersion: 0.18.0
+    created: "2026-08-03T08:13:07.297175946Z"
+    description: A Helm Chart to template crossplane provider "kubernetes" manifests
+      to manage k8s cluster stack on a k8s Gardener/Kyma clusters.
+    digest: 734eb31e818041a03a01cf538d0d36a1d5af018d799eca69cfccffd28dcb93a9
+    home: https://github.com/openmcp-project/blueprints
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-provider-kubernetes
+    sources:
+    - https://github.com/openmcp-project/blueprint-building-blocks
+    - https://github.com/crossplane-contrib/provider-kubernetes
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-provider-kubernetes-0.0.14/crossplane-provider-kubernetes-0.0.14.tgz
+    version: 0.0.14
+  - apiVersion: v2
+    appVersion: 0.18.0
     created: "2025-07-16T12:50:02.026010924Z"
     description: A Helm Chart to template crossplane provider "kubernetes" manifests
       to manage k8s cluster stack on a k8s Gardener/Kyma clusters.
@@ -1385,4 +1401,4 @@ entries:
     urls:
     - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/test-custom-chart-0.0.8/test-custom-chart-0.0.8.tgz
     version: 0.0.8
-generated: "2026-07-30T10:03:14.034389799Z"
+generated: "2026-08-03T08:13:07.29730137Z"
