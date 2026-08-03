@@ -3,7 +3,7 @@
 # @default -- {}
 defaults: 
   object:
-    deletionPolicy: ""
+    deletionPolicy: "Delete"
 ########################################################################################################################
 # -- [kubernetesObjects](https://marketplace.upbound.io/providers/crossplane-contrib/provider-kubernetes/v0.18.0/resources/kubernetes.crossplane.io/Object/v1alpha2) contains information and configuration of k8s [manifest/resource](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/).
 # @default -- []
