@@ -125,6 +125,10 @@ providerConfigs:
             namespace: default
             key: credentials
 ########################################################################################################################
+clusterProviderConfig:
+  kubernetesCrossplane:
+    - name: "kubernetes-provider"
+########################################################################################################################
 secrets:
   - name: "name"
     namespace: "namespace"
