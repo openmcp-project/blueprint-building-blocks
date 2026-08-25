@@ -22,8 +22,14 @@ version: 0.0.5
 appVersion: "0.0.1"
 # A list of URLs to source code for this project (optional)
 sources:
-  - https://github.com/openmcp-project/blueprint-building-blocks
+  # Kubernetes source repository
+  - https://github.com/kubernetes/kubernetes
+  # Concept guide: Validating Admission Policy
   - "https://kubernetes.io/docs/reference/access-authn-authz/validating-admission-policy/"
+  # API reference: admissionregistration.k8s.io/v1 ValidatingAdmissionPolicy
+  - "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#validatingadmissionpolicy-v1-admissionregistration-k8s-io"
+  # API reference: admissionregistration.k8s.io/v1 ValidatingAdmissionPolicyBinding
+  - "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#validatingadmissionpolicybinding-v1-admissionregistration-k8s-io"
 # A SemVer range of compatible Kubernetes versions (optional)
 kubeVersion: ">=1.20.0"
 # Whether this chart is deprecated (optional, boolean)
