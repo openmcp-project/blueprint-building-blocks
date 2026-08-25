@@ -178,6 +178,18 @@ providerConfigs:
           name: ""
           key: ""
 ########################################################################################################################
+clusterProviderConfig:
+  ########################################################################################################################
+  # -- creates k8s manifest `kind: ClusterProviderConfig` of `apiVersion: kubernetes.m.crossplane.io/v1alpha1`
+  # This `ClusterProviderConfig` uses `InjectedIdentity` as credentials source, meaning the provider will use the
+  # in-cluster service account identity rather than an explicit kubeconfig secret.
+  # Use this when the crossplane provider is running inside the target cluster and should authenticate via the
+  # pod's mounted service account token (e.g. for managing resources on the same cluster where crossplane runs).
+  # See [ClusterProviderConfig CRD](https://doc.crds.dev/github.com/crossplane-contrib/provider-kubernetes/kubernetes.m.crossplane.io/ClusterProviderConfig/v1alpha1).
+  # @default -- []
+  kubernetesCrossplane:
+    - name: "kubernetes-provider"
+########################################################################################################################
 # @secrets -- :exclamation::exclamation: never EVER PUSH confidential secrets/credentials in plain text into GIT :exclamation::exclamation:
 # @default -- []
 secrets:
