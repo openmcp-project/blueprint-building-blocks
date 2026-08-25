@@ -26,8 +26,17 @@ appVersion: "1.20.0"
 home: "https://github.com/openmcp-project/blueprints"
 # A list of URLs to source code for this project (optional)
 sources:
-  - https://github.com/openmcp-project/blueprint-building-blocks
-  - https://docs.upbound.io/providers/
-  - https://docs.upbound.io/providers/provider-families/
+  # Source repository for all Crossplane core package kinds
+  - https://github.com/crossplane/crossplane
+  # pkg.crossplane.io/v1 Provider
+  - https://doc.crds.dev/github.com/crossplane/crossplane/pkg.crossplane.io/Provider/v1
+  # pkg.crossplane.io/v1 Configuration
+  - https://doc.crds.dev/github.com/crossplane/crossplane/pkg.crossplane.io/Configuration/v1
+  # pkg.crossplane.io/v1beta1 Function (template uses v1beta1; CRD promoted to v1 in Crossplane v1.14+)
+  - https://doc.crds.dev/github.com/crossplane/crossplane/pkg.crossplane.io/Function/v1
+  # pkg.crossplane.io/v1beta1 DeploymentRuntimeConfig
+  - https://doc.crds.dev/github.com/crossplane/crossplane/pkg.crossplane.io/DeploymentRuntimeConfig/v1beta1
+  # pkg.crossplane.io/v1alpha1 ImageConfig (template uses v1alpha1; CRD promoted to v1beta1 in Crossplane v2.x)
+  - https://doc.crds.dev/github.com/crossplane/crossplane/pkg.crossplane.io/ImageConfig/v1beta1
 # Whether this chart is deprecated (optional, boolean)
 deprecated: false
