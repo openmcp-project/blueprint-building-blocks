@@ -25,5 +25,24 @@ appVersion: "1.1.2"
 home: "https://github.com/SAP/crossplane-provider-btp"
 # A list of URLs to source code for this project (optional)
 sources:
-  - https://github.com/openmcp-project/blueprint-building-blocks
   - https://github.com/SAP/crossplane-provider-btp
+  # account.btp.sap.crossplane.io/v1alpha1 - CloudManagement
+  - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/CloudManagement/v1alpha1@v1.1.2
+  # account.btp.sap.crossplane.io/v1alpha1 - Directory
+  - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/Directory/v1alpha1@v1.1.2
+  # account.btp.sap.crossplane.io/v1alpha1 - DirectoryEntitlement
+  - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/DirectoryEntitlement/v1alpha1@v1.1.2
+  # account.btp.sap.crossplane.io/v1alpha1 - Entitlement
+  - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/Entitlement/v1alpha1@v1.1.2
+  # account.btp.sap.crossplane.io/v1alpha1 - ServiceBinding
+  - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/ServiceBinding/v1alpha1@v1.1.2
+  # account.btp.sap.crossplane.io/v1alpha1 - ServiceInstance
+  - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/ServiceInstance/v1alpha1@v1.1.2
+  # account.btp.sap.crossplane.io/v1beta1 - ServiceManager
+  - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/ServiceManager/v1beta1@v1.1.2
+  # account.btp.sap.crossplane.io/v1alpha1 - Subaccount
+  - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/Subaccount/v1alpha1@v1.1.2
+  # account.btp.sap.crossplane.io/v1alpha1 - SubaccountServiceBroker
+  - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/SubaccountServiceBroker/v1alpha1@v1.1.2
+  # account.btp.sap.crossplane.io/v1alpha1 - Subscription
+  - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/Subscription/v1alpha1@v1.1.2
