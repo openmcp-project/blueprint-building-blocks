@@ -26,10 +26,14 @@ appVersion: "0.0.1"
 home: "https://github.com/openmcp-project/blueprints"
 # A list of URLs to source code for this project (optional)
 sources:
-  - https://marketplace.upbound.io/providers/upbound/provider-aws-eks/
-  - https://docs.upbound.io/providers/
-  - https://docs.upbound.io/providers/provider-families/
-  - https://github.com/openmcp-project/blueprint-building-blocks
+  # Source repository (crossplane-contrib/provider-upjet-aws)
+  - https://github.com/crossplane-contrib/provider-upjet-aws
+  # Upbound marketplace – provider-aws-eks
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-eks/latest
+  # CRD: eks.aws.upbound.io/v1beta1 Cluster
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-eks/latest/resources/eks.aws.upbound.io/Cluster/v1beta1
+  # CRD: eks.aws.upbound.io/v1beta1 NodeGroup
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-eks/latest/resources/eks.aws.upbound.io/NodeGroup/v1beta1
 
 # Whether this chart is deprecated (optional, boolean)
 deprecated: false
