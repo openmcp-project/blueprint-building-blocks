@@ -4,7 +4,7 @@ name: crossplane-provider-apiextensions
 description: A Helm Chart to template crossplane API extensions compositions.
 type: application
 icon: "https://avatars.githubusercontent.com/u/45158470?s=48&v=4"
-version: 0.0.5
+version: 0.0.6
 appVersion: "1.20.0"
 home: "https://github.com/openmcp-project/blueprints"
 sources:
