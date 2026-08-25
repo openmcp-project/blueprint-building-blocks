@@ -26,9 +26,29 @@ appVersion: "1.11.0"
 home: "https://github.com/openmcp-project/blueprints"
 # A list of URLs to source code for this project (optional)
 sources:
-  - https://github.com/openmcp-project/blueprint-building-blocks
-  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2
-  - https://docs.upbound.io/providers/
-  - https://docs.upbound.io/providers/provider-families/
+  - https://github.com/crossplane-contrib/provider-upjet-aws
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest
+  # ec2.aws.upbound.io/v1beta1 EIP
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/EIP/v1beta1
+  # ec2.aws.upbound.io/v1beta1 InternetGateway
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/InternetGateway/v1beta1
+  # ec2.aws.upbound.io/v1beta1 MainRouteTableAssociation
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/MainRouteTableAssociation/v1beta1
+  # ec2.aws.upbound.io/v1beta1 NATGateway
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/NATGateway/v1beta1
+  # ec2.aws.upbound.io/v1beta1 Route
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/Route/v1beta1
+  # ec2.aws.upbound.io/v1beta1 RouteTable
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/RouteTable/v1beta1
+  # ec2.aws.upbound.io/v1beta1 RouteTableAssociation
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/RouteTableAssociation/v1beta1
+  # ec2.aws.upbound.io/v1beta1 SecurityGroup
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/SecurityGroup/v1beta1
+  # ec2.aws.upbound.io/v1beta1 SecurityGroupRule
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/SecurityGroupRule/v1beta1
+  # ec2.aws.upbound.io/v1beta1 Subnet
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/Subnet/v1beta1
+  # ec2.aws.upbound.io/v1beta1 VPC
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/VPC/v1beta1
 # Whether this chart is deprecated (optional, boolean)
 deprecated: false
