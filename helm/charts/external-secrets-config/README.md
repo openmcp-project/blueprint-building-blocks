@@ -2,7 +2,7 @@
 
 # external-secrets-config
 
-![Version: 0.1.12](https://img.shields.io/badge/Version-0.1.12-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.18.2](https://img.shields.io/badge/AppVersion-0.18.2-informational?style=flat-square)
+![Version: 0.1.13](https://img.shields.io/badge/Version-0.1.13-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.18.2](https://img.shields.io/badge/AppVersion-0.18.2-informational?style=flat-square)
 
 A Helm Chart to template external-secrets.io manifests to sync credentials from remote vault (e.g. SAP HashiCorp Vault).
 
@@ -10,8 +10,12 @@ A Helm Chart to template external-secrets.io manifests to sync credentials from 
 
 ## Source Code
 
-* <https://github.com/openmcp-project/blueprint-building-blocks>
-* <https://external-secrets.io>
+* <https://github.com/external-secrets/external-secrets>
+* <https://doc.crds.dev/github.com/external-secrets/external-secrets/external-secrets.io/ClusterExternalSecret/v1>
+* <https://doc.crds.dev/github.com/external-secrets/external-secrets/external-secrets.io/ClusterSecretStore/v1>
+* <https://doc.crds.dev/github.com/external-secrets/external-secrets/external-secrets.io/ExternalSecret/v1>
+* <https://doc.crds.dev/github.com/external-secrets/external-secrets/external-secrets.io/SecretStore/v1>
+* <https://doc.crds.dev/github.com/external-secrets/external-secrets/external-secrets.io/PushSecret/v1alpha1>
 
 ## Values
 

@@ -4,7 +4,22 @@ description: A Helm Chart to template crossplane manifests to manage BTP Cloud F
 icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
 name: crossplane-provider-cloudfoundry
 sources:
-  - https://github.com/openmcp-project/blueprint-building-blocks
   - https://github.com/SAP/crossplane-provider-cloudfoundry
+  # cloudfoundry.crossplane.io/v1alpha1 App
+  - https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/App/v1alpha1@v0.3.0
+  # cloudfoundry.crossplane.io/v1alpha1 Organization
+  - https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/Organization/v1alpha1@v0.3.0
+  # cloudfoundry.crossplane.io/v1alpha1 Space
+  - https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/Space/v1alpha1@v0.3.0
+  # cloudfoundry.crossplane.io/v1alpha1 ServiceInstance
+  - https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/ServiceInstance/v1alpha1@v0.3.0
+  # cloudfoundry.crossplane.io/v1alpha1 ServiceCredentialBinding
+  - https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/ServiceCredentialBinding/v1alpha1@v0.3.0
+  # cloudfoundry.crossplane.io/v1alpha1 OrgMembers
+  - https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/OrgMembers/v1alpha1@v0.3.0
+  # cloudfoundry.crossplane.io/v1alpha1 SpaceMembers
+  - https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/SpaceMembers/v1alpha1@v0.3.0
+  # cloudfoundry.crossplane.io/v1alpha1 Route
+  - https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/Route/v1alpha1@v0.3.0
 type: application
-version: 0.1.4
+version: 0.1.5

@@ -17,7 +17,7 @@ icon: "https://avatars.githubusercontent.com/u/45158470?s=48&v=4"
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.0.20
+version: 0.0.21
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
@@ -27,7 +27,15 @@ appVersion: "1.1.2"
 home: "https://github.com/openmcp-project/blueprints"
 # A list of URLs to source code for this project (optional)
 sources:
-  - https://github.com/openmcp-project/blueprint-building-blocks
-  - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp@v1.1.2
+  # Provider source repository (SAP/crossplane-provider-btp)
+  - https://github.com/SAP/crossplane-provider-btp
+  # CRD: environment.btp.sap.crossplane.io/CloudFoundryEnvironment (v1alpha1)
+  - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/environment.btp.sap.crossplane.io/CloudFoundryEnvironment/v1alpha1@v1.13.0
+  # CRD: environment.btp.sap.crossplane.io/KymaEnvironment (v1alpha1)
+  - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/environment.btp.sap.crossplane.io/KymaEnvironment/v1alpha1@v1.13.0
+  # CRD: environment.btp.sap.crossplane.io/KymaEnvironmentBinding (v1alpha1)
+  - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/environment.btp.sap.crossplane.io/KymaEnvironmentBinding/v1alpha1@v1.13.0
+  # CRD: environment.btp.sap.crossplane.io/KymaModule (v1alpha1)
+  - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/environment.btp.sap.crossplane.io/KymaModule/v1alpha1@v1.13.0
 # Whether this chart is deprecated (optional, boolean)
 deprecated: false
