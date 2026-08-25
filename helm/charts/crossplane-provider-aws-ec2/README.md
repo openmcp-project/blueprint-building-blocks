@@ -2,7 +2,7 @@
 
 # crossplane-provider-aws-ec2
 
-![Version: 0.0.13](https://img.shields.io/badge/Version-0.0.13-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.11.0](https://img.shields.io/badge/AppVersion-1.11.0-informational?style=flat-square)
+![Version: 0.0.14](https://img.shields.io/badge/Version-0.0.14-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.11.0](https://img.shields.io/badge/AppVersion-1.11.0-informational?style=flat-square)
 
 A Helm Chart to template AWS EC2 manifests for its crossplane provider.
 
@@ -10,10 +10,19 @@ A Helm Chart to template AWS EC2 manifests for its crossplane provider.
 
 ## Source Code
 
-* <https://github.com/openmcp-project/blueprint-building-blocks>
-* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2>
-* <https://docs.upbound.io/providers/>
-* <https://docs.upbound.io/providers/provider-families/>
+* <https://github.com/crossplane-contrib/provider-upjet-aws>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/EIP/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/InternetGateway/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/MainRouteTableAssociation/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/NATGateway/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/Route/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/RouteTable/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/RouteTableAssociation/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/SecurityGroup/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/SecurityGroupRule/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/Subnet/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/VPC/v1beta1>
 
 ## Values
 
