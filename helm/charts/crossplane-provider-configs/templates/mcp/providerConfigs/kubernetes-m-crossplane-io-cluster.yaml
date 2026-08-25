@@ -10,6 +10,6 @@ metadata:
     openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
 spec:
   credentials:
-    source: InjectedIdentity
+    {{- required "A valid value is required! (.Values.clusterProviderConfig.kubernetesCrossplane[].credentials)" $item.credentials | toYaml | nindent 4 }} 
   {{- end }}
 {{- end }}
