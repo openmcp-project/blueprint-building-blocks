@@ -8,7 +8,24 @@ A Helm chart to template crossplane provider config manifests to orchestrate res
 
 ## Source Code
 
-* <https://github.com/openmcp-project/blueprint-building-blocks>
+* <https://github.com/crossplane-contrib/provider-upjet-aws>
+* <https://marketplace.upbound.io/providers/upbound/provider-family-aws/v2.7.1/resources/aws.upbound.io/ProviderConfig/v1beta1>
+* <https://github.com/crossplane-contrib/provider-upjet-azure>
+* <https://marketplace.upbound.io/providers/upbound/provider-family-azure/v2.7.1/resources/azure.upbound.io/ProviderConfig/v1beta1>
+* <https://github.com/SAP/crossplane-provider-btp>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/btp.sap.crossplane.io/ProviderConfig/v1alpha1@v1.13.0>
+* <https://github.com/SAP/crossplane-provider-cloudfoundry>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/ProviderConfig/v1beta1@v1.0.0>
+* <https://github.tools.sap/cloud-orchestration/crossplane-provider-gardener-auth>
+* <https://github.com/crossplane-contrib/provider-upjet-gcp>
+* <https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v3.0.1/resources/gcp.upbound.io/ProviderConfig/v1beta1>
+* <https://github.com/crossplane-contrib/provider-helm>
+* <https://doc.crds.dev/github.com/crossplane-contrib/provider-helm/helm.crossplane.io/ProviderConfig/v1beta1@v1.2.0>
+* <https://github.com/crossplane-contrib/provider-kubernetes>
+* <https://doc.crds.dev/github.com/crossplane-contrib/provider-kubernetes/kubernetes.crossplane.io/ProviderConfig/v1alpha1>
+* <https://doc.crds.dev/github.com/crossplane-contrib/provider-kubernetes/kubernetes.m.crossplane.io/ClusterProviderConfig/v1alpha1>
+* <https://github.com/upbound/provider-vault>
+* <https://doc.crds.dev/github.com/upbound/provider-vault/vault.upbound.io/ProviderConfig/v1beta1>
 
 ## Values
 
