@@ -188,7 +188,15 @@ clusterProviderConfig:
   # See [ClusterProviderConfig CRD](https://doc.crds.dev/github.com/crossplane-contrib/provider-kubernetes/kubernetes.m.crossplane.io/ClusterProviderConfig/v1alpha1).
   # @default -- []
   kubernetesCrossplane:
-    - name: "kubernetes-provider"
+    - providerConfigRefName: ""
+      credentials:        
+        source: "Secret"
+        # -- A SecretRef is a reference to a secret key that contains the credentials that must be used to connect to the provider.
+        # @default -- []
+        secretRef:
+          namespace: "default"
+          name: ""
+          key: "kubeconfig"
 ########################################################################################################################
 # @secrets -- :exclamation::exclamation: never EVER PUSH confidential secrets/credentials in plain text into GIT :exclamation::exclamation:
 # @default -- []
