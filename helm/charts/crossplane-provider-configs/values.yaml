@@ -181,22 +181,20 @@ providerConfigs:
 clusterProviderConfig:
   ########################################################################################################################
   # -- creates k8s manifest `kind: ClusterProviderConfig` of `apiVersion: kubernetes.m.crossplane.io/v1alpha1`
-  # This `ClusterProviderConfig` uses `InjectedIdentity` as credentials source, meaning the provider will use the
-  # in-cluster service account identity rather than an explicit kubeconfig secret.
-  # Use this when the crossplane provider is running inside the target cluster and should authenticate via the
-  # pod's mounted service account token (e.g. for managing resources on the same cluster where crossplane runs).
+  # This `ClusterProviderConfig` is the cluster-scoped equivalent of `ProviderConfig` for the kubernetes provider.
+  # Supports two credentials sources:
+  # - `InjectedIdentity`: uses the in-cluster service account token (no secret required); recommended when Crossplane runs inside the target cluster.
+  # - `Secret`: explicit kubeconfig stored in a k8s Secret; use when targeting a remote cluster.
   # See [ClusterProviderConfig CRD](https://doc.crds.dev/github.com/crossplane-contrib/provider-kubernetes/kubernetes.m.crossplane.io/ClusterProviderConfig/v1alpha1).
   # @default -- []
   kubernetesCrossplane:
-    - providerConfigRefName: ""
-      credentials:        
-        source: "Secret"
-        # -- A SecretRef is a reference to a secret key that contains the credentials that must be used to connect to the provider.
-        # @default -- []
-        secretRef:
-          namespace: "default"
-          name: ""
-          key: "kubeconfig"
+    - name: ""
+      # -- Credentials used to connect to the Kubernetes API.
+      # Use `source: InjectedIdentity` for in-cluster config (no secretRef needed).
+      # Use `source: Secret` with a secretRef for remote clusters.
+      # @default -- []
+      credentials:
+        source: "InjectedIdentity"
 ########################################################################################################################
 # @secrets -- :exclamation::exclamation: never EVER PUSH confidential secrets/credentials in plain text into GIT :exclamation::exclamation:
 # @default -- []
