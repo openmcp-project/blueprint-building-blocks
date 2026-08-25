@@ -26,9 +26,11 @@ appVersion: "0.36.1"
 home: "https://github.com/openmcp-project/blueprints"
 # A list of URLs to source code for this project (optional)
 sources:
-  - https://github.com/openmcp-project/blueprint-building-blocks
-  - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/
-  - https://docs.upbound.io/providers/
-  - https://docs.upbound.io/providers/provider-families/
+  # Source repository for the Crossplane AWS provider (upjet-based)
+  - https://github.com/crossplane-contrib/provider-upjet-aws
+  # Upbound Marketplace: provider-aws-rds package page
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-rds
+  # CRD reference: rds.aws.upbound.io/Instance (v1beta2)
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-rds/latest/resources/rds.aws.upbound.io/Instance/v1beta2
 # Whether this chart is deprecated (optional, boolean)
 deprecated: false
