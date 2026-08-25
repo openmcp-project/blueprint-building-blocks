@@ -27,7 +27,8 @@ appVersion: "0.18.0"
 home: "https://github.com/openmcp-project/blueprints"
 # A list of URLs to source code for this project (optional)
 sources:
-  - https://github.com/openmcp-project/blueprint-building-blocks
   - https://github.com/crossplane-contrib/provider-kubernetes
+  # kubernetes.crossplane.io/v1alpha2 Object
+  - https://doc.crds.dev/github.com/crossplane-contrib/provider-kubernetes/kubernetes.crossplane.io/Object/v1alpha2@v0.18.0
 # Whether this chart is deprecated (optional, boolean)
 deprecated: false
