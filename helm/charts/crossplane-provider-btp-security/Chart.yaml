@@ -4,7 +4,7 @@ name: crossplane-provider-btp-security
 description: A Helm Chart to template crossplane manifests to manage BTP resources such as Directory, TrustConfiguration and RoleCollection Assignment on BTP.
 type: application
 icon: "https://avatars.githubusercontent.com/u/45158470?s=48&v=4"
-version: 0.0.15
+version: 0.0.16
 appVersion: "1.1.2"
 home: "https://github.com/openmcp-project/blueprints"
 sources:
