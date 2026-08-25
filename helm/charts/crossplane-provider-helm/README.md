@@ -2,7 +2,7 @@
 
 # crossplane-provider-helm
 
-![Version: 0.0.12](https://img.shields.io/badge/Version-0.0.12-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.21.0](https://img.shields.io/badge/AppVersion-0.21.0-informational?style=flat-square)
+![Version: 0.0.13](https://img.shields.io/badge/Version-0.0.13-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.21.0](https://img.shields.io/badge/AppVersion-0.21.0-informational?style=flat-square)
 
 A Helm Chart to template crossplane provider "helm" manifests to manage k8s cluster stack on a k8s Gardener/Kyma clusters.
 
@@ -10,9 +10,8 @@ A Helm Chart to template crossplane provider "helm" manifests to manage k8s clus
 
 ## Source Code
 
-* <https://github.com/openmcp-project/blueprint-building-blocks>
 * <https://github.com/crossplane-contrib/provider-helm>
-* <https://github.com/crossplane-contrib/provider-kubernetes/blob/main/docs/enhanced-provider-k8s.md>
+* <https://doc.crds.dev/github.com/crossplane-contrib/provider-helm/helm.crossplane.io/Release/v1beta1>
 
 ## Values
 
