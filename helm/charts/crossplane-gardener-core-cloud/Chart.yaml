@@ -1,4 +1,3 @@
----
 apiVersion: v2
 name: crossplane-gardener-core-cloud
 description: A Helm chart to template crossplane manifests to manage core.gardener.cloud resources.
@@ -25,4 +24,9 @@ appVersion: "0.10.0"
 home: "https://gardener.cloud/docs/gardener/api-reference/core/#core.gardener.cloud/v1beta1"
 # A list of URLs to source code for this project (optional)
 sources:
-  - https://github.com/openmcp-project/blueprint-building-blocks
+  # core.gardener.cloud/v1beta1 SecretBinding
+  - https://github.com/gardener/gardener
+  - https://gardener.cloud/docs/gardener/api-reference/core/#core.gardener.cloud/v1beta1.SecretBinding
+  # kubernetes.crossplane.io/v1alpha1 Object
+  - https://github.com/crossplane-contrib/provider-kubernetes
+  - https://doc.crds.dev/github.com/crossplane-contrib/provider-kubernetes/kubernetes.crossplane.io/Object/v1alpha1
