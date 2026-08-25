@@ -26,9 +26,13 @@ appVersion: "0.22.0"
 home: "https://github.com/openmcp-project/blueprints"
 # A list of URLs to source code for this project (optional)
 sources:
-  - https://github.com/openmcp-project/blueprint-building-blocks
-  - https://marketplace.upbound.io/providers/crossplane-contrib/provider-gcp
-  - https://docs.upbound.io/providers/
-  - https://docs.upbound.io/providers/provider-families/
+  # Provider source repository (crossplane-contrib/provider-gcp, apiGroup: iam.gcp.crossplane.io)
+  - https://github.com/crossplane-contrib/provider-gcp
+  # CRD: iam.gcp.crossplane.io/v1alpha1 ServiceAccount
+  - https://doc.crds.dev/github.com/crossplane-contrib/provider-gcp/iam.gcp.crossplane.io/ServiceAccount/v1alpha1
+  # CRD: iam.gcp.crossplane.io/v1alpha1 ServiceAccountKey
+  - https://doc.crds.dev/github.com/crossplane-contrib/provider-gcp/iam.gcp.crossplane.io/ServiceAccountKey/v1alpha1
+  # CRD: iam.gcp.crossplane.io/v1alpha1 ServiceAccountPolicy
+  - https://doc.crds.dev/github.com/crossplane-contrib/provider-gcp/iam.gcp.crossplane.io/ServiceAccountPolicy/v1alpha1
 # Whether this chart is deprecated (optional, boolean)
 deprecated: false
