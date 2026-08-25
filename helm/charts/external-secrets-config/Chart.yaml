@@ -26,7 +26,17 @@ appVersion: "0.18.2"
 home: "https://github.com/openmcp-project/blueprints"
 # A list of URLs to source code for this project (optional)
 sources:
-  - https://github.com/openmcp-project/blueprint-building-blocks
-  - https://external-secrets.io
+  # external-secrets operator source repository
+  - https://github.com/external-secrets/external-secrets
+  # external-secrets.io/v1 — ClusterExternalSecret
+  - https://doc.crds.dev/github.com/external-secrets/external-secrets/external-secrets.io/ClusterExternalSecret/v1
+  # external-secrets.io/v1 — ClusterSecretStore
+  - https://doc.crds.dev/github.com/external-secrets/external-secrets/external-secrets.io/ClusterSecretStore/v1
+  # external-secrets.io/v1 — ExternalSecret
+  - https://doc.crds.dev/github.com/external-secrets/external-secrets/external-secrets.io/ExternalSecret/v1
+  # external-secrets.io/v1 — SecretStore
+  - https://doc.crds.dev/github.com/external-secrets/external-secrets/external-secrets.io/SecretStore/v1
+  # external-secrets.io/v1alpha1 — PushSecret
+  - https://doc.crds.dev/github.com/external-secrets/external-secrets/external-secrets.io/PushSecret/v1alpha1
 # Whether this chart is deprecated (optional, boolean)
 deprecated: false
