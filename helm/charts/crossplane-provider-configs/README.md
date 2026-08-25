@@ -2,7 +2,7 @@
 
 # crossplane-provider-configs
 
-![Version: 0.0.20](https://img.shields.io/badge/Version-0.0.20-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.20.0](https://img.shields.io/badge/AppVersion-1.20.0-informational?style=flat-square)
+![Version: 0.0.21](https://img.shields.io/badge/Version-0.0.21-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.20.0](https://img.shields.io/badge/AppVersion-1.20.0-informational?style=flat-square)
 
 A Helm chart to template crossplane provider config manifests to orchestrate resources.
 
@@ -14,6 +14,7 @@ A Helm chart to template crossplane provider config manifests to orchestrate res
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| clusterProviderConfig.kubernetesCrossplane | list | [] | creates k8s manifest `kind: ClusterProviderConfig` of `apiVersion: kubernetes.m.crossplane.io/v1alpha1` This `ClusterProviderConfig` uses `InjectedIdentity` as credentials source, meaning the provider will use the in-cluster service account identity rather than an explicit kubeconfig secret. Use this when the crossplane provider is running inside the target cluster and should authenticate via the pod's mounted service account token (e.g. for managing resources on the same cluster where crossplane runs). See [ClusterProviderConfig CRD](https://doc.crds.dev/github.com/crossplane-contrib/provider-kubernetes/kubernetes.m.crossplane.io/ClusterProviderConfig/v1alpha1). |
 | providerConfigs.awsUpbound | list | [] | creates k8s manifest [`kind: ProviderConfig`](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.15.0/resources/aws.upbound.io/ProviderConfig/v1beta1) of `aws.upbound.io/v1beta1`. Additional information see [AWS Quickstart](https://docs.crossplane.io/latest/getting-started/provider-aws/#create-a-providerconfig). |
 | providerConfigs.awsUpbound[0].credentials.secretRef | object | [] | A SecretRef is a reference to a secret key that contains the credentials that must be used to connect to the provider. |
 | providerConfigs.azureUpbound | list | [] | creates k8s manifest [`kind: ProviderConfig`](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v1.7.0/resources/azure.upbound.io/ProviderConfig/v1beta1) of `azure.upbound.io/v1beta1`. Additional information see [Azure Quickstart](https://docs.crossplane.io/latest/getting-started/provider-azure/). |
