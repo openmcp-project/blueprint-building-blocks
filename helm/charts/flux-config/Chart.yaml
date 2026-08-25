@@ -27,7 +27,18 @@ appVersion: "2.6.0"
 home: "https://github.com/openmcp-project/blueprints"
 # A list of URLs to source code for this project (optional)
 sources:
-  - https://github.com/openmcp-project/blueprint-building-blocks
-  - https://fluxcd.io/flux/releases/
+  # flux2 umbrella project
+  - https://github.com/fluxcd/flux2
+  # source.toolkit.fluxcd.io — source-controller
+  - https://github.com/fluxcd/source-controller
+  - https://doc.crds.dev/github.com/fluxcd/source-controller/source.toolkit.fluxcd.io/GitRepository/v1
+  - https://doc.crds.dev/github.com/fluxcd/source-controller/source.toolkit.fluxcd.io/HelmRepository/v1
+  - https://doc.crds.dev/github.com/fluxcd/source-controller/source.toolkit.fluxcd.io/OCIRepository/v1
+  # kustomize.toolkit.fluxcd.io — kustomize-controller
+  - https://github.com/fluxcd/kustomize-controller
+  - https://doc.crds.dev/github.com/fluxcd/kustomize-controller/kustomize.toolkit.fluxcd.io/Kustomization/v1
+  # helm.toolkit.fluxcd.io — helm-controller
+  - https://github.com/fluxcd/helm-controller
+  - https://doc.crds.dev/github.com/fluxcd/helm-controller/helm.toolkit.fluxcd.io/HelmRelease/v2
 # Whether this chart is deprecated (optional, boolean)
 deprecated: false
