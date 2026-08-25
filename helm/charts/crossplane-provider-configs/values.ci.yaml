@@ -127,7 +127,16 @@ providerConfigs:
 ########################################################################################################################
 clusterProviderConfig:
   kubernetesCrossplane:
+    - name: "kubernetes-provider-secret"
+      credentials:
+        source: "Secret"
+        secretRef:
+          namespace: default
+          name: "openmcp-test"
+          key: kubeconfig
     - name: "kubernetes-provider"
+      credentials:
+        source: InjectedIdentity
 ########################################################################################################################
 secrets:
   - name: "name"
