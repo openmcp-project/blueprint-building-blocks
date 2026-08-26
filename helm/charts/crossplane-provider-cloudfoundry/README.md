@@ -2,14 +2,21 @@
 
 # crossplane-provider-cloudfoundry
 
-![Version: 0.1.4](https://img.shields.io/badge/Version-0.1.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.3.0](https://img.shields.io/badge/AppVersion-0.3.0-informational?style=flat-square)
+![Version: 0.1.5](https://img.shields.io/badge/Version-0.1.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.3.0](https://img.shields.io/badge/AppVersion-0.3.0-informational?style=flat-square)
 
 A Helm Chart to template crossplane manifests to manage BTP Cloud Foundry resources on BTP.
 
 ## Source Code
 
-* <https://github.com/openmcp-project/blueprint-building-blocks>
 * <https://github.com/SAP/crossplane-provider-cloudfoundry>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/App/v1alpha1@v0.3.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/Organization/v1alpha1@v0.3.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/Space/v1alpha1@v0.3.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/ServiceInstance/v1alpha1@v0.3.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/ServiceCredentialBinding/v1alpha1@v0.3.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/OrgMembers/v1alpha1@v0.3.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/SpaceMembers/v1alpha1@v0.3.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/Route/v1alpha1@v0.3.0>
 
 ## Values
 

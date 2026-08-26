@@ -2,7 +2,7 @@
 
 # crossplane-provider-btp-security
 
-![Version: 0.0.15](https://img.shields.io/badge/Version-0.0.15-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.1.2](https://img.shields.io/badge/AppVersion-1.1.2-informational?style=flat-square)
+![Version: 0.0.16](https://img.shields.io/badge/Version-0.0.16-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.1.2](https://img.shields.io/badge/AppVersion-1.1.2-informational?style=flat-square)
 
 A Helm Chart to template crossplane manifests to manage BTP resources such as Directory, TrustConfiguration and RoleCollection Assignment on BTP.
 
@@ -10,8 +10,11 @@ A Helm Chart to template crossplane manifests to manage BTP resources such as Di
 
 ## Source Code
 
-* <https://github.com/openmcp-project/blueprint-building-blocks>
 * <https://github.com/SAP/crossplane-provider-btp>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/GlobalaccountTrustConfiguration/v1alpha1@v1.13.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/RoleCollectionAssignment/v1alpha1@v1.13.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/SubaccountApiCredential/v1alpha1@v1.13.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/SubaccountTrustConfiguration/v1alpha1@v1.13.0>
 
 ## Values
 

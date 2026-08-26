@@ -14,7 +14,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.0.13
+version: 0.0.14
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
@@ -22,8 +22,11 @@ version: 0.0.13
 appVersion: "0.6.8"
 # A list of URLs to source code for this project (optional)
 sources:
-  - https://github.com/openmcp-project/blueprint-building-blocks
-  - "https://github.com/SAP/sap-btp-service-operator"
+  - https://github.com/SAP/sap-btp-service-operator
+  # services.cloud.sap.com/v1alpha1 ServiceBinding
+  - https://doc.crds.dev/github.com/SAP/sap-btp-service-operator/services.cloud.sap.com/ServiceBinding/v1@v0.6.1
+  # services.cloud.sap.com/v1alpha1 ServiceInstance
+  - https://doc.crds.dev/github.com/SAP/sap-btp-service-operator/services.cloud.sap.com/ServiceInstance/v1@v0.6.1
 # A SemVer range of compatible Kubernetes versions (optional)
 kubeVersion: ">=1.20.0"
 # Whether this chart is deprecated (optional, boolean)

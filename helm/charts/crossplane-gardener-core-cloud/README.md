@@ -2,7 +2,7 @@
 
 # crossplane-gardener-core-cloud
 
-![Version: 0.0.6](https://img.shields.io/badge/Version-0.0.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.10.0](https://img.shields.io/badge/AppVersion-0.10.0-informational?style=flat-square)
+![Version: 0.0.7](https://img.shields.io/badge/Version-0.0.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.10.0](https://img.shields.io/badge/AppVersion-0.10.0-informational?style=flat-square)
 
 A Helm chart to template crossplane manifests to manage core.gardener.cloud resources.
 
@@ -10,7 +10,10 @@ A Helm chart to template crossplane manifests to manage core.gardener.cloud reso
 
 ## Source Code
 
-* <https://github.com/openmcp-project/blueprint-building-blocks>
+* <https://github.com/gardener/gardener>
+* <https://gardener.cloud/docs/gardener/api-reference/core/#core.gardener.cloud/v1beta1.SecretBinding>
+* <https://github.com/crossplane-contrib/provider-kubernetes>
+* <https://doc.crds.dev/github.com/crossplane-contrib/provider-kubernetes/kubernetes.crossplane.io/Object/v1alpha1>
 
 ## Values
 
