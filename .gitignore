@@ -37,3 +37,6 @@ bin/
 .DS_Store
 /.idea/
 **/*/values-credentials.yaml
+
+# AI Slop
+.playwright-mcp
