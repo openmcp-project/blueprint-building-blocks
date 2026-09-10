@@ -2,18 +2,37 @@
 
 # crossplane-provider-configs
 
-![Version: 0.0.20](https://img.shields.io/badge/Version-0.0.20-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.20.0](https://img.shields.io/badge/AppVersion-1.20.0-informational?style=flat-square)
+![Version: 0.0.21](https://img.shields.io/badge/Version-0.0.21-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.20.0](https://img.shields.io/badge/AppVersion-1.20.0-informational?style=flat-square)
 
 A Helm chart to template crossplane provider config manifests to orchestrate resources.
 
 ## Source Code
 
-* <https://github.com/openmcp-project/blueprint-building-blocks>
+* <https://github.com/crossplane-contrib/provider-upjet-aws>
+* <https://marketplace.upbound.io/providers/upbound/provider-family-aws/v2.7.1/resources/aws.upbound.io/ProviderConfig/v1beta1>
+* <https://github.com/crossplane-contrib/provider-upjet-azure>
+* <https://marketplace.upbound.io/providers/upbound/provider-family-azure/v2.7.1/resources/azure.upbound.io/ProviderConfig/v1beta1>
+* <https://github.com/SAP/crossplane-provider-btp>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/btp.sap.crossplane.io/ProviderConfig/v1alpha1@v1.13.0>
+* <https://github.com/SAP/crossplane-provider-cloudfoundry>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/ProviderConfig/v1beta1@v1.0.0>
+* <https://github.tools.sap/cloud-orchestration/crossplane-provider-gardener-auth>
+* <https://github.com/crossplane-contrib/provider-upjet-gcp>
+* <https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v3.0.1/resources/gcp.upbound.io/ProviderConfig/v1beta1>
+* <https://github.com/crossplane-contrib/provider-helm>
+* <https://doc.crds.dev/github.com/crossplane-contrib/provider-helm/helm.crossplane.io/ProviderConfig/v1beta1@v1.2.0>
+* <https://github.com/crossplane-contrib/provider-kubernetes>
+* <https://doc.crds.dev/github.com/crossplane-contrib/provider-kubernetes/kubernetes.crossplane.io/ProviderConfig/v1alpha1>
+* <https://doc.crds.dev/github.com/crossplane-contrib/provider-kubernetes/kubernetes.m.crossplane.io/ClusterProviderConfig/v1alpha1>
+* <https://github.com/upbound/provider-vault>
+* <https://doc.crds.dev/github.com/upbound/provider-vault/vault.upbound.io/ProviderConfig/v1beta1>
 
 ## Values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| clusterProviderConfig.kubernetesCrossplane | list | [] | creates k8s manifest `kind: ClusterProviderConfig` of `apiVersion: kubernetes.m.crossplane.io/v1alpha1` This `ClusterProviderConfig` is the cluster-scoped equivalent of `ProviderConfig` for the kubernetes provider.  See [ClusterProviderConfig CRD](https://doc.crds.dev/github.com/crossplane-contrib/provider-kubernetes/kubernetes.m.crossplane.io/ClusterProviderConfig/v1alpha1). |
+| clusterProviderConfig.kubernetesCrossplane[0].credentials | list | [] | Credentials used to connect to the Kubernetes API. Use `source: InjectedIdentity` for in-cluster config (no secretRef needed). Use `source: Secret` with a secretRef for remote clusters. |
 | providerConfigs.awsUpbound | list | [] | creates k8s manifest [`kind: ProviderConfig`](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.15.0/resources/aws.upbound.io/ProviderConfig/v1beta1) of `aws.upbound.io/v1beta1`. Additional information see [AWS Quickstart](https://docs.crossplane.io/latest/getting-started/provider-aws/#create-a-providerconfig). |
 | providerConfigs.awsUpbound[0].credentials.secretRef | object | [] | A SecretRef is a reference to a secret key that contains the credentials that must be used to connect to the provider. |
 | providerConfigs.azureUpbound | list | [] | creates k8s manifest [`kind: ProviderConfig`](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v1.7.0/resources/azure.upbound.io/ProviderConfig/v1beta1) of `azure.upbound.io/v1beta1`. Additional information see [Azure Quickstart](https://docs.crossplane.io/latest/getting-started/provider-azure/). |
