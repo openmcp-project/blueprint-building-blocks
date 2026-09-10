@@ -800,6 +800,37 @@ entries:
   crossplane-provider-configs:
   - apiVersion: v2
     appVersion: 1.20.0
+    created: "2026-09-10T12:01:30.569566672Z"
+    description: A Helm chart to template crossplane provider config manifests to
+      orchestrate resources.
+    digest: fa931f64277a924d778ae9a9822ee0221ae3fe0b5f31019d27669e8c0c25e6b3
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-provider-configs
+    sources:
+    - https://github.com/crossplane-contrib/provider-upjet-aws
+    - https://marketplace.upbound.io/providers/upbound/provider-family-aws/v2.7.1/resources/aws.upbound.io/ProviderConfig/v1beta1
+    - https://github.com/crossplane-contrib/provider-upjet-azure
+    - https://marketplace.upbound.io/providers/upbound/provider-family-azure/v2.7.1/resources/azure.upbound.io/ProviderConfig/v1beta1
+    - https://github.com/SAP/crossplane-provider-btp
+    - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/btp.sap.crossplane.io/ProviderConfig/v1alpha1@v1.13.0
+    - https://github.com/SAP/crossplane-provider-cloudfoundry
+    - https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/ProviderConfig/v1beta1@v1.0.0
+    - https://github.tools.sap/cloud-orchestration/crossplane-provider-gardener-auth
+    - https://github.com/crossplane-contrib/provider-upjet-gcp
+    - https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v3.0.1/resources/gcp.upbound.io/ProviderConfig/v1beta1
+    - https://github.com/crossplane-contrib/provider-helm
+    - https://doc.crds.dev/github.com/crossplane-contrib/provider-helm/helm.crossplane.io/ProviderConfig/v1beta1@v1.2.0
+    - https://github.com/crossplane-contrib/provider-kubernetes
+    - https://doc.crds.dev/github.com/crossplane-contrib/provider-kubernetes/kubernetes.crossplane.io/ProviderConfig/v1alpha1
+    - https://doc.crds.dev/github.com/crossplane-contrib/provider-kubernetes/kubernetes.m.crossplane.io/ClusterProviderConfig/v1alpha1
+    - https://github.com/upbound/provider-vault
+    - https://doc.crds.dev/github.com/upbound/provider-vault/vault.upbound.io/ProviderConfig/v1beta1
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-provider-configs-0.0.21/crossplane-provider-configs-0.0.21.tgz
+    version: 0.0.21
+  - apiVersion: v2
+    appVersion: 1.20.0
     created: "2025-07-16T12:50:01.516093635Z"
     description: A Helm chart to template crossplane provider config manifests to
       orchestrate resources.
@@ -1792,4 +1823,4 @@ entries:
     urls:
     - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/test-custom-chart-0.0.8/test-custom-chart-0.0.8.tgz
     version: 0.0.8
-generated: "2026-08-25T11:26:54.318285672Z"
+generated: "2026-09-10T12:01:30.569663664Z"
