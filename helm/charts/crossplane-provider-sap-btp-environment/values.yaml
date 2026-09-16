@@ -1,6 +1,6 @@
 ---
 ########################################################################################################################
-# -- cloudFoundryEnvironments contains configuration of [kind: CloudFoundryEnvironment](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/environment.btp.sap.crossplane.io/CloudFoundryEnvironment/v1alpha1@v1.1.2).
+# -- cloudFoundryEnvironments contains configuration of [kind: CloudFoundryEnvironment](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/environment.btp.sap.crossplane.io/CloudFoundryEnvironment/v1alpha1@v1.13.0).
 # @default -- object
 cloudFoundryEnvironments:
   # -- btpSapCrossplaneProviderConfigRefName defines crossplane provider configuration reference name (identifier) of a ...!
@@ -16,9 +16,9 @@ cloudFoundryEnvironments:
       name: "dev-eu01"
     # -- *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.
     #   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)!
-    writeConnectionSecretToRef: []
+    writeConnectionSecretToRef: {}
 ########################################################################################################################
-# -- kymaEnvironments contains configuration of [kind: KymaEnvironment](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/environment.btp.sap.crossplane.io/KymaEnvironment/v1alpha1@v1.1.2).
+# -- kymaEnvironments contains configuration of [kind: KymaEnvironment](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/environment.btp.sap.crossplane.io/KymaEnvironment/v1alpha1@v1.13.0).
 kymaEnvironments:
   - btpSapCrossplaneProviderConfigRefName: ""
     name: ""
@@ -49,7 +49,7 @@ kymaEnvironments:
       name: "demo-kyma-kubeconfig-local"
       namespace: "default"
 ########################################################################################################################
-# -- kymaEnvironmentBindings contains configuration of [kind: KymaEnvironmentBinding](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/environment.btp.sap.crossplane.io/KymaEnvironmentBinding/v1alpha1@v1.1.2).
+# -- kymaEnvironmentBindings contains configuration of [kind: KymaEnvironmentBinding](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/environment.btp.sap.crossplane.io/KymaEnvironmentBinding/v1alpha1@v1.13.0).
 kymaEnvironmentBindings:
   - btpSapCrossplaneProviderConfigRefName: ""
     name: ""
