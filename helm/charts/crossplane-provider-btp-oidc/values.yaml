@@ -4,12 +4,13 @@
 # @default -- object
 certBasedOIDCLogins:
   # -- btpSapCrossplaneProviderConfigRefName defines crossplane provider configuration reference name (identifier).
-  - btpSapCrossplaneProviderConfigRefName: ""
+  - btpSapCrossplaneProviderConfigRefName: "my-btp-provider-config"
     # certBasedOIDCLogins[0].name -- Name of the CertBasedOIDCLogin resource.
     # @default -- -
-    name: ""
+    name: "example-cert-oidc-login"
     # -- [forProvider](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/oidc.btp.sap.crossplane.io/CertBasedOIDCLogin/v1alpha1@v1.13.0) CRD
-    forProvider: []
+    forProvider:
+      subaccountId: "my-subaccount-id"
     # -- optional
     writeConnectionSecretToRef: []
 ########################################################################################################################
@@ -17,12 +18,13 @@ certBasedOIDCLogins:
 # @default -- object
 kubeConfigGenerators:
   # -- btpSapCrossplaneProviderConfigRefName defines crossplane provider configuration reference name (identifier).
-  - btpSapCrossplaneProviderConfigRefName: ""
+  - btpSapCrossplaneProviderConfigRefName: "my-btp-provider-config"
     # kubeConfigGenerators[0].name -- Name of the KubeConfigGenerator resource.
     # @default -- -
-    name: ""
+    name: "example-kubeconfig-generator"
     # -- [forProvider](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/oidc.btp.sap.crossplane.io/KubeConfigGenerator/v1alpha1@v1.13.0) CRD
-    forProvider: []
+    forProvider:
+      subaccountId: "my-subaccount-id"
     # -- optional
     writeConnectionSecretToRef: []
 ########################################################################################################################
