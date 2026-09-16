@@ -2,6 +2,15 @@
 ########################################################################################################################
 ###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
 ########################################################################################################################
+providerConfigs:
+  - name: "helm-provider-config-ci"
+    spec:
+      credentials:
+        source: "Secret"
+        secretRef:
+          namespace: "crossplane-system"
+          name: "helm-provider-kubeconfig"
+          key: "kubeconfig"
 helmReleases:
   helmReleaseTest:
     name: "name"    
