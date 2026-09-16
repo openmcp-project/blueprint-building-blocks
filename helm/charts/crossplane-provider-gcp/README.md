@@ -1,10 +1,12 @@
 
 
-# crossplane-provider-gcp (DEPRECATED)
+# crossplane-provider-gcp
+
+> **:exclamation: This Helm Chart is deprecated!**
 
 ![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.22.0](https://img.shields.io/badge/AppVersion-0.22.0-informational?style=flat-square)
 
-> **DEPRECATED** — This chart has been renamed to `crossplane-provider-gcp-iam`. Please migrate to that chart.
+DEPRECATED — renamed to crossplane-provider-gcp-iam. Use that chart instead.
 
 **Homepage:** <https://github.com/openmcp-project/blueprints>
 
