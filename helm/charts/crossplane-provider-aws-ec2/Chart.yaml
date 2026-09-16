@@ -16,7 +16,7 @@ icon: "https://avatars.githubusercontent.com/u/45158470?s=48&v=4"
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.0.14
+version: 0.0.15
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
@@ -50,5 +50,31 @@ sources:
   - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/Subnet/v1beta1
   # ec2.aws.upbound.io/v1beta1 VPC
   - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/VPC/v1beta1
+  # ec2.aws.upbound.io/v1beta1 SecurityGroupIngressRule
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/SecurityGroupIngressRule/v1beta1
+  # ec2.aws.upbound.io/v1beta1 SecurityGroupEgressRule
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/SecurityGroupEgressRule/v1beta1
+  # ec2.aws.upbound.io/v1beta1 EIPAssociation
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/EIPAssociation/v1beta1
+  # ec2.aws.upbound.io/v1beta1 EgressOnlyInternetGateway
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/EgressOnlyInternetGateway/v1beta1
+  # ec2.aws.upbound.io/v1beta1 NetworkACL
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/NetworkACL/v1beta1
+  # ec2.aws.upbound.io/v1beta1 NetworkACLRule
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/NetworkACLRule/v1beta1
+  # ec2.aws.upbound.io/v1beta1 FlowLog
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/FlowLog/v1beta1
+  # ec2.aws.upbound.io/v1beta1 VPCEndpoint
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/VPCEndpoint/v1beta1
+  # ec2.aws.upbound.io/v1beta1 VPCPeeringConnection
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/VPCPeeringConnection/v1beta1
+  # ec2.aws.upbound.io/v1beta1 ManagedPrefixList
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/ManagedPrefixList/v1beta1
+  # ec2.aws.upbound.io/v1beta1 VPCDHCPOptions
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/VPCDHCPOptions/v1beta1
+  # ec2.aws.upbound.io/v1beta1 VPCDHCPOptionsAssociation
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/VPCDHCPOptionsAssociation/v1beta1
+  # ec2.aws.upbound.io/v1beta1 VPCIPv4CidrBlockAssociation
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/VPCIPv4CidrBlockAssociation/v1beta1
 # Whether this chart is deprecated (optional, boolean)
 deprecated: false

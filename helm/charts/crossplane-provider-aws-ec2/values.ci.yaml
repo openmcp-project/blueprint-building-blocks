@@ -106,4 +106,37 @@ vpcs:
       providerConfigRef:
         name: dev-us-aws 
   
+# -- SecurityGroupIngressRule
+securityGroupIngressRules:
+  - name: "dev-us-sg-ingress"
+    labels: {}
+    annotations: {}
+    ownerReferences: {}
+    spec:
+      deletionPolicy: ""
+      forProvider:
+        region: us-west-2
+        ipProtocol: tcp
+        fromPort: 443
+        toPort: 443
+        securityGroupIdSelector:
+          matchControllerRef: true
+      providerConfigRef:
+        name: dev-us-aws
+# -- SecurityGroupEgressRule
+securityGroupEgressRules:
+  - name: "dev-us-sg-egress"
+    labels: {}
+    annotations: {}
+    ownerReferences: {}
+    spec:
+      deletionPolicy: ""
+      forProvider:
+        region: us-west-2
+        ipProtocol: "-1"
+        cidrIpv4: "0.0.0.0/0"
+        securityGroupIdSelector:
+          matchControllerRef: true
+      providerConfigRef:
+        name: dev-us-aws
 ########################################################################################################################
