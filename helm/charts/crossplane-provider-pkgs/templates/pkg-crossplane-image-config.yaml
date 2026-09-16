@@ -1,7 +1,7 @@
 {{- range $item := .Values.imageConfigs}}
   {{- if and ($item) (ne $item.name "")}}
 ---
-apiVersion: pkg.crossplane.io/v1alpha1
+apiVersion: pkg.crossplane.io/v1beta1
 kind: ImageConfig
 metadata:
   name: {{required "A valid value is required! (.Values.imageConfigs[].name)" $item.name | lower }}

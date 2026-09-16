@@ -16,12 +16,12 @@ icon: "https://avatars.githubusercontent.com/u/45158470?s=48&v=4"
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.0.15
+version: 0.0.16
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
-appVersion: "1.20.0"
+appVersion: "1.20.12"
 # The URL of this projects home page (optional)
 home: "https://github.com/openmcp-project/blueprints"
 # A list of URLs to source code for this project (optional)
@@ -32,11 +32,11 @@ sources:
   - https://doc.crds.dev/github.com/crossplane/crossplane/pkg.crossplane.io/Provider/v1
   # pkg.crossplane.io/v1 Configuration
   - https://doc.crds.dev/github.com/crossplane/crossplane/pkg.crossplane.io/Configuration/v1
-  # pkg.crossplane.io/v1beta1 Function (template uses v1beta1; CRD promoted to v1 in Crossplane v1.14+)
+  # pkg.crossplane.io/v1 Function (CRD promoted to v1 in Crossplane v1.17.0)
   - https://doc.crds.dev/github.com/crossplane/crossplane/pkg.crossplane.io/Function/v1
   # pkg.crossplane.io/v1beta1 DeploymentRuntimeConfig
   - https://doc.crds.dev/github.com/crossplane/crossplane/pkg.crossplane.io/DeploymentRuntimeConfig/v1beta1
-  # pkg.crossplane.io/v1alpha1 ImageConfig (template uses v1alpha1; CRD promoted to v1beta1 in Crossplane v2.x)
+  # pkg.crossplane.io/v1beta1 ImageConfig (introduced as v1beta1 in Crossplane v1.18.0; never had v1alpha1)
   - https://doc.crds.dev/github.com/crossplane/crossplane/pkg.crossplane.io/ImageConfig/v1beta1
 # Whether this chart is deprecated (optional, boolean)
 deprecated: false
