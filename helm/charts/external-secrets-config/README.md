@@ -2,7 +2,7 @@
 
 # external-secrets-config
 
-![Version: 0.1.13](https://img.shields.io/badge/Version-0.1.13-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.18.2](https://img.shields.io/badge/AppVersion-0.18.2-informational?style=flat-square)
+![Version: 0.1.14](https://img.shields.io/badge/Version-0.1.14-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.9.0](https://img.shields.io/badge/AppVersion-2.9.0-informational?style=flat-square)
 
 A Helm Chart to template external-secrets.io manifests to sync credentials from remote vault (e.g. SAP HashiCorp Vault).
 
@@ -16,11 +16,22 @@ A Helm Chart to template external-secrets.io manifests to sync credentials from 
 * <https://doc.crds.dev/github.com/external-secrets/external-secrets/external-secrets.io/ExternalSecret/v1>
 * <https://doc.crds.dev/github.com/external-secrets/external-secrets/external-secrets.io/SecretStore/v1>
 * <https://doc.crds.dev/github.com/external-secrets/external-secrets/external-secrets.io/PushSecret/v1alpha1>
+* <https://doc.crds.dev/github.com/external-secrets/external-secrets/external-secrets.io/ClusterPushSecret/v1alpha1>
+* <https://doc.crds.dev/github.com/external-secrets/external-secrets/generators.external-secrets.io/VaultDynamicSecret/v1alpha1>
+* <https://doc.crds.dev/github.com/external-secrets/external-secrets/generators.external-secrets.io/ECRAuthorizationToken/v1alpha1>
+* <https://doc.crds.dev/github.com/external-secrets/external-secrets/generators.external-secrets.io/ClusterGenerator/v1alpha1>
+* <https://doc.crds.dev/github.com/external-secrets/external-secrets/generators.external-secrets.io/ACRAccessToken/v1alpha1>
+* <https://doc.crds.dev/github.com/external-secrets/external-secrets/generators.external-secrets.io/GCRAccessToken/v1alpha1>
+* <https://doc.crds.dev/github.com/external-secrets/external-secrets/generators.external-secrets.io/STSSessionToken/v1alpha1>
+* <https://doc.crds.dev/github.com/external-secrets/external-secrets/generators.external-secrets.io/GithubAccessToken/v1alpha1>
+* <https://doc.crds.dev/github.com/external-secrets/external-secrets/generators.external-secrets.io/Password/v1alpha1>
 
 ## Values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| acrAccessTokens | list | {} | [ACRAccessToken](https://external-secrets.io/latest/api/generator/acr/) generates Azure Container Registry access tokens. |
+| acrAccessTokens[0].spec.registry | string | `""` | Azure Container Registry URL. |
 | clusterExternalSecret | list | {} | [ClusterExternalSecret](https://external-secrets.io/v0.18.2/api/spec/#external-secrets.io/v1.ClusterExternalSecretSpec) is the Schema for the external-secrets API. |
 | clusterExternalSecret[0].externalSecretName | string | `""` | *(optional)* The name of the external secrets to be created defaults to the name of the ClusterExternalSecret |
 | clusterExternalSecret[0].externalSecretSpec | object | [] | The [spec](https://external-secrets.io/v0.18.2/api/spec/#external-secrets.io/v1.ExternalSecretSpec) for the ExternalSecrets to be created |
@@ -32,6 +43,12 @@ A Helm Chart to template external-secrets.io manifests to sync credentials from 
 | clusterExternalSecret[0].name | string | `""` | defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: ExternalSecret` |
 | clusterExternalSecret[0].namespaceSelectors | list | `[]` | *(optional)* [namespaceSelectors](https://external-secrets.io/v0.18.2/api/spec/#external-secrets.io/v1.ClusterExternalSecretSpec) defines a list of labels to select by to find the Namespaces to create the ExternalSecrets in. The selectors are ORed. |
 | clusterExternalSecret[0].refreshTime | string | `""` | [refreshTime](https://external-secrets.io/v0.18.2/api/spec/#external-secrets.io/v1.ClusterExternalSecretSpec) is the  time in which the controller should reconcile its objects and recheck namespaces for labels. |
+| clusterGenerators | list | {} | [ClusterGenerator](https://external-secrets.io/latest/api/generator/cluster/) is the cluster-scoped generator resource. |
+| clusterGenerators[0].spec.kind | string | `""` | The generator kind and its spec. |
+| clusterPushSecrets[0].name | string | `""` |  |
+| clusterPushSecrets[0].spec.data | list | `[]` | Secret Data that should be pushed to providers |
+| clusterPushSecrets[0].spec.secretStoreRefs | object | `{}` | A list of secret stores to push secrets to. |
+| clusterPushSecrets[0].spec.selector | list | `[]` | The Secret Selector (k8s source) for the Push Secret |
 | clusterSecretStores[0].controller | string | `""` | *(optional)* Used to select the correct ESO controller (think: ingress.ingressClassName) The ESO controller is instantiated with a specific controller name and filters ES based on this property |
 | clusterSecretStores[0].name | string | `""` | defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: ClusterSecretStore` |
 | clusterSecretStores[0].provider | object | [] | Used to configure the [provider](https://external-secrets.io/v0.18.2/api/spec/#external-secrets.io/v1.SecretStoreSpec). Only one provider may be set. |
@@ -52,6 +69,8 @@ A Helm Chart to template external-secrets.io manifests to sync credentials from 
 | credentials[0].stringData | list | `[]` | *(optional)* [stringData](https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/secret-v1/) *(map[string]string)* allows specifying non-binary secret data in string form. It is provided as a write-only input field for convenience. All keys and values are merged into the data field on write, overwriting any existing values. The stringData field is never output when reading from the API. |
 | defaults.externalSecret.secretStoreRef.kind | string | `"SecretStore"` |  |
 | defaults.namespace | string | `"default"` | default namespace value for optional `namespace` fields. |
+| ecrAuthorizationTokens | list | {} | [ECRAuthorizationToken](https://external-secrets.io/latest/api/generator/ecr/) generates ECR authorization tokens. |
+| ecrAuthorizationTokens[0].spec.region | string | `""` | Region is the AWS region. |
 | externalSecret | list | {} | [ExternalSecret](https://external-secrets.io/v0.18.2/api/spec/#external-secrets.io/v1.ExternalSecret) is the Schema for the external-secrets API. |
 | externalSecret[0].creationPolicy | string | `""` | *(optional)* CreationPolicy defines rules on how to create the resulting Secret Defaults to ‘Owner’ |
 | externalSecret[0].data | list | [] | *(optional)* [Data](https://external-secrets.io/v0.18.2/api/spec/#external-secrets.io/v1.ExternalSecret) defines the connection between the Kubernetes Secret keys and the Provider data |
@@ -68,6 +87,13 @@ A Helm Chart to template external-secrets.io manifests to sync credentials from 
 | externalSecret[0].secretStore.name | string | `""` | Name of the SecretStore resource |
 | externalSecret[0].targetSecretName | string | `""` | [targetSecretName](https://external-secrets.io/v0.18.2/api/spec/#external-secrets.io/v1.ExternalSecretTarget) defines the name of the Secret resource to be managed This field is immutable Defaults to the .metadata.name of the ExternalSecret resource |
 | externalSecret[0].template | list | `[]` | *(optional)* [Template](https://external-secrets.io/v0.18.2/api/spec/#external-secrets.io/v1.ExternalSecretTemplate) defines a blueprint for the created Secret resource. |
+| gcrAccessTokens | list | {} | [GCRAccessToken](https://external-secrets.io/latest/api/generator/gcr/) generates Google Container Registry access tokens. |
+| gcrAccessTokens[0].spec.projectID | string | `""` | GCP project id. |
+| githubAccessTokens | list | {} | [GithubAccessToken](https://external-secrets.io/latest/api/generator/github/) generates GitHub App installation access tokens. |
+| githubAccessTokens[0].spec.appID | string | `""` | GitHub App ID. |
+| githubAccessTokens[0].spec.installID | string | `""` | GitHub App Installation ID. |
+| passwords | list | {} | [Password](https://external-secrets.io/latest/api/generator/password/) generates random passwords. |
+| passwords[0].spec.length | int | `24` | Password length. |
 | pushSecrets | list | {} | The [PushSecret](https://external-secrets.io/v0.18.2/api/pushsecret/) is namespaced and it describes what data should be pushed to the secret provider. - tells the operator what secrets should be pushed by using spec.selector. - you can specify what secret keys should be pushed by using spec.data. |
 | pushSecrets[0].spec.data | list | `[]` | Secret Data that should be pushed to providers |
 | pushSecrets[0].spec.deletionPolicy | string | `""` | *optional* The provider' secret will be deleted if the PushSecret is deleted. E.g. Delete |
@@ -90,6 +116,10 @@ A Helm Chart to template external-secrets.io manifests to sync credentials from 
 | secretStores[0].provider.vault.path | string | `""` | *(optional)* [Path](https://external-secrets.io/v0.18.2/api/spec/#external-secrets.io/v1.VaultProvider) is the mount path of the Vault KV backend endpoint, e.g: “secret”. The v2 KV secret engine version specific “/data” path suffix for fetching secrets from Vault is optional and will be appended if not present in specified path. |
 | secretStores[0].provider.vault.server | string | `""` | [Server](https://external-secrets.io/v0.18.2/api/spec/#external-secrets.io/v1.VaultProvider) is the connection address for the Vault server, e.g: "https://vault.example/". |
 | secretStores[0].provider.vault.version | string | `"v2"` | [Version](https://external-secrets.io/v0.18.2/api/spec/#external-secrets.io/v1.VaultProvider) is the Vault KV secret engine version. This can be either “v1” or “v2”. Version defaults to “v2”. |
+| stsSessionTokens | list | {} | [STSSessionToken](https://external-secrets.io/latest/api/generator/sts/) generates AWS STS session tokens. |
+| stsSessionTokens[0].spec.region | string | `""` | AWS region. |
+| vaultDynamicSecrets | list | {} | [VaultDynamicSecret](https://external-secrets.io/latest/api/generator/vault/) generates secrets using Vault. |
+| vaultDynamicSecrets[0].spec.provider | object | `{}` | Vault connection configuration and path to the dynamic secret. |
 
 ----------------------------------------------
 Autogenerated from chart metadata using [helm-docs v1.14.2](https://github.com/norwoodj/helm-docs/releases/v1.14.2)
