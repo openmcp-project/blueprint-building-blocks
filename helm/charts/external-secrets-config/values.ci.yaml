@@ -155,3 +155,119 @@ pushSecrets:
             remoteRef:
               remoteKey: my-first-parameter # Remote reference (where the secret 
 ########################################################################################################################
+clusterPushSecrets:
+  - name: "openmcp-cluster-push-test"
+    spec:
+      secretStoreRefs:
+        - name: aws-parameterstore
+          kind: ClusterSecretStore
+      selector:
+        secret:
+          name: my-source-secret
+      data:
+        - match:
+            secretKey: my-key
+            remoteRef:
+              remoteKey: my-remote-key
+########################################################################################################################
+vaultDynamicSecrets:
+  - name: "openmcp-vault-dynamic-test"
+    namespace: "default"
+    spec:
+      provider:
+        server: "https://vault.example/"
+        path: "database/creds/my-role"
+        auth:
+          tokenSecretRef:
+            name: vault-token
+            key: token
+########################################################################################################################
+ecrAuthorizationTokens:
+  - name: "openmcp-ecr-token-test"
+    namespace: "default"
+    spec:
+      region: "eu-central-1"
+      auth:
+        secretRef:
+          accessKeyIDSecretRef:
+            name: aws-credentials
+            key: access-key-id
+          secretAccessKeySecretRef:
+            name: aws-credentials
+            key: secret-access-key
+########################################################################################################################
+clusterGenerators:
+  - name: "openmcp-cluster-generator-test"
+    spec:
+      kind: Password
+      generator:
+        apiVersion: generators.external-secrets.io/v1alpha1
+        kind: Password
+        spec:
+          length: 24
+          digits: 5
+          symbols: 5
+          symbolCharacters: "-_$@"
+          noUpper: false
+          allowRepeat: false
+########################################################################################################################
+acrAccessTokens:
+  - name: "openmcp-acr-token-test"
+    namespace: "default"
+    spec:
+      registry: myregistry.azurecr.io
+      auth:
+        managedIdentity:
+          identityId: "my-managed-identity-id"
+########################################################################################################################
+gcrAccessTokens:
+  - name: "openmcp-gcr-token-test"
+    namespace: "default"
+    spec:
+      projectID: "my-gcp-project"
+      auth:
+        workloadIdentity:
+          clusterLocation: europe-west1
+          clusterName: my-cluster
+          clusterProjectID: my-project
+          serviceAccountRef:
+            name: my-sa
+            namespace: default
+########################################################################################################################
+stsSessionTokens:
+  - name: "openmcp-sts-token-test"
+    namespace: "default"
+    spec:
+      region: "eu-central-1"
+      auth:
+        secretRef:
+          accessKeyIDSecretRef:
+            name: aws-credentials
+            key: access-key-id
+          secretAccessKeySecretRef:
+            name: aws-credentials
+            key: secret-access-key
+########################################################################################################################
+githubAccessTokens:
+  - name: "openmcp-github-token-test"
+    namespace: "default"
+    spec:
+      appID: "12345"
+      installID: "67890"
+      auth:
+        privateKey:
+          secretRef:
+            name: github-app-private-key
+            key: private-key
+########################################################################################################################
+passwords:
+  - name: "openmcp-password-test"
+    namespace: "default"
+    spec:
+      length: 24
+      digits: 5
+      symbols: 5
+      symbolCharacters: "-_$@"
+      noUpper: false
+      allowRepeat: false
+########################################################################################################################
