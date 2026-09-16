@@ -1,7 +1,7 @@
 {{- range $service := .Values.services }}
   {{- if and ($service) (ne $service.name "") }}
 ---
-apiVersion: services.cloud.sap.com/v1alpha1
+apiVersion: services.cloud.sap.com/v1
 kind: ServiceInstance
 metadata:
   name: {{required "A valid instanceName is required (.Values.services[].instance.name)" $service.instance.name }}
