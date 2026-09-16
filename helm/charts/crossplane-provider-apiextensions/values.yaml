@@ -23,3 +23,34 @@ usages:
     # -- The data of this [EnvironmentConfig](https://docs.crossplane.io/latest/api/). This may contain any kind of structure that can be serialized into JSON.
     spec: []
 ########################################################################################################################
+########################################################################################################################
+# -- A [Composition](https://docs.crossplane.io/latest/concepts/compositions/) defines a collection of managed resources
+# or functions that Crossplane uses to create and manage new composite resources.
+# @default -- list
+compositions:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      # -- compositeTypeRef identifies the XRD that this Composition targets. Required.
+      compositeTypeRef: []
+      mode: ""
+      writeConnectionSecretsToNamespace: ""
+      environment: []
+      patchSets: []
+      pipeline: []
+      resources: []
+      writeConnectionSecretToRef: []
+########################################################################################################################
+# -- A [CompositeResourceDefinition](https://docs.crossplane.io/latest/concepts/composite-resource-definitions/) (XRD)
+# defines the schema for a new type of composite resource and, optionally, a claim.
+# @default -- list
+compositeResourceDefinitions:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    # -- spec defines the XRD specification including group, names, versions, and optional claim names.
+    spec: []
+########################################################################################################################
