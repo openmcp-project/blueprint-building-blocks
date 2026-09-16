@@ -482,6 +482,38 @@ entries:
   crossplane-provider-aws-iam:
   - apiVersion: v2
     appVersion: 1.11.0
+    created: "2026-09-16T14:18:32.352108634Z"
+    description: A Helm Chart to template AWS IAM manifests for its crossplane provider.
+    digest: fd3487281c90f54f28232e4e6dc193556685def8ab458a7928024588d71dd1f3
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-provider-aws-iam
+    sources:
+    - https://github.com/crossplane-contrib/provider-upjet-aws
+    - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest
+    - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/AccessKey/v1beta1
+    - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/Policy/v1beta1
+    - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/Role/v1beta1
+    - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/RolePolicyAttachment/v1beta1
+    - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/User/v1beta1
+    - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/UserPolicyAttachment/v1beta1
+    - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/Group/v1beta1
+    - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/GroupMembership/v1beta1
+    - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/GroupPolicyAttachment/v1beta1
+    - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/InstanceProfile/v1beta1
+    - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/RolePolicy/v1beta1
+    - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/OpenIDConnectProvider/v1beta1
+    - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/SAMLProvider/v1beta1
+    - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/ServiceLinkedRole/v1beta1
+    - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/UserGroupMembership/v1beta1
+    - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/AccountPasswordPolicy/v1beta1
+    - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/AccountAlias/v1beta1
+    - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/UserLoginProfile/v1beta1
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-provider-aws-iam-0.0.16/crossplane-provider-aws-iam-0.0.16.tgz
+    version: 0.0.16
+  - apiVersion: v2
+    appVersion: 1.11.0
     created: "2026-08-25T11:26:52.126997566Z"
     description: A Helm Chart to template AWS IAM manifests for its crossplane provider.
     digest: 61d5add31fd847c6ddca621eb4e38e9c366fe879b977b81d0c69f291787f341e
@@ -1823,4 +1855,4 @@ entries:
     urls:
     - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/test-custom-chart-0.0.8/test-custom-chart-0.0.8.tgz
     version: 0.0.8
-generated: "2026-09-10T12:01:30.569663664Z"
+generated: "2026-09-16T14:18:32.352302506Z"
