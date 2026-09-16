@@ -1,0 +1,29 @@
+{{- range $item := .Values.observedObjectCollections}}
+  {{- if and ($item) (ne $item.name "")}}
+---
+apiVersion: kubernetes.crossplane.io/v1alpha2
+kind: ObservedObjectCollection
+metadata:
+  name: {{required "A valid value is required! (.Values.observedObjectCollections[].name)" $item.name | lower }}
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+spec:
+  providerConfigRef:
+    name: {{required "A valid value is required! (.Values.observedObjectCollections[].providerConfigRefName)" $item.providerConfigRefName}}
+  resourceRef:
+    {{- required "A valid value is required! (.Values.observedObjectCollections[].resourceRef)" $item.resourceRef | toYaml | nindent 4 }}
+  {{- if $item.observeObjects}}
+  observeObjects:
+    {{- $item.observeObjects | toYaml | nindent 4 }}
+  {{- end }}
+  {{- if $item.namespaceSelector}}
+  namespaceSelector:
+    {{- $item.namespaceSelector | toYaml | nindent 4 }}
+  {{- end }}
+  {{- if $item.template}}
+  template:
+    {{- $item.template | toYaml | nindent 4 }}
+  {{- end }}
+  {{- end }}
+{{- end }}

@@ -2,6 +2,16 @@
 ########################################################################################################################
 ###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
 ########################################################################################################################
+observedObjectCollections:
+  - name: "my-configmaps"
+    providerConfigRefName: "my-kubernetes-provider"
+    resourceRef:
+      apiVersion: v1
+      kind: ConfigMap
+    observeObjects:
+      labelSelector:
+        matchLabels:
+          app: my-app
 kubernetesObjects:
   kubernetesObjectTest:
     name: "kubernetes-objects"    
