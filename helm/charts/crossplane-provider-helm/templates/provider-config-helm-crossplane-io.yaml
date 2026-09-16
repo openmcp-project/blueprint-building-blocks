@@ -1,0 +1,15 @@
+{{- range $item := .Values.providerConfigs}}
+  {{- if and ($item) (ne $item.name "")}}
+---
+apiVersion: helm.crossplane.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: {{required "A valid value is required! (.Values.providerConfigs[].name)" $item.name | lower }}
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+spec:
+  credentials:
+    {{- required "A valid value is required! (.Values.providerConfigs[].spec.credentials)" $item.spec.credentials | toYaml | nindent 4 }}
+  {{- end }}
+{{- end }}
