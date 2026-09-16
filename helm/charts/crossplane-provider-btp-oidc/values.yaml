@@ -1,0 +1,28 @@
+---
+########################################################################################################################
+# -- `certBasedOIDCLogins[].` orchestrate [`kind: CertBasedOIDCLogin`](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/oidc.btp.sap.crossplane.io/CertBasedOIDCLogin/v1alpha1@v1.13.0) for BTP OIDC certificate-based login flows.
+# @default -- object
+certBasedOIDCLogins:
+  # -- btpSapCrossplaneProviderConfigRefName defines crossplane provider configuration reference name (identifier).
+  - btpSapCrossplaneProviderConfigRefName: ""
+    # certBasedOIDCLogins[0].name -- Name of the CertBasedOIDCLogin resource.
+    # @default -- -
+    name: ""
+    # -- [forProvider](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/oidc.btp.sap.crossplane.io/CertBasedOIDCLogin/v1alpha1@v1.13.0) CRD
+    forProvider: []
+    # -- optional
+    writeConnectionSecretToRef: []
+########################################################################################################################
+# -- `kubeConfigGenerators[].` orchestrate [`kind: KubeConfigGenerator`](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/oidc.btp.sap.crossplane.io/KubeConfigGenerator/v1alpha1@v1.13.0) for BTP OIDC kubeconfig generation.
+# @default -- object
+kubeConfigGenerators:
+  # -- btpSapCrossplaneProviderConfigRefName defines crossplane provider configuration reference name (identifier).
+  - btpSapCrossplaneProviderConfigRefName: ""
+    # kubeConfigGenerators[0].name -- Name of the KubeConfigGenerator resource.
+    # @default -- -
+    name: ""
+    # -- [forProvider](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/oidc.btp.sap.crossplane.io/KubeConfigGenerator/v1alpha1@v1.13.0) CRD
+    forProvider: []
+    # -- optional
+    writeConnectionSecretToRef: []
+########################################################################################################################
