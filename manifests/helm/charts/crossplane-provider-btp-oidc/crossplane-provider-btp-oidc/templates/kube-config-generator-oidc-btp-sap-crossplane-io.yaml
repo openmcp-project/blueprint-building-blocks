@@ -1,0 +1,14 @@
+---
+# Source: crossplane-provider-btp-oidc/templates/kube-config-generator-oidc-btp-sap-crossplane-io.yaml
+apiVersion: oidc.btp.sap.crossplane.io/v1alpha1
+kind: KubeConfigGenerator
+metadata:
+  name: example-kubeconfig-generator
+  labels:
+    openmcp.cloud/blueprint-building-block: "crossplane-provider-btp-oidc"
+    openmcp.cloud/blueprint-building-block-version: "0.0.1"
+spec:
+  providerConfigRef:
+    name: my-btp-provider-config
+  forProvider:
+    subaccountId: my-subaccount-id

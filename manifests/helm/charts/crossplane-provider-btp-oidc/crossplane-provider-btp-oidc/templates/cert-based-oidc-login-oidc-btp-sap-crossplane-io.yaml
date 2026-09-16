@@ -1,0 +1,14 @@
+---
+# Source: crossplane-provider-btp-oidc/templates/cert-based-oidc-login-oidc-btp-sap-crossplane-io.yaml
+apiVersion: oidc.btp.sap.crossplane.io/v1alpha1
+kind: CertBasedOIDCLogin
+metadata:
+  name: example-cert-oidc-login
+  labels:
+    openmcp.cloud/blueprint-building-block: "crossplane-provider-btp-oidc"
+    openmcp.cloud/blueprint-building-block-version: "0.0.1"
+spec:
+  providerConfigRef:
+    name: my-btp-provider-config
+  forProvider:
+    subaccountId: my-subaccount-id

@@ -1,0 +1,16 @@
+---
+apiVersion: v2
+name: crossplane-provider-btp-oidc
+description: A Helm Chart to template BTP OIDC manifests for its crossplane provider (oidc.btp.sap.crossplane.io).
+type: application
+icon: "https://www.sap.com/content/dam/application/shared/logos/partner/powering-sap-btp-color-logo.svg"
+version: 0.0.1
+appVersion: "1.13.0"
+home: "https://github.com/openmcp-project/blueprints"
+sources:
+  - https://github.com/SAP/crossplane-provider-btp
+  # oidc.btp.sap.crossplane.io/v1alpha1 CertBasedOIDCLogin
+  - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/oidc.btp.sap.crossplane.io/CertBasedOIDCLogin/v1alpha1@v1.13.0
+  # oidc.btp.sap.crossplane.io/v1alpha1 KubeConfigGenerator
+  - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/oidc.btp.sap.crossplane.io/KubeConfigGenerator/v1alpha1@v1.13.0
+deprecated: false
