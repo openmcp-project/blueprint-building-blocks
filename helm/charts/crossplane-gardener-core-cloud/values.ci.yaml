@@ -29,3 +29,32 @@ secretBindings:
       name: my-gcp-secret
       namespace: garden-mcp-blueprints
 #########################################################################################################
+credentialsBindings:
+  - name: "my-aws-credentials-binding"
+    projectNamespace: "garden-mcp-blueprints"
+    kubernetesCrossplaneProviderConfigRefName: "kubernetesCrossplaneProviderConfigRefName"
+    credentialsBindingName: "my-aws-credentials-binding"
+    cloudProfile: "aws"
+    labels:
+      additional: "labels"
+    credentialsRef:
+      apiVersion: "v1"
+      kind: "Secret"
+      name: "my-aws-secret"
+      namespace: "garden-mcp-blueprints"
+    quotas:
+      - apiVersion: "core.gardener.cloud/v1beta1"
+        kind: "Quota"
+        name: "my-quota"
+        namespace: "garden-mcp-blueprints"
+  - name: "my-gcp-credentials-binding"
+    projectNamespace: "garden-mcp-blueprints"
+    kubernetesCrossplaneProviderConfigRefName: "kubernetesCrossplaneProviderConfigRefName"
+    credentialsBindingName: "my-gcp-credentials-binding"
+    cloudProfile: "gcp"
+    credentialsRef:
+      apiVersion: "v1"
+      kind: "Secret"
+      name: "my-gcp-secret"
+      namespace: "garden-mcp-blueprints"
+#########################################################################################################
