@@ -1,3 +1,4 @@
+---
 apiVersion: v2
 name: crossplane-gardener-shoot-kubeconfigs
 description: A Helm chart to template crossplane manifests to request kubeconfigs of existing Gardener Shoots.
@@ -20,9 +21,11 @@ version: 0.0.12
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
-appVersion: "v1alpha1"
+appVersion: "1.149.3"
 # A list of URLs to source code for this project (optional)
 sources:
-  - https://github.com/openmcp-project/local-event-showcase
+  - https://github.com/openmcp-project/blueprint-building-blocks
   # gardener.orchestrate.cloud.sap/v1alpha1 AdminKubeconfigRequest
   - https://doc.crds.dev/github.com/openmcp-project/local-event-showcase/gardener.orchestrate.cloud.sap/AdminKubeconfigRequest/v1alpha1
+  # gardener.orchestrate.cloud.sap/v1alpha1 ViewerKubeconfigRequest
+  - https://doc.crds.dev/github.com/openmcp-project/local-event-showcase/gardener.orchestrate.cloud.sap/ViewerKubeconfigRequest/v1alpha1
