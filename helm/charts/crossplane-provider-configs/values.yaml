@@ -80,7 +80,7 @@ providerConfigs:
           name: ""
           key: ""
   ########################################################################################################################
-  # -- creates k8s manifest [`kind: ProviderConfig`](https://marketplace.upbound.io/providers/crossplane-contrib/provider-gcp/v0.22.0/resources/gcp.crossplane.io/ProviderConfig/v1beta1) of `gcp.upbound.io/v1beta1`. Additional information see [GCP Quickstart](https://docs.crossplane.io/latest/getting-started/provider-gcp/#create-a-providerconfig).
+  # -- creates k8s manifest [`kind: ProviderConfig`](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v3.0.1/resources/gcp.upbound.io/ProviderConfig/v1beta1) of `gcp.upbound.io/v1beta1`. Additional information see [GCP Quickstart](https://docs.crossplane.io/latest/getting-started/provider-gcp/#create-a-providerconfig).
   # @default -- []
   gcpUpbound:
     - providerConfigRefName: ""

@@ -1,0 +1,16 @@
+ProviderConfigs deployed by this chart:
+
+  - btp.sap.crossplane.io/v1alpha1      ProviderConfig       (.Values.providerConfigs.btpSapCrossplane)
+  - kubernetes.crossplane.io/v1alpha1   ProviderConfig       (.Values.providerConfigs.kubernetesCrossplane)
+  - kubernetes.m.crossplane.io/v1alpha1 ClusterProviderConfig (.Values.clusterProviderConfig.kubernetesCrossplane)
+  - helm.crossplane.io/v1beta1          ProviderConfig       (.Values.providerConfigs.helmCrossplane)
+  - aws.upbound.io/v1beta1              ProviderConfig       (.Values.providerConfigs.awsUpbound)
+  - azure.upbound.io/v1beta1            ProviderConfig       (.Values.providerConfigs.azureUpbound)
+  - gcp.upbound.io/v1beta1              ProviderConfig       (.Values.providerConfigs.gcpUpbound)
+  - vault.upbound.io/v1beta1            ProviderConfig       (.Values.providerConfigs.vaultUpbound)
+  - cloudfoundry.crossplane.io/v1beta1  ProviderConfig       (.Values.providerConfigs.cloudfoundry)
+  - gardener.orchestrate.cloud.sap/v1alpha1 ProviderConfig   (.Values.providerConfigs.gardenerOrchestrateCloud)
+  - v1                                  Secret               (.Values.secrets)
+
+Each provider group is only rendered when the corresponding values key contains
+entries with a non-empty name/providerConfigRefName field.

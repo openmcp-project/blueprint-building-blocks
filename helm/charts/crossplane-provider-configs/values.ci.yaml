@@ -26,22 +26,6 @@ providerConfigs:
           namespace: default
           name: "openmcp-test"
           key: kubeconfig     
-  dynatraceOrchestrateCloud:
-    - providerConfigRefName: "providerConfigRefName"
-      credentials:
-        source: "Secret"
-        secretRef:
-          namespace: default
-          name: "name"
-          key: kubeconfig
-  hyperscalerOrchestrateCloud:
-    - providerConfigRefName: "providerConfigRefName"
-      credentials:
-        source: "Secret"
-        secretRef:
-          namespace: default
-          name: "name"
-          key: kubeconfig
   awsUpbound:
     - providerConfigRefName: "providerConfigRefName"
       credentials:
@@ -66,22 +50,6 @@ providerConfigs:
           namespace: default
           name: "name"
           key: kubeconfig
-  accountBtpOrchestrateCloud:
-    - providerConfigRefName: "openmcp-test"
-      cliServerUrl: "cliServerUrl"
-      globalAccountSubDomain: "globalAccountSubDomain"
-      cisCredentials:
-        source: "Secret"
-        secretRef:
-          namespace: default
-          name: "btp-account-openmcp-test"
-          key: btp-cis-provider-credentials
-      serviceAccountSecret:
-        source: "Secret"
-        secretRef:
-          namespace: default
-          name: "btp-account-openmcp-test"
-          key: btp-service-account-provider-credentials
   btpSapCrossplane:
     - providerConfigRefName: "openmcp-test"
       cliServerUrl: "cliServerUrl"
