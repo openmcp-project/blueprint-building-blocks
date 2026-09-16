@@ -1,10 +1,10 @@
-{{- range $item := .Values.ociRepositories}}
+{{- range $item := .Values.imageRepositories}}
   {{- if and ($item) (ne $item.name "")}}
 ---
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: OCIRepository
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImageRepository
 metadata:
-  name: {{required "A valid value is required! (.Values.ociRepositories[].name)" $item.name | lower | quote}}
+  name: {{required "A valid value is required! (.Values.imageRepositories[].name)" $item.name | lower | quote}}
   namespace: {{ $item.namespace | default $.Values.defaults.namespace | lower | quote }}
   labels:
     openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
