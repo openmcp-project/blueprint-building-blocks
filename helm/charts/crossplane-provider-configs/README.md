@@ -2,7 +2,7 @@
 
 # crossplane-provider-configs
 
-![Version: 0.0.21](https://img.shields.io/badge/Version-0.0.21-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.20.0](https://img.shields.io/badge/AppVersion-1.20.0-informational?style=flat-square)
+![Version: 0.0.22](https://img.shields.io/badge/Version-0.0.22-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: n/a](https://img.shields.io/badge/AppVersion-n/a-informational?style=flat-square)
 
 A Helm chart to template crossplane provider config manifests to orchestrate resources.
 
@@ -49,7 +49,7 @@ A Helm chart to template crossplane provider config manifests to orchestrate res
 | providerConfigs.cloudfoundry[0].endpoint.secretRef | object | [] | A SecretRef is a reference to a secret key that contains the credentials that must be used to connect to the provider. |
 | providerConfigs.gardenerOrchestrateCloud | list | [] | creates k8s manifest `kind: ProviderConfig` of `apiVersion: gardener.orchestrate.cloud.sap/v1alpha1` This `ProviderConfig` typically points to k8s secret in which a `kubeconfig` of SAP Garden k8s Service Account is located in order to create a SAP Gardener Shoot Cluster Admin Kubeconfig Request `kind: AdminKubeconfigRequest` of `apiVersion: gardener.orchestrate.cloud.sap/v1alpha1` on SAP Garden cluster to pull  `kubeconfig` of a SAP Gardener Shoot Clusters into your OpenMCP cluster as a k8s secret. |
 | providerConfigs.gardenerOrchestrateCloud[0].credentials.secretRef | object | [] | A SecretRef is a reference to a secret key that contains the credentials that must be used to connect to the provider. |
-| providerConfigs.gcpUpbound | list | [] | creates k8s manifest [`kind: ProviderConfig`](https://marketplace.upbound.io/providers/crossplane-contrib/provider-gcp/v0.22.0/resources/gcp.crossplane.io/ProviderConfig/v1beta1) of `gcp.upbound.io/v1beta1`. Additional information see [GCP Quickstart](https://docs.crossplane.io/latest/getting-started/provider-gcp/#create-a-providerconfig). |
+| providerConfigs.gcpUpbound | list | [] | creates k8s manifest [`kind: ProviderConfig`](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v3.0.1/resources/gcp.upbound.io/ProviderConfig/v1beta1) of `gcp.upbound.io/v1beta1`. Additional information see [GCP Quickstart](https://docs.crossplane.io/latest/getting-started/provider-gcp/#create-a-providerconfig). |
 | providerConfigs.gcpUpbound[0].credentials.secretRef | object | [] | A SecretRef is a reference to a secret key that contains the credentials that must be used to connect to the provider. |
 | providerConfigs.helmCrossplane | list | [] | creates k8s manifest `kind: ProviderConfig` of `apiVersion: helm.crossplane.io/v1beta1` This `ProviderConfig` typically points to k8s secret in which a `kubeconfig` of K8s Service Account or SAP Gardener Shoot Cluster Admin Kubeconfig Request `kind: AdminKubeconfigRequest` of `apiVersion: gardener.orchestrate.cloud.sap/v1alpha1` is stored. The `ProviderConfig` is required to manage `Helm Charts` installations on a k8s cluster such as [`kind: ProviderConfig`](../crossplane-provider-helm/templates/helm-release.yaml) of `apiVersion: helm.crossplane.io/v1beta1` . |
 | providerConfigs.helmCrossplane[0].credentials.secretRef | object | [] | A SecretRef is a reference to a secret key that contains the credentials that must be used to connect to the provider. |
