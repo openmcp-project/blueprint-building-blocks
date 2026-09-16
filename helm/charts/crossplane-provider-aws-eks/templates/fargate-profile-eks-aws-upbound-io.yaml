@@ -1,10 +1,10 @@
-{{- range $item := .Values.nodeGroups}}
+{{- range $item := .Values.fargateProfiles}}
   {{- if and ($item) (ne $item.name "") }}
 ---
-apiVersion: eks.aws.upbound.io/v1beta2
-kind: NodeGroup
+apiVersion: eks.aws.upbound.io/v1beta1
+kind: FargateProfile
 metadata:
-  name: {{required "A valid value is required! (.Values.nodeGroups[].name)" $item.name | lower }}
+  name: {{required "A valid value is required! (.Values.fargateProfiles[].name)" $item.name | lower }}
   {{- if $item.annotations}}
   annotations:
     {{- $item.annotations | toYaml | nindent 4 }}
@@ -17,19 +17,19 @@ metadata:
   {{- end }}
   {{- if $item.ownerReferences}}
   ownerReferences:
-    {{- $item.ownerReferences | toYaml | nindent 4 }}  
+    {{- $item.ownerReferences | toYaml | nindent 4 }}
   {{- end }}
 spec:
-  deletionPolicy: {{ $item.spec.deletionPolicy | default $.Values.defaults.nodeGroups.deletionPolicy| quote }}
+  deletionPolicy: {{ $item.spec.deletionPolicy | default $.Values.defaults.fargateProfiles.deletionPolicy | quote }}
   forProvider:
-    {{- required "A valid value is required! (.Values.nodeGroups[].spec.forProvider)" $item.spec.forProvider | toYaml | nindent 4 }}
+    {{- required "A valid value is required! (.Values.fargateProfiles[].spec.forProvider)" $item.spec.forProvider | toYaml | nindent 4 }}
   providerConfigRef:
-    {{- required "A valid value is required! (.Values.nodeGroups[].spec.providerConfigRef)" $item.spec.providerConfigRef | toYaml | nindent 4 }}    
+    {{- required "A valid value is required! (.Values.fargateProfiles[].spec.providerConfigRef)" $item.spec.providerConfigRef | toYaml | nindent 4 }}
   {{- if $item.spec.writeConnectionSecretToRef}}
   writeConnectionSecretToRef:
     {{- $item.spec.writeConnectionSecretToRef | toYaml | nindent 4 }}
   {{- end }}
-  {{- if $item.spec.writeConnectionSecretToRef}}
+  {{- if $item.spec.publishConnectionDetailsTo}}
   publishConnectionDetailsTo:
     {{- $item.spec.publishConnectionDetailsTo | toYaml | nindent 4 }}
   {{- end }}
