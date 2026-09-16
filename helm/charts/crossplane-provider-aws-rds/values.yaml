@@ -1,0 +1,139 @@
+---
+########################################################################################################################
+# @default -- list
+defaults:
+  instances:
+    deletionPolicy: ""
+  clusters:
+    deletionPolicy: ""
+  clusterInstances:
+    deletionPolicy: ""
+  subnetGroups:
+    deletionPolicy: ""
+  parameterGroups:
+    deletionPolicy: ""
+  globalClusters:
+    deletionPolicy: ""
+  proxies:
+    deletionPolicy: ""
+########################################################################################################################
+# @default -- list
+# https://marketplace.upbound.io/providers/upbound/provider-aws-rds/latest/resources/rds.aws.upbound.io/Instance/v1beta3
+instances:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      # -- ProviderConfigReference specifies how the provider that will be used to create, observe, update, and delete this managed resource should be configured.
+      providerConfigRef: []
+      # -- PublishConnectionDetailsTo specifies the connection secret config which contains a name, metadata and a reference to secret store config to which any connection details for this managed resource should be written. Connection details frequently include the endpoint, username, and password required to connect to the managed resource.
+      publishConnectionDetailsTo: []
+      # -- *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.
+      #   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)!
+      writeConnectionSecretToRef: []
+########################################################################################################################
+# @default -- list
+# https://marketplace.upbound.io/providers/upbound/provider-aws-rds/latest/resources/rds.aws.upbound.io/Cluster/v1beta2
+clusters:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      # -- ProviderConfigReference specifies how the provider that will be used to create, observe, update, and delete this managed resource should be configured.
+      providerConfigRef: []
+      # -- PublishConnectionDetailsTo specifies the connection secret config which contains a name, metadata and a reference to secret store config to which any connection details for this managed resource should be written.
+      publishConnectionDetailsTo: []
+      # -- *optional* - writeConnectionSecretToRef stores generated connection details in a Kubernetes Secret.
+      writeConnectionSecretToRef: []
+########################################################################################################################
+# @default -- list
+# https://marketplace.upbound.io/providers/upbound/provider-aws-rds/latest/resources/rds.aws.upbound.io/ClusterInstance/v1beta1
+clusterInstances:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      # -- ProviderConfigReference specifies how the provider that will be used to create, observe, update, and delete this managed resource should be configured.
+      providerConfigRef: []
+      # -- PublishConnectionDetailsTo specifies the connection secret config which contains a name, metadata and a reference to secret store config to which any connection details for this managed resource should be written.
+      publishConnectionDetailsTo: []
+      # -- *optional* - writeConnectionSecretToRef stores generated connection details in a Kubernetes Secret.
+      writeConnectionSecretToRef: []
+########################################################################################################################
+# @default -- list
+# https://marketplace.upbound.io/providers/upbound/provider-aws-rds/latest/resources/rds.aws.upbound.io/SubnetGroup/v1beta1
+subnetGroups:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      # -- ProviderConfigReference specifies how the provider that will be used to create, observe, update, and delete this managed resource should be configured.
+      providerConfigRef: []
+      # -- PublishConnectionDetailsTo specifies the connection secret config which contains a name, metadata and a reference to secret store config to which any connection details for this managed resource should be written.
+      publishConnectionDetailsTo: []
+      # -- *optional* - writeConnectionSecretToRef stores generated connection details in a Kubernetes Secret.
+      writeConnectionSecretToRef: []
+########################################################################################################################
+# @default -- list
+# https://marketplace.upbound.io/providers/upbound/provider-aws-rds/latest/resources/rds.aws.upbound.io/ParameterGroup/v1beta1
+parameterGroups:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      # -- ProviderConfigReference specifies how the provider that will be used to create, observe, update, and delete this managed resource should be configured.
+      providerConfigRef: []
+      # -- PublishConnectionDetailsTo specifies the connection secret config which contains a name, metadata and a reference to secret store config to which any connection details for this managed resource should be written.
+      publishConnectionDetailsTo: []
+      # -- *optional* - writeConnectionSecretToRef stores generated connection details in a Kubernetes Secret.
+      writeConnectionSecretToRef: []
+########################################################################################################################
+# @default -- list
+# https://marketplace.upbound.io/providers/upbound/provider-aws-rds/latest/resources/rds.aws.upbound.io/GlobalCluster/v1beta1
+globalClusters:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      # -- ProviderConfigReference specifies how the provider that will be used to create, observe, update, and delete this managed resource should be configured.
+      providerConfigRef: []
+      # -- PublishConnectionDetailsTo specifies the connection secret config which contains a name, metadata and a reference to secret store config to which any connection details for this managed resource should be written.
+      publishConnectionDetailsTo: []
+      # -- *optional* - writeConnectionSecretToRef stores generated connection details in a Kubernetes Secret.
+      writeConnectionSecretToRef: []
+########################################################################################################################
+# @default -- list
+# https://marketplace.upbound.io/providers/upbound/provider-aws-rds/latest/resources/rds.aws.upbound.io/Proxy/v1beta1
+proxies:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      # -- ProviderConfigReference specifies how the provider that will be used to create, observe, update, and delete this managed resource should be configured.
+      providerConfigRef: []
+      # -- PublishConnectionDetailsTo specifies the connection secret config which contains a name, metadata and a reference to secret store config to which any connection details for this managed resource should be written.
+      publishConnectionDetailsTo: []
+      # -- *optional* - writeConnectionSecretToRef stores generated connection details in a Kubernetes Secret.
+      writeConnectionSecretToRef: []
+########################################################################################################################

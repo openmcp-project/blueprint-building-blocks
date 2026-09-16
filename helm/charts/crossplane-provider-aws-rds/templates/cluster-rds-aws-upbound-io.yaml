@@ -1,10 +1,10 @@
-{{- range $item := .Values.instances}}
+{{- range $item := .Values.clusters}}
   {{- if and ($item) (ne $item.name "") }}
 ---
 apiVersion: rds.aws.upbound.io/v1beta2
-kind: Instance
+kind: Cluster
 metadata:
-  name: {{required "A valid value is required! (.Values.instances[].name)" $item.name | lower }}
+  name: {{required "A valid value is required! (.Values.clusters[].name)" $item.name | lower }}
   {{- if $item.annotations}}
   annotations:
     {{- $item.annotations | toYaml | nindent 4 }}
@@ -17,14 +17,14 @@ metadata:
   {{- end }}
   {{- if $item.ownerReferences}}
   ownerReferences:
-    {{- $item.ownerReferences | toYaml | nindent 4 }}  
+    {{- $item.ownerReferences | toYaml | nindent 4 }}
   {{- end }}
 spec:
-  deletionPolicy: {{ $item.spec.deletionPolicy | default $.Values.defaults.instances.deletionPolicy| quote }}
+  deletionPolicy: {{ $item.spec.deletionPolicy | default $.Values.defaults.clusters.deletionPolicy | quote }}
   forProvider:
-    {{- required "A valid value is required! (.Values.instances[].spec.forProvider)" $item.spec.forProvider | toYaml | nindent 4 }}
+    {{- required "A valid value is required! (.Values.clusters[].spec.forProvider)" $item.spec.forProvider | toYaml | nindent 4 }}
   providerConfigRef:
-    {{- required "A valid value is required! (.Values.instances[].spec.providerConfigRef)" $item.spec.providerConfigRef | toYaml | nindent 4 }}    
+    {{- required "A valid value is required! (.Values.clusters[].spec.providerConfigRef)" $item.spec.providerConfigRef | toYaml | nindent 4 }}
   {{- if $item.spec.writeConnectionSecretToRef}}
   writeConnectionSecretToRef:
     {{- $item.spec.writeConnectionSecretToRef | toYaml | nindent 4 }}
