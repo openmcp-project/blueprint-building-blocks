@@ -81,7 +81,7 @@ policies:
           ]
         }
 users:
-- name: sample-user-RFC1123Subdomain-1
+- name: sample-user-rfc1123subdomain-1
   annotations:
     meta.upbound.io/example-id: iam/v1beta1/accesskey
   labels:
@@ -90,7 +90,6 @@ users:
     providerConfigRef:
       name: provider-config-ref
     forProvider: {}
-
 userPolicyAttachments:
 - name: example
   spec:
@@ -104,7 +103,7 @@ userPolicyAttachments:
         matchLabels:
           testing.upbound.io/example-name: user
 accessKeys:
-- name: sample-access-key-RFC1123Subdomain
+- name: sample-access-key-rfc1123subdomain
   annotations:
     meta.upbound.io/example-id: iam/v1beta1/accesskey
   labels:
@@ -131,5 +130,120 @@ accessKeys:
           testing.upbound.io/example-name: user
     writeConnectionSecretToRef:
       name: sample-access-key-secret
+      namespace: upbound-system
+########################################################################################################################
+groups:
+- name: dev-group
+  spec:
+    providerConfigRef:
+      name: dev-aws
+    forProvider: {}
+groupMemberships:
+- name: dev-group-membership
+  spec:
+    providerConfigRef:
+      name: dev-aws
+    forProvider:
+      groupRef:
+        name: dev-group
+      name: dev-group-membership
+      usersRefs:
+        - name: sample-user-rfc1123subdomain-1
+groupPolicyAttachments:
+- name: dev-group-policy-attachment
+  spec:
+    providerConfigRef:
+      name: dev-aws
+    forProvider:
+      groupRef:
+        name: dev-group
+      policyArn: arn:aws:iam::aws:policy/ReadOnlyAccess
+instanceProfiles:
+- name: dev-instance-profile
+  spec:
+    providerConfigRef:
+      name: dev-aws
+    forProvider:
+      roleRefs:
+        - name: dev-us-ekscluster
+rolePolicies:
+- name: dev-role-policy
+  spec:
+    providerConfigRef:
+      name: dev-aws
+    forProvider:
+      policy: |
+        {
+          "Version": "2012-10-17",
+          "Statement": [{"Effect": "Allow", "Action": "s3:GetObject", "Resource": "*"}]
+        }
+      roleRef:
+        name: dev-us-ekscluster
+openIDConnectProviders:
+- name: dev-oidc-provider
+  spec:
+    providerConfigRef:
+      name: dev-aws
+    forProvider:
+      clientIdList:
+        - sts.amazonaws.com
+      thumbprintList:
+        - 9e99a48a9960b14926bb7f3b02e22da2b0ab7280
+      url: https://oidc.eks.us-east-1.amazonaws.com/id/EXAMPLE
+samlProviders:
+- name: dev-saml-provider
+  spec:
+    providerConfigRef:
+      name: dev-aws
+    forProvider:
+      samlMetadataDocument: |
+        <EntityDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" entityID="https://example.com/saml">
+        </EntityDescriptor>
+serviceLinkedRoles:
+- name: dev-service-linked-role
+  spec:
+    providerConfigRef:
+      name: dev-aws
+    forProvider:
+      awsServiceName: elasticloadbalancing.amazonaws.com
+userGroupMemberships:
+- name: dev-user-group-membership
+  spec:
+    providerConfigRef:
+      name: dev-aws
+    forProvider:
+      groupRefs:
+        - name: dev-group
+      userRef:
+        name: sample-user-rfc1123subdomain-1
+accountPasswordPolicies:
+- name: dev-password-policy
+  spec:
+    providerConfigRef:
+      name: dev-aws
+    forProvider:
+      minimumPasswordLength: 14
+      requireLowercaseCharacters: true
+      requireNumbers: true
+      requireSymbols: true
+      requireUppercaseCharacters: true
+accountAliases:
+- name: dev-account-alias
+  spec:
+    providerConfigRef:
+      name: dev-aws
+    forProvider:
+      accountAlias: my-dev-aws-account
+userLoginProfiles:
+- name: dev-user-login-profile
+  spec:
+    providerConfigRef:
+      name: dev-aws
+    forProvider:
+      pgpKey: keybase:some_user_on_keybase
+      userRef:
+        name: sample-user-rfc1123subdomain-1
+    writeConnectionSecretToRef:
+      name: dev-user-login-profile-secret
       namespace: upbound-system
 ########################################################################################################################
