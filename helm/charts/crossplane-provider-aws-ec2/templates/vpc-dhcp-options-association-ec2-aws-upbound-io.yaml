@@ -1,10 +1,10 @@
-{{- range $item := .Values.securityGroupRules}}
+{{- range $item := .Values.vpcDHCPOptionsAssociations}}
   {{- if and ($item) (ne $item.name "") }}
 ---
 apiVersion: ec2.aws.upbound.io/v1beta1
-kind: SecurityGroupRule
+kind: VPCDHCPOptionsAssociation
 metadata:
-  name: {{required "A valid value is required! (.Values.securityGroupRules[].name)" $item.name | lower }}  
+  name: {{required "A valid value is required! (.Values.vpcDHCPOptionsAssociations[].name)" $item.name | lower }}  
   {{- if $item.annotations}}
   annotations:
     {{- $item.annotations | toYaml | nindent 4 }}
@@ -20,16 +20,16 @@ metadata:
     {{- $item.ownerReferences | toYaml | nindent 4 }}  
   {{- end }}
 spec:
-  deletionPolicy: {{ $item.spec.deletionPolicy | default $.Values.defaults.securityGroupRules.deletionPolicy| quote }}  
+  deletionPolicy: {{ $item.spec.deletionPolicy | default $.Values.defaults.vpcDHCPOptionsAssociations.deletionPolicy| quote }}  
   forProvider:
-    {{- required "A valid value is required! (.Values.securityGroupRules[].spec.forProvider)" $item.spec.forProvider | toYaml | nindent 4 }}
+    {{- required "A valid value is required! (.Values.vpcDHCPOptionsAssociations[].spec.forProvider)" $item.spec.forProvider | toYaml | nindent 4 }}
   providerConfigRef:
-    {{- required "A valid value is required! (.Values.securityGroupRules[].spec.providerConfigRef)" $item.spec.providerConfigRef | toYaml | nindent 4 }}    
+    {{- required "A valid value is required! (.Values.vpcDHCPOptionsAssociations[].spec.providerConfigRef)" $item.spec.providerConfigRef | toYaml | nindent 4 }}    
   {{- if $item.spec.writeConnectionSecretToRef}}
   writeConnectionSecretToRef:
     {{- $item.spec.writeConnectionSecretToRef | toYaml | nindent 4 }}
   {{- end }}
-  {{- if $item.spec.writeConnectionSecretToRef}}
+  {{- if $item.spec.publishConnectionDetailsTo}}
   publishConnectionDetailsTo:
     {{- $item.spec.publishConnectionDetailsTo | toYaml | nindent 4 }}
   {{- end }}

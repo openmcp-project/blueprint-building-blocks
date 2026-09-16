@@ -24,6 +24,32 @@ defaults:
     deletionPolicy: ""
   securityGroupRules:
     deletionPolicy: ""
+  securityGroupIngressRules:
+    deletionPolicy: ""
+  securityGroupEgressRules:
+    deletionPolicy: ""
+  eipAssociations:
+    deletionPolicy: ""
+  egressOnlyInternetGateways:
+    deletionPolicy: ""
+  networkACLs:
+    deletionPolicy: ""
+  networkACLRules:
+    deletionPolicy: ""
+  flowLogs:
+    deletionPolicy: ""
+  vpcEndpoints:
+    deletionPolicy: ""
+  vpcPeeringConnections:
+    deletionPolicy: ""
+  managedPrefixLists:
+    deletionPolicy: ""
+  vpcDHCPOptions:
+    deletionPolicy: ""
+  vpcDHCPOptionsAssociations:
+    deletionPolicy: ""
+  vpcIPv4CidrBlockAssociations:
+    deletionPolicy: ""
 ########################################################################################################################
 # @default -- list
 # https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/v1.11.0
@@ -201,5 +227,162 @@ securityGroupRules:
       publishConnectionDetailsTo: []
       # -- *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.
       #   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)!
+      writeConnectionSecretToRef: []
+########################################################################################################################
+# -- https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/SecurityGroupIngressRule/v1beta1
+securityGroupIngressRules:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      providerConfigRef: []
+      publishConnectionDetailsTo: []
+      writeConnectionSecretToRef: []
+# -- https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/SecurityGroupEgressRule/v1beta1
+securityGroupEgressRules:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      providerConfigRef: []
+      publishConnectionDetailsTo: []
+      writeConnectionSecretToRef: []
+# -- https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/EIPAssociation/v1beta1
+eipAssociations:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      providerConfigRef: []
+      publishConnectionDetailsTo: []
+      writeConnectionSecretToRef: []
+# -- https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/EgressOnlyInternetGateway/v1beta1
+egressOnlyInternetGateways:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      providerConfigRef: []
+      publishConnectionDetailsTo: []
+      writeConnectionSecretToRef: []
+# -- https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/NetworkACL/v1beta1
+networkACLs:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      providerConfigRef: []
+      publishConnectionDetailsTo: []
+      writeConnectionSecretToRef: []
+# -- https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/NetworkACLRule/v1beta1
+networkACLRules:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      providerConfigRef: []
+      publishConnectionDetailsTo: []
+      writeConnectionSecretToRef: []
+# -- https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/FlowLog/v1beta1
+flowLogs:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      providerConfigRef: []
+      publishConnectionDetailsTo: []
+      writeConnectionSecretToRef: []
+# -- https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/VPCEndpoint/v1beta1
+vpcEndpoints:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      providerConfigRef: []
+      publishConnectionDetailsTo: []
+      writeConnectionSecretToRef: []
+# -- https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/VPCPeeringConnection/v1beta1
+vpcPeeringConnections:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      providerConfigRef: []
+      publishConnectionDetailsTo: []
+      writeConnectionSecretToRef: []
+# -- https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/ManagedPrefixList/v1beta1
+managedPrefixLists:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      providerConfigRef: []
+      publishConnectionDetailsTo: []
+      writeConnectionSecretToRef: []
+# -- https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/VPCDHCPOptions/v1beta1
+vpcDHCPOptions:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      providerConfigRef: []
+      publishConnectionDetailsTo: []
+      writeConnectionSecretToRef: []
+# -- https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/VPCDHCPOptionsAssociation/v1beta1
+vpcDHCPOptionsAssociations:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      providerConfigRef: []
+      publishConnectionDetailsTo: []
+      writeConnectionSecretToRef: []
+# -- https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/VPCIPv4CidrBlockAssociation/v1beta1
+vpcIPv4CidrBlockAssociations:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      providerConfigRef: []
+      publishConnectionDetailsTo: []
       writeConnectionSecretToRef: []
 ########################################################################################################################
