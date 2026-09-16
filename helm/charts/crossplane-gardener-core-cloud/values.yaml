@@ -6,7 +6,7 @@ secretBindings:
   # secretBindings[0].name -- name defines technical gardener shoot cluster. Max length 15 and must only be lowercase letters, numbers and hyphens!
   - name: ""
     # -- gardener project name. Starts with "garden..." e.g. "garden-aas-dt"
-    projectnamespace: "ns1"
+    projectNamespace: "ns1"
     # -- kubernetesCrossplaneProviderConfigRefName needs to match crossplane provider configuration reference name (identifier) of SAP garden cluster control plane! (.shootClusters[*].kubernetesCrossplaneProviderConfigRefName)
     kubernetesCrossplaneProviderConfigRefName: ""
     # -- secretBindingName defines the technical name of [infrastructure secret](https://gardener.cloud/docs/gardener/development/secrets_management/) binding on gardener control plane cluster. e.g. [Secrets of AAS-DT](https://dashboard.garden.canary.k8s.ondemand.com/namespace/garden-aas-dt/secrets)
@@ -19,4 +19,31 @@ secretBindings:
     quotas: {}
     # -- [secretRef](https://gardener.cloud/docs/gardener/api-reference/core/#core.gardener.cloud/v1beta1.SecretBinding) is a reference to a secret object in the same or another namespace. This field is immutable.
     secretRef: []
+#########################################################################################################
+#########################################################################################################
+# -- `credentialsBindings[]` orchestrate [`kind: CredentialsBinding`](https://gardener.cloud/docs/gardener/api-reference/security/#security.gardener.cloud/v1alpha1.CredentialsBinding)
+#    to bind cloud provider credentials to Gardener Shoots via crossplane provider-kubernetes Object.
+#    Replaces the deprecated SecretBinding. **Required for Shoots on Kubernetes >= 1.34.**
+# @default -- []
+credentialsBindings:
+  - name: ""
+    # -- projectNamespace: Gardener project namespace, e.g. "garden-aas-dt"
+    projectNamespace: ""
+    # -- kubernetesCrossplaneProviderConfigRefName: matches crossplane Kubernetes ProviderConfig for the garden cluster
+    kubernetesCrossplaneProviderConfigRefName: ""
+    # -- credentialsBindingName: technical name of the CredentialsBinding in the Gardener project
+    credentialsBindingName: ""
+    # -- cloudProfile: provider type, e.g. aws / gcp / azure (immutable)
+    cloudProfile: ""
+    # -- labels: additional labels to add to the CredentialsBinding metadata
+    labels: {}
+    # -- credentialsRef: reference to the credentials object (Secret, InternalSecret, or WorkloadIdentity)
+    #    See https://gardener.cloud/docs/gardener/api-reference/security/#security.gardener.cloud/v1alpha1.CredentialsBindingSpec
+    credentialsRef:
+      apiVersion: "v1"
+      kind: "Secret"
+      name: ""
+      namespace: ""
+    # -- quotas: (Optional) list of Quota object references (immutable)
+    quotas: []
 #########################################################################################################
