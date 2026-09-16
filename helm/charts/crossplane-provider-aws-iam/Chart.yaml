@@ -16,7 +16,7 @@ icon: "https://avatars.githubusercontent.com/u/45158470?s=48&v=4"
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.0.14
+version: 0.0.15
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
@@ -26,9 +26,16 @@ appVersion: "1.11.0"
 home: ""
 # A list of URLs to source code for this project (optional)
 sources:
-  - https://github.com/openmcp-project/blueprint-building-blocks
-  - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/
-  - https://docs.upbound.io/providers/
-  - https://docs.upbound.io/providers/provider-families/
+  # Source repository
+  - https://github.com/crossplane-contrib/provider-upjet-aws
+  # Marketplace provider page
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest
+  # CRD browser: iam.aws.upbound.io/v1beta1
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/AccessKey/v1beta1
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/Policy/v1beta1
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/Role/v1beta1
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/RolePolicyAttachment/v1beta1
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/User/v1beta1
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/UserPolicyAttachment/v1beta1
 # Whether this chart is deprecated (optional, boolean)
 deprecated: false

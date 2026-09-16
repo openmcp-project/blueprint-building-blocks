@@ -2,7 +2,7 @@
 
 # crossplane-provider-gcp
 
-![Version: 0.0.13](https://img.shields.io/badge/Version-0.0.13-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.22.0](https://img.shields.io/badge/AppVersion-0.22.0-informational?style=flat-square)
+![Version: 0.0.14](https://img.shields.io/badge/Version-0.0.14-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.22.0](https://img.shields.io/badge/AppVersion-0.22.0-informational?style=flat-square)
 
 A Helm Chart to template GCP manifests for its crossplane provider.
 
@@ -10,10 +10,10 @@ A Helm Chart to template GCP manifests for its crossplane provider.
 
 ## Source Code
 
-* <https://github.com/openmcp-project/blueprint-building-blocks>
-* <https://marketplace.upbound.io/providers/crossplane-contrib/provider-gcp>
-* <https://docs.upbound.io/providers/>
-* <https://docs.upbound.io/providers/provider-families/>
+* <https://github.com/crossplane-contrib/provider-gcp>
+* <https://doc.crds.dev/github.com/crossplane-contrib/provider-gcp/iam.gcp.crossplane.io/ServiceAccount/v1alpha1>
+* <https://doc.crds.dev/github.com/crossplane-contrib/provider-gcp/iam.gcp.crossplane.io/ServiceAccountKey/v1alpha1>
+* <https://doc.crds.dev/github.com/crossplane-contrib/provider-gcp/iam.gcp.crossplane.io/ServiceAccountPolicy/v1alpha1>
 
 ## Values
 

@@ -2,7 +2,7 @@
 
 # crossplane-provider-sap-btp-environment
 
-![Version: 0.0.20](https://img.shields.io/badge/Version-0.0.20-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.1.2](https://img.shields.io/badge/AppVersion-1.1.2-informational?style=flat-square)
+![Version: 0.0.21](https://img.shields.io/badge/Version-0.0.21-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.1.2](https://img.shields.io/badge/AppVersion-1.1.2-informational?style=flat-square)
 
 A Helm Chart to template crossplane manifests to manage Cloud Foundry or BTP Kyma environments on BTP.
 
@@ -10,8 +10,11 @@ A Helm Chart to template crossplane manifests to manage Cloud Foundry or BTP Kym
 
 ## Source Code
 
-* <https://github.com/openmcp-project/blueprint-building-blocks>
-* <https://doc.crds.dev/github.com/SAP/crossplane-provider-btp@v1.1.2>
+* <https://github.com/SAP/crossplane-provider-btp>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/environment.btp.sap.crossplane.io/CloudFoundryEnvironment/v1alpha1@v1.13.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/environment.btp.sap.crossplane.io/KymaEnvironment/v1alpha1@v1.13.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/environment.btp.sap.crossplane.io/KymaEnvironmentBinding/v1alpha1@v1.13.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/environment.btp.sap.crossplane.io/KymaModule/v1alpha1@v1.13.0>
 
 ## Values
 

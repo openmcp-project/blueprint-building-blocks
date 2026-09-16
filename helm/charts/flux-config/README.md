@@ -2,7 +2,7 @@
 
 # flux-config
 
-![Version: 0.0.21](https://img.shields.io/badge/Version-0.0.21-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.6.0](https://img.shields.io/badge/AppVersion-2.6.0-informational?style=flat-square)
+![Version: 0.0.22](https://img.shields.io/badge/Version-0.0.22-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.6.0](https://img.shields.io/badge/AppVersion-2.6.0-informational?style=flat-square)
 
 A Helm Chart to template flux manifests to leverage GitOps on a OpenMCP cluster.
 
@@ -10,8 +10,15 @@ A Helm Chart to template flux manifests to leverage GitOps on a OpenMCP cluster.
 
 ## Source Code
 
-* <https://github.com/openmcp-project/blueprint-building-blocks>
-* <https://fluxcd.io/flux/releases/>
+* <https://github.com/fluxcd/flux2>
+* <https://github.com/fluxcd/source-controller>
+* <https://doc.crds.dev/github.com/fluxcd/source-controller/source.toolkit.fluxcd.io/GitRepository/v1>
+* <https://doc.crds.dev/github.com/fluxcd/source-controller/source.toolkit.fluxcd.io/HelmRepository/v1>
+* <https://doc.crds.dev/github.com/fluxcd/source-controller/source.toolkit.fluxcd.io/OCIRepository/v1>
+* <https://github.com/fluxcd/kustomize-controller>
+* <https://doc.crds.dev/github.com/fluxcd/kustomize-controller/kustomize.toolkit.fluxcd.io/Kustomization/v1>
+* <https://github.com/fluxcd/helm-controller>
+* <https://doc.crds.dev/github.com/fluxcd/helm-controller/helm.toolkit.fluxcd.io/HelmRelease/v2>
 
 ## Values
 

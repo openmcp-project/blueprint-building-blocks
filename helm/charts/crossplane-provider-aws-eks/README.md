@@ -2,7 +2,7 @@
 
 # crossplane-provider-aws-eks
 
-![Version: 0.0.12](https://img.shields.io/badge/Version-0.0.12-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.0.13](https://img.shields.io/badge/Version-0.0.13-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 A Helm Chart to template AWS EKS manifests for its crossplane provider.
 
@@ -10,10 +10,10 @@ A Helm Chart to template AWS EKS manifests for its crossplane provider.
 
 ## Source Code
 
-* <https://marketplace.upbound.io/providers/upbound/provider-aws-eks/>
-* <https://docs.upbound.io/providers/>
-* <https://docs.upbound.io/providers/provider-families/>
-* <https://github.com/openmcp-project/blueprint-building-blocks>
+* <https://github.com/crossplane-contrib/provider-upjet-aws>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-eks/latest>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-eks/latest/resources/eks.aws.upbound.io/Cluster/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-eks/latest/resources/eks.aws.upbound.io/NodeGroup/v1beta1>
 
 ## Values
 

@@ -2,14 +2,16 @@
 
 # k8s-validating-admission-policy
 
-![Version: 0.0.5](https://img.shields.io/badge/Version-0.0.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.0.6](https://img.shields.io/badge/Version-0.0.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 A Helm Chart to orchestrate k8s ValidatingAdmissionPolicy & ValidatingAdmissionPolicyBinding
 
 ## Source Code
 
-* <https://github.com/openmcp-project/blueprint-building-blocks>
+* <https://github.com/kubernetes/kubernetes>
 * <https://kubernetes.io/docs/reference/access-authn-authz/validating-admission-policy/>
+* <https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#validatingadmissionpolicy-v1-admissionregistration-k8s-io>
+* <https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#validatingadmissionpolicybinding-v1-admissionregistration-k8s-io>
 
 ## Requirements
 

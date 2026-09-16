@@ -2,13 +2,17 @@
 
 # crossplane-gardener-shoot-clusters
 
-![Version: 0.0.15](https://img.shields.io/badge/Version-0.0.15-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.10.0](https://img.shields.io/badge/AppVersion-0.10.0-informational?style=flat-square)
+![Version: 0.0.16](https://img.shields.io/badge/Version-0.0.16-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.10.0](https://img.shields.io/badge/AppVersion-0.10.0-informational?style=flat-square)
 
 A Helm chart to template crossplane manifests to manage Gardener Shoot resources.
 
 ## Source Code
 
-* <https://github.com/openmcp-project/blueprint-building-blocks>
+* <https://github.com/gardener/gardener>
+* <https://gardener.cloud/docs/gardener/api-reference/core/#shoot>
+* <https://github.tools.sap/cloud-orchestration/crossplane-provider-gardener-auth>
+* <https://github.com/crossplane-contrib/provider-kubernetes>
+* <https://doc.crds.dev/github.com/crossplane-contrib/provider-kubernetes/kubernetes.crossplane.io/Object/v1alpha1>
 
 ## Values
 

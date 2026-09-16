@@ -2,14 +2,15 @@
 
 # sap-btp-services
 
-![Version: 0.0.13](https://img.shields.io/badge/Version-0.0.13-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.6.8](https://img.shields.io/badge/AppVersion-0.6.8-informational?style=flat-square)
+![Version: 0.0.14](https://img.shields.io/badge/Version-0.0.14-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.6.8](https://img.shields.io/badge/AppVersion-0.6.8-informational?style=flat-square)
 
 A Helm Chart to create dynamically SAP BTP Services instances and bindings.
 
 ## Source Code
 
-* <https://github.com/openmcp-project/blueprint-building-blocks>
 * <https://github.com/SAP/sap-btp-service-operator>
+* <https://doc.crds.dev/github.com/SAP/sap-btp-service-operator/services.cloud.sap.com/ServiceBinding/v1@v0.6.1>
+* <https://doc.crds.dev/github.com/SAP/sap-btp-service-operator/services.cloud.sap.com/ServiceInstance/v1@v0.6.1>
 
 ## Requirements
 

@@ -2,7 +2,7 @@
 
 # crossplane-provider-apiextensions
 
-![Version: 0.0.5](https://img.shields.io/badge/Version-0.0.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.20.0](https://img.shields.io/badge/AppVersion-1.20.0-informational?style=flat-square)
+![Version: 0.0.6](https://img.shields.io/badge/Version-0.0.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.20.0](https://img.shields.io/badge/AppVersion-1.20.0-informational?style=flat-square)
 
 A Helm Chart to template crossplane API extensions compositions.
 
@@ -10,8 +10,9 @@ A Helm Chart to template crossplane API extensions compositions.
 
 ## Source Code
 
-* <https://docs.crossplane.io/latest/api/>
-* <https://github.com/openmcp-project/blueprint-building-blocks>
+* <https://github.com/crossplane/crossplane>
+* <https://doc.crds.dev/github.com/crossplane/crossplane/apiextensions.crossplane.io/EnvironmentConfig/v1beta1>
+* <https://doc.crds.dev/github.com/crossplane/crossplane/apiextensions.crossplane.io/Usage/v1alpha1>
 
 ## Values
 

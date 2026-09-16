@@ -2,16 +2,20 @@
 
 # crossplane-provider-aws-iam
 
-![Version: 0.0.14](https://img.shields.io/badge/Version-0.0.14-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.11.0](https://img.shields.io/badge/AppVersion-1.11.0-informational?style=flat-square)
+![Version: 0.0.15](https://img.shields.io/badge/Version-0.0.15-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.11.0](https://img.shields.io/badge/AppVersion-1.11.0-informational?style=flat-square)
 
 A Helm Chart to template AWS IAM manifests for its crossplane provider.
 
 ## Source Code
 
-* <https://github.com/openmcp-project/blueprint-building-blocks>
-* <https://marketplace.upbound.io/providers/upbound/provider-aws-iam/>
-* <https://docs.upbound.io/providers/>
-* <https://docs.upbound.io/providers/provider-families/>
+* <https://github.com/crossplane-contrib/provider-upjet-aws>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/AccessKey/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/Policy/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/Role/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/RolePolicyAttachment/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/User/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/UserPolicyAttachment/v1beta1>
 
 ## Values
 

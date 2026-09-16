@@ -15,7 +15,7 @@ icon: "https://avatars.githubusercontent.com/u/45158470?s=48&v=4"
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.0.15
+version: 0.0.16
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
@@ -23,4 +23,11 @@ version: 0.0.15
 appVersion: "0.10.0"
 # A list of URLs to source code for this project (optional)
 sources:
-  - https://github.com/openmcp-project/blueprint-building-blocks
+  # core.gardener.cloud/v1beta1 Shoot (rendered inside kubernetes.crossplane.io/v1alpha1 Object forProvider.manifest)
+  - https://github.com/gardener/gardener
+  - https://gardener.cloud/docs/gardener/api-reference/core/#shoot
+  # gardener.orchestrate.cloud.sap/v1alpha1 AdminKubeconfigRequest (SAP-internal provider)
+  - https://github.tools.sap/cloud-orchestration/crossplane-provider-gardener-auth
+  # kubernetes.crossplane.io/v1alpha1 Object
+  - https://github.com/crossplane-contrib/provider-kubernetes
+  - https://doc.crds.dev/github.com/crossplane-contrib/provider-kubernetes/kubernetes.crossplane.io/Object/v1alpha1
