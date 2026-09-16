@@ -1,7 +1,7 @@
 # The Chart.yaml file is required for a chart. See all avaiable fields: https://helm.sh/docs/topics/charts/#the-chartyaml-file
 apiVersion: v2
-name: crossplane-provider-gcp
-description: DEPRECATED — renamed to crossplane-provider-gcp-iam. Use that chart instead.
+name: crossplane-provider-gcp-iam
+description: A Helm Chart to template crossplane manifests for GCP IAM resources via crossplane-contrib/provider-gcp (iam.gcp.crossplane.io).
 # A chart can be either an 'application' or a 'library' chart.
 #
 # Application charts are a collection of templates that can be packaged into versioned archives
@@ -35,4 +35,4 @@ sources:
   # CRD: iam.gcp.crossplane.io/v1alpha1 ServiceAccountPolicy
   - https://doc.crds.dev/github.com/crossplane-contrib/provider-gcp/iam.gcp.crossplane.io/ServiceAccountPolicy/v1alpha1
 # Whether this chart is deprecated (optional, boolean)
-deprecated: true
+deprecated: false
