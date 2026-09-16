@@ -1,0 +1,131 @@
+---
+########################################################################################################################
+###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
+########################################################################################################################
+instances:
+  - name: "rds-instance"
+    labels: {}
+    annotations: {}
+    ownerReferences: {}
+    spec:
+      forProvider:
+        allocatedStorage: 20
+        autoGeneratePassword: true
+        autoMinorVersionUpgrade: true
+        backupRetentionPeriod: 14
+        backupWindow: 09:46-10:16
+        dbName: devusdb
+        engine: postgres
+        engineVersion: "16.1"
+        instanceClass: db.t3.micro
+        maintenanceWindow: Mon:00:00-Mon:03:00
+        passwordSecretRef:
+          key: password
+          name: dev-us-rds-admin-pw
+          namespace: dev-us
+        publiclyAccessible: false
+        region: us-east-1
+        skipFinalSnapshot: true
+        storageEncrypted: true
+        storageType: gp2
+        username: adminuser
+      providerConfigRef:
+        name: dev-us-aws
+      writeConnectionSecretToRef:
+        name: dev-us-rds-connection-details
+        namespace: dev-us
+########################################################################################################################
+clusters:
+  - name: "rds-aurora-cluster"
+    labels: {}
+    annotations: {}
+    ownerReferences: {}
+    spec:
+      forProvider:
+        engine: aurora-postgresql
+        engineVersion: "15.4"
+        region: us-east-1
+        skipFinalSnapshot: true
+        storageEncrypted: true
+      providerConfigRef:
+        name: dev-us-aws
+      writeConnectionSecretToRef:
+        name: dev-us-aurora-connection-details
+        namespace: dev-us
+########################################################################################################################
+clusterInstances:
+  - name: "rds-aurora-cluster-instance"
+    labels: {}
+    annotations: {}
+    ownerReferences: {}
+    spec:
+      forProvider:
+        clusterIdentifierRef:
+          name: rds-aurora-cluster
+        instanceClass: db.r6g.large
+        region: us-east-1
+      providerConfigRef:
+        name: dev-us-aws
+########################################################################################################################
+subnetGroups:
+  - name: "rds-subnet-group"
+    labels: {}
+    annotations: {}
+    ownerReferences: {}
+    spec:
+      forProvider:
+        description: RDS subnet group for dev-us
+        region: us-east-1
+        subnetIdRefs:
+          - name: dev-us-subnet-a
+          - name: dev-us-subnet-b
+      providerConfigRef:
+        name: dev-us-aws
+########################################################################################################################
+parameterGroups:
+  - name: "rds-parameter-group"
+    labels: {}
+    annotations: {}
+    ownerReferences: {}
+    spec:
+      forProvider:
+        description: RDS parameter group for postgres16
+        family: postgres16
+        region: us-east-1
+      providerConfigRef:
+        name: dev-us-aws
+########################################################################################################################
+globalClusters:
+  - name: "rds-global-cluster"
+    labels: {}
+    annotations: {}
+    ownerReferences: {}
+    spec:
+      forProvider:
+        engine: aurora-postgresql
+        engineVersion: "15.4"
+        storageEncrypted: true
+      providerConfigRef:
+        name: dev-us-aws
+########################################################################################################################
+proxies:
+  - name: "rds-proxy"
+    labels: {}
+    annotations: {}
+    ownerReferences: {}
+    spec:
+      forProvider:
+        auth:
+          - authScheme: SECRETS
+            iamAuth: DISABLED
+            secretArnRef:
+              name: rds-proxy-secret
+        engineFamily: POSTGRESQL
+        region: us-east-1
+        roleArnRef:
+          name: rds-proxy-role
+        vpcSubnetIdRefs:
+          - name: dev-us-subnet-a
+      providerConfigRef:
+        name: dev-us-aws
+########################################################################################################################
