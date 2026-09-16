@@ -10,8 +10,11 @@ A Helm Chart to template crossplane manifests to manage Cloud Foundry or BTP Kym
 
 ## Source Code
 
-* <https://github.com/openmcp-project/blueprint-building-blocks>
-* <https://doc.crds.dev/github.com/SAP/crossplane-provider-btp@v1.1.2>
+* <https://github.com/SAP/crossplane-provider-btp>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/environment.btp.sap.crossplane.io/CloudFoundryEnvironment/v1alpha1@v1.13.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/environment.btp.sap.crossplane.io/KymaEnvironment/v1alpha1@v1.13.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/environment.btp.sap.crossplane.io/KymaEnvironmentBinding/v1alpha1@v1.13.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/environment.btp.sap.crossplane.io/KymaModule/v1alpha1@v1.13.0>
 
 ## Values
 
