@@ -1,5 +1,21 @@
 ---
 ########################################################################################################################
+# -- [observedObjectCollections](https://doc.crds.dev/github.com/crossplane-contrib/provider-kubernetes/kubernetes.crossplane.io/ObservedObjectCollection/v1alpha2) discovers and observes
+# a dynamic collection of Kubernetes objects matching a label selector, creating Object resources for each.
+# @default -- []
+observedObjectCollections:
+  - name: ""
+    # -- providerConfigRefName references the ProviderConfig used to access the target cluster.
+    providerConfigRefName: ""
+    # -- resourceRef specifies the type of resources to observe (apiVersion + resource/kind).
+    resourceRef: {}
+    # -- observeObjects configures the label selector to filter which objects to observe.
+    observeObjects: {}
+    # -- namespaceSelector optionally restricts observation to specific namespaces.
+    namespaceSelector: {}
+    # -- template optionally defines extra fields to merge into each generated Object.
+    template: {}
+########################################################################################################################
 # @default -- {}
 defaults: 
   object:
