@@ -170,6 +170,71 @@ defaults:
       volume:
         type: gp3
         size: 50Gi 
+  # -- openstack contains hyperscaler specific information for OpenStack shoots.
+  # @default -- -
+  openstack:
+    # -- infrastructureConfig for OpenStack
+    infrastructureConfig:
+      apiVersion: openstack.provider.extensions.gardener.cloud/v1alpha1
+      kind: InfrastructureConfig
+      networks:
+        workers: 10.180.0.0/16
+    # -- controlPlaneConfig for OpenStack
+    controlPlaneConfig:
+      apiVersion: openstack.provider.extensions.gardener.cloud/v1alpha1
+      kind: ControlPlaneConfig
+      loadBalancerProvider: haproxy
+    # -- workers list for OpenStack
+    workers:
+      - name: worker
+        minimum: 1
+        maximum: 3
+        maxSurge: 1
+        maxUnavailable: 0
+        machine:
+          type: g1.large
+          image:
+            name: gardenlinux
+            version: 1877.2.0
+        volume:
+          type: default
+          size: 50Gi
+        zones:
+          - europe-west1
+  # -- alicloud contains hyperscaler specific information for AliCloud shoots.
+  # @default -- -
+  alicloud:
+    # -- infrastructureConfig for AliCloud
+    infrastructureConfig:
+      apiVersion: alicloud.provider.extensions.gardener.cloud/v1alpha1
+      kind: InfrastructureConfig
+      networks:
+        vpc:
+          cidr: 10.180.0.0/16
+        zones:
+          - name: eu-central-1a
+            workers: 10.180.0.0/19
+    # -- controlPlaneConfig for AliCloud
+    controlPlaneConfig:
+      apiVersion: alicloud.provider.extensions.gardener.cloud/v1alpha1
+      kind: ControlPlaneConfig
+    # -- workers list for AliCloud
+    workers:
+      - name: worker
+        minimum: 1
+        maximum: 3
+        maxSurge: 1
+        maxUnavailable: 0
+        machine:
+          type: ecs.c6.large
+          image:
+            name: gardenlinux
+            version: 1877.2.0
+        volume:
+          type: cloud_efficiency
+          size: 50Gi
+        zones:
+          - eu-central-1a
 #########################################################################################################
 # -- shootClusters contains information and configuration of Gardener shoot clusters via [crossplane provider kubernetes](https://marketplace.upbound.io/providers/crossplane-contrib/provider-kubernetes/v0.10.0).
 # @default -- -
@@ -182,7 +247,11 @@ shootClusters:
     kubernetesCrossplaneProviderConfigRefName: ""
     # -- gardenerOrchestrateCloudProviderConfigRefName needs to match crossplane provider configuration reference name (identifier) of SAP garden cluster control plane! (.shootClusters[*].kubernetesCrossplaneProviderConfigRefName)
     gardenerOrchestrateCloudProviderConfigRefName: ""
+    # -- credentialsBindingName references a CredentialsBinding resource. Replaces deprecated secretBindingName (since Gardener v1.127.0).
+    # Use this for all new clusters and when migrating existing clusters.
+    credentialsBindingName: ""
     # -- secretBindingName defines the technical name of [infrastructure secret](https://gardener.cloud/docs/gardener/development/secrets_management/) binding on gardener control plane cluster. e.g. [Secrets of AAS-DT](https://dashboard.garden.canary.k8s.ondemand.com/namespace/garden-aas-dt/secrets)
+    # DEPRECATED since Gardener v1.127.0. Use credentialsBindingName instead. Will be forbidden for Shoots using Kubernetes >= 1.34.
     secretBindingName: ""
     # -- cloudProfile is a name of a [CloudProfile object](https://github.com/gardener/gardener/blob/master/docs/api-reference/core.md#cloudprofile). This field is immutable. E.g. gcp / azure / aws
     cloudProfile: ""
