@@ -34,4 +34,4 @@ sources:
   # cloudfoundry.crossplane.io/v1alpha1 SpaceRole
   - https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/SpaceRole/v1alpha1@v1.2.0
 type: application
-version: 0.1.5
+version: 0.1.6
