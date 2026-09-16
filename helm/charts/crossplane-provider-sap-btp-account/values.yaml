@@ -96,10 +96,10 @@ directoryEntitlements:
     # @default -- -
     name: ""
     # -- [forProvider](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/DirectoryEntitlement/v1alpha1@v1.1.2) CRD
-    forProvider: []
+    forProvider: {}
     # -- *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.
     #   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)!
-    writeConnectionSecretToRef: []
+    writeConnectionSecretToRef: {}
 #########################################################################################################
 # -- `directories[].` orchestrate [`kind: Directory`](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/Directory/v1alpha1@v1.1.2) of [BTP Accounts](https://help.sap.com/docs/btp/sap-business-technology-platform/account-model).
 # @default -- object
@@ -110,10 +110,10 @@ directories:
     # @default -- -
     name: ""
     # -- [forProvider](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/Directory/v1alpha1@v1.1.2) CRD
-    forProvider: []
+    forProvider: {}
     # -- *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.
     #   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)!
-    writeConnectionSecretToRef: []
+    writeConnectionSecretToRef: {}
 #########################################################################################################
 # -- `serviceInstances[].` orchestrate [`kind: ServiceInstance`](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/ServiceInstance/v1alpha1@v1.11.0) of [BTP Accounts](https://help.sap.com/docs/btp/sap-business-technology-platform/account-model).
 # @default -- object
@@ -124,10 +124,10 @@ serviceInstances:
     # @default -- -
     name: ""
     # -- [forProvider](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/ServiceInstance/v1alpha1@v1.11.0) CRD
-    forProvider: []
+    forProvider: {}
     # -- *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.
     #   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)!
-    writeConnectionSecretToRef: []
+    writeConnectionSecretToRef: {}
 #########################################################################################################
 # -- `serviceBindings[].` orchestrate [`kind: ServiceBinding`](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/ServiceBinding/v1alpha1@v1.11.0) of [BTP Accounts](https://help.sap.com/docs/btp/sap-business-technology-platform/account-model).
 # @default -- object
@@ -138,10 +138,10 @@ serviceBindings:
     # @default -- -
     name: ""
     # -- [forProvider](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/ServiceBinding/v1alpha1@v1.11.0) CRD
-    forProvider: []
+    forProvider: {}
     # -- *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.
     #   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)!
-    writeConnectionSecretToRef: []
+    writeConnectionSecretToRef: {}
 #########################################################################################################
 # -- `subaccountServiceBrokers[].` orchestrate [`kind: SubaccountServiceBroker`](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/SubaccountServiceBroker/v1alpha1@v1.1.2) of [BTP Accounts](https://help.sap.com/docs/btp/sap-business-technology-platform/account-model).
 # @default -- object
@@ -152,8 +152,8 @@ subaccountServiceBrokers:
     # @default -- -
     name: ""
     # -- [forProvider](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/SubaccountServiceBroker/v1alpha1@v1.1.2) CRD
-    forProvider: []
+    forProvider: {}
     # -- *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.
     #   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)!
-    writeConnectionSecretToRef: []
+    writeConnectionSecretToRef: {}
 #########################################################################################################
