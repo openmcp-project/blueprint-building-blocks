@@ -5,4 +5,7 @@
 shootClusters:
   - name: "name"
     projectNamespace: "projectNamespace"
-    gardenerOrchestrateCloudProviderConfigRefName: "gardenerOrchestrateCloudProviderConfigRefName"        
+    gardenerOrchestrateCloudProviderConfigRefName: "gardenerOrchestrateCloudProviderConfigRefName"
+    writeConnectionSecretToRefNamespace: "default"
+    viewerKubeconfigValidFor: "1h0s"
+    viewerKubeconfigRenewAfter: "45m0s"
