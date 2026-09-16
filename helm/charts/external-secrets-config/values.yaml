@@ -181,4 +181,107 @@ credentials:
     stringData: []
     # -- *(optional)* [data](https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/secret-v1/) *(map[string][]byte)* Data contains the secret data. Each key must consist of alphanumeric characters, '-', '_' or '.'. The serialized form of the secret data is a base64 encoded string, representing the arbitrary (possibly non-string) data value here. Described in https://tools.ietf.org/html/rfc4648#section-4
     data: []  
+######################################################################################################################### -- [ClusterPushSecret](https://external-secrets.io/latest/api/clusterpushsecret/) is the cluster-scoped version of PushSecret.
+# @default -- {}
+clusterPushSecrets:
+  - name: ""
+    # @default -- []
+    spec:
+      # -- A list of secret stores to push secrets to.
+      secretStoreRefs: {}
+      # -- The Secret Selector (k8s source) for the Push Secret
+      selector: []
+      # -- Secret Data that should be pushed to providers
+      data: []
+########################################################################################################################
+# -- [VaultDynamicSecret](https://external-secrets.io/latest/api/generator/vault/) generates secrets using Vault.
+# @default -- {}
+vaultDynamicSecrets:
+  - name: ""
+    namespace: "ns1"
+    # @default -- []
+    spec:
+      # -- Vault connection configuration and path to the dynamic secret.
+      provider: {}
+########################################################################################################################
+# -- [ECRAuthorizationToken](https://external-secrets.io/latest/api/generator/ecr/) generates ECR authorization tokens.
+# @default -- {}
+ecrAuthorizationTokens:
+  - name: ""
+    namespace: "ns1"
+    # @default -- []
+    spec:
+      # -- Region is the AWS region.
+      region: ""
+########################################################################################################################
+# -- [ClusterGenerator](https://external-secrets.io/latest/api/generator/cluster/) is the cluster-scoped generator resource.
+# @default -- {}
+clusterGenerators:
+  - name: ""
+    # @default -- []
+    spec:
+      # -- The generator kind and its spec.
+      kind: ""
+      generator: {}
+########################################################################################################################
+# -- [ACRAccessToken](https://external-secrets.io/latest/api/generator/acr/) generates Azure Container Registry access tokens.
+# @default -- {}
+acrAccessTokens:
+  - name: ""
+    namespace: "ns1"
+    # @default -- []
+    spec:
+      # -- Azure Container Registry URL.
+      registry: ""
+      auth: {}
+########################################################################################################################
+# -- [GCRAccessToken](https://external-secrets.io/latest/api/generator/gcr/) generates Google Container Registry access tokens.
+# @default -- {}
+gcrAccessTokens:
+  - name: ""
+    namespace: "ns1"
+    # @default -- []
+    spec:
+      # -- GCP project id.
+      projectID: ""
+      auth: {}
+########################################################################################################################
+# -- [STSSessionToken](https://external-secrets.io/latest/api/generator/sts/) generates AWS STS session tokens.
+# @default -- {}
+stsSessionTokens:
+  - name: ""
+    namespace: "ns1"
+    # @default -- []
+    spec:
+      # -- AWS region.
+      region: ""
+      auth: {}
+########################################################################################################################
+# -- [GithubAccessToken](https://external-secrets.io/latest/api/generator/github/) generates GitHub App installation access tokens.
+# @default -- {}
+githubAccessTokens:
+  - name: ""
+    namespace: "ns1"
+    # @default -- []
+    spec:
+      # -- GitHub App ID.
+      appID: ""
+      # -- GitHub App Installation ID.
+      installID: ""
+      auth: {}
+########################################################################################################################
+# -- [Password](https://external-secrets.io/latest/api/generator/password/) generates random passwords.
+# @default -- {}
+passwords:
+  - name: ""
+    namespace: "ns1"
+    # @default -- []
+    spec:
+      # -- Password length.
+      length: 24
+      digits: 5
+      symbols: 5
+      symbolCharacters: "-_$@"
+      noUpper: false
+      allowRepeat: false
 ########################################################################################################################
