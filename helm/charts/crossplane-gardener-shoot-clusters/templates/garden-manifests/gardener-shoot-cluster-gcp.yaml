@@ -25,7 +25,13 @@ spec:
         name: {{required "A valid Gardener Shoot Name is required! (.Values.shootClusters[].name)" $shootCluster.name}}
         namespace: {{required "A valid Gardener Project Namespace is required! (.Values.shootClusters[].projectNamespace)" $shootCluster.projectNamespace}}
       spec:
-        secretBindingName: {{required "A valid Secret Binding Name is required! (.Values.shootClusters[].secretBindingName)" $shootCluster.secretBindingName}} # Set your SecretBinding name
+        {{- if $shootCluster.credentialsBindingName }}
+        credentialsBindingName: {{required "A valid Credentials Binding Name is required! (.Values.shootClusters[].credentialsBindingName)" $shootCluster.credentialsBindingName}}
+        {{- else }}
+        # secretBindingName is deprecated since Gardener v1.127.0; use credentialsBindingName instead.
+        # Forbidden for Shoot clusters using Kubernetes >= 1.34.
+        secretBindingName: {{required "A valid Secret Binding Name is required! (.Values.shootClusters[].secretBindingName)" $shootCluster.secretBindingName}}
+        {{- end }}
         cloudProfileName: gcp
         region: {{required "A valid value is required! (.Values.shootClusters[].region)" $shootCluster.region | quote}}
         purpose: {{required "A valid value is required! (.Values.shootClusters[].purpose)" $shootCluster.purpose | quote}}
