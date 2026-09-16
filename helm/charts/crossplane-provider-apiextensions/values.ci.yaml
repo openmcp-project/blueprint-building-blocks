@@ -36,3 +36,52 @@ usages:
       resourceRef:
         name: my-prometheus-chart
 ########################################################################################################################
+########################################################################################################################
+compositions:
+- name: "example-composition"
+  spec:
+    compositeTypeRef:
+      apiVersion: api.example/v1alpha1
+      kind: XDatabase
+    mode: "Pipeline"
+    pipeline:
+      - step: compose-resources
+        functionRef:
+          name: function-patch-and-transform
+        input:
+          apiVersion: pt.fn.crossplane.io/v1beta1
+          kind: Resources
+          resources:
+            - name: bucket
+              base:
+                apiVersion: s3.aws.upbound.io/v1beta1
+                kind: Bucket
+                spec:
+                  forProvider:
+                    region: us-east-2
+########################################################################################################################
+compositeResourceDefinitions:
+- name: "xdatabases.api.example"
+  spec:
+    group: api.example
+    names:
+      kind: XDatabase
+      plural: xdatabases
+    claimNames:
+      kind: Database
+      plural: databases
+    versions:
+      - name: v1alpha1
+        served: true
+        referenceable: true
+        schema:
+          openAPIV3Schema:
+            type: object
+            properties:
+              spec:
+                type: object
+                properties:
+                  region:
+                    type: string
+                    description: "The region where the database will be created."
+########################################################################################################################
