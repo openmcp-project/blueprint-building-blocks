@@ -37,5 +37,17 @@ sources:
   - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/RolePolicyAttachment/v1beta1
   - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/User/v1beta1
   - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/UserPolicyAttachment/v1beta1
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/Group/v1beta1
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/GroupMembership/v1beta1
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/GroupPolicyAttachment/v1beta1
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/InstanceProfile/v1beta1
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/RolePolicy/v1beta1
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/OpenIDConnectProvider/v1beta1
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/SAMLProvider/v1beta1
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/ServiceLinkedRole/v1beta1
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/UserGroupMembership/v1beta1
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/AccountPasswordPolicy/v1beta1
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/AccountAlias/v1beta1
+  - https://marketplace.upbound.io/providers/upbound/provider-aws-iam/latest/resources/iam.aws.upbound.io/UserLoginProfile/v1beta1
 # Whether this chart is deprecated (optional, boolean)
 deprecated: false
