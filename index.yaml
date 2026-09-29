@@ -1206,6 +1206,30 @@ entries:
   crossplane-provider-sap-btp-account:
   - apiVersion: v2
     appVersion: 1.1.2
+    created: "2026-09-29T15:06:08.134184421Z"
+    description: A Helm chart to template crossplane manifests to manage SAP BTP resources.
+    digest: 3fe33b967260adaf2a13d6c22c2cbfc4561a9135d10cb51cb2a77c8ebcb36800
+    home: https://github.com/SAP/crossplane-provider-btp
+    icon: https://avatars.githubusercontent.com/u/45158470?s=48&v=4
+    name: crossplane-provider-sap-btp-account
+    sources:
+    - https://github.com/SAP/crossplane-provider-btp
+    - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/CloudManagement/v1alpha1@v1.1.2
+    - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/Directory/v1alpha1@v1.1.2
+    - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/DirectoryEntitlement/v1alpha1@v1.1.2
+    - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/Entitlement/v1alpha1@v1.1.2
+    - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/ServiceBinding/v1alpha1@v1.1.2
+    - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/ServiceInstance/v1alpha1@v1.1.2
+    - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/ServiceManager/v1beta1@v1.1.2
+    - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/Subaccount/v1alpha1@v1.1.2
+    - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/SubaccountServiceBroker/v1alpha1@v1.1.2
+    - https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/Subscription/v1alpha1@v1.1.2
+    type: application
+    urls:
+    - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/crossplane-provider-sap-btp-account-0.0.16/crossplane-provider-sap-btp-account-0.0.16.tgz
+    version: 0.0.16
+  - apiVersion: v2
+    appVersion: 1.1.2
     created: "2026-08-25T11:26:53.409459536Z"
     description: A Helm chart to template crossplane manifests to manage SAP BTP resources.
     digest: 5284ca3b8596d5d4ae44869140d9345d3d05b541e24719b3753493d2f053bff4
@@ -1855,4 +1879,4 @@ entries:
     urls:
     - https://github.com/openmcp-project/blueprint-building-blocks/releases/download/test-custom-chart-0.0.8/test-custom-chart-0.0.8.tgz
     version: 0.0.8
-generated: "2026-09-16T14:18:32.352302506Z"
+generated: "2026-09-29T15:06:08.134326336Z"
