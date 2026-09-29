@@ -52,6 +52,10 @@ accounts:
             planName: ""
             # -- Parameters for the  plan to be subscribed - [Reference](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/Subscription/v1alpha1@v1.2.1)
             parameters: {}
+            # -- *optional* - Retry subscription creation when BTP reports SUBSCRIBE_FAILED by deleting and recreating the resource.
+            #   See field reference: [CRD Browser](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/account.btp.sap.crossplane.io/Subscription/v1alpha1@v1.6.0#spec-recreateOnSubscriptionFailure)
+            # @default -- false
+            recreateOnSubscriptionFailure: false
             # -- *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.
             #   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)!
             # @default -- []
