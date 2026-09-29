@@ -25,6 +25,9 @@ spec:
     parameters:
       {{- $subscription.parameters | toYaml | nindent 6 }}
     {{- end }}
+  {{- if $subscription.recreateOnSubscriptionFailure}}
+  recreateOnSubscriptionFailure: {{ $subscription.recreateOnSubscriptionFailure }}
+  {{- end }}
   cloudManagementRef:
     name: {{required "A valid value is required! (.Values.accounts[].subAccounts[].name)" $item.name | lower }}   
   {{- if $subscription.writeConnectionSecretToRef}}
