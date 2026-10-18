@@ -4,7 +4,7 @@ name: crossplane-provider-apiextensions
 description: A Helm Chart to template crossplane API extensions compositions.
 type: application
 icon: "https://avatars.githubusercontent.com/u/45158470?s=48&v=4"
-version: 0.0.6
+version: 0.0.7
 appVersion: "1.20.0"
 home: "https://github.com/openmcp-project/blueprints"
 sources:
@@ -13,4 +13,8 @@ sources:
   - https://doc.crds.dev/github.com/crossplane/crossplane/apiextensions.crossplane.io/EnvironmentConfig/v1beta1
   # apiextensions.crossplane.io/v1beta1 Usage
   - https://doc.crds.dev/github.com/crossplane/crossplane/apiextensions.crossplane.io/Usage/v1alpha1
+  # apiextensions.crossplane.io/v1 Composition
+  - https://doc.crds.dev/github.com/crossplane/crossplane/apiextensions.crossplane.io/Composition/v1
+  # apiextensions.crossplane.io/v1 CompositeResourceDefinition (XRD)
+  - https://doc.crds.dev/github.com/crossplane/crossplane/apiextensions.crossplane.io/CompositeResourceDefinition/v1
 deprecated: false

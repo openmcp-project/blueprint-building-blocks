@@ -2,7 +2,7 @@
 
 # crossplane-provider-apiextensions
 
-![Version: 0.0.6](https://img.shields.io/badge/Version-0.0.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.20.0](https://img.shields.io/badge/AppVersion-1.20.0-informational?style=flat-square)
+![Version: 0.0.7](https://img.shields.io/badge/Version-0.0.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.20.0](https://img.shields.io/badge/AppVersion-1.20.0-informational?style=flat-square)
 
 A Helm Chart to template crossplane API extensions compositions.
 
@@ -13,11 +13,17 @@ A Helm Chart to template crossplane API extensions compositions.
 * <https://github.com/crossplane/crossplane>
 * <https://doc.crds.dev/github.com/crossplane/crossplane/apiextensions.crossplane.io/EnvironmentConfig/v1beta1>
 * <https://doc.crds.dev/github.com/crossplane/crossplane/apiextensions.crossplane.io/Usage/v1alpha1>
+* <https://doc.crds.dev/github.com/crossplane/crossplane/apiextensions.crossplane.io/Composition/v1>
+* <https://doc.crds.dev/github.com/crossplane/crossplane/apiextensions.crossplane.io/CompositeResourceDefinition/v1>
 
 ## Values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| compositeResourceDefinitions | list | list | A [CompositeResourceDefinition](https://docs.crossplane.io/latest/concepts/composite-resource-definitions/) (XRD) defines the schema for a new type of composite resource and, optionally, a claim. |
+| compositeResourceDefinitions[0].spec | list | `[]` | spec defines the XRD specification including group, names, versions, and optional claim names. |
+| compositions | list | list | A [Composition](https://docs.crossplane.io/latest/concepts/compositions/) defines a collection of managed resources or functions that Crossplane uses to create and manage new composite resources. |
+| compositions[0].spec.compositeTypeRef | list | `[]` | compositeTypeRef identifies the XRD that this Composition targets. Required. |
 | environmentConfigs | list | list | An [EnvironmentConfig](https://docs.crossplane.io/latest/api/) contains user-defined unstructured values for use in a Composition.  Read the Crossplane documentation for [more information about EnvironmentConfigs](https://docs.crossplane.io/latest/concepts/environment-configs/). |
 | environmentConfigs[0].data | list | `[]` | The data of this [EnvironmentConfig](https://docs.crossplane.io/latest/api/). This may contain any kind of structure that can be serialized into JSON. |
 | usages | list | list | A [Usage](https://docs.crossplane.io/latest/concepts/usages/) defines a deletion blocking relationship between two resources.  Usages prevent accidental deletion of a single resource or deletion of resources with dependent resources. Read the Crossplane documentation for [more information about Compositions](https://docs.crossplane.io/latest/concepts/usages/). |
