@@ -2,7 +2,7 @@
 
 # flux-config
 
-![Version: 0.0.22](https://img.shields.io/badge/Version-0.0.22-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.6.0](https://img.shields.io/badge/AppVersion-2.6.0-informational?style=flat-square)
+![Version: 0.0.23](https://img.shields.io/badge/Version-0.0.23-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.6.0](https://img.shields.io/badge/AppVersion-2.6.0-informational?style=flat-square)
 
 A Helm Chart to template flux manifests to leverage GitOps on a OpenMCP cluster.
 
@@ -19,11 +19,27 @@ A Helm Chart to template flux manifests to leverage GitOps on a OpenMCP cluster.
 * <https://doc.crds.dev/github.com/fluxcd/kustomize-controller/kustomize.toolkit.fluxcd.io/Kustomization/v1>
 * <https://github.com/fluxcd/helm-controller>
 * <https://doc.crds.dev/github.com/fluxcd/helm-controller/helm.toolkit.fluxcd.io/HelmRelease/v2>
+* <https://github.com/fluxcd/notification-controller>
+* <https://doc.crds.dev/github.com/fluxcd/notification-controller/notification.toolkit.fluxcd.io/Alert/v1beta3>
+* <https://doc.crds.dev/github.com/fluxcd/notification-controller/notification.toolkit.fluxcd.io/Provider/v1beta3>
+* <https://doc.crds.dev/github.com/fluxcd/notification-controller/notification.toolkit.fluxcd.io/Receiver/v1>
+* <https://github.com/fluxcd/image-reflector-controller>
+* <https://github.com/fluxcd/image-automation-controller>
+* <https://doc.crds.dev/github.com/fluxcd/image-reflector-controller/image.toolkit.fluxcd.io/ImageRepository/v1>
+* <https://doc.crds.dev/github.com/fluxcd/image-reflector-controller/image.toolkit.fluxcd.io/ImagePolicy/v1>
+* <https://doc.crds.dev/github.com/fluxcd/image-automation-controller/image.toolkit.fluxcd.io/ImageUpdateAutomation/v1>
+* <https://doc.crds.dev/github.com/fluxcd/source-controller/source.toolkit.fluxcd.io/Bucket/v1>
 
 ## Values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| alerts | list | `[{"name":"","namespace":"default","spec":null}]` | defines [`kind: Alert`](https://fluxcd.io/flux/components/notification/alerts/) manifest (notification.toolkit.fluxcd.io/v1beta3). |
+| alerts[0].name | string | `""` | defines k8s metadata.name of kind: Alert |
+| alerts[0].namespace | string | `"default"` | *(optional)* namespace |
+| buckets | list | `[{"name":"","namespace":"default","spec":null}]` | defines [`kind: Bucket`](https://fluxcd.io/flux/components/source/buckets/) manifest (source.toolkit.fluxcd.io/v1). |
+| buckets[0].name | string | `""` | defines k8s metadata.name of kind: Bucket |
+| buckets[0].namespace | string | `"default"` | *(optional)* namespace |
 | credentials[0].data | list | `[]` | *(optional)* [data](https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/secret-v1/) *(map[string][]byte)* Data contains the secret data. Each key must consist of alphanumeric characters, '-', '_' or '.'. The serialized form of the secret data is a base64 encoded string, representing the arbitrary (possibly non-string) data value here. Described in https://tools.ietf.org/html/rfc4648#section-4 |
 | credentials[0].name | string | `""` | defines k8s `metadata.name` value of `kind: Secret` |
 | credentials[0].namespace | string | `"ns1"` | *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: Secret` |
@@ -68,6 +84,15 @@ A Helm Chart to template flux manifests to leverage GitOps on a OpenMCP cluster.
 | helmRepositorys | list | `[{"name":"","namespace":"default","spec":null}]` | defines [`kind: HelmRepository`](https://fluxcd.io/flux/components/source/api/v1/) manifest. |
 | helmRepositorys[0].name | string | `""` | defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: HelmRepository` |
 | helmRepositorys[0].namespace | string | `"default"` | *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: HelmRepository` |
+| imagePolicies | list | `[{"name":"","namespace":"default","spec":null}]` | defines [`kind: ImagePolicy`](https://fluxcd.io/flux/components/image/imagepolicies/) manifest (image.toolkit.fluxcd.io/v1). |
+| imagePolicies[0].name | string | `""` | defines k8s metadata.name of kind: ImagePolicy |
+| imagePolicies[0].namespace | string | `"default"` | *(optional)* namespace |
+| imageRepositories | list | `[{"name":"","namespace":"default","spec":null}]` | defines [`kind: ImageRepository`](https://fluxcd.io/flux/components/image/imagerepositories/) manifest (image.toolkit.fluxcd.io/v1). |
+| imageRepositories[0].name | string | `""` | defines k8s metadata.name of kind: ImageRepository |
+| imageRepositories[0].namespace | string | `"default"` | *(optional)* namespace |
+| imageUpdateAutomations | list | `[{"name":"","namespace":"default","spec":null}]` | defines [`kind: ImageUpdateAutomation`](https://fluxcd.io/flux/components/image/imageupdateautomations/) manifest (image.toolkit.fluxcd.io/v1). |
+| imageUpdateAutomations[0].name | string | `""` | defines k8s metadata.name of kind: ImageUpdateAutomation |
+| imageUpdateAutomations[0].namespace | string | `"default"` | *(optional)* namespace |
 | kustomizations | list | `[{"commonMetadata":[],"components":{},"decryption":[],"dependsOn":{},"force":null,"healthChecks":{},"images":{},"interval":null,"kubeConfig":[],"name":"","namePrefix":null,"nameSuffix":null,"namespace":"ns1","patches":null,"path":"","postBuild":[],"prune":null,"retryInterval":null,"serviceAccountName":null,"sourceRef":{"apiVersion":"","kind":"GitRepository","name":"","namespace":"ns1"},"suspend":null,"targetnamespace":"ns1","timeout":null,"wait":null}]` | defines independent [`kind: Kustomization`](https://fluxcd.io/flux/components/kustomize/api/v1/#kustomize.toolkit.fluxcd.io/v1.Kustomization) manifest without the generation of `kind: GitRepository`. |
 | kustomizations[0].commonMetadata | list | `[]` | [commonMetadata](https://fluxcd.io/flux/components/kustomize/kustomizations/#common-metadata)  is an *(optional)*field used to specify any metadata that should be applied to all the Kustomization’s resources. |
 | kustomizations[0].components | object | `{}` | [components](https://fluxcd.io/flux/components/kustomize/kustomizations/#components) is an *(optional)*list used to specify Kustomize components. This allows using reusable pieces of configuration logic that can be included from multiple overlays. |
@@ -97,9 +122,15 @@ A Helm Chart to template flux manifests to leverage GitOps on a OpenMCP cluster.
 | kustomizations[0].targetnamespace | string | `"ns1"` | *(optional)* targetNamespace defines the namespace in the `kind: Kustomization` manifests. |
 | kustomizations[0].timeout | string | `nil` | *(optional)* [Timeout](https://fluxcd.io/flux/components/kustomize/api/v1/#kustomize.toolkit.fluxcd.io/v1.KustomizationSpec) for validation, apply and health checking operations. Defaults to ‘Interval’ duration. e.g. 1m |
 | kustomizations[0].wait | string | `nil` | [wait](https://fluxcd.io/flux/components/kustomize/kustomizations/#wait)  is an *(optional)*boolean field to perform health checks for all reconciled resources as part of the Kustomization. If set to true, .spec.healthChecks is ignored. |
-| ociRepositorys | list | `[{"name":"","namespace":"default","spec":null}]` | defines [`kind: OCIRepository`](https://fluxcd.io/flux/components/source/api/v1/) manifest. |
-| ociRepositorys[0].name | string | `""` | defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: OCIRepository` |
-| ociRepositorys[0].namespace | string | `"default"` | *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: OCIRepository` |
+| notificationProviders | list | `[{"name":"","namespace":"default","spec":null}]` | defines [`kind: Provider`](https://fluxcd.io/flux/components/notification/providers/) manifest (notification.toolkit.fluxcd.io/v1beta3). |
+| notificationProviders[0].name | string | `""` | defines k8s metadata.name of kind: Provider |
+| notificationProviders[0].namespace | string | `"default"` | *(optional)* namespace |
+| ociRepositories | list | `[{"name":"","namespace":"default","spec":null}]` | defines [`kind: OCIRepository`](https://fluxcd.io/flux/components/source/api/v1/) manifest. |
+| ociRepositories[0].name | string | `""` | defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: OCIRepository` |
+| ociRepositories[0].namespace | string | `"default"` | *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: OCIRepository` |
+| receivers | list | `[{"name":"","namespace":"default","spec":null}]` | defines [`kind: Receiver`](https://fluxcd.io/flux/components/notification/receivers/) manifest (notification.toolkit.fluxcd.io/v1). |
+| receivers[0].name | string | `""` | defines k8s metadata.name of kind: Receiver |
+| receivers[0].namespace | string | `"default"` | *(optional)* namespace |
 
 ----------------------------------------------
 Autogenerated from chart metadata using [helm-docs v1.14.2](https://github.com/norwoodj/helm-docs/releases/v1.14.2)

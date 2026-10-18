@@ -1,7 +1,7 @@
 ---
 ###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
 ########################################################################################################################
-ociRepositorys:
+ociRepositories:
   - name: podinfo
     namespace: "default"
     spec:
@@ -273,4 +273,85 @@ credentials:
       username: username
       password: password
     data: []
+########################################################################################################################
+alerts:
+  - name: "flux-system-alert"
+    namespace: "flux-system"
+    spec:
+      providerRef:
+        name: flux-system-provider
+      eventSeverity: info
+      eventSources:
+        - kind: GitRepository
+          name: "*"
+          namespace: flux-system
+########################################################################################################################
+notificationProviders:
+  - name: "flux-system-provider"
+    namespace: "flux-system"
+    spec:
+      type: slack
+      channel: general
+      secretRef:
+        name: slack-token
+########################################################################################################################
+imageRepositories:
+  - name: "podinfo"
+    namespace: "flux-system"
+    spec:
+      image: ghcr.io/stefanprodan/podinfo
+      interval: 5m
+########################################################################################################################
+imagePolicies:
+  - name: "podinfo"
+    namespace: "flux-system"
+    spec:
+      imageRepositoryRef:
+        name: podinfo
+      policy:
+        semver:
+          range: 5.0.x
+########################################################################################################################
+imageUpdateAutomations:
+  - name: "flux-system"
+    namespace: "flux-system"
+    spec:
+      interval: 30m
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+      git:
+        checkout:
+          ref:
+            branch: main
+        commit:
+          author:
+            email: fluxcdbot@users.noreply.github.com
+            name: fluxcdbot
+########################################################################################################################
+receivers:
+  - name: "github-receiver"
+    namespace: "flux-system"
+    spec:
+      type: github
+      events:
+        - "ping"
+        - "push"
+      secretRef:
+        name: receiver-token
+      resources:
+        - kind: GitRepository
+          name: flux-system
+########################################################################################################################
+buckets:
+  - name: "podinfo"
+    namespace: "flux-system"
+    spec:
+      interval: 5m
+      provider: generic
+      bucketName: podinfo
+      endpoint: minio.minio.svc.cluster.local:9000
+      insecure: true
+      secretRef:
+        name: minio-credentials
 ########################################################################################################################

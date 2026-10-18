@@ -6,9 +6,9 @@ defaults:
   # -- targetNamespace sets or overrides the default namespace in the `kind: Kustomization` manifests.
   targetNamespace: "default"
 ########################################################################################################################
-# -- defines [`kind: OCIRepository`](https://fluxcd.io/flux/components/source/api/v1/) manifest.
-ociRepositorys:
-  # ociRepositorys[0].name -- defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: OCIRepository`
+# -- defines [`kind: OCIRepository`](https://fluxcd.io/flux/components/source/api/v1/) manifest.
+ociRepositories:
+  # ociRepositories[0].name -- defines k8s [`metadata.name`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: OCIRepository`
   - name: ""
     # -- *(optional)* defines k8s [`metadata.namespace`](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) value of `kind: OCIRepository`
     namespace: "default"
@@ -170,4 +170,67 @@ credentials:
     stringData: []
     # -- *(optional)* [data](https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/secret-v1/) *(map[string][]byte)* Data contains the secret data. Each key must consist of alphanumeric characters, '-', '_' or '.'. The serialized form of the secret data is a base64 encoded string, representing the arbitrary (possibly non-string) data value here. Described in https://tools.ietf.org/html/rfc4648#section-4
     data: []  
+########################################################################################################################
+# -- defines [`kind: Alert`](https://fluxcd.io/flux/components/notification/alerts/) manifest (notification.toolkit.fluxcd.io/v1beta3).
+alerts:
+  # alerts[0].name -- defines k8s metadata.name of kind: Alert
+  - name: ""
+    # -- *(optional)* namespace
+    namespace: "default"
+    # spec -- defines k8s spec of kind: Alert. See https://fluxcd.io/flux/components/notification/alerts/
+    spec:
+########################################################################################################################
+# -- defines [`kind: Provider`](https://fluxcd.io/flux/components/notification/providers/) manifest (notification.toolkit.fluxcd.io/v1beta3).
+notificationProviders:
+  # notificationProviders[0].name -- defines k8s metadata.name of kind: Provider
+  - name: ""
+    # -- *(optional)* namespace
+    namespace: "default"
+    # spec -- defines k8s spec of kind: Provider. See https://fluxcd.io/flux/components/notification/providers/
+    spec:
+########################################################################################################################
+# -- defines [`kind: ImageRepository`](https://fluxcd.io/flux/components/image/imagerepositories/) manifest (image.toolkit.fluxcd.io/v1).
+imageRepositories:
+  # imageRepositories[0].name -- defines k8s metadata.name of kind: ImageRepository
+  - name: ""
+    # -- *(optional)* namespace
+    namespace: "default"
+    # spec -- defines k8s spec of kind: ImageRepository. See https://fluxcd.io/flux/components/image/imagerepositories/
+    spec:
+########################################################################################################################
+# -- defines [`kind: ImagePolicy`](https://fluxcd.io/flux/components/image/imagepolicies/) manifest (image.toolkit.fluxcd.io/v1).
+imagePolicies:
+  # imagePolicies[0].name -- defines k8s metadata.name of kind: ImagePolicy
+  - name: ""
+    # -- *(optional)* namespace
+    namespace: "default"
+    # spec -- defines k8s spec of kind: ImagePolicy. See https://fluxcd.io/flux/components/image/imagepolicies/
+    spec:
+########################################################################################################################
+# -- defines [`kind: ImageUpdateAutomation`](https://fluxcd.io/flux/components/image/imageupdateautomations/) manifest (image.toolkit.fluxcd.io/v1).
+imageUpdateAutomations:
+  # imageUpdateAutomations[0].name -- defines k8s metadata.name of kind: ImageUpdateAutomation
+  - name: ""
+    # -- *(optional)* namespace
+    namespace: "default"
+    # spec -- defines k8s spec of kind: ImageUpdateAutomation. See https://fluxcd.io/flux/components/image/imageupdateautomations/
+    spec:
+########################################################################################################################
+# -- defines [`kind: Receiver`](https://fluxcd.io/flux/components/notification/receivers/) manifest (notification.toolkit.fluxcd.io/v1).
+receivers:
+  # receivers[0].name -- defines k8s metadata.name of kind: Receiver
+  - name: ""
+    # -- *(optional)* namespace
+    namespace: "default"
+    # spec -- defines k8s spec of kind: Receiver. See https://fluxcd.io/flux/components/notification/receivers/
+    spec:
+########################################################################################################################
+# -- defines [`kind: Bucket`](https://fluxcd.io/flux/components/source/buckets/) manifest (source.toolkit.fluxcd.io/v1).
+buckets:
+  # buckets[0].name -- defines k8s metadata.name of kind: Bucket
+  - name: ""
+    # -- *(optional)* namespace
+    namespace: "default"
+    # spec -- defines k8s spec of kind: Bucket. See https://fluxcd.io/flux/components/source/buckets/
+    spec:
 ########################################################################################################################

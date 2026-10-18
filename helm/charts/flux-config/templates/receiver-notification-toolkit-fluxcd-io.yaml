@@ -1,0 +1,15 @@
+{{- range $item := .Values.receivers}}
+  {{- if and ($item) (ne $item.name "")}}
+---
+apiVersion: notification.toolkit.fluxcd.io/v1
+kind: Receiver
+metadata:
+  name: {{required "A valid value is required! (.Values.receivers[].name)" $item.name | lower | quote}}
+  namespace: {{ $item.namespace | default $.Values.defaults.namespace | lower | quote }}
+  labels:
+    openmcp.cloud/blueprint-building-block: "{{ $.Chart.Name }}"
+    openmcp.cloud/blueprint-building-block-version: "{{ $.Chart.Version }}"
+spec:
+  {{- toYaml $item.spec | nindent 2 }}
+  {{- end }}
+{{- end }}

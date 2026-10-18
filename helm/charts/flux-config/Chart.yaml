@@ -17,7 +17,7 @@ icon: "https://avatars.githubusercontent.com/u/52158677?s=200&v=4"
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.0.22
+version: 0.0.23
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
@@ -40,5 +40,18 @@ sources:
   # helm.toolkit.fluxcd.io — helm-controller
   - https://github.com/fluxcd/helm-controller
   - https://doc.crds.dev/github.com/fluxcd/helm-controller/helm.toolkit.fluxcd.io/HelmRelease/v2
+  # notification.toolkit.fluxcd.io — notification-controller
+  - https://github.com/fluxcd/notification-controller
+  - https://doc.crds.dev/github.com/fluxcd/notification-controller/notification.toolkit.fluxcd.io/Alert/v1beta3
+  - https://doc.crds.dev/github.com/fluxcd/notification-controller/notification.toolkit.fluxcd.io/Provider/v1beta3
+  - https://doc.crds.dev/github.com/fluxcd/notification-controller/notification.toolkit.fluxcd.io/Receiver/v1
+  # image.toolkit.fluxcd.io — image-reflector-controller + image-automation-controller
+  - https://github.com/fluxcd/image-reflector-controller
+  - https://github.com/fluxcd/image-automation-controller
+  - https://doc.crds.dev/github.com/fluxcd/image-reflector-controller/image.toolkit.fluxcd.io/ImageRepository/v1
+  - https://doc.crds.dev/github.com/fluxcd/image-reflector-controller/image.toolkit.fluxcd.io/ImagePolicy/v1
+  - https://doc.crds.dev/github.com/fluxcd/image-automation-controller/image.toolkit.fluxcd.io/ImageUpdateAutomation/v1
+  # source.toolkit.fluxcd.io/v1 Bucket
+  - https://doc.crds.dev/github.com/fluxcd/source-controller/source.toolkit.fluxcd.io/Bucket/v1
 # Whether this chart is deprecated (optional, boolean)
 deprecated: false
