@@ -16,12 +16,12 @@ icon: "https://github.com/external-secrets/external-secrets/raw/main/assets/eso-
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.1.13
+version: 0.1.14
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
-appVersion: "0.18.2"
+appVersion: "2.9.0"
 # The URL of this projects home page (optional)
 home: "https://github.com/openmcp-project/blueprints"
 # A list of URLs to source code for this project (optional)
@@ -38,5 +38,23 @@ sources:
   - https://doc.crds.dev/github.com/external-secrets/external-secrets/external-secrets.io/SecretStore/v1
   # external-secrets.io/v1alpha1 — PushSecret
   - https://doc.crds.dev/github.com/external-secrets/external-secrets/external-secrets.io/PushSecret/v1alpha1
+  # external-secrets.io/v1alpha1 — ClusterPushSecret
+  - https://doc.crds.dev/github.com/external-secrets/external-secrets/external-secrets.io/ClusterPushSecret/v1alpha1
+  # generators.external-secrets.io/v1alpha1 — VaultDynamicSecret
+  - https://doc.crds.dev/github.com/external-secrets/external-secrets/generators.external-secrets.io/VaultDynamicSecret/v1alpha1
+  # generators.external-secrets.io/v1alpha1 — ECRAuthorizationToken
+  - https://doc.crds.dev/github.com/external-secrets/external-secrets/generators.external-secrets.io/ECRAuthorizationToken/v1alpha1
+  # generators.external-secrets.io/v1alpha1 — ClusterGenerator
+  - https://doc.crds.dev/github.com/external-secrets/external-secrets/generators.external-secrets.io/ClusterGenerator/v1alpha1
+  # generators.external-secrets.io/v1alpha1 — ACRAccessToken
+  - https://doc.crds.dev/github.com/external-secrets/external-secrets/generators.external-secrets.io/ACRAccessToken/v1alpha1
+  # generators.external-secrets.io/v1alpha1 — GCRAccessToken
+  - https://doc.crds.dev/github.com/external-secrets/external-secrets/generators.external-secrets.io/GCRAccessToken/v1alpha1
+  # generators.external-secrets.io/v1alpha1 — STSSessionToken
+  - https://doc.crds.dev/github.com/external-secrets/external-secrets/generators.external-secrets.io/STSSessionToken/v1alpha1
+  # generators.external-secrets.io/v1alpha1 — GithubAccessToken
+  - https://doc.crds.dev/github.com/external-secrets/external-secrets/generators.external-secrets.io/GithubAccessToken/v1alpha1
+  # generators.external-secrets.io/v1alpha1 — Password
+  - https://doc.crds.dev/github.com/external-secrets/external-secrets/generators.external-secrets.io/Password/v1alpha1
 # Whether this chart is deprecated (optional, boolean)
 deprecated: false
