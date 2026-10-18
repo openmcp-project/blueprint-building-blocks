@@ -2,7 +2,7 @@
 
 # crossplane-provider-btp-security
 
-![Version: 0.0.16](https://img.shields.io/badge/Version-0.0.16-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.1.2](https://img.shields.io/badge/AppVersion-1.1.2-informational?style=flat-square)
+![Version: 0.0.17](https://img.shields.io/badge/Version-0.0.17-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.1.2](https://img.shields.io/badge/AppVersion-1.1.2-informational?style=flat-square)
 
 A Helm Chart to template crossplane manifests to manage BTP resources such as Directory, TrustConfiguration and RoleCollection Assignment on BTP.
 
@@ -15,6 +15,7 @@ A Helm Chart to template crossplane manifests to manage BTP resources such as Di
 * <https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/RoleCollectionAssignment/v1alpha1@v1.13.0>
 * <https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/SubaccountApiCredential/v1alpha1@v1.13.0>
 * <https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/SubaccountTrustConfiguration/v1alpha1@v1.13.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/RoleCollection/v1alpha1@v1.13.0>
 
 ## Values
 
@@ -32,6 +33,11 @@ A Helm Chart to template crossplane manifests to manage BTP resources such as Di
 | roleCollectionAssignments[0].name | string | - | Name of the RoleCollectionAssignment resource - [CRD Browser](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/RoleCollectionAssignment/v1alpha1@v1.1.2?path=metadata). |
 | roleCollectionAssignments[0].subaccountApiCredentialRef | list | `[]` | optional [subaccountApiCredentialRef](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/RoleCollectionAssignment/v1alpha1@v1.1.2) CRD |
 | roleCollectionAssignments[0].writeConnectionSecretToRef | list | `[]` | optional |
+| roleCollections | list | object | `roleCollections[].` orchestrate [`kind: RoleCollection`](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/RoleCollection/v1alpha1@v1.13.0) of [BTP Accounts](https://help.sap.com/docs/btp/sap-business-technology-platform/account-model). |
+| roleCollections[0] | object | `{"btpSapCrossplaneProviderConfigRefName":"","forProvider":[],"name":"","writeConnectionSecretToRef":[]}` | btpSapCrossplaneProviderConfigRefName defines crossplane provider configuration reference name (identifier) of a [BTP Global Account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account)! |
+| roleCollections[0].forProvider | list | `[]` | [forProvider](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/RoleCollection/v1alpha1@v1.13.0) CRD |
+| roleCollections[0].name | string | - | Name of the RoleCollection resource - [CRD Browser](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/RoleCollection/v1alpha1@v1.13.0?path=metadata). |
+| roleCollections[0].writeConnectionSecretToRef | list | `[]` | optional |
 | subaccountApiCredentials | list | object | `subaccountApiCredentials[].` orchestrate [`kind: SubaccountApiCredential`](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/SubaccountApiCredential/v1alpha1@v1.3.0) of [BTP Accounts](https://help.sap.com/docs/btp/sap-business-technology-platform/account-model). |
 | subaccountApiCredentials[0] | object | `{"btpSapCrossplaneProviderConfigRefName":"","forProvider":[],"name":"","writeConnectionSecretToRef":[]}` | btpSapCrossplaneProviderConfigRefName defines crossplane provider configuration reference name (identifier) of a [BTP Global Account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account)! |
 | subaccountApiCredentials[0].forProvider | list | `[]` | [forProvider](https://doc.crds.dev/github.com/SAP/crossplane-provider-btp/security.btp.sap.crossplane.io/SubaccountApiCredential/v1alpha1@v1.3.0) CRD |

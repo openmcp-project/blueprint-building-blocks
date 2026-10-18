@@ -75,3 +75,11 @@ subaccountApiCredentials:
       name: xsuaa-creds-my-subaccount
       namespace: default
 ########################################################################################################################
+roleCollections:
+  - btpSapCrossplaneProviderConfigRefName: "btpSapCrossplaneProviderConfigRefName"
+    name: "my-role-collection"
+    forProvider:
+      subaccountId: "subaccountId"
+      name: "My Role Collection"
+      description: "A test role collection"
+########################################################################################################################
