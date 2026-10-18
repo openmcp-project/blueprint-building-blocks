@@ -3,7 +3,7 @@
     {{- range $binding := $service.bindings }}
       {{- if and ($binding) (ne $binding.name "") }}
 ---
-apiVersion: services.cloud.sap.com/v1alpha1
+apiVersion: services.cloud.sap.com/v1
 kind: ServiceBinding
 metadata:
   name: {{required "A valid bindingName is required (.Values.services[].bindings[].name)" $binding.name }}
