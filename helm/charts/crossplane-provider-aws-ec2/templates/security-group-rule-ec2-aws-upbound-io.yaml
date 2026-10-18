@@ -2,7 +2,7 @@
   {{- if and ($item) (ne $item.name "") }}
 ---
 apiVersion: ec2.aws.upbound.io/v1beta1
-kind: SecurityGroupRuleRule
+kind: SecurityGroupRule
 metadata:
   name: {{required "A valid value is required! (.Values.securityGroupRules[].name)" $item.name | lower }}  
   {{- if $item.annotations}}

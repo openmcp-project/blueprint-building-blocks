@@ -2,7 +2,7 @@
 
 # crossplane-provider-aws-ec2
 
-![Version: 0.0.14](https://img.shields.io/badge/Version-0.0.14-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.11.0](https://img.shields.io/badge/AppVersion-1.11.0-informational?style=flat-square)
+![Version: 0.0.15](https://img.shields.io/badge/Version-0.0.15-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.11.0](https://img.shields.io/badge/AppVersion-1.11.0-informational?style=flat-square)
 
 A Helm Chart to template AWS EC2 manifests for its crossplane provider.
 
@@ -23,22 +23,50 @@ A Helm Chart to template AWS EC2 manifests for its crossplane provider.
 * <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/SecurityGroupRule/v1beta1>
 * <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/Subnet/v1beta1>
 * <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/VPC/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/SecurityGroupIngressRule/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/SecurityGroupEgressRule/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/EIPAssociation/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/EgressOnlyInternetGateway/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/NetworkACL/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/NetworkACLRule/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/FlowLog/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/VPCEndpoint/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/VPCPeeringConnection/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/ManagedPrefixList/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/VPCDHCPOptions/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/VPCDHCPOptionsAssociation/v1beta1>
+* <https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/VPCIPv4CidrBlockAssociation/v1beta1>
 
 ## Values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| defaults.egressOnlyInternetGateways.deletionPolicy | string | `""` |  |
+| defaults.eipAssociations.deletionPolicy | string | `""` |  |
 | defaults.eips.deletionPolicy | string | `""` |  |
+| defaults.flowLogs.deletionPolicy | string | `""` |  |
 | defaults.internetGateways.deletionPolicy | string | `""` |  |
 | defaults.mainRouteTableAssociations.deletionPolicy | string | `""` |  |
+| defaults.managedPrefixLists.deletionPolicy | string | `""` |  |
 | defaults.natGateways.deletionPolicy | string | `""` |  |
+| defaults.networkACLRules.deletionPolicy | string | `""` |  |
+| defaults.networkACLs.deletionPolicy | string | `""` |  |
 | defaults.routeTableAssociations.deletionPolicy | string | `""` |  |
 | defaults.routeTables.deletionPolicy | string | `""` |  |
 | defaults.routes.deletionPolicy | string | `""` |  |
+| defaults.securityGroupEgressRules.deletionPolicy | string | `""` |  |
+| defaults.securityGroupIngressRules.deletionPolicy | string | `""` |  |
 | defaults.securityGroupRules.deletionPolicy | string | `""` |  |
 | defaults.securityGroups.deletionPolicy | string | `""` |  |
 | defaults.subnets.deletionPolicy | string | `""` |  |
+| defaults.vpcDHCPOptions.deletionPolicy | string | `""` |  |
+| defaults.vpcDHCPOptionsAssociations.deletionPolicy | string | `""` |  |
+| defaults.vpcEndpoints.deletionPolicy | string | `""` |  |
+| defaults.vpcIPv4CidrBlockAssociations.deletionPolicy | string | `""` |  |
+| defaults.vpcPeeringConnections.deletionPolicy | string | `""` |  |
 | defaults.vpcs.deletionPolicy | string | `""` |  |
+| egressOnlyInternetGateways | list | `[{"annotations":[],"labels":[],"name":"","ownerReferences":[],"spec":{"deletionPolicy":"","forProvider":[],"providerConfigRef":[],"publishConnectionDetailsTo":[],"writeConnectionSecretToRef":[]}}]` | https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/EgressOnlyInternetGateway/v1beta1 |
+| eipAssociations | list | `[{"annotations":[],"labels":[],"name":"","ownerReferences":[],"spec":{"deletionPolicy":"","forProvider":[],"providerConfigRef":[],"publishConnectionDetailsTo":[],"writeConnectionSecretToRef":[]}}]` | https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/EIPAssociation/v1beta1 |
 | eips[0].annotations | list | `[]` |  |
 | eips[0].labels | list | `[]` |  |
 | eips[0].name | string | `""` |  |
@@ -48,6 +76,7 @@ A Helm Chart to template AWS EC2 manifests for its crossplane provider.
 | eips[0].spec.providerConfigRef | list | `[]` | ProviderConfigReference specifies how the provider that will be used to create, observe, update, and delete this managed resource should be configured. |
 | eips[0].spec.publishConnectionDetailsTo | list | `[]` | PublishConnectionDetailsTo specifies the connection secret config which contains a name, metadata and a reference to secret store config to which any connection details for this managed resource should be written. Connection details frequently include the endpoint, username, and password required to connect to the managed resource. |
 | eips[0].spec.writeConnectionSecretToRef | list | `[]` | *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)! |
+| flowLogs | list | `[{"annotations":[],"labels":[],"name":"","ownerReferences":[],"spec":{"deletionPolicy":"","forProvider":[],"providerConfigRef":[],"publishConnectionDetailsTo":[],"writeConnectionSecretToRef":[]}}]` | https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/FlowLog/v1beta1 |
 | internetGateways | list | `[{"annotations":[],"labels":[],"name":"","ownerReferences":[],"spec":{"deletionPolicy":"","forProvider":[],"providerConfigRef":[],"publishConnectionDetailsTo":[],"writeConnectionSecretToRef":[]}}]` | https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/v1.11.0/resources/ec2.aws.upbound.io/InternetGateway/v1beta1 |
 | internetGateways[0].spec.providerConfigRef | list | `[]` | ProviderConfigReference specifies how the provider that will be used to create, observe, update, and delete this managed resource should be configured. |
 | internetGateways[0].spec.publishConnectionDetailsTo | list | `[]` | PublishConnectionDetailsTo specifies the connection secret config which contains a name, metadata and a reference to secret store config to which any connection details for this managed resource should be written. Connection details frequently include the endpoint, username, and password required to connect to the managed resource. |
@@ -56,10 +85,13 @@ A Helm Chart to template AWS EC2 manifests for its crossplane provider.
 | mainRouteTableAssociations[0].spec.providerConfigRef | list | `[]` | ProviderConfigReference specifies how the provider that will be used to create, observe, update, and delete this managed resource should be configured. |
 | mainRouteTableAssociations[0].spec.publishConnectionDetailsTo | list | `[]` | PublishConnectionDetailsTo specifies the connection secret config which contains a name, metadata and a reference to secret store config to which any connection details for this managed resource should be written. Connection details frequently include the endpoint, username, and password required to connect to the managed resource. |
 | mainRouteTableAssociations[0].spec.writeConnectionSecretToRef | list | `[]` | *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)! |
+| managedPrefixLists | list | `[{"annotations":[],"labels":[],"name":"","ownerReferences":[],"spec":{"deletionPolicy":"","forProvider":[],"providerConfigRef":[],"publishConnectionDetailsTo":[],"writeConnectionSecretToRef":[]}}]` | https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/ManagedPrefixList/v1beta1 |
 | natGateways | list | `[{"annotations":[],"labels":[],"name":"","ownerReferences":[],"spec":{"deletionPolicy":"","forProvider":[],"providerConfigRef":[],"publishConnectionDetailsTo":[],"writeConnectionSecretToRef":[]}}]` | https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/v1.11.0/resources/ec2.aws.upbound.io/NATGateway/v1beta1 |
 | natGateways[0].spec.providerConfigRef | list | `[]` | ProviderConfigReference specifies how the provider that will be used to create, observe, update, and delete this managed resource should be configured. |
 | natGateways[0].spec.publishConnectionDetailsTo | list | `[]` | PublishConnectionDetailsTo specifies the connection secret config which contains a name, metadata and a reference to secret store config to which any connection details for this managed resource should be written. Connection details frequently include the endpoint, username, and password required to connect to the managed resource. |
 | natGateways[0].spec.writeConnectionSecretToRef | list | `[]` | *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)! |
+| networkACLRules | list | `[{"annotations":[],"labels":[],"name":"","ownerReferences":[],"spec":{"deletionPolicy":"","forProvider":[],"providerConfigRef":[],"publishConnectionDetailsTo":[],"writeConnectionSecretToRef":[]}}]` | https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/NetworkACLRule/v1beta1 |
+| networkACLs | list | `[{"annotations":[],"labels":[],"name":"","ownerReferences":[],"spec":{"deletionPolicy":"","forProvider":[],"providerConfigRef":[],"publishConnectionDetailsTo":[],"writeConnectionSecretToRef":[]}}]` | https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/NetworkACL/v1beta1 |
 | routeTableAssociations | list | `[{"annotations":[],"labels":[],"name":"","ownerReferences":[],"spec":{"deletionPolicy":"","forProvider":[],"providerConfigRef":[],"publishConnectionDetailsTo":[],"writeConnectionSecretToRef":[]}}]` | https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/v1.11.0/resources/ec2.aws.upbound.io/RouteTableAssociation/v1beta1 |
 | routeTableAssociations[0].spec.providerConfigRef | list | `[]` | ProviderConfigReference specifies how the provider that will be used to create, observe, update, and delete this managed resource should be configured. |
 | routeTableAssociations[0].spec.publishConnectionDetailsTo | list | `[]` | PublishConnectionDetailsTo specifies the connection secret config which contains a name, metadata and a reference to secret store config to which any connection details for this managed resource should be written. Connection details frequently include the endpoint, username, and password required to connect to the managed resource. |
@@ -72,6 +104,8 @@ A Helm Chart to template AWS EC2 manifests for its crossplane provider.
 | routes[0].spec.providerConfigRef | list | `[]` | ProviderConfigReference specifies how the provider that will be used to create, observe, update, and delete this managed resource should be configured. |
 | routes[0].spec.publishConnectionDetailsTo | list | `[]` | PublishConnectionDetailsTo specifies the connection secret config which contains a name, metadata and a reference to secret store config to which any connection details for this managed resource should be written. Connection details frequently include the endpoint, username, and password required to connect to the managed resource. |
 | routes[0].spec.writeConnectionSecretToRef | list | `[]` | *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)! |
+| securityGroupEgressRules | list | `[{"annotations":[],"labels":[],"name":"","ownerReferences":[],"spec":{"deletionPolicy":"","forProvider":[],"providerConfigRef":[],"publishConnectionDetailsTo":[],"writeConnectionSecretToRef":[]}}]` | https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/SecurityGroupEgressRule/v1beta1 |
+| securityGroupIngressRules | list | `[{"annotations":[],"labels":[],"name":"","ownerReferences":[],"spec":{"deletionPolicy":"","forProvider":[],"providerConfigRef":[],"publishConnectionDetailsTo":[],"writeConnectionSecretToRef":[]}}]` | https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/SecurityGroupIngressRule/v1beta1 |
 | securityGroupRules | list | `[{"annotations":[],"labels":[],"name":"","ownerReferences":[],"spec":{"deletionPolicy":"","forProvider":[],"providerConfigRef":[],"publishConnectionDetailsTo":[],"writeConnectionSecretToRef":[]}}]` | https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/v1.11.0/resources/ec2.aws.upbound.io/SecurityGroupRule/v1beta1 |
 | securityGroupRules[0].spec.providerConfigRef | list | `[]` | ProviderConfigReference specifies how the provider that will be used to create, observe, update, and delete this managed resource should be configured. |
 | securityGroupRules[0].spec.publishConnectionDetailsTo | list | `[]` | PublishConnectionDetailsTo specifies the connection secret config which contains a name, metadata and a reference to secret store config to which any connection details for this managed resource should be written. Connection details frequently include the endpoint, username, and password required to connect to the managed resource. |
@@ -84,6 +118,11 @@ A Helm Chart to template AWS EC2 manifests for its crossplane provider.
 | subnets[0].spec.providerConfigRef | list | `[]` | ProviderConfigReference specifies how the provider that will be used to create, observe, update, and delete this managed resource should be configured. |
 | subnets[0].spec.publishConnectionDetailsTo | list | `[]` | PublishConnectionDetailsTo specifies the connection secret config which contains a name, metadata and a reference to secret store config to which any connection details for this managed resource should be written. Connection details frequently include the endpoint, username, and password required to connect to the managed resource. |
 | subnets[0].spec.writeConnectionSecretToRef | list | `[]` | *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)! |
+| vpcDHCPOptions | list | `[{"annotations":[],"labels":[],"name":"","ownerReferences":[],"spec":{"deletionPolicy":"","forProvider":[],"providerConfigRef":[],"publishConnectionDetailsTo":[],"writeConnectionSecretToRef":[]}}]` | https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/VPCDHCPOptions/v1beta1 |
+| vpcDHCPOptionsAssociations | list | `[{"annotations":[],"labels":[],"name":"","ownerReferences":[],"spec":{"deletionPolicy":"","forProvider":[],"providerConfigRef":[],"publishConnectionDetailsTo":[],"writeConnectionSecretToRef":[]}}]` | https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/VPCDHCPOptionsAssociation/v1beta1 |
+| vpcEndpoints | list | `[{"annotations":[],"labels":[],"name":"","ownerReferences":[],"spec":{"deletionPolicy":"","forProvider":[],"providerConfigRef":[],"publishConnectionDetailsTo":[],"writeConnectionSecretToRef":[]}}]` | https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/VPCEndpoint/v1beta1 |
+| vpcIPv4CidrBlockAssociations | list | `[{"annotations":[],"labels":[],"name":"","ownerReferences":[],"spec":{"deletionPolicy":"","forProvider":[],"providerConfigRef":[],"publishConnectionDetailsTo":[],"writeConnectionSecretToRef":[]}}]` | https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/VPCIPv4CidrBlockAssociation/v1beta1 |
+| vpcPeeringConnections | list | `[{"annotations":[],"labels":[],"name":"","ownerReferences":[],"spec":{"deletionPolicy":"","forProvider":[],"providerConfigRef":[],"publishConnectionDetailsTo":[],"writeConnectionSecretToRef":[]}}]` | https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/VPCPeeringConnection/v1beta1 |
 | vpcs | list | `[{"annotations":[],"labels":[],"name":"","ownerReferences":[],"spec":{"deletionPolicy":"","forProvider":[],"providerConfigRef":[],"publishConnectionDetailsTo":[],"writeConnectionSecretToRef":[]}}]` | https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/v1.11.0/resources/ec2.aws.upbound.io/VPC/v1beta1 |
 | vpcs[0].spec.providerConfigRef | list | `[]` | ProviderConfigReference specifies how the provider that will be used to create, observe, update, and delete this managed resource should be configured. |
 | vpcs[0].spec.publishConnectionDetailsTo | list | `[]` | PublishConnectionDetailsTo specifies the connection secret config which contains a name, metadata and a reference to secret store config to which any connection details for this managed resource should be written. Connection details frequently include the endpoint, username, and password required to connect to the managed resource. |
