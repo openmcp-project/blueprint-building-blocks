@@ -2,7 +2,7 @@
 
 # crossplane-provider-pkgs
 
-![Version: 0.0.15](https://img.shields.io/badge/Version-0.0.15-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.20.0](https://img.shields.io/badge/AppVersion-1.20.0-informational?style=flat-square)
+![Version: 0.0.16](https://img.shields.io/badge/Version-0.0.16-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.20.12](https://img.shields.io/badge/AppVersion-1.20.12-informational?style=flat-square)
 
 A Helm Chart to template crossplane provider "kind Provider" manifests to install crossplane family providers.
 
@@ -37,7 +37,7 @@ A Helm Chart to template crossplane provider "kind Provider" manifests to instal
 | imageConfigs[0].spec.matchImages[0].type | string | `"Prefix"` | Type is the type of match.  |
 | imageConfigs[0].spec.registry | object | [] | Registry is the configuration for the registry. |
 | imageConfigs[0].spec.registry.authentication | object | [] | Authentication is the authentication information for the registry. |
-| imageConfigs[0].spec.registry.authentication.pullSecretRef | list | `[]` | PullSecretRef is a reference to a secret that contains the credentials for the registry. |
+| imageConfigs[0].spec.registry.authentication.pullSecretRef | object | `{}` | PullSecretRef is a reference to a secret that contains the credentials for the registry. |
 | imageConfigs[0].spec.verification | object | [] | Verification contains the configuration for verifying the image. |
 | imageConfigs[0].spec.verification.cosign | object | [] | Cosign is the configuration for verifying the image using cosign. |
 | imageConfigs[0].spec.verification.cosign.authorities | list | {} | Authority defines the rules for discovering and validating signatures. |

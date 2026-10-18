@@ -1,7 +1,7 @@
 {{- range $item := .Values.functions}}
   {{- if and ($item) (ne $item.name "")}}
 ---
-apiVersion: pkg.crossplane.io/v1beta1
+apiVersion: pkg.crossplane.io/v1
 kind: Function
 metadata:
   name: {{required "A valid value is required! (.Values.functions[].name)" $item.name | lower }}

@@ -59,7 +59,7 @@ imageConfigs:
         # @default -- []
         authentication:
           # -- PullSecretRef is a reference to a secret that contains the credentials for the registry.
-            pullSecretRef: []
+            pullSecretRef: {}
       # -- Verification contains the configuration for verifying the image.
       # @default -- []
       verification:
