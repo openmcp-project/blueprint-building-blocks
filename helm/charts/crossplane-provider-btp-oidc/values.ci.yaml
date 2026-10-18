@@ -1,0 +1,26 @@
+---
+########################################################################################################################
+###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
+########################################################################################################################
+certBasedOIDCLogins:
+  - btpSapCrossplaneProviderConfigRefName: "my-btp-provider-config"
+    name: "test-cert-oidc"
+    forProvider:
+      subaccountId: "test-subaccount-id"
+      certSecretRef:
+        name: "test-cert-secret"
+        namespace: "crossplane-system"
+    writeConnectionSecretToRef:
+      name: "test-cert-oidc-conn"
+      namespace: "default"
+########################################################################################################################
+kubeConfigGenerators:
+  - btpSapCrossplaneProviderConfigRefName: "my-btp-provider-config"
+    name: "test-kubeconfig-gen"
+    forProvider:
+      subaccountId: "test-subaccount-id"
+      clusterName: "test-cluster"
+    writeConnectionSecretToRef:
+      name: "test-kubeconfig-gen-conn"
+      namespace: "default"
+########################################################################################################################
