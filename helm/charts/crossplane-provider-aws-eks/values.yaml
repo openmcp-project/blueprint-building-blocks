@@ -6,6 +6,18 @@ defaults:
     deletionPolicy: ""
   nodeGroups:
     deletionPolicy: ""
+  addons:
+    deletionPolicy: ""
+  accessEntries:
+    deletionPolicy: ""
+  accessPolicyAssociations:
+    deletionPolicy: ""
+  fargateProfiles:
+    deletionPolicy: ""
+  identityProviderConfigs:
+    deletionPolicy: ""
+  podIdentityAssociations:
+    deletionPolicy: ""
 ########################################################################################################################
 # @default -- list
 # https://marketplace.upbound.io/providers/upbound/provider-aws-eks/v1.11.0/resources/eks.aws.upbound.io/Cluster/v1beta1
@@ -41,5 +53,85 @@ nodeGroups:
       publishConnectionDetailsTo: []
       # -- *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.
       #   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)!
+      writeConnectionSecretToRef: []
+########################################################################################################################
+
+########################################################################################################################
+# https://marketplace.upbound.io/providers/upbound/provider-aws-eks/latest/resources/eks.aws.upbound.io/Addon/v1beta1
+addons:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      providerConfigRef: []
+      publishConnectionDetailsTo: []
+      writeConnectionSecretToRef: []
+########################################################################################################################
+# https://marketplace.upbound.io/providers/upbound/provider-aws-eks/latest/resources/eks.aws.upbound.io/AccessEntry/v1beta1
+accessEntries:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      providerConfigRef: []
+      publishConnectionDetailsTo: []
+      writeConnectionSecretToRef: []
+########################################################################################################################
+# https://marketplace.upbound.io/providers/upbound/provider-aws-eks/latest/resources/eks.aws.upbound.io/AccessPolicyAssociation/v1beta1
+accessPolicyAssociations:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      providerConfigRef: []
+      publishConnectionDetailsTo: []
+      writeConnectionSecretToRef: []
+########################################################################################################################
+# https://marketplace.upbound.io/providers/upbound/provider-aws-eks/latest/resources/eks.aws.upbound.io/FargateProfile/v1beta1
+fargateProfiles:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      providerConfigRef: []
+      publishConnectionDetailsTo: []
+      writeConnectionSecretToRef: []
+########################################################################################################################
+# https://marketplace.upbound.io/providers/upbound/provider-aws-eks/latest/resources/eks.aws.upbound.io/IdentityProviderConfig/v1beta2
+identityProviderConfigs:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      providerConfigRef: []
+      publishConnectionDetailsTo: []
+      writeConnectionSecretToRef: []
+########################################################################################################################
+# https://marketplace.upbound.io/providers/upbound/provider-aws-eks/latest/resources/eks.aws.upbound.io/PodIdentityAssociation/v1beta1
+podIdentityAssociations:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      providerConfigRef: []
+      publishConnectionDetailsTo: []
       writeConnectionSecretToRef: []
 ########################################################################################################################

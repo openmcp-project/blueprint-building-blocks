@@ -1,7 +1,7 @@
 {{- range $item := .Values.nodeGroups}}
   {{- if and ($item) (ne $item.name "") }}
 ---
-apiVersion: eks.aws.upbound.io/v1beta1
+apiVersion: eks.aws.upbound.io/v1beta2
 kind: NodeGroup
 metadata:
   name: {{required "A valid value is required! (.Values.nodeGroups[].name)" $item.name | lower }}

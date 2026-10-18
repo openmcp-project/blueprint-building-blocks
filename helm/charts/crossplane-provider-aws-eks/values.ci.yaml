@@ -73,3 +73,15 @@ nodeGroups:
       publishConnectionDetailsTo: {}
       writeConnectionSecretToRef: {}  
 ########################################################################################################################
+addons:
+  - name: ""
+accessEntries:
+  - name: ""
+accessPolicyAssociations:
+  - name: ""
+fargateProfiles:
+  - name: ""
+identityProviderConfigs:
+  - name: ""
+podIdentityAssociations:
+  - name: ""
