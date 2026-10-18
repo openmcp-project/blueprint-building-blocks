@@ -1,0 +1,126 @@
+---
+########################################################################################################################
+###! /!\ this file is only used in github pipeline to template a valid and NOT empty helm manifest! #####
+########################################################################################################################
+serviceAccounts:
+  - name: "serviceAccount-1"
+    labels: {}
+    annotations: {}
+    ownerReferences: {}      
+    spec:
+      deletionPolicy: "Delete"
+      forProvider:
+        description: perfection
+        displayName: a beautiful service account
+      providerConfigRef:
+        name: gcp-provider
+      writeConnectionSecretToRef:
+        name: test-sakey
+        namespace: default
+      publishConnectionDetailsTo:
+        configRef:
+          name: vault
+        metadata:
+          annotations:
+            argocd.argoproj.io/sync-options: Prune=false
+          labels:
+            environment: development
+            team: backend
+          type: Opaque
+        name: demo-serviceaccount-key
+  - name: "serviceAccount-2"
+    labels: {}
+    annotations: {}
+    ownerReferences: {}      
+    spec:
+      deletionPolicy: "Delete"
+      forProvider:
+        description: perfection 2
+        displayName: a beautiful service account
+      providerConfigRef:
+        name: gcp-provider
+serviceAccountPolicys:
+  - name: "serviceAccountPolicy-1"
+    labels: {}
+    annotations: {}
+    ownerReferences: {}      
+    spec:
+      deletionPolicy: "Delete"
+      forProvider:
+        policy:
+          bindings:
+            - members:
+                - serviceAccount:PROJECT_ID.svc.id.goog[K8S_NAMESPACE/KSA_NAME]
+              role: roles/iam.workloadIdentityUser
+        serviceAccountRef:
+          name: perfect-test-sa
+      providerConfigRef:
+        name: gcp-provider
+      writeConnectionSecretToRef:
+        name: test-sakey
+        namespace: default
+      publishConnectionDetailsTo:
+        configRef:
+          name: vault
+        metadata:
+          annotations:
+            argocd.argoproj.io/sync-options: Prune=false
+          labels:
+            environment: development
+            team: backend
+          type: Opaque
+        name: demo-serviceaccount-key
+  - name: "serviceAccountPolicy-2"
+    labels: {}
+    annotations: {}
+    ownerReferences: {}      
+    spec:
+      deletionPolicy: "Delete"
+      forProvider:
+        policy:
+          bindings:
+            - members:
+                - serviceAccount:PROJECT_ID.svc.id.goog[K8S_NAMESPACE/KSA_NAME]
+              role: roles/iam.workloadIdentityUser
+        serviceAccountRef:
+          name: perfect-test-sa
+      providerConfigRef:
+        name: gcp-provider      
+serviceAccountKeys:
+  - name: "serviceAccountKeys-1"
+    labels: {}
+    annotations: {}
+    ownerReferences: {}      
+    spec:
+      deletionPolicy: "Delete"
+      forProvider:
+        serviceAccountRef:
+          name: perfect-test-sa
+      providerConfigRef:
+        name: gcp-provider 
+      writeConnectionSecretToRef:
+        name: test-sakey
+        namespace: default
+      publishConnectionDetailsTo:
+        configRef:
+          name: vault
+        metadata:
+          annotations:
+            argocd.argoproj.io/sync-options: Prune=false
+          labels:
+            environment: development
+            team: backend
+          type: Opaque
+        name: demo-serviceaccount-key
+  - name: "serviceAccountKeys-2"
+    labels: {}
+    annotations: {}
+    ownerReferences: {}      
+    spec:
+      deletionPolicy: "Delete"
+      forProvider:
+        serviceAccountRef:
+          name: perfect-test-sa
+      providerConfigRef:
+        name: gcp-provider 
+########################################################################################################################
