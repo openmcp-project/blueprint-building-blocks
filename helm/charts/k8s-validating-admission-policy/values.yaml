@@ -7,8 +7,8 @@ validatingAdmissionPolicies:
   - name: ""
     # -- Specification of the desired behavior of the ValidatingAdmissionPolicy.
     # [ValidatingAdmissionPolicySpec](https://kubernetes.io/docs/reference/kubernetes-api/policy-resources/validating-admission-policy-v1/) is the specification of the desired behavior of the AdmissionPolicy.
-    # @default -- []
-    spec: []
+    # @default -- {}
+    spec: {}
 #########################################################################################################
 # -- [ValidatingAdmissionPolicyBinding](https://kubernetes.io/docs/reference/kubernetes-api/policy-resources/validating-admission-policy-binding-v1/) binds the ValidatingAdmissionPolicy with paramerized resources.
 # @default -- []
@@ -17,6 +17,6 @@ validatingAdmissionPolicyBindings:
   - name: ""
     # -- Specification of the desired behavior of the ValidatingAdmissionPolicyBinding.
     # [ValidatingAdmissionPolicyBindingSpec](https://kubernetes.io/docs/reference/kubernetes-api/policy-resources/validating-admission-policy-binding-v1/) is the specification of the ValidatingAdmissionPolicyBinding.
-    # @default -- []
-    spec: []
+    # @default -- {}
+    spec: {}
 #########################################################################################################
