@@ -112,6 +112,60 @@ organizations:
       id: "The external GUID of the org"
       name: "The name of the Organization in Cloud Foundry"
 ########################################################################################################################
+domains:
+  - cloudfoundryProviderConfigRefName: "cloudfoundryProviderConfigRefName"
+    name: "my-domain"
+    forProvider:
+      name: "example.mydomain.com"
+      orgId: "org-guid-123"
+      internal: false
+########################################################################################################################
+orgRoles:
+  - cloudfoundryProviderConfigRefName: "cloudfoundryProviderConfigRefName"
+    name: "my-org-role"
+    forProvider:
+      type: "organization_manager"
+      orgId: "org-guid-123"
+      username: "user@example.com"
+########################################################################################################################
+spaceRoles:
+  - cloudfoundryProviderConfigRefName: "cloudfoundryProviderConfigRefName"
+    name: "my-space-role"
+    forProvider:
+      type: "space_developer"
+      spaceId: "space-guid-123"
+      username: "user@example.com"
+########################################################################################################################
+orgQuotas:
+  - cloudfoundryProviderConfigRefName: "cloudfoundryProviderConfigRefName"
+    name: "my-org-quota"
+    forProvider:
+      name: "my-org-quota"
+      totalMemoryInMb: 10240
+      totalRoutes: 100
+      totalServices: 50
+      allowPaidServicePlans: true
+########################################################################################################################
+spaceQuotas:
+  - cloudfoundryProviderConfigRefName: "cloudfoundryProviderConfigRefName"
+    name: "my-space-quota"
+    forProvider:
+      name: "my-space-quota"
+      orgId: "org-guid-123"
+      totalMemoryInMb: 2048
+      totalRoutes: 20
+      totalServices: 10
+      allowPaidServicePlans: false
+########################################################################################################################
+serviceRouteBindings:
+  - cloudfoundryProviderConfigRefName: "cloudfoundryProviderConfigRefName"
+    name: "my-service-route-binding"
+    forProvider:
+      serviceInstanceRef:
+        name: my-service-instance
+      routeRef:
+        name: my-route
+########################################################################################################################
 secrets:
   - name: "name"
     namespace: "namespace"
