@@ -22,3 +22,4 @@ spec:
   selector:
     app.kubernetes.io/name: test-custom-chart
     app.kubernetes.io/instance: helm-release-name
+
