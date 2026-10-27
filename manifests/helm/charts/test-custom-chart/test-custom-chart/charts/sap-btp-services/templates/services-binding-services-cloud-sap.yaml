@@ -17,3 +17,4 @@ spec:
     enabled: true
     rotatedBindingTTL: 2h
     rotationFrequency: 480h
+

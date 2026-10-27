@@ -21,3 +21,4 @@ spec:
       command: ['wget']
       args: ['helm-release-name-test-custom-chart:80']
   restartPolicy: Never
+

@@ -21,3 +21,4 @@ spec:
       - https://*.../callback
       - https://*.../*
     xsuaa-cross-consumption: true
+
