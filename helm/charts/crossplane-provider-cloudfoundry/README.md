@@ -2,28 +2,37 @@
 
 # crossplane-provider-cloudfoundry
 
-![Version: 0.1.5](https://img.shields.io/badge/Version-0.1.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.3.0](https://img.shields.io/badge/AppVersion-0.3.0-informational?style=flat-square)
+![Version: 0.1.6](https://img.shields.io/badge/Version-0.1.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.2.0](https://img.shields.io/badge/AppVersion-1.2.0-informational?style=flat-square)
 
 A Helm Chart to template crossplane manifests to manage BTP Cloud Foundry resources on BTP.
 
 ## Source Code
 
 * <https://github.com/SAP/crossplane-provider-cloudfoundry>
-* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/App/v1alpha1@v0.3.0>
-* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/Organization/v1alpha1@v0.3.0>
-* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/Space/v1alpha1@v0.3.0>
-* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/ServiceInstance/v1alpha1@v0.3.0>
-* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/ServiceCredentialBinding/v1alpha1@v0.3.0>
-* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/OrgMembers/v1alpha1@v0.3.0>
-* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/SpaceMembers/v1alpha1@v0.3.0>
-* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/Route/v1alpha1@v0.3.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/App/v1alpha1@v1.2.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/Domain/v1alpha1@v1.2.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/Organization/v1alpha1@v1.2.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/OrgMembers/v1alpha1@v1.2.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/OrgQuota/v1alpha1@v1.2.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/OrgRole/v1alpha1@v1.2.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/Route/v1alpha1@v1.2.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/ServiceCredentialBinding/v1alpha1@v1.2.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/ServiceInstance/v1alpha1@v1.2.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/ServiceRouteBinding/v1alpha1@v1.2.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/Space/v1alpha1@v1.2.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/SpaceMembers/v1alpha1@v1.2.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/SpaceQuota/v1alpha1@v1.2.0>
+* <https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/SpaceRole/v1alpha1@v1.2.0>
 
 ## Values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | apps | list | object | `apps[].` orchestrate `kind: App` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry)) of BTP Cloud foundry. |
+| domains | list | `[{"cloudfoundryProviderConfigRefName":"","forProvider":[],"name":""}]` | `domains[].` orchestrate `kind: Domain` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/Domain/v1alpha1@v1.2.0)) of BTP Cloud Foundry. |
 | orgMembers | list | `[{"cloudfoundryProviderConfigRefName":"","forProvider":[],"name":""}]` | `orgMembers[].` orchestrate `kind: OrgMembers` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry) of BTP Cloud foundry. |
+| orgQuotas | list | `[{"cloudfoundryProviderConfigRefName":"","forProvider":[],"name":""}]` | `orgQuotas[].` orchestrate `kind: OrgQuota` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/OrgQuota/v1alpha1@v1.2.0)) of BTP Cloud Foundry. |
+| orgRoles | list | `[{"cloudfoundryProviderConfigRefName":"","forProvider":[],"name":""}]` | `orgRoles[].` orchestrate `kind: OrgRole` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/OrgRole/v1alpha1@v1.2.0)) of BTP Cloud Foundry. |
 | organizations | list | `[{"cloudfoundryProviderConfigRefName":"","externalName":"","forProvider":[],"name":""}]` | `organizations[].` orchestrate `kind: Organization` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry) of BTP Cloud foundry. |
 | organizations[0].externalName | string | `""` | must match the actual name of the Cloud Foundry organization in BTP! |
 | routes | list | `[{"cloudfoundryProviderConfigRefName":"","forProvider":[],"name":""}]` | `routes[].` orchestrate `kind: Route` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry) of BTP Cloud foundry. |
@@ -33,7 +42,10 @@ A Helm Chart to template crossplane manifests to manage BTP Cloud Foundry resour
 | secrets[0].stringData | list | `[]` | *(optional)* [stringData](https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/secret-v1/) *(map[string]string)* allows specifying non-binary secret data in string form. It is provided as a write-only input field for convenience. All keys and values are merged into the data field on write, overwriting any existing values. The stringData field is never output when reading from the API. |
 | serviceCredentialsBindings | list | `[{"cloudfoundryProviderConfigRefName":"","forProvider":[],"name":""}]` | `serviceCredentialsBindings[].` orchestrate `kind: ServiceKey` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry) of BTP Cloud foundry. |
 | serviceInstances | list | `[{"cloudfoundryProviderConfigRefName":"","forProvider":[],"name":""}]` | `serviceInstances[].` orchestrate `kind: ServiceInstance` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry)) of BTP Cloud foundry. |
+| serviceRouteBindings | list | `[{"cloudfoundryProviderConfigRefName":"","forProvider":[],"name":""}]` | `serviceRouteBindings[].` orchestrate `kind: ServiceRouteBinding` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/ServiceRouteBinding/v1alpha1@v1.2.0)) of BTP Cloud Foundry. |
 | spaceMembers | list | `[{"cloudfoundryProviderConfigRefName":"","forProvider":[],"name":""}]` | `spaceMembers[].` orchestrate `kind: SpaceMembers` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry) of BTP Cloud foundry. |
+| spaceQuotas | list | `[{"cloudfoundryProviderConfigRefName":"","forProvider":[],"name":""}]` | `spaceQuotas[].` orchestrate `kind: SpaceQuota` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/SpaceQuota/v1alpha1@v1.2.0)) of BTP Cloud Foundry. |
+| spaceRoles | list | `[{"cloudfoundryProviderConfigRefName":"","forProvider":[],"name":""}]` | `spaceRoles[].` orchestrate `kind: SpaceRole` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/SpaceRole/v1alpha1@v1.2.0)) of BTP Cloud Foundry. |
 | spaces | list | `[{"cloudfoundryProviderConfigRefName":"","forProvider":[],"name":""}]` | `spaces[].` orchestrate `kind: Space` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry) of BTP Cloud foundry. |
 
 ----------------------------------------------

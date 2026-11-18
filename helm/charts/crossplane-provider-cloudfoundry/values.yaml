@@ -51,6 +51,42 @@ spaces:
     name: ""
     forProvider: []
 ########################################################################################################################
+# -- `domains[].` orchestrate `kind: Domain` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/Domain/v1alpha1@v1.2.0)) of BTP Cloud Foundry.
+domains:
+  - cloudfoundryProviderConfigRefName: ""
+    name: ""
+    forProvider: []
+########################################################################################################################
+# -- `orgRoles[].` orchestrate `kind: OrgRole` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/OrgRole/v1alpha1@v1.2.0)) of BTP Cloud Foundry.
+orgRoles:
+  - cloudfoundryProviderConfigRefName: ""
+    name: ""
+    forProvider: []
+########################################################################################################################
+# -- `spaceRoles[].` orchestrate `kind: SpaceRole` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/SpaceRole/v1alpha1@v1.2.0)) of BTP Cloud Foundry.
+spaceRoles:
+  - cloudfoundryProviderConfigRefName: ""
+    name: ""
+    forProvider: []
+########################################################################################################################
+# -- `orgQuotas[].` orchestrate `kind: OrgQuota` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/OrgQuota/v1alpha1@v1.2.0)) of BTP Cloud Foundry.
+orgQuotas:
+  - cloudfoundryProviderConfigRefName: ""
+    name: ""
+    forProvider: []
+########################################################################################################################
+# -- `spaceQuotas[].` orchestrate `kind: SpaceQuota` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/SpaceQuota/v1alpha1@v1.2.0)) of BTP Cloud Foundry.
+spaceQuotas:
+  - cloudfoundryProviderConfigRefName: ""
+    name: ""
+    forProvider: []
+########################################################################################################################
+# -- `serviceRouteBindings[].` orchestrate `kind: ServiceRouteBinding` ([docs](https://github.com/SAP/crossplane-provider-cloudfoundry) / [CRD](https://doc.crds.dev/github.com/SAP/crossplane-provider-cloudfoundry/cloudfoundry.crossplane.io/ServiceRouteBinding/v1alpha1@v1.2.0)) of BTP Cloud Foundry.
+serviceRouteBindings:
+  - cloudfoundryProviderConfigRefName: ""
+    name: ""
+    forProvider: []
+########################################################################################################################
 # @secrets -- :exclamation::exclamation: never EVER PUSH confidential secrets/credentials in plain text into GIT :exclamation::exclamation:
 secrets:
   # secrets[0].name -- defines k8s `metadata.name` value of `kind: Secret`
