@@ -1,0 +1,60 @@
+--- 
+########################################################################################################################
+# @default -- list
+defaults: 
+  serviceAccounts:
+    deletionPolicy: ""
+  serviceAccountPolicys:
+    deletionPolicy: ""
+  serviceAccountKeys:
+    deletionPolicy: ""
+########################################################################################################################
+# @default -- list [serviceAccounts](https://marketplace.upbound.io/providers/crossplane-contrib/provider-gcp/v0.22.0/resources/iam.gcp.crossplane.io/ServiceAccount/v1alpha1)
+serviceAccounts:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []      
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      # -- ProviderConfigReference specifies how the provider that will be used to create, observe, update, and delete this managed resource should be configured.
+      providerConfigRef: []
+      # -- PublishConnectionDetailsTo specifies the connection secret config which contains a name, metadata and a reference to secret store config to which any connection details for this managed resource should be written. Connection details frequently include the endpoint, username, and password required to connect to the managed resource.
+      publishConnectionDetailsTo: []
+      # -- *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.
+      #   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)!
+      writeConnectionSecretToRef: []
+# @default -- list [serviceAccountPolicys](https://marketplace.upbound.io/providers/crossplane-contrib/provider-gcp/v0.22.0/resources/iam.gcp.crossplane.io/ServiceAccountPolicy/v1alpha1)
+serviceAccountPolicys:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      # -- ProviderConfigReference specifies how the provider that will be used to create, observe, update, and delete this managed resource should be configured.
+      providerConfigRef: []
+      # -- PublishConnectionDetailsTo specifies the connection secret config which contains a name, metadata and a reference to secret store config to which any connection details for this managed resource should be written. Connection details frequently include the endpoint, username, and password required to connect to the managed resource.
+      publishConnectionDetailsTo: []
+      # -- *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.
+      #   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)!
+      writeConnectionSecretToRef: []
+# @default -- list [serviceAccountKeys](https://marketplace.upbound.io/providers/crossplane-contrib/provider-gcp/v0.22.0/resources/iam.gcp.crossplane.io/ServiceAccountKey/v1alpha1)
+serviceAccountKeys:
+  - name: ""
+    labels: []
+    annotations: []
+    ownerReferences: []      
+    spec:
+      deletionPolicy: ""
+      forProvider: []
+      # -- ProviderConfigReference specifies how the provider that will be used to create, observe, update, and delete this managed resource should be configured.
+      providerConfigRef: []
+      # -- PublishConnectionDetailsTo specifies the connection secret config which contains a name, metadata and a reference to secret store config to which any connection details for this managed resource should be written. Connection details frequently include the endpoint, username, and password required to connect to the managed resource.
+      publishConnectionDetailsTo: []
+      # -- *optional* - When a Crossplane Provider creates a managed resource it may generate resource-specific details, like usernames, passwords or connection details like an IP address.
+      #   Crossplane stores these details in a Kubernetes Secret object specified by the `writeConnectionSecretToRef` values. Learn more about Crossplane concept [Managed Resources Fields](https://docs.crossplane.io/latest/concepts/managed-resources/#writeconnectionsecrettoref)!
+      writeConnectionSecretToRef: []
+########################################################################################################################
